@@ -149,17 +149,15 @@ def ProcessInfectionTable(df):
     df = pd.concat([df, df], axis=1, keys=('male','female'))/2
     df.columns.set_names('sex', level=[0], inplace=True)
     df = df.stack(level=[0])
-    
-    df.index = df.index.reorder_levels(order=[
-        'param_policy', 'param_vac_uptake', 'param_vac1_tran_reduct',
-        'param_vac2_tran_reduct', 'param_trigger_loosen', 'R0', 'sex',
-        'age_start', 'age_end', 'year_start', 'year_end'])
-    
     return df
 
 
 def MultiplyByCohortEffect(df, multDf):
     df = df.mul(multDf, axis=0)
+    df.index = df.index.reorder_levels(order=[
+        'param_policy', 'param_vac_uptake', 'param_vac1_tran_reduct',
+        'param_vac2_tran_reduct', 'param_trigger_loosen', 'R0', 'sex',
+        'age_start', 'age_end', 'year_start', 'year_end'])
     return df
     
 
