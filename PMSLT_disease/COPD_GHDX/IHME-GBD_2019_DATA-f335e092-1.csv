@@ -1,0 +1,457 @@
+measure,location,sex,age,cause,metric,year,val,upper,lower
+Prevalence,Australia,Male,1 to 4,Chronic obstructive pulmonary disease,Number,2019,260.1866784,351.1299886,147.2345759
+Prevalence,Australia,Female,1 to 4,Chronic obstructive pulmonary disease,Number,2019,255.5935821,334.033468,141.0971364
+Prevalence,Australia,Both,1 to 4,Chronic obstructive pulmonary disease,Number,2019,515.7802605,678.5184315,304.303809
+Prevalence,Australia,Male,1 to 4,Chronic obstructive pulmonary disease,Rate,2019,41.46440701,55.95750272,23.46390069
+Prevalence,Australia,Female,1 to 4,Chronic obstructive pulmonary disease,Rate,2019,43.02115798,56.224051,23.74927471
+Prevalence,Australia,Both,1 to 4,Chronic obstructive pulmonary disease,Rate,2019,42.22151191,55.54317649,24.91015628
+Prevalence,Australia,Male,5 to 9,Chronic obstructive pulmonary disease,Number,2019,824.1787246,1089.45985,531.1309675
+Prevalence,Australia,Female,5 to 9,Chronic obstructive pulmonary disease,Number,2019,810.0735855,1040.842066,513.8310352
+Prevalence,Australia,Both,5 to 9,Chronic obstructive pulmonary disease,Number,2019,1634.25231,2106.695354,1070.811547
+Prevalence,Australia,Male,5 to 9,Chronic obstructive pulmonary disease,Rate,2019,104.103018,137.6109999,67.08779905
+Prevalence,Australia,Female,5 to 9,Chronic obstructive pulmonary disease,Rate,2019,107.8113979,138.5240059,68.3849507
+Prevalence,Australia,Both,5 to 9,Chronic obstructive pulmonary disease,Rate,2019,105.9087646,136.5257378,69.39462612
+Prevalence,Australia,Male,10 to 14,Chronic obstructive pulmonary disease,Number,2019,1369.20142,1768.148685,906.7294039
+Prevalence,Australia,Female,10 to 14,Chronic obstructive pulmonary disease,Number,2019,1335.759146,1707.689355,915.51726
+Prevalence,Australia,Both,10 to 14,Chronic obstructive pulmonary disease,Number,2019,2704.960566,3435.397331,1898.476741
+Prevalence,Australia,Male,10 to 14,Chronic obstructive pulmonary disease,Rate,2019,175.002411,225.993253,115.8922489
+Prevalence,Australia,Female,10 to 14,Chronic obstructive pulmonary disease,Rate,2019,180.4780089,230.7304992,123.697998
+Prevalence,Australia,Both,10 to 14,Chronic obstructive pulmonary disease,Rate,2019,177.6642048,225.6399383,124.6936331
+Prevalence,Australia,Male,15 to 19,Chronic obstructive pulmonary disease,Number,2019,1891.534085,2397.329343,1321.745664
+Prevalence,Australia,Female,15 to 19,Chronic obstructive pulmonary disease,Number,2019,1844.709157,2303.952511,1281.553269
+Prevalence,Australia,Both,15 to 19,Chronic obstructive pulmonary disease,Number,2019,3736.243242,4657.780631,2670.032776
+Prevalence,Australia,Male,15 to 19,Chronic obstructive pulmonary disease,Rate,2019,258.05912,327.0639982,180.3237519
+Prevalence,Australia,Female,15 to 19,Chronic obstructive pulmonary disease,Rate,2019,264.47122,330.3117616,183.7330049
+Prevalence,Australia,Both,15 to 19,Chronic obstructive pulmonary disease,Rate,2019,261.1856598,325.6066129,186.6511967
+Prevalence,Australia,Male,20 to 24,Chronic obstructive pulmonary disease,Number,2019,3128.539896,3997.071013,2227.504225
+Prevalence,Australia,Female,20 to 24,Chronic obstructive pulmonary disease,Number,2019,3078.386907,3934.688914,2137.381314
+Prevalence,Australia,Both,20 to 24,Chronic obstructive pulmonary disease,Number,2019,6206.926803,7897.295383,4320.580224
+Prevalence,Australia,Male,20 to 24,Chronic obstructive pulmonary disease,Rate,2019,387.9799897,495.6892423,276.2397461
+Prevalence,Australia,Female,20 to 24,Chronic obstructive pulmonary disease,Rate,2019,394.0226399,503.6262691,273.577251
+Prevalence,Australia,Both,20 to 24,Chronic obstructive pulmonary disease,Rate,2019,390.9535588,497.4242217,272.1388971
+Prevalence,Australia,Male,25 to 29,Chronic obstructive pulmonary disease,Number,2019,4760.379764,6015.500941,3484.825643
+Prevalence,Australia,Female,25 to 29,Chronic obstructive pulmonary disease,Number,2019,4876.357504,6185.433996,3574.566948
+Prevalence,Australia,Both,25 to 29,Chronic obstructive pulmonary disease,Number,2019,9636.737268,12044.34056,7092.786333
+Prevalence,Australia,Male,25 to 29,Chronic obstructive pulmonary disease,Rate,2019,548.12812,692.6475166,401.2559969
+Prevalence,Australia,Female,25 to 29,Chronic obstructive pulmonary disease,Rate,2019,552.9507696,701.3924811,405.3352412
+Prevalence,Australia,Both,25 to 29,Chronic obstructive pulmonary disease,Rate,2019,550.5579045,688.1070549,405.2190562
+Prevalence,Australia,Male,30 to 34,Chronic obstructive pulmonary disease,Number,2019,6442.417503,7928.921394,4914.003593
+Prevalence,Australia,Female,30 to 34,Chronic obstructive pulmonary disease,Number,2019,6688.639638,8322.746076,4995.26304
+Prevalence,Australia,Both,30 to 34,Chronic obstructive pulmonary disease,Number,2019,13131.05714,16055.49747,10136.57129
+Prevalence,Australia,Male,30 to 34,Chronic obstructive pulmonary disease,Rate,2019,728.3377907,896.3922453,555.5452621
+Prevalence,Australia,Female,30 to 34,Chronic obstructive pulmonary disease,Rate,2019,731.2102498,909.8527603,546.0882531
+Prevalence,Australia,Both,30 to 34,Chronic obstructive pulmonary disease,Rate,2019,729.7981255,892.3327218,563.3705378
+Prevalence,Australia,Male,35 to 39,Chronic obstructive pulmonary disease,Number,2019,7948.182285,9560.920732,6174.397272
+Prevalence,Australia,Female,35 to 39,Chronic obstructive pulmonary disease,Number,2019,8089.404266,9854.323586,6304.120802
+Prevalence,Australia,Both,35 to 39,Chronic obstructive pulmonary disease,Number,2019,16037.58655,19314.3853,12566.42738
+Prevalence,Australia,Male,35 to 39,Chronic obstructive pulmonary disease,Rate,2019,921.8296999,1108.875007,716.1062216
+Prevalence,Australia,Female,35 to 39,Chronic obstructive pulmonary disease,Rate,2019,922.2841191,1123.505001,718.7414931
+Prevalence,Australia,Both,35 to 39,Chronic obstructive pulmonary disease,Rate,2019,922.0588543,1110.453865,722.4893592
+Prevalence,Australia,Male,40 to 44,Chronic obstructive pulmonary disease,Number,2019,10128.33662,11657.14384,8654.461343
+Prevalence,Australia,Female,40 to 44,Chronic obstructive pulmonary disease,Number,2019,10335.61716,11917.69662,8668.319895
+Prevalence,Australia,Both,40 to 44,Chronic obstructive pulmonary disease,Number,2019,20463.95378,23474.87444,17444.68781
+Prevalence,Australia,Male,40 to 44,Chronic obstructive pulmonary disease,Rate,2019,1304.33418,1501.215029,1114.527505
+Prevalence,Australia,Female,40 to 44,Chronic obstructive pulmonary disease,Rate,2019,1302.2749,1501.614942,1092.197519
+Prevalence,Australia,Both,40 to 44,Chronic obstructive pulmonary disease,Rate,2019,1303.293297,1495.050606,1111.004498
+Prevalence,Australia,Male,45 to 49,Chronic obstructive pulmonary disease,Number,2019,19767.87108,23382.42682,16506.15986
+Prevalence,Australia,Female,45 to 49,Chronic obstructive pulmonary disease,Number,2019,20702.66952,24256.06637,17359.23746
+Prevalence,Australia,Both,45 to 49,Chronic obstructive pulmonary disease,Number,2019,40470.5406,46844.45773,34317.11366
+Prevalence,Australia,Male,45 to 49,Chronic obstructive pulmonary disease,Rate,2019,2428.980798,2873.12,2028.197431
+Prevalence,Australia,Female,45 to 49,Chronic obstructive pulmonary disease,Rate,2019,2443.010399,2862.327601,2048.47001
+Prevalence,Australia,Both,45 to 49,Chronic obstructive pulmonary disease,Rate,2019,2436.137437,2819.817465,2065.729889
+Prevalence,Australia,Male,50 to 54,Chronic obstructive pulmonary disease,Number,2019,30603.94817,34880.09783,26497.45201
+Prevalence,Australia,Female,50 to 54,Chronic obstructive pulmonary disease,Number,2019,32678.08025,37079.84925,28405.99546
+Prevalence,Australia,Both,50 to 54,Chronic obstructive pulmonary disease,Number,2019,63282.02842,71030.71075,55655.592
+Prevalence,Australia,Male,50 to 54,Chronic obstructive pulmonary disease,Rate,2019,4099.561897,4672.374925,3549.47486
+Prevalence,Australia,Female,50 to 54,Chronic obstructive pulmonary disease,Rate,2019,4205.649798,4772.154891,3655.834987
+Prevalence,Australia,Both,50 to 54,Chronic obstructive pulmonary disease,Rate,2019,4153.667295,4662.270594,3653.0879
+Prevalence,Australia,Male,55 to 59,Chronic obstructive pulmonary disease,Number,2019,43887.453,49112.29455,38808.74089
+Prevalence,Australia,Female,55 to 59,Chronic obstructive pulmonary disease,Number,2019,47336.26314,52330.64483,42318.60052
+Prevalence,Australia,Both,55 to 59,Chronic obstructive pulmonary disease,Number,2019,91223.71614,100762.9229,82052.97865
+Prevalence,Australia,Male,55 to 59,Chronic obstructive pulmonary disease,Rate,2019,5891.626601,6593.030154,5209.840046
+Prevalence,Australia,Female,55 to 59,Chronic obstructive pulmonary disease,Rate,2019,6071.479299,6712.072431,5427.900091
+Prevalence,Australia,Both,55 to 59,Chronic obstructive pulmonary disease,Rate,2019,5983.601928,6609.303429,5382.069291
+Prevalence,Australia,Male,60 to 64,Chronic obstructive pulmonary disease,Number,2019,54170.2877,59122.79675,49053.94854
+Prevalence,Australia,Female,60 to 64,Chronic obstructive pulmonary disease,Number,2019,58676.41345,63558.18955,53340.80178
+Prevalence,Australia,Both,60 to 64,Chronic obstructive pulmonary disease,Number,2019,112846.7012,122024.8557,103669.4406
+Prevalence,Australia,Male,60 to 64,Chronic obstructive pulmonary disease,Rate,2019,8132.701894,8876.232737,7364.574883
+Prevalence,Australia,Female,60 to 64,Chronic obstructive pulmonary disease,Rate,2019,8295.775802,8985.969999,7541.417526
+Prevalence,Australia,Both,60 to 64,Chronic obstructive pulmonary disease,Rate,2019,8216.686342,8884.973642,7548.46414
+Prevalence,Australia,Male,65 to 69,Chronic obstructive pulmonary disease,Number,2019,70984.90563,78571.08886,64300.82205
+Prevalence,Australia,Female,65 to 69,Chronic obstructive pulmonary disease,Number,2019,75678.12469,83504.43576,68638.6171
+Prevalence,Australia,Both,65 to 69,Chronic obstructive pulmonary disease,Number,2019,146663.0303,161386.3175,133916.3377
+Prevalence,Australia,Male,65 to 69,Chronic obstructive pulmonary disease,Rate,2019,12058.255,13346.92519,10922.82511
+Prevalence,Australia,Female,65 to 69,Chronic obstructive pulmonary disease,Rate,2019,12022.05499,13265.32499,10903.7748
+Prevalence,Australia,Both,65 to 69,Chronic obstructive pulmonary disease,Rate,2019,12039.54861,13248.1813,10993.17432
+Prevalence,Australia,Male,70 to 74,Chronic obstructive pulmonary disease,Number,2019,91289.17177,100964.8196,81928.76414
+Prevalence,Australia,Female,70 to 74,Chronic obstructive pulmonary disease,Number,2019,93349.27192,102404.4747,83343.49704
+Prevalence,Australia,Both,70 to 74,Chronic obstructive pulmonary disease,Number,2019,184638.4437,200907.8592,166929.1334
+Prevalence,Australia,Male,70 to 74,Chronic obstructive pulmonary disease,Rate,2019,17843.44141,19734.6499,16013.85
+Prevalence,Australia,Female,70 to 74,Chronic obstructive pulmonary disease,Rate,2019,17168.08598,18833.4498,15327.90019
+Prevalence,Australia,Both,70 to 74,Chronic obstructive pulmonary disease,Rate,2019,17495.48464,19037.09917,15817.43233
+Prevalence,Australia,Male,75 to 79,Chronic obstructive pulmonary disease,Number,2019,86906.05917,95794.17482,78333.51482
+Prevalence,Australia,Female,75 to 79,Chronic obstructive pulmonary disease,Number,2019,88441.84154,98431.93635,79254.33807
+Prevalence,Australia,Both,75 to 79,Chronic obstructive pulmonary disease,Number,2019,175347.9007,192226.5134,159239.157
+Prevalence,Australia,Male,75 to 79,Chronic obstructive pulmonary disease,Rate,2019,25106.74098,27674.47468,22630.1743
+Prevalence,Australia,Female,75 to 79,Chronic obstructive pulmonary disease,Rate,2019,23054.717,25658.90078,20659.75
+Prevalence,Australia,Both,75 to 79,Chronic obstructive pulmonary disease,Rate,2019,24028.04686,26340.93509,21820.65431
+Prevalence,Australia,Male,80 to 84,Chronic obstructive pulmonary disease,Number,2019,76389.97222,83160.16753,69929.85627
+Prevalence,Australia,Female,80 to 84,Chronic obstructive pulmonary disease,Number,2019,84340.64991,93374.56274,75829.39445
+Prevalence,Australia,Both,80 to 84,Chronic obstructive pulmonary disease,Number,2019,160730.6221,175043.1962,147035.3482
+Prevalence,Australia,Male,80 to 84,Chronic obstructive pulmonary disease,Rate,2019,33667.232,36651.04951,30820.07529
+Prevalence,Australia,Female,80 to 84,Chronic obstructive pulmonary disease,Rate,2019,30308.37699,33554.77403,27249.80039
+Prevalence,Australia,Both,80 to 84,Chronic obstructive pulmonary disease,Rate,2019,31817.00027,34650.20757,29105.98897
+Prevalence,Australia,Male,85 to 89,Chronic obstructive pulmonary disease,Number,2019,56067.32934,60164.47881,51961.72278
+Prevalence,Australia,Female,85 to 89,Chronic obstructive pulmonary disease,Number,2019,72977.95798,80514.68635,66021.42565
+Prevalence,Australia,Both,85 to 89,Chronic obstructive pulmonary disease,Number,2019,129045.2873,139370.9486,119555.3161
+Prevalence,Australia,Male,85 to 89,Chronic obstructive pulmonary disease,Rate,2019,43985.93001,47200.2249,40765.00038
+Prevalence,Australia,Female,85 to 89,Chronic obstructive pulmonary disease,Rate,2019,39685.357,43783.82404,35902.40011
+Prevalence,Australia,Both,85 to 89,Chronic obstructive pulmonary disease,Rate,2019,41445.96437,44762.29618,38398.03431
+Prevalence,Australia,Male,90 to 94,Chronic obstructive pulmonary disease,Number,2019,28577.21187,30228.0731,26846.49399
+Prevalence,Australia,Female,90 to 94,Chronic obstructive pulmonary disease,Number,2019,48994.37261,53165.34013,45135.09479
+Prevalence,Australia,Both,90 to 94,Chronic obstructive pulmonary disease,Number,2019,77571.58448,82798.77775,72372.69305
+Prevalence,Australia,Male,90 to 94,Chronic obstructive pulmonary disease,Rate,2019,53712.32195,56815.19953,50459.34974
+Prevalence,Australia,Female,90 to 94,Chronic obstructive pulmonary disease,Rate,2019,50089.87001,54354.09893,46144.30006
+Prevalence,Australia,Both,90 to 94,Chronic obstructive pulmonary disease,Rate,2019,51366.08055,54827.40511,47923.4968
+YLDs (Years Lived with Disability),Australia,Male,1 to 4,Chronic obstructive pulmonary disease,Number,2019,16.26461186,24.32639334,8.78513601
+YLDs (Years Lived with Disability),Australia,Female,1 to 4,Chronic obstructive pulmonary disease,Number,2019,20.62514116,30.98413924,10.82986091
+YLDs (Years Lived with Disability),Australia,Both,1 to 4,Chronic obstructive pulmonary disease,Number,2019,36.88975302,53.73963881,20.22770601
+YLDs (Years Lived with Disability),Australia,Male,1 to 4,Chronic obstructive pulmonary disease,Rate,2019,2.591994679,3.876752956,1.400034996
+YLDs (Years Lived with Disability),Australia,Female,1 to 4,Chronic obstructive pulmonary disease,Rate,2019,3.471595214,5.215207432,1.822867199
+YLDs (Years Lived with Disability),Australia,Both,1 to 4,Chronic obstructive pulmonary disease,Rate,2019,3.019776571,4.399099721,1.655829809
+YLDs (Years Lived with Disability),Australia,Male,5 to 9,Chronic obstructive pulmonary disease,Number,2019,50.89523165,92.70522355,22.94470797
+YLDs (Years Lived with Disability),Australia,Female,5 to 9,Chronic obstructive pulmonary disease,Number,2019,64.57905395,132.6838647,14.80010593
+YLDs (Years Lived with Disability),Australia,Both,5 to 9,Chronic obstructive pulmonary disease,Number,2019,115.4742856,201.0790017,51.94340079
+YLDs (Years Lived with Disability),Australia,Male,5 to 9,Chronic obstructive pulmonary disease,Rate,2019,6.428638664,11.70970964,2.898173995
+YLDs (Years Lived with Disability),Australia,Female,5 to 9,Chronic obstructive pulmonary disease,Rate,2019,8.594723008,17.65868335,1.969722428
+YLDs (Years Lived with Disability),Australia,Both,5 to 9,Chronic obstructive pulmonary disease,Rate,2019,7.483384822,13.03105312,3.36622526
+YLDs (Years Lived with Disability),Australia,Male,10 to 14,Chronic obstructive pulmonary disease,Number,2019,81.53766659,157.3308788,25.0307525
+YLDs (Years Lived with Disability),Australia,Female,10 to 14,Chronic obstructive pulmonary disease,Number,2019,102.2697667,194.007852,39.34028156
+YLDs (Years Lived with Disability),Australia,Both,10 to 14,Chronic obstructive pulmonary disease,Number,2019,183.8074333,316.0111814,82.66210875
+YLDs (Years Lived with Disability),Australia,Male,10 to 14,Chronic obstructive pulmonary disease,Rate,2019,10.42161367,20.10900859,3.199267816
+YLDs (Years Lived with Disability),Australia,Female,10 to 14,Chronic obstructive pulmonary disease,Rate,2019,13.81794309,26.21292239,5.315371192
+YLDs (Years Lived with Disability),Australia,Both,10 to 14,Chronic obstructive pulmonary disease,Rate,2019,12.07263495,20.75589417,5.429320488
+YLDs (Years Lived with Disability),Australia,Male,15 to 19,Chronic obstructive pulmonary disease,Number,2019,114.3065531,199.502038,45.95231944
+YLDs (Years Lived with Disability),Australia,Female,15 to 19,Chronic obstructive pulmonary disease,Number,2019,139.7073912,244.0560799,64.12605868
+YLDs (Years Lived with Disability),Australia,Both,15 to 19,Chronic obstructive pulmonary disease,Number,2019,254.0139443,413.1173861,140.7496933
+YLDs (Years Lived with Disability),Australia,Male,15 to 19,Chronic obstructive pulmonary disease,Rate,2019,15.5946693,27.2177598,6.269205093
+YLDs (Years Lived with Disability),Australia,Female,15 to 19,Chronic obstructive pulmonary disease,Rate,2019,20.02949031,34.98969415,9.193588543
+YLDs (Years Lived with Disability),Australia,Both,15 to 19,Chronic obstructive pulmonary disease,Rate,2019,17.7570879,28.87936627,9.839242021
+YLDs (Years Lived with Disability),Australia,Male,20 to 24,Chronic obstructive pulmonary disease,Number,2019,183.4940755,311.8577027,87.85593364
+YLDs (Years Lived with Disability),Australia,Female,20 to 24,Chronic obstructive pulmonary disease,Number,2019,229.326598,371.4541766,111.2310107
+YLDs (Years Lived with Disability),Australia,Both,20 to 24,Chronic obstructive pulmonary disease,Number,2019,412.8206735,640.5637965,238.15246
+YLDs (Years Lived with Disability),Australia,Male,20 to 24,Chronic obstructive pulmonary disease,Rate,2019,22.75567258,38.67444632,10.89528833
+YLDs (Years Lived with Disability),Australia,Female,20 to 24,Chronic obstructive pulmonary disease,Rate,2019,29.35299371,47.54482126,14.2371761
+YLDs (Years Lived with Disability),Australia,Both,20 to 24,Chronic obstructive pulmonary disease,Rate,2019,26.00219344,40.34697102,15.0004269
+YLDs (Years Lived with Disability),Australia,Male,25 to 29,Chronic obstructive pulmonary disease,Number,2019,282.635302,459.9010677,146.8908585
+YLDs (Years Lived with Disability),Australia,Female,25 to 29,Chronic obstructive pulmonary disease,Number,2019,361.1667376,570.2127677,208.0569307
+YLDs (Years Lived with Disability),Australia,Both,25 to 29,Chronic obstructive pulmonary disease,Number,2019,643.8020396,935.4903328,391.783745
+YLDs (Years Lived with Disability),Australia,Male,25 to 29,Chronic obstructive pulmonary disease,Rate,2019,32.54369701,52.95474734,16.91356868
+YLDs (Years Lived with Disability),Australia,Female,25 to 29,Chronic obstructive pulmonary disease,Rate,2019,40.95422153,64.65883367,23.59245397
+YLDs (Years Lived with Disability),Australia,Both,25 to 29,Chronic obstructive pulmonary disease,Rate,2019,36.78115237,53.44564068,22.3830568
+YLDs (Years Lived with Disability),Australia,Male,30 to 34,Chronic obstructive pulmonary disease,Number,2019,377.59592,579.8116146,217.6561744
+YLDs (Years Lived with Disability),Australia,Female,30 to 34,Chronic obstructive pulmonary disease,Number,2019,489.455541,763.2060348,295.9166624
+YLDs (Years Lived with Disability),Australia,Both,30 to 34,Chronic obstructive pulmonary disease,Number,2019,867.051461,1221.974842,558.502429
+YLDs (Years Lived with Disability),Australia,Male,30 to 34,Chronic obstructive pulmonary disease,Rate,2019,42.68853703,65.54972729,24.60679041
+YLDs (Years Lived with Disability),Australia,Female,30 to 34,Chronic obstructive pulmonary disease,Rate,2019,53.5078772,83.43461534,32.34997075
+YLDs (Years Lived with Disability),Australia,Both,30 to 34,Chronic obstructive pulmonary disease,Rate,2019,48.1890014,67.91493934,31.04045785
+YLDs (Years Lived with Disability),Australia,Male,35 to 39,Chronic obstructive pulmonary disease,Number,2019,456.5698419,702.6437255,260.6974451
+YLDs (Years Lived with Disability),Australia,Female,35 to 39,Chronic obstructive pulmonary disease,Number,2019,587.7742747,857.8556768,358.0229963
+YLDs (Years Lived with Disability),Australia,Both,35 to 39,Chronic obstructive pulmonary disease,Number,2019,1044.344117,1470.936182,686.9152646
+YLDs (Years Lived with Disability),Australia,Male,35 to 39,Chronic obstructive pulmonary disease,Rate,2019,52.9529426,81.49257671,30.23567389
+YLDs (Years Lived with Disability),Australia,Female,35 to 39,Chronic obstructive pulmonary disease,Rate,2019,67.0129544,97.80530694,40.81869479
+YLDs (Years Lived with Disability),Australia,Both,35 to 39,Chronic obstructive pulmonary disease,Rate,2019,60.04312036,84.56944108,39.49324294
+YLDs (Years Lived with Disability),Australia,Male,40 to 44,Chronic obstructive pulmonary disease,Number,2019,587.6124046,833.3229466,375.2850905
+YLDs (Years Lived with Disability),Australia,Female,40 to 44,Chronic obstructive pulmonary disease,Number,2019,744.4140249,1059.473025,496.9020258
+YLDs (Years Lived with Disability),Australia,Both,40 to 44,Chronic obstructive pulmonary disease,Number,2019,1332.02643,1739.156001,955.1439674
+YLDs (Years Lived with Disability),Australia,Male,40 to 44,Chronic obstructive pulmonary disease,Rate,2019,75.67313102,107.3159042,48.32947296
+YLDs (Years Lived with Disability),Australia,Female,40 to 44,Chronic obstructive pulmonary disease,Rate,2019,93.79524069,133.4922826,62.60903685
+YLDs (Years Lived with Disability),Australia,Both,40 to 44,Chronic obstructive pulmonary disease,Rate,2019,84.83312344,110.7620934,60.83050929
+YLDs (Years Lived with Disability),Australia,Male,45 to 49,Chronic obstructive pulmonary disease,Number,2019,1159.115545,1610.932739,750.8247036
+YLDs (Years Lived with Disability),Australia,Female,45 to 49,Chronic obstructive pulmonary disease,Number,2019,1487.944175,2000.862535,1057.399758
+YLDs (Years Lived with Disability),Australia,Both,45 to 49,Chronic obstructive pulmonary disease,Number,2019,2647.05972,3445.577642,1938.353897
+YLDs (Years Lived with Disability),Australia,Male,45 to 49,Chronic obstructive pulmonary disease,Rate,2019,142.4265359,197.9436569,92.25772367
+YLDs (Years Lived with Disability),Australia,Female,45 to 49,Chronic obstructive pulmonary disease,Rate,2019,175.584269,236.1109989,124.7780438
+YLDs (Years Lived with Disability),Australia,Both,45 to 49,Chronic obstructive pulmonary disease,Rate,2019,159.3406262,207.4076739,116.6798473
+YLDs (Years Lived with Disability),Australia,Male,50 to 54,Chronic obstructive pulmonary disease,Number,2019,1798.648243,2441.453062,1224.768626
+YLDs (Years Lived with Disability),Australia,Female,50 to 54,Chronic obstructive pulmonary disease,Number,2019,2347.824212,3081.952503,1694.051334
+YLDs (Years Lived with Disability),Australia,Both,50 to 54,Chronic obstructive pulmonary disease,Number,2019,4146.472455,5286.80598,3102.515093
+YLDs (Years Lived with Disability),Australia,Male,50 to 54,Chronic obstructive pulmonary disease,Rate,2019,240.9385143,327.0456442,164.0642823
+YLDs (Years Lived with Disability),Australia,Female,50 to 54,Chronic obstructive pulmonary disease,Rate,2019,302.1636017,396.6454828,218.0234149
+YLDs (Years Lived with Disability),Australia,Both,50 to 54,Chronic obstructive pulmonary disease,Rate,2019,272.1636373,347.0121557,203.6409989
+YLDs (Years Lived with Disability),Australia,Male,55 to 59,Chronic obstructive pulmonary disease,Number,2019,2583.445199,3408.497269,1852.502501
+YLDs (Years Lived with Disability),Australia,Female,55 to 59,Chronic obstructive pulmonary disease,Number,2019,3373.559354,4357.360399,2501.036133
+YLDs (Years Lived with Disability),Australia,Both,55 to 59,Chronic obstructive pulmonary disease,Number,2019,5957.004553,7428.884676,4526.122479
+YLDs (Years Lived with Disability),Australia,Male,55 to 59,Chronic obstructive pulmonary disease,Rate,2019,346.8119796,457.5702578,248.6873187
+YLDs (Years Lived with Disability),Australia,Female,55 to 59,Chronic obstructive pulmonary disease,Rate,2019,432.702001,558.8870287,320.789773
+YLDs (Years Lived with Disability),Australia,Both,55 to 59,Chronic obstructive pulmonary disease,Rate,2019,390.7354955,487.2799591,296.8802011
+YLDs (Years Lived with Disability),Australia,Male,60 to 64,Chronic obstructive pulmonary disease,Number,2019,3181.032983,4096.853724,2292.64611
+YLDs (Years Lived with Disability),Australia,Female,60 to 64,Chronic obstructive pulmonary disease,Number,2019,4156.652088,5254.928877,3077.019337
+YLDs (Years Lived with Disability),Australia,Both,60 to 64,Chronic obstructive pulmonary disease,Number,2019,7337.685071,9067.898907,5645.379938
+YLDs (Years Lived with Disability),Australia,Male,60 to 64,Chronic obstructive pulmonary disease,Rate,2019,477.5753289,615.0694681,344.1998954
+YLDs (Years Lived with Disability),Australia,Female,60 to 64,Chronic obstructive pulmonary disease,Rate,2019,587.6748728,742.9512007,435.0344723
+YLDs (Years Lived with Disability),Australia,Both,60 to 64,Chronic obstructive pulmonary disease,Rate,2019,534.2775296,660.2592752,411.0560234
+YLDs (Years Lived with Disability),Australia,Male,65 to 69,Chronic obstructive pulmonary disease,Number,2019,4131.972875,5357.602526,2973.039505
+YLDs (Years Lived with Disability),Australia,Female,65 to 69,Chronic obstructive pulmonary disease,Number,2019,5337.790094,6663.982268,3996.64898
+YLDs (Years Lived with Disability),Australia,Both,65 to 69,Chronic obstructive pulmonary disease,Number,2019,9469.762969,11630.97244,7264.446937
+YLDs (Years Lived with Disability),Australia,Male,65 to 69,Chronic obstructive pulmonary disease,Rate,2019,701.9010895,910.0996458,505.0322766
+YLDs (Years Lived with Disability),Australia,Female,65 to 69,Chronic obstructive pulmonary disease,Rate,2019,847.9492097,1058.625086,634.8985787
+YLDs (Years Lived with Disability),Australia,Both,65 to 69,Chronic obstructive pulmonary disease,Rate,2019,777.3715802,954.7849777,596.337481
+YLDs (Years Lived with Disability),Australia,Male,70 to 74,Chronic obstructive pulmonary disease,Number,2019,5251.292494,6666.007892,3796.456495
+YLDs (Years Lived with Disability),Australia,Female,70 to 74,Chronic obstructive pulmonary disease,Number,2019,6506.652765,8035.508608,4867.682679
+YLDs (Years Lived with Disability),Australia,Both,70 to 74,Chronic obstructive pulmonary disease,Number,2019,11757.94526,14211.77666,8896.279468
+YLDs (Years Lived with Disability),Australia,Male,70 to 74,Chronic obstructive pulmonary disease,Rate,2019,1026.421076,1302.942276,742.0578774
+YLDs (Years Lived with Disability),Australia,Female,70 to 74,Chronic obstructive pulmonary disease,Rate,2019,1196.653941,1477.829445,895.2270654
+YLDs (Years Lived with Disability),Australia,Both,70 to 74,Chronic obstructive pulmonary disease,Rate,2019,1114.128491,1346.642201,842.970281
+YLDs (Years Lived with Disability),Australia,Male,75 to 79,Chronic obstructive pulmonary disease,Number,2019,4930.021737,6282.011087,3549.075958
+YLDs (Years Lived with Disability),Australia,Female,75 to 79,Chronic obstructive pulmonary disease,Number,2019,6051.85443,7514.974883,4473.442367
+YLDs (Years Lived with Disability),Australia,Both,75 to 79,Chronic obstructive pulmonary disease,Number,2019,10981.87617,13303.1338,8485.168189
+YLDs (Years Lived with Disability),Australia,Male,75 to 79,Chronic obstructive pulmonary disease,Rate,2019,1424.259482,1814.842678,1025.310912
+YLDs (Years Lived with Disability),Australia,Female,75 to 79,Chronic obstructive pulmonary disease,Rate,2019,1577.57673,1958.97797,1166.121668
+YLDs (Years Lived with Disability),Australia,Both,75 to 79,Chronic obstructive pulmonary disease,Rate,2019,1504.854259,1822.937834,1162.728599
+YLDs (Years Lived with Disability),Australia,Male,80 to 84,Chronic obstructive pulmonary disease,Number,2019,4264.765154,5416.376737,3142.863731
+YLDs (Years Lived with Disability),Australia,Female,80 to 84,Chronic obstructive pulmonary disease,Number,2019,5647.546842,7085.015691,4204.612776
+YLDs (Years Lived with Disability),Australia,Both,80 to 84,Chronic obstructive pulmonary disease,Number,2019,9912.311996,12098.30918,7703.454253
+YLDs (Years Lived with Disability),Australia,Male,80 to 84,Chronic obstructive pulmonary disease,Rate,2019,1879.603222,2387.151179,1385.149376
+YLDs (Years Lived with Disability),Australia,Female,80 to 84,Chronic obstructive pulmonary disease,Rate,2019,2029.483754,2546.047805,1510.955741
+YLDs (Years Lived with Disability),Australia,Both,80 to 84,Chronic obstructive pulmonary disease,Rate,2019,1962.165201,2394.888424,1524.916676
+YLDs (Years Lived with Disability),Australia,Male,85 to 89,Chronic obstructive pulmonary disease,Number,2019,3075.504009,3886.677573,2304.01817
+YLDs (Years Lived with Disability),Australia,Female,85 to 89,Chronic obstructive pulmonary disease,Number,2019,4776.243975,5940.089283,3619.01685
+YLDs (Years Lived with Disability),Australia,Both,85 to 89,Chronic obstructive pulmonary disease,Number,2019,7851.747984,9495.431963,6225.825325
+YLDs (Years Lived with Disability),Australia,Male,85 to 89,Chronic obstructive pulmonary disease,Rate,2019,2412.793791,3049.175513,1807.547875
+YLDs (Years Lived with Disability),Australia,Female,85 to 89,Chronic obstructive pulmonary disease,Rate,2019,2597.317772,3230.215949,1968.018559
+YLDs (Years Lived with Disability),Australia,Both,85 to 89,Chronic obstructive pulmonary disease,Rate,2019,2521.77568,3049.683898,1999.571933
+YLDs (Years Lived with Disability),Australia,Male,90 to 94,Chronic obstructive pulmonary disease,Number,2019,1544.712544,1951.672076,1159.344817
+YLDs (Years Lived with Disability),Australia,Female,90 to 94,Chronic obstructive pulmonary disease,Number,2019,3114.801177,3862.24597,2383.356902
+YLDs (Years Lived with Disability),Australia,Both,90 to 94,Chronic obstructive pulmonary disease,Number,2019,4659.513721,5599.161807,3677.31011
+YLDs (Years Lived with Disability),Australia,Male,90 to 94,Chronic obstructive pulmonary disease,Rate,2019,2903.365726,3668.266848,2179.0475
+YLDs (Years Lived with Disability),Australia,Female,90 to 94,Chronic obstructive pulmonary disease,Rate,2019,3184.447065,3948.604467,2436.647947
+YLDs (Years Lived with Disability),Australia,Both,90 to 94,Chronic obstructive pulmonary disease,Rate,2019,3085.420501,3707.633385,2435.028349
+Incidence,Australia,Male,1 to 4,Chronic obstructive pulmonary disease,Number,2019,86.53082478,117.8861902,51.13374048
+Incidence,Australia,Female,1 to 4,Chronic obstructive pulmonary disease,Number,2019,85.13929667,111.922064,49.62789946
+Incidence,Australia,Both,1 to 4,Chronic obstructive pulmonary disease,Number,2019,171.6701215,226.2521895,103.2130875
+Incidence,Australia,Male,1 to 4,Chronic obstructive pulmonary disease,Rate,2019,13.78990408,18.7868226,8.148880797
+Incidence,Australia,Female,1 to 4,Chronic obstructive pulmonary disease,Rate,2019,14.33052857,18.8385669,8.353299347
+Incidence,Australia,Both,1 to 4,Chronic obstructive pulmonary disease,Rate,2019,14.05282953,18.52089009,8.44897127
+Incidence,Australia,Male,5 to 9,Chronic obstructive pulmonary disease,Number,2019,111.1667721,143.6970137,74.435259
+Incidence,Australia,Female,5 to 9,Chronic obstructive pulmonary disease,Number,2019,108.662151,139.0492804,74.65152739
+Incidence,Australia,Both,5 to 9,Chronic obstructive pulmonary disease,Number,2019,219.8289231,278.9951632,154.2405697
+Incidence,Australia,Male,5 to 9,Chronic obstructive pulmonary disease,Rate,2019,14.04161031,18.15054473,9.402008175
+Incidence,Australia,Female,5 to 9,Chronic obstructive pulmonary disease,Rate,2019,14.46167189,18.50584635,9.93525239
+Incidence,Australia,Both,5 to 9,Chronic obstructive pulmonary disease,Rate,2019,14.24615375,18.08045972,9.995658623
+Incidence,Australia,Male,10 to 14,Chronic obstructive pulmonary disease,Number,2019,112.0436824,146.5636245,64.45629706
+Incidence,Australia,Female,10 to 14,Chronic obstructive pulmonary disease,Number,2019,108.1103016,140.7460015,61.7761725
+Incidence,Australia,Both,10 to 14,Chronic obstructive pulmonary disease,Number,2019,220.153984,283.1444815,130.7626711
+Incidence,Australia,Male,10 to 14,Chronic obstructive pulmonary disease,Rate,2019,14.32069399,18.73280825,8.238384233
+Incidence,Australia,Female,10 to 14,Chronic obstructive pulmonary disease,Rate,2019,14.60707346,19.0165706,8.346744728
+Incidence,Australia,Both,10 to 14,Chronic obstructive pulmonary disease,Rate,2019,14.45990858,18.59718023,8.588608006
+Incidence,Australia,Male,15 to 19,Chronic obstructive pulmonary disease,Number,2019,153.4353597,221.6282279,85.33669162
+Incidence,Australia,Female,15 to 19,Chronic obstructive pulmonary disease,Number,2019,146.4030207,213.2317855,82.96958935
+Incidence,Australia,Both,15 to 19,Chronic obstructive pulmonary disease,Number,2019,299.8383804,431.0445339,170.7876367
+Incidence,Australia,Male,15 to 19,Chronic obstructive pulmonary disease,Rate,2019,20.93295289,30.23640225,11.64235513
+Incidence,Australia,Female,15 to 19,Chronic obstructive pulmonary disease,Rate,2019,20.98942554,30.57049413,11.8951372
+Incidence,Australia,Both,15 to 19,Chronic obstructive pulmonary disease,Rate,2019,20.96048895,30.1325807,11.9390732
+Incidence,Australia,Male,20 to 24,Chronic obstructive pulmonary disease,Number,2019,239.6656555,348.3820012,140.0258712
+Incidence,Australia,Female,20 to 24,Chronic obstructive pulmonary disease,Number,2019,230.8276528,337.6564912,130.9345402
+Incidence,Australia,Both,20 to 24,Chronic obstructive pulmonary disease,Number,2019,470.4933083,679.7966989,282.0723132
+Incidence,Australia,Male,20 to 24,Chronic obstructive pulmonary disease,Rate,2019,29.7216854,43.2039385,17.365045
+Incidence,Australia,Female,20 to 24,Chronic obstructive pulmonary disease,Rate,2019,29.54512342,43.21883703,16.7591582
+Incidence,Australia,Both,20 to 24,Chronic obstructive pulmonary disease,Rate,2019,29.63479981,42.81812032,17.76679155
+Incidence,Australia,Male,25 to 29,Chronic obstructive pulmonary disease,Number,2019,298.4000631,389.296414,177.8154392
+Incidence,Australia,Female,25 to 29,Chronic obstructive pulmonary disease,Number,2019,300.2174167,396.7031579,183.3717607
+Incidence,Australia,Both,25 to 29,Chronic obstructive pulmonary disease,Number,2019,598.6174798,778.1935154,362.6582998
+Incidence,Australia,Male,25 to 29,Chronic obstructive pulmonary disease,Rate,2019,34.35891119,44.82506063,20.4743418
+Incidence,Australia,Female,25 to 29,Chronic obstructive pulmonary disease,Rate,2019,34.04292066,44.9838463,20.7932983
+Incidence,Australia,Both,25 to 29,Chronic obstructive pulmonary disease,Rate,2019,34.19970641,44.45909225,20.71908656
+Incidence,Australia,Male,30 to 34,Chronic obstructive pulmonary disease,Number,2019,329.5669191,418.103288,209.9016259
+Incidence,Australia,Female,30 to 34,Chronic obstructive pulmonary disease,Number,2019,336.3272843,433.0443155,213.0489701
+Incidence,Australia,Both,30 to 34,Chronic obstructive pulmonary disease,Number,2019,665.8942033,844.6243901,427.1702815
+Incidence,Australia,Male,30 to 34,Chronic obstructive pulmonary disease,Rate,2019,37.2586908,47.2680364,23.73011163
+Incidence,Australia,Female,30 to 34,Chronic obstructive pulmonary disease,Rate,2019,36.76770926,47.34093317,23.29077347
+Incidence,Australia,Both,30 to 34,Chronic obstructive pulmonary disease,Rate,2019,37.00907978,46.94254925,23.74127744
+Incidence,Australia,Male,35 to 39,Chronic obstructive pulmonary disease,Number,2019,356.6021022,414.3386864,273.4950275
+Incidence,Australia,Female,35 to 39,Chronic obstructive pulmonary disease,Number,2019,358.8398364,421.6981766,270.6721912
+Incidence,Australia,Both,35 to 39,Chronic obstructive pulmonary disease,Number,2019,715.4419386,829.586009,545.6173951
+Incidence,Australia,Male,35 to 39,Chronic obstructive pulmonary disease,Rate,2019,41.35869021,48.05497575,31.71993673
+Incidence,Australia,Female,35 to 39,Chronic obstructive pulmonary disease,Rate,2019,40.91182385,48.07838978,30.85970923
+Incidence,Australia,Both,35 to 39,Chronic obstructive pulmonary disease,Rate,2019,41.1333446,47.69590003,31.36951739
+Incidence,Australia,Male,40 to 44,Chronic obstructive pulmonary disease,Number,2019,1105.090495,1518.354048,715.738744
+Incidence,Australia,Female,40 to 44,Chronic obstructive pulmonary disease,Number,2019,1122.018092,1606.730213,745.9020426
+Incidence,Australia,Both,40 to 44,Chronic obstructive pulmonary disease,Number,2019,2227.108587,3041.482855,1478.773599
+Incidence,Australia,Male,40 to 44,Chronic obstructive pulmonary disease,Rate,2019,142.3143166,195.5346823,92.17332943
+Incidence,Australia,Female,40 to 44,Chronic obstructive pulmonary disease,Rate,2019,141.3728832,202.4460073,93.98272908
+Incidence,Australia,Both,40 to 44,Chronic obstructive pulmonary disease,Rate,2019,141.8384602,193.703732,94.17904965
+Incidence,Australia,Male,45 to 49,Chronic obstructive pulmonary disease,Number,2019,2424.671372,2970.492895,1846.849685
+Incidence,Australia,Female,45 to 49,Chronic obstructive pulmonary disease,Number,2019,2619.20397,3214.15708,2079.565958
+Incidence,Australia,Both,45 to 49,Chronic obstructive pulmonary disease,Number,2019,5043.875342,6006.583782,4058.405653
+Incidence,Australia,Male,45 to 49,Chronic obstructive pulmonary disease,Rate,2019,297.9319412,364.9998613,226.931995
+Incidence,Australia,Female,45 to 49,Chronic obstructive pulmonary disease,Rate,2019,309.0781375,379.285346,245.3983655
+Incidence,Australia,Both,45 to 49,Chronic obstructive pulmonary disease,Rate,2019,303.6177271,361.5682767,244.2970566
+Incidence,Australia,Male,50 to 54,Chronic obstructive pulmonary disease,Number,2019,2676.834231,3209.166331,2076.736518
+Incidence,Australia,Female,50 to 54,Chronic obstructive pulmonary disease,Number,2019,2934.489475,3459.04134,2312.523946
+Incidence,Australia,Both,50 to 54,Chronic obstructive pulmonary disease,Number,2019,5611.323706,6536.341569,4504.30787
+Incidence,Australia,Male,50 to 54,Chronic obstructive pulmonary disease,Rate,2019,358.5762059,429.8849265,278.1899203
+Incidence,Australia,Female,50 to 54,Chronic obstructive pulmonary disease,Rate,2019,377.6670775,445.1765955,297.620478
+Incidence,Australia,Both,50 to 54,Chronic obstructive pulmonary disease,Rate,2019,368.3126528,429.0284127,295.6510206
+Incidence,Australia,Male,55 to 59,Chronic obstructive pulmonary disease,Number,2019,2829.247267,3324.072582,2232.079929
+Incidence,Australia,Female,55 to 59,Chronic obstructive pulmonary disease,Number,2019,3006.348425,3516.235368,2331.7067
+Incidence,Australia,Both,55 to 59,Chronic obstructive pulmonary disease,Number,2019,5835.595692,6723.668541,4662.665766
+Incidence,Australia,Male,55 to 59,Chronic obstructive pulmonary disease,Rate,2019,379.8094288,446.2367513,299.6433055
+Incidence,Australia,Female,55 to 59,Chronic obstructive pulmonary disease,Rate,2019,385.6025173,451.002019,299.0711143
+Incidence,Australia,Both,55 to 59,Chronic obstructive pulmonary disease,Rate,2019,382.771971,441.02299,305.8364321
+Incidence,Australia,Male,60 to 64,Chronic obstructive pulmonary disease,Number,2019,4094.949789,5372.914305,3133.196374
+Incidence,Australia,Female,60 to 64,Chronic obstructive pulmonary disease,Number,2019,4174.938713,5501.177678,3130.282872
+Incidence,Australia,Both,60 to 64,Chronic obstructive pulmonary disease,Number,2019,8269.888502,10711.5811,6482.905786
+Incidence,Australia,Male,60 to 64,Chronic obstructive pulmonary disease,Rate,2019,614.7836262,806.6471898,470.3935158
+Incidence,Australia,Female,60 to 64,Chronic obstructive pulmonary disease,Rate,2019,590.2602684,777.7662945,442.5649658
+Incidence,Australia,Both,60 to 64,Chronic obstructive pulmonary disease,Rate,2019,602.1538885,779.940408,472.0386408
+Incidence,Australia,Male,65 to 69,Chronic obstructive pulmonary disease,Number,2019,6097.110794,7445.980919,4650.04643
+Incidence,Australia,Female,65 to 69,Chronic obstructive pulmonary disease,Number,2019,6000.569366,7392.789296,4494.853202
+Incidence,Australia,Both,65 to 69,Chronic obstructive pulmonary disease,Number,2019,12097.68016,14613.12034,9415.159839
+Incidence,Australia,Male,65 to 69,Chronic obstructive pulmonary disease,Rate,2019,1035.720427,1264.853927,789.9066025
+Incidence,Australia,Female,65 to 69,Chronic obstructive pulmonary disease,Rate,2019,953.2368193,1174.401715,714.0421698
+Incidence,Australia,Both,65 to 69,Chronic obstructive pulmonary disease,Rate,2019,993.0969522,1199.589101,772.8892165
+Incidence,Australia,Male,70 to 74,Chronic obstructive pulmonary disease,Number,2019,7342.439419,9105.314851,5652.649601
+Incidence,Australia,Female,70 to 74,Chronic obstructive pulmonary disease,Number,2019,6435.876058,8166.487156,4774.672766
+Incidence,Australia,Both,70 to 74,Chronic obstructive pulmonary disease,Number,2019,13778.31548,16841.81509,10641.60543
+Incidence,Australia,Male,70 to 74,Chronic obstructive pulmonary disease,Rate,2019,1435.158026,1779.730815,1104.8706
+Incidence,Australia,Female,70 to 74,Chronic obstructive pulmonary disease,Rate,2019,1183.637229,1501.91802,878.1213917
+Incidence,Australia,Both,70 to 74,Chronic obstructive pulmonary disease,Rate,2019,1305.569425,1595.852474,1008.349294
+Incidence,Australia,Male,75 to 79,Chronic obstructive pulmonary disease,Number,2019,5985.767656,7076.208034,4749.65032
+Incidence,Australia,Female,75 to 79,Chronic obstructive pulmonary disease,Number,2019,5315.815109,7076.717843,3809.590975
+Incidence,Australia,Both,75 to 79,Chronic obstructive pulmonary disease,Number,2019,11301.58277,14001.90275,8907.684054
+Incidence,Australia,Male,75 to 79,Chronic obstructive pulmonary disease,Rate,2019,1729.259381,2044.282343,1372.15105
+Incidence,Australia,Female,75 to 79,Chronic obstructive pulmonary disease,Rate,2019,1385.708516,1844.734622,993.071156
+Incidence,Australia,Both,75 to 79,Chronic obstructive pulmonary disease,Rate,2019,1548.66388,1918.690638,1220.626246
+Incidence,Australia,Male,80 to 84,Chronic obstructive pulmonary disease,Number,2019,5114.632368,5814.84981,4242.155938
+Incidence,Australia,Female,80 to 84,Chronic obstructive pulmonary disease,Number,2019,5193.73684,6552.177465,3728.808397
+Incidence,Australia,Both,80 to 84,Chronic obstructive pulmonary disease,Number,2019,10308.36921,12187.52607,8165.015836
+Incidence,Australia,Male,80 to 84,Chronic obstructive pulmonary disease,Rate,2019,2254.163859,2562.769588,1869.638697
+Incidence,Australia,Female,80 to 84,Chronic obstructive pulmonary disease,Rate,2019,1866.404093,2354.568823,1339.972253
+Incidence,Australia,Both,80 to 84,Chronic obstructive pulmonary disease,Rate,2019,2040.565647,2412.549115,1616.283864
+Incidence,Australia,Male,85 to 89,Chronic obstructive pulmonary disease,Number,2019,3098.522074,3444.53158,2651.883788
+Incidence,Australia,Female,85 to 89,Chronic obstructive pulmonary disease,Number,2019,4086.797058,4901.408506,3178.731166
+Incidence,Australia,Both,85 to 89,Chronic obstructive pulmonary disease,Number,2019,7185.319131,8248.668134,5967.759117
+Incidence,Australia,Male,85 to 89,Chronic obstructive pulmonary disease,Rate,2019,2430.851919,2702.303228,2080.45534
+Incidence,Australia,Female,85 to 89,Chronic obstructive pulmonary disease,Rate,2019,2222.397073,2665.382148,1728.591545
+Incidence,Australia,Both,85 to 89,Chronic obstructive pulmonary disease,Rate,2019,2307.736198,2649.25603,1916.68783
+Incidence,Australia,Male,90 to 94,Chronic obstructive pulmonary disease,Number,2019,1347.134247,1509.857531,1135.293837
+Incidence,Australia,Female,90 to 94,Chronic obstructive pulmonary disease,Number,2019,2464.068386,2873.835314,1976.34053
+Incidence,Australia,Both,90 to 94,Chronic obstructive pulmonary disease,Number,2019,3811.202633,4348.321579,3159.872171
+Incidence,Australia,Male,90 to 94,Chronic obstructive pulmonary disease,Rate,2019,2532.007277,2837.853957,2133.84246
+Incidence,Australia,Female,90 to 94,Chronic obstructive pulmonary disease,Rate,2019,2519.164111,2938.093288,2020.530828
+Incidence,Australia,Both,90 to 94,Chronic obstructive pulmonary disease,Rate,2019,2523.688832,2879.356377,2092.393104
+Deaths,Australia,Male,1 to 4,Chronic obstructive pulmonary disease,Number,2019,0.165363029,0.243595278,0.107857644
+Deaths,Australia,Female,1 to 4,Chronic obstructive pulmonary disease,Number,2019,0.205310772,0.326720414,0.110041746
+Deaths,Australia,Both,1 to 4,Chronic obstructive pulmonary disease,Number,2019,0.370673802,0.514622935,0.242138973
+Deaths,Australia,Male,1 to 4,Chronic obstructive pulmonary disease,Rate,2019,0.026352925,0.038820334,0.017188633
+Deaths,Australia,Female,1 to 4,Chronic obstructive pulmonary disease,Rate,2019,0.034557625,0.054993128,0.018522074
+Deaths,Australia,Both,1 to 4,Chronic obstructive pulmonary disease,Rate,2019,0.03034317,0.042126774,0.019821374
+Deaths,Australia,Male,5 to 9,Chronic obstructive pulmonary disease,Number,2019,0.112255687,0.173273741,0.067689586
+Deaths,Australia,Female,5 to 9,Chronic obstructive pulmonary disease,Number,2019,0.117155163,0.193939036,0.066698777
+Deaths,Australia,Both,5 to 9,Chronic obstructive pulmonary disease,Number,2019,0.22941085,0.345356415,0.14743696
+Deaths,Australia,Male,5 to 9,Chronic obstructive pulmonary disease,Rate,2019,0.014179152,0.021886417,0.008549954
+Deaths,Australia,Female,5 to 9,Chronic obstructive pulmonary disease,Rate,2019,0.015591993,0.025811036,0.008876834
+Deaths,Australia,Both,5 to 9,Chronic obstructive pulmonary disease,Rate,2019,0.014867117,0.022381043,0.009554746
+Deaths,Australia,Male,10 to 14,Chronic obstructive pulmonary disease,Number,2019,0.142473854,0.23072917,0.081083321
+Deaths,Australia,Female,10 to 14,Chronic obstructive pulmonary disease,Number,2019,0.15880118,0.276946574,0.082085483
+Deaths,Australia,Both,10 to 14,Chronic obstructive pulmonary disease,Number,2019,0.301275034,0.476381665,0.179488347
+Deaths,Australia,Male,10 to 14,Chronic obstructive pulmonary disease,Rate,2019,0.01821008,0.0294903,0.010363542
+Deaths,Australia,Female,10 to 14,Chronic obstructive pulmonary disease,Rate,2019,0.021456054,0.037418996,0.01109079
+Deaths,Australia,Both,10 to 14,Chronic obstructive pulmonary disease,Rate,2019,0.019788011,0.03128917,0.011788954
+Deaths,Australia,Male,15 to 19,Chronic obstructive pulmonary disease,Number,2019,0.273589877,0.429643223,0.15819476
+Deaths,Australia,Female,15 to 19,Chronic obstructive pulmonary disease,Number,2019,0.267579489,0.454243631,0.149834375
+Deaths,Australia,Both,15 to 19,Chronic obstructive pulmonary disease,Number,2019,0.541169366,0.807624399,0.353569346
+Deaths,Australia,Male,15 to 19,Chronic obstructive pulmonary disease,Rate,2019,0.037325451,0.058615572,0.021582271
+Deaths,Australia,Female,15 to 19,Chronic obstructive pulmonary disease,Rate,2019,0.038362185,0.065123744,0.02148137
+Deaths,Australia,Both,15 to 19,Chronic obstructive pulmonary disease,Rate,2019,0.037830962,0.056457757,0.024716604
+Deaths,Australia,Male,20 to 24,Chronic obstructive pulmonary disease,Number,2019,0.464460135,0.770090051,0.26924883
+Deaths,Australia,Female,20 to 24,Chronic obstructive pulmonary disease,Number,2019,0.441230489,0.727464674,0.254258094
+Deaths,Australia,Both,20 to 24,Chronic obstructive pulmonary disease,Number,2019,0.905690623,1.367014535,0.594628637
+Deaths,Australia,Male,20 to 24,Chronic obstructive pulmonary disease,Rate,2019,0.05759915,0.095501269,0.033390387
+Deaths,Australia,Female,20 to 24,Chronic obstructive pulmonary disease,Rate,2019,0.056475943,0.093112906,0.032544137
+Deaths,Australia,Both,20 to 24,Chronic obstructive pulmonary disease,Rate,2019,0.057046423,0.086103673,0.037453669
+Deaths,Australia,Male,25 to 29,Chronic obstructive pulmonary disease,Number,2019,0.589936247,0.922389877,0.35851779
+Deaths,Australia,Female,25 to 29,Chronic obstructive pulmonary disease,Number,2019,0.707094096,1.140394128,0.426464471
+Deaths,Australia,Both,25 to 29,Chronic obstructive pulmonary disease,Number,2019,1.297030343,1.868659788,0.846016933
+Deaths,Australia,Male,25 to 29,Chronic obstructive pulmonary disease,Rate,2019,0.067927489,0.106207457,0.041281094
+Deaths,Australia,Female,25 to 29,Chronic obstructive pulmonary disease,Rate,2019,0.080180385,0.129314106,0.048358607
+Deaths,Australia,Both,25 to 29,Chronic obstructive pulmonary disease,Rate,2019,0.074100838,0.106758687,0.048333922
+Deaths,Australia,Male,30 to 34,Chronic obstructive pulmonary disease,Number,2019,1.068176325,1.592516876,0.664858726
+Deaths,Australia,Female,30 to 34,Chronic obstructive pulmonary disease,Number,2019,1.033485283,1.596111826,0.606715801
+Deaths,Australia,Both,30 to 34,Chronic obstructive pulmonary disease,Number,2019,2.101661608,2.946043719,1.437564264
+Deaths,Australia,Male,30 to 34,Chronic obstructive pulmonary disease,Rate,2019,0.120761063,0.180039593,0.0751646
+Deaths,Australia,Female,30 to 34,Chronic obstructive pulmonary disease,Rate,2019,0.112981873,0.174488893,0.066326912
+Deaths,Australia,Both,30 to 34,Chronic obstructive pulmonary disease,Rate,2019,0.116806186,0.16373527,0.079896972
+Deaths,Australia,Male,35 to 39,Chronic obstructive pulmonary disease,Number,2019,2.727366031,4.044720841,1.75871526
+Deaths,Australia,Female,35 to 39,Chronic obstructive pulmonary disease,Number,2019,1.954126893,2.908586471,1.250108086
+Deaths,Australia,Both,35 to 39,Chronic obstructive pulmonary disease,Number,2019,4.681492924,6.533039618,3.334154022
+Deaths,Australia,Male,35 to 39,Chronic obstructive pulmonary disease,Rate,2019,0.316319747,0.469106478,0.203975689
+Deaths,Australia,Female,35 to 39,Chronic obstructive pulmonary disease,Rate,2019,0.222792698,0.331611949,0.142526544
+Deaths,Australia,Both,35 to 39,Chronic obstructive pulmonary disease,Rate,2019,0.26915596,0.375608076,0.191692573
+Deaths,Australia,Male,40 to 44,Chronic obstructive pulmonary disease,Number,2019,6.833069449,9.387352883,4.785251883
+Deaths,Australia,Female,40 to 44,Chronic obstructive pulmonary disease,Number,2019,5.490321897,7.462304507,3.936593417
+Deaths,Australia,Both,40 to 44,Chronic obstructive pulmonary disease,Number,2019,12.32339135,15.79378757,9.431965645
+Deaths,Australia,Male,40 to 44,Chronic obstructive pulmonary disease,Rate,2019,0.8799674,1.208909783,0.61624804
+Deaths,Australia,Female,40 to 44,Chronic obstructive pulmonary disease,Rate,2019,0.691773726,0.940241081,0.496005871
+Deaths,Australia,Both,40 to 44,Chronic obstructive pulmonary disease,Rate,2019,0.78484312,1.005863173,0.600696118
+Deaths,Australia,Male,45 to 49,Chronic obstructive pulmonary disease,Number,2019,18.09094136,23.11836983,13.6122561
+Deaths,Australia,Female,45 to 49,Chronic obstructive pulmonary disease,Number,2019,15.54774423,19.97739619,11.652672
+Deaths,Australia,Both,45 to 49,Chronic obstructive pulmonary disease,Number,2019,33.63868559,40.84412539,27.00084532
+Deaths,Australia,Male,45 to 49,Chronic obstructive pulmonary disease,Rate,2019,2.22292775,2.840673948,1.672608474
+Deaths,Australia,Female,45 to 49,Chronic obstructive pulmonary disease,Rate,2019,1.834705461,2.357424804,1.375068991
+Deaths,Australia,Both,45 to 49,Chronic obstructive pulmonary disease,Rate,2019,2.024891689,2.458625496,1.625324722
+Deaths,Australia,Male,50 to 54,Chronic obstructive pulmonary disease,Number,2019,42.76770205,53.80466897,33.66951003
+Deaths,Australia,Female,50 to 54,Chronic obstructive pulmonary disease,Number,2019,37.2233424,47.18340945,29.68381591
+Deaths,Australia,Both,50 to 54,Chronic obstructive pulmonary disease,Number,2019,79.99104445,96.15262522,66.55553901
+Deaths,Australia,Male,50 to 54,Chronic obstructive pulmonary disease,Rate,2019,5.72896153,7.207422048,4.51021024
+Deaths,Australia,Female,50 to 54,Chronic obstructive pulmonary disease,Rate,2019,4.790622376,6.072477174,3.82028973
+Deaths,Australia,Both,50 to 54,Chronic obstructive pulmonary disease,Rate,2019,5.250403528,6.311207538,4.368531993
+Deaths,Australia,Male,55 to 59,Chronic obstructive pulmonary disease,Number,2019,101.8595097,127.024722,80.41935408
+Deaths,Australia,Female,55 to 59,Chronic obstructive pulmonary disease,Number,2019,84.12070104,110.0920987,66.26868394
+Deaths,Australia,Both,55 to 59,Chronic obstructive pulmonary disease,Number,2019,185.9802108,223.8250567,153.6083283
+Deaths,Australia,Male,55 to 59,Chronic obstructive pulmonary disease,Rate,2019,13.67402654,17.05230493,10.7958146
+Deaths,Australia,Female,55 to 59,Chronic obstructive pulmonary disease,Rate,2019,10.78955247,14.12071537,8.499803659
+Deaths,Australia,Both,55 to 59,Chronic obstructive pulmonary disease,Rate,2019,12.19892803,14.68127037,10.07557166
+Deaths,Australia,Male,60 to 64,Chronic obstructive pulmonary disease,Number,2019,201.2951492,251.8019143,160.2843637
+Deaths,Australia,Female,60 to 64,Chronic obstructive pulmonary disease,Number,2019,172.6188883,220.5000127,138.6439982
+Deaths,Australia,Both,60 to 64,Chronic obstructive pulmonary disease,Number,2019,373.9140375,448.3556272,312.1456092
+Deaths,Australia,Male,60 to 64,Chronic obstructive pulmonary disease,Rate,2019,30.22087404,37.8035634,24.06383653
+Deaths,Australia,Female,60 to 64,Chronic obstructive pulmonary disease,Rate,2019,24.40516576,31.17468438,19.60173531
+Deaths,Australia,Both,60 to 64,Chronic obstructive pulmonary disease,Rate,2019,27.22573486,32.6460368,22.72820152
+Deaths,Australia,Male,65 to 69,Chronic obstructive pulmonary disease,Number,2019,387.6968542,475.2005746,312.2432941
+Deaths,Australia,Female,65 to 69,Chronic obstructive pulmonary disease,Number,2019,310.0593981,381.6404393,245.0053438
+Deaths,Australia,Both,65 to 69,Chronic obstructive pulmonary disease,Number,2019,697.7562523,809.0969423,589.8789596
+Deaths,Australia,Male,65 to 69,Chronic obstructive pulmonary disease,Rate,2019,65.85833271,80.72265021,53.04098428
+Deaths,Australia,Female,65 to 69,Chronic obstructive pulmonary disease,Rate,2019,49.25533169,60.62653331,38.92099239
+Deaths,Australia,Both,65 to 69,Chronic obstructive pulmonary disease,Rate,2019,57.27871777,66.41866018,48.42308518
+Deaths,Australia,Male,70 to 74,Chronic obstructive pulmonary disease,Number,2019,690.4850186,840.5341888,565.6358697
+Deaths,Australia,Female,70 to 74,Chronic obstructive pulmonary disease,Number,2019,527.2832507,648.8496662,391.6969845
+Deaths,Australia,Both,70 to 74,Chronic obstructive pulmonary disease,Number,2019,1217.768269,1400.517773,1037.8924
+Deaths,Australia,Male,70 to 74,Chronic obstructive pulmonary disease,Rate,2019,134.9626548,164.291364,110.5595582
+Deaths,Australia,Female,70 to 74,Chronic obstructive pulmonary disease,Rate,2019,96.9739131,119.3314809,72.03792134
+Deaths,Australia,Both,70 to 74,Chronic obstructive pulmonary disease,Rate,2019,115.3900868,132.7065843,98.34588173
+Deaths,Australia,Male,75 to 79,Chronic obstructive pulmonary disease,Number,2019,848.3678121,1032.11919,684.5119957
+Deaths,Australia,Female,75 to 79,Chronic obstructive pulmonary disease,Number,2019,627.7734914,791.9918192,428.679589
+Deaths,Australia,Both,75 to 79,Chronic obstructive pulmonary disease,Number,2019,1476.141304,1737.168695,1236.408138
+Deaths,Australia,Male,75 to 79,Chronic obstructive pulmonary disease,Rate,2019,245.0893657,298.1742518,197.7522113
+Deaths,Australia,Female,75 to 79,Chronic obstructive pulmonary disease,Rate,2019,163.6458483,206.4537208,111.7467303
+Deaths,Australia,Both,75 to 79,Chronic obstructive pulmonary disease,Rate,2019,202.2766869,238.0454551,169.4258817
+Deaths,Australia,Male,80 to 84,Chronic obstructive pulmonary disease,Number,2019,998.8956622,1219.501685,798.6813625
+Deaths,Australia,Female,80 to 84,Chronic obstructive pulmonary disease,Number,2019,735.7375074,948.4369435,469.75536
+Deaths,Australia,Both,80 to 84,Chronic obstructive pulmonary disease,Number,2019,1734.63317,2071.109935,1392.199623
+Deaths,Australia,Male,80 to 84,Chronic obstructive pulmonary disease,Rate,2019,440.2417101,537.4690547,352.0015775
+Deaths,Australia,Female,80 to 84,Chronic obstructive pulmonary disease,Rate,2019,264.3921972,340.8271631,168.8097325
+Deaths,Australia,Both,80 to 84,Chronic obstructive pulmonary disease,Rate,2019,343.3746681,409.9810259,275.5891515
+Deaths,Australia,Male,85 to 89,Chronic obstructive pulmonary disease,Number,2019,984.4112198,1230.404578,766.9808285
+Deaths,Australia,Female,85 to 89,Chronic obstructive pulmonary disease,Number,2019,756.5843026,985.5777675,472.7963539
+Deaths,Australia,Both,85 to 89,Chronic obstructive pulmonary disease,Number,2019,1740.995522,2090.605296,1349.830858
+Deaths,Australia,Male,85 to 89,Chronic obstructive pulmonary disease,Rate,2019,772.2900936,965.276754,601.7116464
+Deaths,Australia,Female,85 to 89,Chronic obstructive pulmonary disease,Rate,2019,411.4299574,535.9564262,257.1062909
+Deaths,Australia,Both,85 to 89,Chronic obstructive pulmonary disease,Rate,2019,559.1621352,671.4476323,433.5302963
+Deaths,Australia,Male,90 to 94,Chronic obstructive pulmonary disease,Number,2019,611.9467704,756.0092723,466.1726779
+Deaths,Australia,Female,90 to 94,Chronic obstructive pulmonary disease,Number,2019,585.4367661,771.444028,369.1578965
+Deaths,Australia,Both,90 to 94,Chronic obstructive pulmonary disease,Number,2019,1197.383537,1461.792008,875.2323776
+Deaths,Australia,Male,90 to 94,Chronic obstructive pulmonary disease,Rate,2019,1150.185053,1420.957846,876.1952381
+Deaths,Australia,Female,90 to 94,Chronic obstructive pulmonary disease,Rate,2019,598.5269317,788.6932523,377.4121406
+Deaths,Australia,Both,90 to 94,Chronic obstructive pulmonary disease,Rate,2019,792.879243,967.96432,579.5583151
