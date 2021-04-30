@@ -9,6 +9,7 @@ import pandas as pd
 import os
 
 fileCreated = {}
+HEAD_MODE = True
 
 def MakePath(path):
     out_folder = os.path.dirname(path)
@@ -30,6 +31,8 @@ def OutputToFile(df, path, index=True):
     else:
         fileCreated[fullFilePath] = True
         df.to_csv(fullFilePath, index=index) 
+        if HEAD_MODE:
+            df.head(100).to_csv(path + '_head' + '.csv', index=index) 
 
 
 def SplitNetlogoList(chunk, cohorts, name, outputName):
@@ -67,10 +70,10 @@ def ToHeatmap(df, index_rows, index_cols, sort_rows=[], sort_cols=[]):
     
     df['_sort_row'] = ''
     for value in sort_rows:
-        df['_sort_row'] = df['_sort_row'] + df[value[0]].replace(value[1])
+        df['_sort_row'] = df['_sort_row'] + df[value[0]].replace(value[1]).astype(str)
     df['_sort_col'] = ''
     for value in sort_cols:
-        df['_sort_col'] = df['_sort_col'] + df[value[0]].replace(value[1])
+        df['_sort_col'] = df['_sort_col'] + df[value[0]].replace(value[1]).astype(str)
         
     df = df.set_index(['_sort_row', '_sort_col'] + index_rows + index_cols)
     df = df.unstack(['_sort_col'] + index_cols)

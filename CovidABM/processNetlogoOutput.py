@@ -25,17 +25,16 @@ def SplitOutDailyData(chunk, cohorts, days, name, filePath, fileAppend):
     OutputToFile(df, filePath + '_' + fileAppend)
 
 
-def ProcessAbmChunk(chunk: pd.DataFrame, outputStaticData, filename):
+def ProcessAbmChunk(chunk: pd.DataFrame, outputStaticData, filename, measureCols_raw):
     # Drop colums that are probably never useful.
     
     chunk = chunk[[
-        '[run number]', 'rand_seed', 'param_policy', 'global_transmissibility',
-        'param_vac1_tran_reduct', 'param_vac2_tran_reduct', 'param_vac_uptake',
-        'param_trigger_loosen',
+        '[run number]', 'rand_seed',
         'stage_listOut', 'scalephase', 'cumulativeInfected', 'casesReportedToday',
         'Deathcount', 'totalOverseasIncursions', 'infectNoVacArray_listOut', 'infectVacArray_listOut',
         'age_listOut', 'atsi_listOut', 'morbid_listOut',
-    ]]
+        'global_transmissibility'
+    ] + measureCols_raw]
     
     cohorts = len(chunk.iloc[0].age_listOut.split(' '))
     days = len(chunk.iloc[0].stage_listOut.split(' '))
@@ -50,9 +49,7 @@ def ProcessAbmChunk(chunk: pd.DataFrame, outputStaticData, filename):
     chunk = chunk.rename(mapper={'[run number]' : 'run'}, axis=1)
     chunk = chunk.set_index([
         'run', 'rand_seed', 'param_policy', 'global_transmissibility',
-        'param_vac1_tran_reduct', 'param_vac2_tran_reduct',
-        'param_vac_uptake', 'param_trigger_loosen',
-    ])
+    ] + measureCols_raw)
     
     secondaryData = [
         'scalephase', 'cumulativeInfected', 'casesReportedToday',
@@ -63,10 +60,24 @@ def ProcessAbmChunk(chunk: pd.DataFrame, outputStaticData, filename):
     chunk = chunk.drop(secondaryData, axis=1)
     
     index = chunk.index.to_frame()
-    index['R0'] = index['global_transmissibility'].replace({
-        0.34 : 2.5,
-        0.43 : 3.125,
-        0.54 : 3.75,})
+    index['R0'] = index['global_transmissibility'].apply(lambda x: 2.5 if x < 0.3 else 3)
+    index['param_final_phase'] = index['param_final_phase'].replace({
+        -1 : 'Yes',
+        5 : 'No',
+    })
+    index['param_vac_rate_mult'] = index['param_vac_rate_mult'].replace({
+        0.75 : 16,
+        1 : 12,
+        1.5 : 8
+    })
+    index = index.rename(columns={
+        'param_final_phase' : 'VacKids',
+        'param_vac_rate_mult' : 'RolloutMonths',
+        'vac_variant_eff_prop' : 'VacEff_VarMult',
+        'variant_transmiss_growth' : 'Var_R0_mult',
+        'param_vac_tran_reduct' : 'VacEfficacy',
+    })
+    
     chunk.index = pd.MultiIndex.from_frame(index)
     
     SplitOutDailyData(chunk, 1, days, 'stage', filename, 'stage')
@@ -74,18 +85,19 @@ def ProcessAbmChunk(chunk: pd.DataFrame, outputStaticData, filename):
     SplitOutDailyData(chunk, cohorts, days, 'infectVacArray', filename, 'infectVac')
 
 
-def ProcessAbmOutput(outputFile, filelist):
+def ProcessAbmOutput(subfolder, measureCols_raw):
+    outputFile = subfolder + '/ABM_process/' + 'processed'
+    filelist = [subfolder + '/ABM_out/' + 'MergedResults']
     chunksize = 4 ** 7
     
     firstProcess = True
     for filename in filelist:
-        size = os.path.getsize(filename + '.csv')
         for chunk in tqdm(pd.read_csv(filename + '.csv', chunksize=chunksize, header=6), total=4):
-            ProcessAbmChunk(chunk, firstProcess, outputFile)
+            ProcessAbmChunk(chunk, firstProcess, outputFile, measureCols_raw)
             firstProcess = False
 
 
-def ToVisualisation(chunk, filename, append):
+def ToVisualisation(chunk, filename, append, measureCols):
     chunk.columns.set_levels(chunk.columns.levels[1].astype(int), level=1, inplace=True)
     chunk.columns.set_levels(chunk.columns.levels[2].astype(int), level=2, inplace=True)
     chunk = chunk.groupby(level=[0, 1], axis=1).sum()
@@ -118,157 +130,146 @@ def ToVisualisationRollingWeekly(chunk, filename, append):
     OutputToFile(chunk, filename + '_' + append + '_rolling_weekly')
 
 
-def ProcessFileToVisualisation(filename, append):
+def ProcessFileToVisualisation(subfolder, append, measureCols):
     chunksize = 4 ** 7
+    filename = subfolder + '/ABM_process/' + 'processed'
     for chunk in tqdm(pd.read_csv(filename + '_' + append + '.csv', chunksize=chunksize,
-                                  index_col=list(range(9)),
+                                  index_col=list(range(4 + len(measureCols))),
                                   header=list(range(3)),
                                   dtype={'day' : int, 'cohort' : int}),
                       total=4):
-        ToVisualisation(chunk, filename, append)
+        ToVisualisation(chunk, filename, append, measureCols)
 
-
-def MakeInfectionHeatmap(outputFile, inputFile, startWeek=13, window=26):
-    df = pd.read_csv(inputFile + '.csv', index_col=list(range(9)),
-                                  header=list(range(1)))
-    df = df.groupby(level=[2, 3, 4, 5, 6, 7, 8], axis=0).mean()
-    # Do (startWeek + 1) because week 0 consists of a single day, day 0.
-    df = df[[str(i + startWeek + 1) + '.0' for i in range(window)]]
-    df = df.transpose().describe().transpose()
-    df = df[['mean']]
-    
+def HeatmapProcess(df):
     df = df.reset_index()
-    df = df[df['param_vac1_tran_reduct'] == df['param_vac2_tran_reduct']]
-    df = df.drop(columns=['param_vac2_tran_reduct', 'global_transmissibility'])
-    df = df.rename(columns={'param_vac1_tran_reduct' : 'param_vac_tran_reduct'})
+    df = df.drop(columns=['global_transmissibility'])
 
     df = ToHeatmap(df,
-        ['R0', 'param_trigger_loosen', 'param_vac_uptake'],
-        ['param_policy', 'param_vac_tran_reduct'],
+        ['param_policy', 'Var_R0_mult', 'R0', 'VacKids'],
+        ['VacEfficacy', 'VacEff_VarMult', 'RolloutMonths'],
         sort_rows=[
+            ['param_policy', {
+                'ModerateSupress_No_4' : 'b',
+                'ModerateSupress' : 'a',
+            }],
+            ['Var_R0_mult', {
+                1.3 : 'a',
+                1.45 : 'b',
+                1.6 : 'c',
+            }],
             ['R0', {
                 2.5 : 'a',
-                3.125 : 'b',
-                3.75 : 'c',
+                3 : 'b',
             }],
-            ['param_trigger_loosen', {
-                False : 'a',
-                True : 'b',
-            }],
-            ['param_vac_uptake', {
-                90 : 'a',
-                75 : 'b',
-                60 : 'c',
+            ['VacKids', {
+                'Yes' : 'a',
+                'No' : 'b',
             }],
         ], 
         sort_cols=[
-            ['param_policy', {
-                'AggressElim' : 'a',
-                'ModerateElim' : 'b',
-                'TightSupress' : 'c',
-                'LooseSupress' : 'd'
+            ['VacEfficacy', {
+                0.75 : 'c',
+                0.875 : 'b',
+                0.95 : 'a',
             }],
-            ['param_vac_tran_reduct', {
-                90 : 'a',
-                75 : 'b',
-                50 : 'c',
+            ['VacEff_VarMult', {
+                0.8 : 'b',
+                0.95 : 'a',
+            }],
+            ['RolloutMonths', {
+                8 : 'a',
+                12 : 'b',
+                16 : 'c',
             }],
         ]
     )
+    return df
+    
+
+def MakeInfectionHeatmap(name, outputFile, inputFile, measureCols, startWeek=13, window=26):
+    
+    df = pd.read_csv(inputFile + '.csv',
+                     index_col=list(range(4 + len(measureCols))),
+                     header=list(range(1)))
+    df = df.groupby(level=list(range(2, 4 + len(measureCols))), axis=0).mean()
+    # Do (startWeek + 1) because week 0 consists of a single day, day 0.
+    df = df[[str(i + startWeek + 1) + '.0' for i in range(window)]]
+    df = df.transpose().describe().transpose()
+    df = df[['mean']] / 7
+    df = df.rename(columns={'mean' : name})
+    
+    df = HeatmapProcess(df)
     OutputToFile(df, outputFile)
     
 
-def MakeStagesHeatmap(outputFile, inputFile, startWeek=13, window=26):
-    df = pd.read_csv(inputFile + '.csv', index_col=list(range(9)),
-                                  header=list(range(3)))
+def MakeStagesHeatmap(name, outputFile, inputFile, measureCols, startWeek=13, window=26):
+    df = pd.read_csv(inputFile + '.csv',
+                     index_col=list(range(4 + len(measureCols))),
+                     header=list(range(3)))
     df = df.apply(lambda c: [1 if x > 2 else 0 for x in c])
-    df = df.groupby(level=[2, 3, 4, 5, 6, 7, 8], axis=0).mean()
+    df = df.groupby(level=list(range(2, 4 + len(measureCols))), axis=0).mean()
     
     df = df.droplevel([0, 2], axis=1)
     # Add 1 to the day because week 0 consists of a single day, day 0.
     df = df[[str(i + startWeek*7 + 1) for i in range(window*7)]]
     df = df.transpose().describe().transpose()
     df = df[['mean']]
+    df = df.rename(columns={'mean' : name})
     
-    df = df.reset_index()
-    df = df[df['param_vac1_tran_reduct'] == df['param_vac2_tran_reduct']]
-    df = df.drop(columns=['param_vac2_tran_reduct', 'global_transmissibility'])
-    df = df.rename(columns={'param_vac1_tran_reduct' : 'param_vac_tran_reduct'})
-    
-    df = ToHeatmap(df,
-        ['R0', 'param_trigger_loosen', 'param_vac_uptake'],
-        ['param_policy', 'param_vac_tran_reduct'],
-        sort_rows=[
-            ['R0', {
-                2.5 : 'a',
-                3.125 : 'b',
-                3.75 : 'c',
-            }],
-            ['param_trigger_loosen', {
-                False : 'a',
-                True : 'b',
-            }],
-            ['param_vac_uptake', {
-                90 : 'a',
-                75 : 'b',
-                60 : 'c',
-            }],
-        ], 
-        sort_cols=[
-            ['param_policy', {
-                'AggressElim' : 'a',
-                'ModerateElim' : 'b',
-                'TightSupress' : 'c',
-                'LooseSupress' : 'd'
-            }],
-            ['param_vac_tran_reduct', {
-                90 : 'a',
-                75 : 'b',
-                50 : 'c',
-            }],
-        ]
-    )
+    df = HeatmapProcess(df)
     OutputToFile(df, outputFile)
 
-
-def DoAbmProcessing(subfolder):
-    abmDir = subfolder + '/ABM_out/'
-    processDir = subfolder + '/ABM_process/'
     
-    print('Processing ABM Output', subfolder)
-    ProcessAbmOutput(processDir + 'processed', [abmDir + 'mergedresult'])
+def DoAbmProcessing(dataDir, measureCols, measureCols_raw):
+    print('Processing ABM Output', dataDir)
+    ProcessAbmOutput(dataDir, measureCols_raw)
     
     print('Processing infectNoVac')
-    ProcessFileToVisualisation(processDir + 'processed', 'infectNoVac') 
+    ProcessFileToVisualisation(dataDir, 'infectNoVac', measureCols) 
     print('Processing infectVac')
-    ProcessFileToVisualisation(processDir + 'processed', 'infectVac')
-    AddFiles(processDir + 'infect_unique_weeklyAgg',
+    ProcessFileToVisualisation(dataDir, 'infectVac', measureCols)
+    AddFiles(dataDir + '/ABM_process/' + 'infect_unique_weeklyAgg',
         [
-            processDir + 'processed_infectNoVac_weeklyAgg',
-            processDir + 'processed_infectVac_weeklyAgg',
+            dataDir + '/ABM_process/' + 'processed_infectNoVac_weeklyAgg',
+            dataDir + '/ABM_process/' + 'processed_infectVac_weeklyAgg',
         ],
-        index=9
+        index=(4 + len(measureCols))
     )
 
 
-def MakeHeatmaps(subfolder):
-    processDir = subfolder + '/ABM_process/'
-    visualDir = subfolder + '/ABM_heatmaps/'
+def MakeHeatmaps(dataDir, measureCols):
+    processDir = dataDir + '/ABM_process/'
+    visualDir = dataDir + '/ABM_heatmaps/'
     
-    print('Processing MakeInfectionHeatmap stage 2')
-    MakeInfectionHeatmap(visualDir + 'infect_average_weekly_stage2',
+    print('Processing MakeInfectionHeatmap full')
+    MakeInfectionHeatmap('full',
+                         visualDir + 'infect_average_daily_full',
                          processDir + 'infect_unique_weeklyAgg',
-                         startWeek=13, window=26)
-    print('Processing MakeStagesHeatmap stage 2')
-    MakeStagesHeatmap(visualDir + 'lockdown_proportion_stage2',
+                         measureCols,
+                         startWeek=0, window=104)
+    print('Processing MakeStagesHeatmap stage full')
+    MakeStagesHeatmap('full',
+                      visualDir + 'lockdown_proportion_full',
                       processDir + 'processed_stage',
-                      startWeek=13, window=26)
+                      measureCols,
+                      startWeek=0, window=104)
     
-    print('Processing MakeInfectionHeatmap stage 2b')
-    MakeInfectionHeatmap(visualDir + 'infect_average_weekly_stage2b_only',
-                         processDir + 'infect_unique_weeklyAgg',
-                         startWeek=26, window=13)
-    print('Processing MakeStagesHeatmap stage 2b')
-    MakeStagesHeatmap(visualDir + 'lockdown_proportion_stage2b_only',
-                      processDir + 'processed_stage',
-                      startWeek=26, window=13)
+    start = 0
+    for i in range(4):
+        print('Processing ' + str(start) + '_to_' + str(start + 26))
+        MakeInfectionHeatmap(str(start) + '_to_' + str(start + 26),
+                             visualDir + 'infect_average_daily_' + str(start) + '_to_' + str(start + 26),
+                             processDir + 'infect_unique_weeklyAgg',
+                             measureCols,
+                             startWeek=start, window=26)
+        MakeStagesHeatmap(str(start) + '_to_' + str(start + 26),
+                          visualDir + 'lockdown_proportion_' + str(start) + '_to_' + str(start + 26),
+                          processDir + 'processed_stage',
+                          measureCols,
+                          startWeek=start, window=26)
+        start = start + 26
+
+
+dataDir = '2021_04_29'
+measureCols =  ['param_policy', 'param_vac_rate_mult', 'param_final_phase',
+        'variant_transmiss_growth', 'param_vac_tran_reduct', 'vac_variant_eff_prop']
