@@ -65,7 +65,7 @@ def GetCohortData(cohortFile):
     return df
 
 
-def ProcessInfectChunk(df, chortDf, outputPrefix):
+def ProcessInfectChunk(df, chortDf, outputPrefix, months):
     df.columns.set_levels(df.columns.levels[1].astype(int), level=1, inplace=True)
     df.columns.set_levels(df.columns.levels[2].astype(int), level=2, inplace=True)
     df.sort_values(['cohort', 'day'], axis=1, inplace=True)
@@ -97,13 +97,13 @@ def ProcessInfectChunk(df, chortDf, outputPrefix):
     ageCols = [i*10 + 5 for i in range(9)]
     ageCols.remove(65)
     for age in ageCols:
-        for j in range(24):
+        for j in range(months):
             # TODO, vectorise?
             df[age - 2.5, j] = df[age, j]/2
             df[age + 2.5, j] = df[age, j]/2
     
     # Add extra cohorts missing from ABM
-    for j in range(24):
+    for j in range(months):
         df[92.5, j] = 0
         df[97.5, j] = 0
         df[102.5, j] = 0
@@ -114,7 +114,7 @@ def ProcessInfectChunk(df, chortDf, outputPrefix):
     Output(df, outputPrefix)
     
 
-def ProcessInfectCohorts(measureCols, filename, cohortFile, outputPrefix):
+def ProcessInfectCohorts(measureCols, filename, cohortFile, outputPrefix, months):
     cohortData = GetCohortData(cohortFile)
     chunksize = 4 ** 7
     
@@ -124,7 +124,7 @@ def ProcessInfectCohorts(measureCols, filename, cohortFile, outputPrefix):
                              dtype={'day' : int, 'cohort' : int},
                              chunksize=chunksize),
                       total=4):
-        ProcessInfectChunk(chunk, cohortData, outputPrefix)
+        ProcessInfectChunk(chunk, cohortData, outputPrefix, months)
 
 
 ############### Infection Step 2 ###############
@@ -249,20 +249,22 @@ def CombineDrawsStageAndFinalise(measureCols, subfolder, path, output, months=12
 
 ############### Run Infection Processing ###############
 
-def ProcessInfectionCohorts(subfolder, measureCols):
+def ProcessInfectionCohorts(subfolder, measureCols, months):
     print('Processing vaccination infection for PMSLT')
     ProcessInfectCohorts(measureCols,
                          subfolder + '/ABM_process/processed_infectVac',
                          subfolder + '/ABM_process/processed_static',
-                         subfolder + '/PMSLT_process/infect_results/infect_vac')
+                         subfolder + '/PMSLT_process/infect_results/infect_vac',
+                         months)
     print('Processing non-vaccination infection for PMSLT')
     ProcessInfectCohorts(measureCols,
                          subfolder + '/ABM_process/processed_infectNoVac',
                          subfolder + '/ABM_process/processed_static',
-                         subfolder + '/PMSLT_process/infect_results/infect_noVac')
+                         subfolder + '/PMSLT_process/infect_results/infect_noVac',
+                         months)
     
 def ProcessInfection(subfolder, measureCols, months=12):
-    #ProcessInfectionCohorts(subfolder, measureCols)
+    ProcessInfectionCohorts(subfolder, measureCols, months)
     
     print('Finalising infection PMSLT input')
     AddAndFinalisePmsltInputs(

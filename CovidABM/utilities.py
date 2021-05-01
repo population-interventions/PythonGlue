@@ -11,7 +11,10 @@ import os
 fileCreated = {}
 HEAD_MODE = True
 
+
 def MakePath(path):
+    if '/' not in path:
+        return
     out_folder = os.path.dirname(path)
     if not os.path.exists(out_folder):
         MakePath(out_folder)

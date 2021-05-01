@@ -25,7 +25,7 @@ def SplitOutDailyData(chunk, cohorts, days, name, filePath, fileAppend):
     OutputToFile(df, filePath + '_' + fileAppend)
 
 
-def ProcessAbmChunk(chunk: pd.DataFrame, outputStaticData, filename, measureCols_raw):
+def ProcessAbmChunk(chunk: pd.DataFrame, outputStaticData, filename, measureCols_raw, day_override=False):
     # Drop colums that are probably never useful.
     
     chunk = chunk[[
@@ -38,6 +38,8 @@ def ProcessAbmChunk(chunk: pd.DataFrame, outputStaticData, filename, measureCols
     
     cohorts = len(chunk.iloc[0].age_listOut.split(' '))
     days = len(chunk.iloc[0].stage_listOut.split(' '))
+    if day_override:
+        days = day_override
     
     if outputStaticData:
         staticData = pd.DataFrame(chunk[['age_listOut', 'atsi_listOut', 'morbid_listOut']].transpose()[0])
@@ -85,7 +87,7 @@ def ProcessAbmChunk(chunk: pd.DataFrame, outputStaticData, filename, measureCols
     SplitOutDailyData(chunk, cohorts, days, 'infectVacArray', filename, 'infectVac')
 
 
-def ProcessAbmOutput(subfolder, measureCols_raw):
+def ProcessAbmOutput(subfolder, measureCols_raw, day_override=False):
     outputFile = subfolder + '/ABM_process/' + 'processed'
     filelist = [subfolder + '/ABM_out/' + 'MergedResults']
     chunksize = 4 ** 7
@@ -93,7 +95,7 @@ def ProcessAbmOutput(subfolder, measureCols_raw):
     firstProcess = True
     for filename in filelist:
         for chunk in tqdm(pd.read_csv(filename + '.csv', chunksize=chunksize, header=6), total=4):
-            ProcessAbmChunk(chunk, firstProcess, outputFile, measureCols_raw)
+            ProcessAbmChunk(chunk, firstProcess, outputFile, measureCols_raw, day_override=day_override)
             firstProcess = False
 
 
@@ -220,9 +222,9 @@ def MakeStagesHeatmap(name, outputFile, inputFile, measureCols, startWeek=13, wi
     OutputToFile(df, outputFile)
 
     
-def DoAbmProcessing(dataDir, measureCols, measureCols_raw):
+def DoAbmProcessing(dataDir, measureCols, measureCols_raw, day_override=False):
     print('Processing ABM Output', dataDir)
-    ProcessAbmOutput(dataDir, measureCols_raw)
+    ProcessAbmOutput(dataDir, measureCols_raw, day_override=day_override)
     
     print('Processing infectNoVac')
     ProcessFileToVisualisation(dataDir, 'infectNoVac', measureCols) 
