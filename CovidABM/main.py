@@ -20,6 +20,6 @@ measureCols_raw =  ['param_policy', 'param_vac_rate_mult', 'param_final_phase',
 measureCols =  ['param_policy', 'RolloutMonths', 'VacKids',
         'VacEfficacy', 'VacEff_VarMult', 'Var_R0_mult'] 
 
-#DoAbmProcessing(dataDir, measureCols, measureCols_raw, day_override=871)
+DoAbmProcessing(dataDir, measureCols, measureCols_raw, day_override=1095)
 #MakeHeatmaps(dataDir, measureCols)
-DoProcessingForPMSLT(dataDir, measureCols, months=29)
+DoProcessingForPMSLT(dataDir, measureCols, months=36)

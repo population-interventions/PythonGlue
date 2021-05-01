@@ -40,7 +40,12 @@ def OutputToFile(df, path, index=True):
 
 def SplitNetlogoList(chunk, cohorts, name, outputName):
     split_names = [outputName + str(i) for i in range(0, cohorts)]
-    chunk[split_names] = chunk[name].str.replace('\[', '').str.replace('\]', '').str.split(' ', expand=True)
+    df = chunk[name].str.replace('\[', '').str.replace('\]', '').str.split(' ', expand=True)
+    if cohorts - 1 not in df:
+        for i in range(cohorts):
+            if i not in df:
+                df[i] = 0
+    chunk[split_names] = df
     chunk = chunk.drop(name, axis=1)
     return chunk
     
@@ -48,6 +53,10 @@ def SplitNetlogoList(chunk, cohorts, name, outputName):
 def SplitNetlogoNestedList(chunk, cohorts, days, colName, name):
     split_names = [(name, j, i) for j in range(0, days) for i in range(0, cohorts)]
     df = chunk[colName].str.replace('\[', '').str.replace('\]', '').str.split(' ', expand=True)
+    if days * cohorts - 1 not in df:
+        for i in range(days * cohorts):
+            if i not in df:
+                df[i] = 0
     df.columns = pd.MultiIndex.from_tuples(split_names, names=['metric', 'day', 'cohort'])
     return df
 
