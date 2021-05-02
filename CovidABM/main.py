@@ -9,6 +9,7 @@ Created on Wed Mar 31 12:16:11 2021
 from processNetlogoOutput import DoAbmProcessing
 from processNetlogoOutput import MakeHeatmaps
 from processedOutputToPMSLT import DoProcessingForPMSLT
+from processedOutputToPMSLT import GetAggregates
 
 
 dataDir = '2021_04_29'
@@ -20,6 +21,8 @@ measureCols_raw =  ['param_policy', 'param_vac_rate_mult', 'param_final_phase',
 measureCols =  ['param_policy', 'RolloutMonths', 'VacKids',
         'VacEfficacy', 'VacEff_VarMult', 'Var_R0_mult'] 
 
-DoAbmProcessing(dataDir, measureCols, measureCols_raw, day_override=1095)
+#DoAbmProcessing(dataDir, measureCols, measureCols_raw, day_override=1095)
 #MakeHeatmaps(dataDir, measureCols)
 DoProcessingForPMSLT(dataDir, measureCols, months=36)
+GetAggregates(dataDir, measureCols)
+

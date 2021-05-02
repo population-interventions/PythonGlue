@@ -245,7 +245,16 @@ def CombineDrawsStageAndFinalise(measureCols, subfolder, path, output, months=12
     df = df.append(enddf)
     
     OutputToFile(df, output + '/lockdown_stage')
+    
 
+############### Aggregates ###############
+def OutputAggregate(subfolder, measureCols):
+    df = pd.read_csv(subfolder + 'acute_disease.covid.morbidity' + '.csv',
+                     index_col=list(range(6 + len(measureCols))),
+                     header=[0])
+    df = df.groupby(level=[8, 9], axis=0).sum()
+    OutputToFile(df, subfolder + 'aggregate')
+    
 
 ############### Run Infection Processing ###############
 
@@ -288,3 +297,17 @@ def DoProcessingForPMSLT(subfolder, measureCols, months=12):
     ProcessInfection(subfolder, measureCols, months)
     ProcessStages(subfolder, measureCols, months)
     
+
+def GetAggregates(subfolder, measureCols):
+    OutputAggregate(subfolder + '/PMSLT_input/', measureCols)
+
+dataDir = '2021_04_29'
+dataDir = '2021_05_01_stage2'
+
+measureCols_raw =  ['param_policy', 'param_vac_rate_mult', 'param_final_phase',
+        'variant_transmiss_growth', 'param_vac_tran_reduct', 'vac_variant_eff_prop']
+
+measureCols =  ['param_policy', 'RolloutMonths', 'VacKids',
+        'VacEfficacy', 'VacEff_VarMult', 'Var_R0_mult'] 
+
+GetAggregates(dataDir, measureCols)
