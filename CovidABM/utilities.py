@@ -22,9 +22,8 @@ def MakePath(path):
 
 
 def OutputToFile(df, path, index=True):
-    # Called like this. Splits each random seed into its own file.
-    #for value in chunk.index.unique('rand_seed'):
-    #    OutputToFile(chunk.loc[value], filename, value)
+    # Write dataframe to a file.
+    # Appends dataframe when called with the same name.
     fullFilePath = path + '.csv'
     MakePath(path)
     
@@ -58,6 +57,17 @@ def SplitNetlogoNestedList(chunk, cohorts, days, colName, name):
             if i not in df:
                 df[i] = 0
     df.columns = pd.MultiIndex.from_tuples(split_names, names=['metric', 'day', 'cohort'])
+    return df
+
+
+def GetCohortData(cohortFile):
+    df = pd.read_csv(cohortFile + '.csv', 
+                index_col=[0],
+                header=[0])
+    df.index.rename('cohort', True)
+    df = df.reset_index()
+    df['cohort'] = df['cohort'].astype(int)
+    df['age'] = df['age'].astype(int)
     return df
 
 

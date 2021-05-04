@@ -1,4 +1,3 @@
-2
 import math
 import pandas as pd
 import numpy as np
@@ -7,7 +6,7 @@ import time
 import os
 import re
 
-from utilities import OutputToFile
+from utilities import OutputToFile, GetCohortData
 
 ############### Shared ###############
 
@@ -53,17 +52,6 @@ def CombineDrawColumnsAndFindDraw0(prefix, append, index_size=8):
 
 
 ############### Infection Step 1 - Make two csvs for each random seed ###############
-
-def GetCohortData(cohortFile):
-    df = pd.read_csv(cohortFile + '.csv', 
-                index_col=[0],
-                header=[0])
-    df.index.rename('cohort', True)
-    df = df.reset_index()
-    df['cohort'] = df['cohort'].astype(int)
-    df['age'] = df['age'].astype(int)
-    return df
-
 
 def ProcessInfectChunk(df, chortDf, outputPrefix, months):
     df.columns.set_levels(df.columns.levels[1].astype(int), level=1, inplace=True)
