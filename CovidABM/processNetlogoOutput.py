@@ -197,8 +197,8 @@ def MakeInfectionHeatmap(name, outputFile, inputFile, measureCols, startWeek=13,
     # Do (startWeek + 1) because week 0 consists of a single day, day 0.
     df = df[[str(i + startWeek + 1) + '.0' for i in range(window)]]
     df = df.transpose().describe().transpose()
-    df = df[['mean']] / 7
-    df = df.rename(columns={'mean' : name})
+    df = df[['50%']] / 7
+    df = df.rename(columns={'50%' : name})
     
     df = HeatmapProcess(df)
     OutputToFile(df, outputFile)
@@ -215,8 +215,8 @@ def MakeStagesHeatmap(name, outputFile, inputFile, measureCols, startWeek=13, wi
     # Add 1 to the day because week 0 consists of a single day, day 0.
     df = df[[str(i + startWeek*7 + 1) for i in range(window*7)]]
     df = df.transpose().describe().transpose()
-    df = df[['mean']]
-    df = df.rename(columns={'mean' : name})
+    df = df[['50%']]
+    df = df.rename(columns={'50%' : name})
     
     df = HeatmapProcess(df)
     OutputToFile(df, outputFile)
