@@ -6,6 +6,7 @@ import numpy as np
 from utilities import OutputToFile
 from utilities import ToHeatmap
 
+
 def HeatmapProcess(df):
     df = df.reset_index()
     df = df.drop(columns=['global_transmissibility'])
@@ -52,7 +53,7 @@ def HeatmapProcess(df):
     return df
     
 
-def MakeInfectionHeatmap(name, outputFile, inputFile, measureCols, startWeek=13, window=26):
+def MakeInfectionHeatmap(name, aggType, outputFile, inputFile, measureCols, startWeek=13, window=26):
     
     df = pd.read_csv(inputFile + '.csv',
                      index_col=list(range(4 + len(measureCols))),
@@ -61,14 +62,14 @@ def MakeInfectionHeatmap(name, outputFile, inputFile, measureCols, startWeek=13,
     # Do (startWeek + 1) because week 0 consists of a single day, day 0.
     df = df[[str(i + startWeek + 1) + '.0' for i in range(window)]]
     df = df.transpose().describe().transpose()
-    df = df[['50%']] / 7
-    df = df.rename(columns={'50%' : name})
+    df = df[[aggType]] / 7
+    df = df.rename(columns={aggType: name})
     
     df = HeatmapProcess(df)
     OutputToFile(df, outputFile)
     
 
-def MakeStagesHeatmap(name, outputFile, inputFile, measureCols, startWeek=13, window=26):
+def MakeStagesHeatmap(name, aggType, outputFile, inputFile, measureCols, startWeek=13, window=26):
     df = pd.read_csv(inputFile + '.csv',
                      index_col=list(range(4 + len(measureCols))),
                      header=list(range(3)))
@@ -79,24 +80,26 @@ def MakeStagesHeatmap(name, outputFile, inputFile, measureCols, startWeek=13, wi
     # Add 1 to the day because week 0 consists of a single day, day 0.
     df = df[[str(i + startWeek*7 + 1) for i in range(window*7)]]
     df = df.transpose().describe().transpose()
-    df = df[['50%']]
-    df = df.rename(columns={'50%' : name})
+    df = df[[aggType]]
+    df = df.rename(columns={aggType : name})
     
     df = HeatmapProcess(df)
     OutputToFile(df, outputFile)
 
+
 def MakeHeatmaps(dataDir, measureCols):
     processDir = dataDir + '/ABM_process/'
     visualDir = dataDir + '/ABM_heatmaps/'
+    aggType = 'mean'
     
     print('Processing MakeInfectionHeatmap full')
-    MakeInfectionHeatmap('full',
+    MakeInfectionHeatmap('full', aggType,
                          visualDir + 'infect_average_daily_full',
                          processDir + 'infect_unique_weeklyAgg',
                          measureCols,
                          startWeek=0, window=104)
     print('Processing MakeStagesHeatmap stage full')
-    MakeStagesHeatmap('full',
+    MakeStagesHeatmap('full', aggType,
                       visualDir + 'lockdown_proportion_full',
                       processDir + 'processed_stage',
                       measureCols,
@@ -105,12 +108,12 @@ def MakeHeatmaps(dataDir, measureCols):
     start = 0
     for i in range(4):
         print('Processing ' + str(start) + '_to_' + str(start + 26))
-        MakeInfectionHeatmap(str(start) + '_to_' + str(start + 26),
+        MakeInfectionHeatmap(str(start) + '_to_' + str(start + 26), aggType,
                              visualDir + 'infect_average_daily_' + str(start) + '_to_' + str(start + 26),
                              processDir + 'infect_unique_weeklyAgg',
                              measureCols,
                              startWeek=start, window=26)
-        MakeStagesHeatmap(str(start) + '_to_' + str(start + 26),
+        MakeStagesHeatmap(str(start) + '_to_' + str(start + 26), aggType,
                           visualDir + 'lockdown_proportion_' + str(start) + '_to_' + str(start + 26),
                           processDir + 'processed_stage',
                           measureCols,

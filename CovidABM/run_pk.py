@@ -13,6 +13,7 @@ from processedOutputToPMSLT import GetAggregates
 from processedOutputToReport import DoProcessingForReport
 
 
+#dataDir = '2021_05_04'
 dataDir = '2021_05_04'
 
 measureCols_raw =  ['param_policy', 'param_vac_rate_mult', 'param_final_phase',
@@ -22,6 +23,6 @@ measureCols =  ['param_policy', 'RolloutMonths', 'VacKids',
         'VacEfficacy', 'VacEff_VarMult', 'Var_R0_mult'] 
 
 #DoAbmProcessing(dataDir, measureCols, measureCols_raw)
-MakeHeatmaps(dataDir, measureCols)
+#MakeHeatmaps(dataDir, measureCols)
 #DoProcessingForPMSLT(dataDir, measureCols, months=24)
-#DoProcessingForReport(dataDir, measureCols, months=24)
+DoProcessingForReport(dataDir, measureCols, months=24)

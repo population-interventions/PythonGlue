@@ -117,6 +117,15 @@ def AddAndCleanInfections(subfolder, measureCols):
 
 ############### Stage Step 1 ###############
  
+def MakeStageMeanDf(df, stageName, stageNum):
+    df = df.apply(lambda c: [1 if x == stageNum else 0 for x in c])
+    df = df.groupby(level=[1], axis=1).mean()
+    col_index = df.columns.to_frame()
+    col_index.reset_index(drop=True, inplace=True)
+    col_index['stage'] = stageName
+    df.columns = pd.MultiIndex.from_frame(col_index)
+    return df
+
 def ProcessChunkStage(df, outputPrefix):
     df.columns.set_levels(df.columns.levels[1].astype(int), level=1, inplace=True)
     df.columns.set_levels(df.columns.levels[2].astype(int), level=2, inplace=True)
@@ -128,8 +137,12 @@ def ProcessChunkStage(df, outputPrefix):
     col_index['year'] = np.floor(col_index['day']/365).astype(int)
     df.columns = pd.MultiIndex.from_frame(col_index)
     
-    df = df.apply(lambda c: [1 if x > 2 else 0 for x in c])
-    df = df.groupby(level=[1], axis=1).mean()
+    
+    df = pd.concat([MakeStageMeanDf(df, 0, 0),
+                    MakeStageMeanDf(df, 1, 1),
+                    MakeStageMeanDf(df, 2, 2),
+                    MakeStageMeanDf(df, 3, 3),
+                    MakeStageMeanDf(df, 4, 4)], axis=1)
     
     index = df.index.to_frame()
     index = index.drop(columns=['run', 'global_transmissibility'])
@@ -154,8 +167,9 @@ def ProcessStageCohorts(measureCols, filename, outputPrefix):
 
 def SmartFormat(x):
     if x > 1:
-        return '{:,.0f}'.format(x)
+        return '{:,.2f}'.format(x/1000000)
     return '{:,.2f}%'.format(x*100)
+
 
 def ShapeMedianTable(df, measure, toSort):
     df = df.transpose()[measure]
@@ -165,10 +179,10 @@ def ShapeMedianTable(df, measure, toSort):
 
 
 def OutputMedianUncertainTables(df, outFile, toSort):
-    df = df.describe(percentiles=[0.1, 0.9])
+    df = df.describe(percentiles=[0.05, 0.95])
     df_med = ShapeMedianTable(df, '50%', toSort).applymap(SmartFormat)
-    df_upper = ShapeMedianTable(df, '90%', toSort).applymap(SmartFormat)
-    df_lower = ShapeMedianTable(df, '10%', toSort).applymap(SmartFormat)
+    df_upper = ShapeMedianTable(df, '95%', toSort).applymap(SmartFormat)
+    df_lower = ShapeMedianTable(df, '5%', toSort).applymap(SmartFormat)
     df_out = df_med + ' (' + df_lower + ' to ' + df_upper + ')'
     OutputToFile(df_out, outFile)
     
@@ -236,6 +250,7 @@ def GroupedMedianByVaccinationSpeed_sum(df, measure):
     df = df.groupby(level=[0], axis=1).sum()
     return df
 
+
 def GroupedMedianByVaccinationSpeed_mean(df, measure):
     df = df.unstack('rand_seed').stack(measure)
     df = df.transpose().describe().transpose()['mean']
@@ -248,15 +263,15 @@ def SplitDfByMeasure(df, measure=False):
     if measure:
         df = df.unstack(measure)
         
-    df = df.describe(percentiles=[0.1, 0.9])
+    df = df.describe(percentiles=[0.05, 0.95])
     df = df.transpose()
     if measure:
         df = df.unstack(measure)
     #print(df[['50%']].applymap(SmartFormat))
     
     df_med = df[['50%']].applymap(SmartFormat)
-    df_upper = df[['90%']].applymap(SmartFormat)
-    df_lower = df[['10%']].applymap(SmartFormat)
+    df_upper = df[['95%']].applymap(SmartFormat)
+    df_lower = df[['5%']].applymap(SmartFormat)
     
     if measure:
         df_med.columns = df_med.columns.droplevel(0)
@@ -264,8 +279,8 @@ def SplitDfByMeasure(df, measure=False):
         df_lower.columns = df_lower.columns.droplevel(0)
     else:
         df_med = df_med.rename(columns={'50%' : 'value'})
-        df_upper = df_upper.rename(columns={'90%' : 'value'})
-        df_lower = df_lower.rename(columns={'10%' : 'value'})
+        df_upper = df_upper.rename(columns={'95%' : 'value'})
+        df_lower = df_lower.rename(columns={'5%' : 'value'})
     
     df_out = df_med + ' (' + df_lower + ' to ' + df_upper + ')'
     return df_out
@@ -312,11 +327,12 @@ def MakeTableFive(subfolder, measureCols):
     path = subfolder + '/Report_out/table5'
     OutputLineCompare(iDf, sDf, False, False, path)
     OutputLineCompare(iDf, sDf, 'R0', [2.5, 3], path)
-    OutputLineCompare(iDf, sDf, 'param_policy', ['ModerateSupress', 'ModerateSupress_No_4'], path)
-    OutputLineCompare(iDf, sDf, 'VacEfficacy', [0.95, 0.875, 0.75], path)
-    OutputLineCompare(iDf, sDf, 'Var_R0_mult', [1.3, 1.45, 1.6], path)
-    OutputLineCompare(iDf, sDf, 'VacEff_VarMult', [0.95, 0.8], path)
-    OutputLineCompare(iDf, sDf, 'VacKids', ['No', 'Yes'], path)
+    OutputLineCompare(iDf, sDf, 'param_policy', ['Stage2', 'Stage2b'], path)
+    #OutputLineCompare(iDf, sDf, 'param_policy', ['ModerateSupress', 'ModerateSupress_No_4'], path)
+    #OutputLineCompare(iDf, sDf, 'VacEfficacy', [0.95, 0.875, 0.75], path)
+    #OutputLineCompare(iDf, sDf, 'Var_R0_mult', [1.3, 1.45, 1.6], path)
+    #OutputLineCompare(iDf, sDf, 'VacEff_VarMult', [0.95, 0.8], path)
+    #OutputLineCompare(iDf, sDf, 'VacKids', ['No', 'Yes'], path)
     
     
 ############### Organisation (mostly for commenting) ###############
@@ -335,6 +351,7 @@ def ProcessInfectionCohorts(subfolder, measureCols, months):
                          subfolder + '/Report_process/infect_noVac',
                          months)
 
+
 def ProcessStages(subfolder, measureCols):
     ProcessStageCohorts(measureCols,
                         subfolder + '/ABM_process/processed_stage',
@@ -347,11 +364,11 @@ def ProcessInfection(subfolder, measureCols, months=12):
 ###############  ###############
 
 def DoProcessingForReport(subfolder, measureCols, months=12):
-    #ProcessStages(subfolder, measureCols)
+    ProcessStages(subfolder, measureCols)
     #ProcessInfection(subfolder, measureCols, months)
     #AddAndCleanInfections(subfolder, measureCols)
     
     #OutputInfectReportTables(subfolder, measureCols)
     #OutputStageReportTables(subfolder, measureCols)
     
-    MakeTableFive(subfolder, measureCols)
+    #MakeTableFive(subfolder, measureCols)
