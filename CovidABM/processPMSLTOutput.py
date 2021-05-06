@@ -82,7 +82,6 @@ def ProcessPMSLTResults(dataDir, measureCols):
                      header=list(range(2)))
     
     df = df.unstack('RolloutMonths')
-    print(df)
     df = df.reorder_levels([2, 1, 0], axis=1)
     df_vac = df.sub(df[0], axis=0) * -1
     

@@ -5,9 +5,9 @@ Created on Wed Mar 31 12:16:11 2021
 @author: wilsonte
 """
 
-
 from processNetlogoOutput import DoAbmProcessing
 from makeHeatmaps import MakeHeatmaps
+from makeGraphs import MakeGraphs
 from processedOutputToPMSLT import DoProcessingForPMSLT
 from processedOutputToPMSLT import GetAggregates
 from processedOutputToReport import DoProcessingForReport
@@ -27,4 +27,6 @@ measureCols =  ['param_policy', 'RolloutMonths', 'VacKids',
 #MakeHeatmaps(dataDir, measureCols)
 #DoProcessingForPMSLT(dataDir, measureCols, months=24)
 #DoProcessingForReport(dataDir, measureCols, months=24)
-ProcessPMSLTResults(dataDir, measureCols)
+#ProcessPMSLTResults(dataDir, measureCols)
+
+MakeGraphs(dataDir, measureCols)
