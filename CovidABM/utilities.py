@@ -102,6 +102,6 @@ def ToHeatmap(df, index_rows, index_cols, sort_rows=[], sort_cols=[]):
     df = df.sort_index(axis=0, level=0)
     df = df.sort_index(axis=1, level=0)
     
-    df.columns = df.columns.droplevel(level=1)
-    df.index = df.index.droplevel(level=0)
+    df.columns = df.columns.droplevel(level='_sort_col')
+    df.index = df.index.droplevel(level='_sort_row')
     return df

@@ -9,15 +9,14 @@ from utilities import ToHeatmap
 
 def HeatmapProcess(df):
     df = df.reset_index()
-    df = df.drop(columns=['global_transmissibility'])
-
+    
     df = ToHeatmap(df,
         ['param_policy', 'Var_R0_mult', 'R0', 'VacKids'],
         ['VacEfficacy', 'VacEff_VarMult', 'RolloutMonths'],
         sort_rows=[
             ['param_policy', {
-                'ModerateSupress_No_4' : 'b',
-                'ModerateSupress' : 'a',
+                'Stage2' : 'b',
+                'Stage2b' : 'a',
             }],
             ['Var_R0_mult', {
                 1.3 : 'a',
@@ -44,9 +43,10 @@ def HeatmapProcess(df):
                 0.95 : 'a',
             }],
             ['RolloutMonths', {
-                8 : 'a',
-                12 : 'b',
-                16 : 'c',
+                0 : 'a',
+                8 : 'b',
+                12 : 'c',
+                16 : 'd',
             }],
         ]
     )
@@ -80,6 +80,8 @@ def ProcessPMSLTResults(dataDir, measureCols):
     df = pd.read_csv(processDir + 'PMSLT_out' + '.csv',
                      index_col=list(range(1 + len(measureCols))),
                      header=list(range(2)))
+    
+    OutputToFile(HeatmapProcess(df['life', 'deaths']), dataDir + '/PMSLT_heatmaps/deaths')
     
     df = df.unstack('RolloutMonths')
     df = df.reorder_levels([2, 1, 0], axis=1)

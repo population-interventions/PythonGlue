@@ -16,6 +16,7 @@ from processPMSLTOutput import ProcessPMSLTResults
 
 #dataDir = '2021_05_04'
 dataDir = '2021_05_04'
+dataDir = '2021_05_05_stage2b'
 
 measureCols_raw =  ['param_policy', 'param_vac_rate_mult', 'param_final_phase',
         'variant_transmiss_growth', 'param_vac_tran_reduct', 'vac_variant_eff_prop']
@@ -27,6 +28,6 @@ measureCols =  ['param_policy', 'RolloutMonths', 'VacKids',
 #MakeHeatmaps(dataDir, measureCols)
 #DoProcessingForPMSLT(dataDir, measureCols, months=24)
 #DoProcessingForReport(dataDir, measureCols, months=24)
-#ProcessPMSLTResults(dataDir, measureCols)
+ProcessPMSLTResults(dataDir, measureCols)
 
-MakeGraphs(dataDir, measureCols)
+#MakeGraphs(dataDir, measureCols)
