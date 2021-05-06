@@ -138,11 +138,11 @@ def ProcessChunkStage(df, outputPrefix):
     df.columns = pd.MultiIndex.from_frame(col_index)
     
     
-    df = pd.concat([MakeStageMeanDf(df, 0, 0),
-                    MakeStageMeanDf(df, 1, 1),
-                    MakeStageMeanDf(df, 2, 2),
-                    MakeStageMeanDf(df, 3, 3),
-                    MakeStageMeanDf(df, 4, 4)], axis=1)
+    df = pd.concat([MakeStageMeanDf(df, 's1', 0),
+                    MakeStageMeanDf(df, 's1b', 1),
+                    MakeStageMeanDf(df, 's2', 2),
+                    MakeStageMeanDf(df, 's3', 3),
+                    MakeStageMeanDf(df, 's4', 4)], axis=1)
     
     index = df.index.to_frame()
     index = index.drop(columns=['run', 'global_transmissibility'])
@@ -165,9 +165,9 @@ def ProcessStageCohorts(measureCols, filename, outputPrefix):
 
 ############### Median Table Shared ###############
 
-def SmartFormat(x):
+def SmartFormat(x, exponent=10**6):
     if x > 1:
-        return '{:,.2f}'.format(x/1000000)
+        return '{:,.2f}'.format(x/exponent)
     return '{:,.2f}%'.format(x*100)
 
 
@@ -178,11 +178,16 @@ def ShapeMedianTable(df, measure, toSort):
     return df
 
 
-def OutputMedianUncertainTables(df, outFile, toSort):
+def OutputMedianUncertainTables(df, outFile, toSort, exponent=10**6):
+    def Format(x):
+        if x > 1:
+            return '{:,.2f}'.format(x/exponent)
+        return '{:,.2f}%'.format(x*100)
+
     df = df.describe(percentiles=[0.05, 0.95])
-    df_med = ShapeMedianTable(df, '50%', toSort).applymap(SmartFormat)
-    df_upper = ShapeMedianTable(df, '95%', toSort).applymap(SmartFormat)
-    df_lower = ShapeMedianTable(df, '5%', toSort).applymap(SmartFormat)
+    df_med = ShapeMedianTable(df, '50%', toSort).applymap(Format)
+    df_upper = ShapeMedianTable(df, '95%', toSort).applymap(Format)
+    df_lower = ShapeMedianTable(df, '5%', toSort).applymap(Format)
     df_out = df_med + ' (' + df_lower + ' to ' + df_upper + ')'
     OutputToFile(df_out, outFile)
     
@@ -216,48 +221,70 @@ def OutputInfectReportTables(subfolder, measureCols):
                              header=list(range(2)))
     
     measure = ['year', 'age_min']
-    print('ConstructMedian Infect')
-    ConstructMedian(infectDf, measure, subfolder + '/Report_out/bigMedian')
+    
+    #print('ConstructMedian Infect')
+    #ConstructMedian(infectDf, measure, subfolder + '/Report_out/medianAll')
     print('ConstructGroupedMedian Infect')
-    ConstructGroupedMedian(infectDf, measure, subfolder + '/Report_out/groupedMedian')
+    ConstructGroupedMedian(infectDf, measure, subfolder + '/Report_out/medianAverage')
     print('ConstructGroupedMedianNoVacCompare Infect')
-    ConstructGroupedMedianNoVacCompare(infectDf, measure, subfolder + '/Report_out/groupedMinusNoVac')
+    ConstructGroupedMedianNoVacCompare(infectDf, measure, subfolder + '/Report_out/medianAverage_diff')
 
     
 def OutputStageReportTables(subfolder, measureCols):
     stageFile = subfolder + '/Report_process/stage'
     stageDf = pd.read_csv(stageFile + '.csv', 
                              index_col=list(range(2 + len(measureCols))),
-                             header=[0])
-    col_index = stageDf.columns.to_frame().rename(columns={0 : 'year'})
-    stageDf.columns = pd.MultiIndex.from_frame(col_index)
+                             header=[0, 1])
+    
     measure = ['year']
+    stageDf = stageDf.reorder_levels([1, 0], axis=1)
+    stageDf = stageDf['s3'] + stageDf['s4']
     
-    print('ConstructMedian Stage')
-    ConstructMedian(stageDf, measure, subfolder + '/Report_out/bigMedian_stage')
+    #print('ConstructMedian Stage')
+    #ConstructMedian(stageDf, measure, subfolder + '/Report_out/medianAll_stage')
     print('ConstructGroupedMedian Stage')
-    ConstructGroupedMedian(stageDf, measure, subfolder + '/Report_out/groupedMedian_stage')
+    ConstructGroupedMedian(stageDf, measure, subfolder + '/Report_out/medianAverage_stage')
     print('ConstructGroupedMedianNoVacCompare Stage')
-    ConstructGroupedMedianNoVacCompare(stageDf, measure, subfolder + '/Report_out/groupedMinusNoVac_stage')
+    ConstructGroupedMedianNoVacCompare(stageDf, measure, subfolder + '/Report_out/medianAverage_diff_stage')
     
-############### Median Table Processing ###############
+############### Take averages of 100 runs ###############
 
 
 def GroupedMedianByVaccinationSpeed_sum(df, measure):
     df = df.unstack('rand_seed').stack(measure)
     df = df.transpose().describe().transpose()['mean']
-    df = df.unstack(['RolloutMonths'] + measure)
-    df = df.groupby(level=[0], axis=1).sum()
+    df = df.unstack(measure)
     return df
 
 
 def GroupedMedianByVaccinationSpeed_mean(df, measure):
     df = df.unstack('rand_seed').stack(measure)
     df = df.transpose().describe().transpose()['mean']
-    df = df.unstack(['RolloutMonths'] + measure)
-    df = df.groupby(level=[0], axis=1).mean()
+    df = df.unstack(measure)
     return df
 
+
+def ProcessAverageOverSeeds(subfolder, measureCols):
+    print('Process Rollout Median load stage file')
+    stageFile = subfolder + '/Report_process/stage'
+    stageDf = pd.read_csv(stageFile + '.csv', 
+                             index_col=list(range(2 + len(measureCols))),
+                             header=[0, 1])
+    
+    stageDf = GroupedMedianByVaccinationSpeed_mean(stageDf, ['year', 'stage'])
+    OutputToFile(stageDf, subfolder + '/Report_process/average_seeds_stage')
+
+    print('Process Rollout Median load infect file')
+    infectFile = subfolder + '/Report_process/infect_total'
+    infectDf = pd.read_csv(infectFile + '.csv', 
+                             index_col=list(range(2 + len(measureCols))),
+                             header=list(range(2)))
+
+    infectDf = GroupedMedianByVaccinationSpeed_sum(infectDf, ['year', 'age_min'])
+    OutputToFile(infectDf, subfolder + '/Report_process/average_seeds_infect')
+    
+    
+############### Median Table Processing ###############
 
 def SplitDfByMeasure(df, measure=False):
     if measure:
@@ -286,55 +313,108 @@ def SplitDfByMeasure(df, measure=False):
     return df_out
 
 
-def OutputLineCompare(infectDf, stageDf, measure=False, paramList=False, path=''):
+def OutputLineCompare(infectDf, df_s34, df_s4, measure=False,
+                      paramList=False, path='', doFourOnly=False):
     if measure:
         print('Output ' + measure)
     else:
         print('Output Full')
     infectDf = SplitDfByMeasure(infectDf, measure)
-    stageDf = SplitDfByMeasure(stageDf, measure)
-    print(infectDf)
-    print(stageDf)
+    df_s34 = SplitDfByMeasure(df_s34, measure)
+    df_s4 = SplitDfByMeasure(df_s4, measure)
+
     if paramList:
         for param in paramList:
-            OutputToFile(infectDf[[param]].transpose().reset_index(drop=True), path)
-            OutputToFile(stageDf[[param]].transpose().reset_index(drop=True), path)
+            df = infectDf[[param]].transpose().reset_index(drop=True)
+            df = df.rename(index={0 : measure + '_' + str(param)})
+            OutputToFile(df, path)
+            df = df_s34[[param]].transpose().reset_index(drop=True)
+            df = df.rename(index={0 : measure + '_' + str(param) + '_s34'})
+            OutputToFile(df, path)
+            if doFourOnly and param in doFourOnly:
+                df = df_s4[[param]].transpose().reset_index(drop=True)
+                df = df.rename(index={0 : measure + '_' + str(param) + '_s4'})
+                OutputToFile(df, path)
+                
     else:
-        OutputToFile(infectDf.transpose().reset_index(drop=True), path)
-        OutputToFile(stageDf.transpose().reset_index(drop=True), path)
+        df = infectDf.transpose().reset_index(drop=True)
+        df = df.rename(index={0 : 'full'})
+        OutputToFile(df, path)
+        df = df_s34.transpose().reset_index(drop=True)
+        df = df.rename(index={0 : 'full_s34'})
+        OutputToFile(df, path)
 
 
-def MakeTableFive(subfolder, measureCols):
-    print('MakeTableFive load stage file')
-    stageFile = subfolder + '/Report_process/stage'
-    sDf = pd.read_csv(stageFile + '.csv', 
-                             index_col=list(range(2 + len(measureCols))),
-                             header=[0])
-    col_index = sDf.columns.to_frame().rename(columns={0 : 'year'})
-    sDf.columns = pd.MultiIndex.from_frame(col_index)
+def MakeTableFive(subfolder, measureCols, doDiff=False):
+    print('MakeTableFive load average stage file')
+    stageFile = subfolder + '/Report_process/average_seeds_stage'
+    stageDf = pd.read_csv(stageFile + '.csv', 
+                             index_col=list(range(1 + len(measureCols))),
+                             header=[0, 1])
     
-    print('MakeTableFive load infect file')
-    infectFile = subfolder + '/Report_process/infect_total'
-    iDf = pd.read_csv(infectFile + '.csv', 
-                             index_col=list(range(2 + len(measureCols))),
+    df_s34 = stageDf.reorder_levels([1, 0], axis=1)
+    df_s34 = df_s34['s3'] + df_s34['s4']
+    df_s34 = df_s34.unstack('RolloutMonths')
+    df_s34 = df_s34.groupby(level=[1], axis=1).mean()
+    
+    df_s4 = stageDf.reorder_levels([1, 0], axis=1)
+    df_s4 = df_s4['s4']
+    df_s4 = df_s4.unstack('RolloutMonths')
+    df_s4 = df_s4.groupby(level=[1], axis=1).mean()
+    
+    print('MakeTableFive load average infect file')
+    infectFile = subfolder + '/Report_process/average_seeds_infect'
+    df_inf = pd.read_csv(infectFile + '.csv', 
+                             index_col=list(range(1 + len(measureCols))),
                              header=list(range(2)))
-
-    print('MakeTableFive group stage file')
-    sDf = GroupedMedianByVaccinationSpeed_mean(sDf, ['year'])
-    print('MakeTableFive group infect file')
-    iDf = GroupedMedianByVaccinationSpeed_sum(iDf, ['year', 'age_min'])
+    df_inf = df_inf.unstack('RolloutMonths')
+    df_inf = df_inf.groupby(level=[2], axis=1).sum()
     
     path = subfolder + '/Report_out/table5'
-    OutputLineCompare(iDf, sDf, False, False, path)
-    OutputLineCompare(iDf, sDf, 'R0', [2.5, 3], path)
-    OutputLineCompare(iDf, sDf, 'param_policy', ['Stage2', 'Stage2b'], path)
-    #OutputLineCompare(iDf, sDf, 'param_policy', ['ModerateSupress', 'ModerateSupress_No_4'], path)
-    #OutputLineCompare(iDf, sDf, 'VacEfficacy', [0.95, 0.875, 0.75], path)
-    #OutputLineCompare(iDf, sDf, 'Var_R0_mult', [1.3, 1.45, 1.6], path)
-    #OutputLineCompare(iDf, sDf, 'VacEff_VarMult', [0.95, 0.8], path)
-    #OutputLineCompare(iDf, sDf, 'VacKids', ['No', 'Yes'], path)
+    if doDiff:
+        path = path + '_diff'
+        df_s34 = df_s34.sub(df_s34[0], axis=0) * -1
+        df_s4 = df_s4.sub(df_s4[0], axis=0) * -1
+        df_inf = df_inf.sub(df_inf[0], axis=0) * -1
+
+    OutputLineCompare(df_inf, df_s34, df_s4, False, False, path)
+    OutputLineCompare(df_inf, df_s34, df_s4, 'R0', [2.5, 3], path)
+    #OutputLineCompare(df_inf, df_s34, df_s4, 'param_policy', ['Stage2', 'Stage2b'], path)
+    OutputLineCompare(df_inf, df_s34, df_s4, 'param_policy', ['ModerateSupress', 'ModerateSupress_No_4'],
+                      path, doFourOnly={'ModerateSupress' : True})
+    OutputLineCompare(df_inf, df_s34, df_s4, 'VacEfficacy', [0.95, 0.875, 0.75], path)
+    OutputLineCompare(df_inf, df_s34, df_s4, 'Var_R0_mult', [1.3, 1.45, 1.6], path)
+    OutputLineCompare(df_inf, df_s34, df_s4, 'VacEff_VarMult', [0.95, 0.8], path)
+    OutputLineCompare(df_inf, df_s34, df_s4, 'VacKids', ['No', 'Yes'], path)
     
+############### Process GDP ###############
     
+def ProcessGDP(subfolder, measureCols, doDiff=False):
+    print('ProcessGDP')
+    
+    gdp_effects = pd.read_csv(subfolder + '/other_input/gdp_cost' + '.csv',
+                header=[0])
+    gdp_effects = gdp_effects.set_index(['stage'])
+    
+    stageFile = subfolder + '/Report_process/average_seeds_stage'
+    stageDf = pd.read_csv(stageFile + '.csv', 
+                             index_col=list(range(1 + len(measureCols))),
+                             header=[0, 1])
+    
+    stageDf = stageDf.transpose().reorder_levels([1, 0], axis=0).unstack('year') * 365 / 7
+    stageDf = stageDf.mul(gdp_effects['gdpPerWeek'], axis=0).transpose()
+    stageDf = stageDf.unstack(['RolloutMonths']).groupby(level=[1], axis=1).sum()
+    stageDf = stageDf.unstack('year').reorder_levels([1, 0], axis=1)
+    stageDf['1'] = stageDf['0'] + stageDf['1']
+    stageDf = stageDf.reorder_levels([1, 0], axis=1)
+    
+    path = subfolder + '/Report_out/gdp'
+    if doDiff:
+        path = path + '_diff'
+        stageDf = stageDf.sub(stageDf[0], axis=0) * -1
+    OutputMedianUncertainTables(stageDf, path, ['year'], exponent=10**9)
+
+
 ############### Organisation (mostly for commenting) ###############
 
 def ProcessInfectionCohorts(subfolder, measureCols, months):
@@ -364,11 +444,19 @@ def ProcessInfection(subfolder, measureCols, months=12):
 ###############  ###############
 
 def DoProcessingForReport(subfolder, measureCols, months=12):
-    ProcessStages(subfolder, measureCols)
+    #ProcessStages(subfolder, measureCols)
     #ProcessInfection(subfolder, measureCols, months)
     #AddAndCleanInfections(subfolder, measureCols)
     
     #OutputInfectReportTables(subfolder, measureCols)
     #OutputStageReportTables(subfolder, measureCols)
     
+    #ProcessAverageOverSeeds(subfolder, measureCols)
     #MakeTableFive(subfolder, measureCols)
+    #MakeTableFive(subfolder, measureCols, doDiff=True)
+    
+    ProcessGDP(subfolder, measureCols)
+    ProcessGDP(subfolder, measureCols, doDiff=True)
+
+
+
