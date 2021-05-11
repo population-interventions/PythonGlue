@@ -313,8 +313,8 @@ def SplitDfByMeasure(df, measure=False):
     return df_out
 
 
-def OutputLineCompare(infectDf, df_s34, df_s4, measure=False,
-                      paramList=False, path='', doFourOnly=False):
+def OutputLineCompare(infectDf, df_s34, df_s4, path, measure=False,
+                      paramList=False, doFourOnly=False):
     if measure:
         print('Output ' + measure)
     else:
@@ -345,7 +345,7 @@ def OutputLineCompare(infectDf, df_s34, df_s4, measure=False,
         OutputToFile(df, path)
 
 
-def MakeTableFive(subfolder, measureCols, doDiff=False):
+def MakeTableFive(subfolder, measureCols, table5Rows, doDiff=False):
     print('MakeTableFive load average stage file')
     stageFile = subfolder + '/Report_process/average_seeds_stage'
     stageDf = pd.read_csv(stageFile + '.csv', 
@@ -377,15 +377,9 @@ def MakeTableFive(subfolder, measureCols, doDiff=False):
         df_s4 = df_s4.sub(df_s4[0], axis=0) * -1
         df_inf = df_inf.sub(df_inf[0], axis=0) * -1
 
-    OutputLineCompare(df_inf, df_s34, df_s4, False, False, path)
-    OutputLineCompare(df_inf, df_s34, df_s4, 'R0', [2.5, 3], path)
-    #OutputLineCompare(df_inf, df_s34, df_s4, 'param_policy', ['Stage2', 'Stage2b'], path)
-    OutputLineCompare(df_inf, df_s34, df_s4, 'param_policy', ['ModerateSupress', 'ModerateSupress_No_4'],
-                      path, doFourOnly={'ModerateSupress' : True})
-    OutputLineCompare(df_inf, df_s34, df_s4, 'VacEfficacy', [0.95, 0.875, 0.75], path)
-    OutputLineCompare(df_inf, df_s34, df_s4, 'Var_R0_mult', [1.3, 1.45, 1.6], path)
-    OutputLineCompare(df_inf, df_s34, df_s4, 'VacEff_VarMult', [0.95, 0.8], path)
-    OutputLineCompare(df_inf, df_s34, df_s4, 'VacKids', ['No', 'Yes'], path)
+    for values in table5Rows:
+        OutputLineCompare(df_inf, df_s34, df_s4, path, *values)
+
     
 ############### Process GDP ###############
     
@@ -443,17 +437,17 @@ def ProcessInfection(subfolder, measureCols, months=12):
 
 ###############  ###############
 
-def DoProcessingForReport(subfolder, measureCols, months=12):
-    #ProcessStages(subfolder, measureCols)
-    #ProcessInfection(subfolder, measureCols, months)
-    #AddAndCleanInfections(subfolder, measureCols)
+def DoProcessingForReport(subfolder, measureCols, table5Rows, months=12):
+    ProcessStages(subfolder, measureCols)
+    ProcessInfection(subfolder, measureCols, months)
+    AddAndCleanInfections(subfolder, measureCols)
     
-    #OutputInfectReportTables(subfolder, measureCols)
-    #OutputStageReportTables(subfolder, measureCols)
+    OutputInfectReportTables(subfolder, measureCols)
+    OutputStageReportTables(subfolder, measureCols)
     
-    #ProcessAverageOverSeeds(subfolder, measureCols)
-    #MakeTableFive(subfolder, measureCols)
-    #MakeTableFive(subfolder, measureCols, doDiff=True)
+    ProcessAverageOverSeeds(subfolder, measureCols)
+    MakeTableFive(subfolder, measureCols, table5Rows)
+    MakeTableFive(subfolder, measureCols, table5Rows, doDiff=True)
     
     ProcessGDP(subfolder, measureCols)
     ProcessGDP(subfolder, measureCols, doDiff=True)

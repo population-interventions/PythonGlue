@@ -279,12 +279,12 @@ def ProcessStages(subfolder, measureCols, months=12):
         measureCols, subfolder,
         subfolder + '/PMSLT_process/stage_results/', subfolder + '/PMSLT_input',
         months=12)
-    
-    
+
+
 def DoProcessingForPMSLT(subfolder, measureCols, months=12):
     ProcessInfection(subfolder, measureCols, months)
     ProcessStages(subfolder, measureCols, months)
-    
+
 
 def GetAggregates(subfolder, measureCols):
     OutputAggregate(subfolder + '/PMSLT_input/', measureCols)

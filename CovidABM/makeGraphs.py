@@ -25,7 +25,7 @@ def MakeGraphs(dataDir, measureCols):
     df = df.sort_index()
     
     df = df / 7
-    df = df.loc['ModerateSupress', 'No', 1.3, 0.95, 0.95, 2.5]
+    df = df.loc['Stage2', 'Yes', 1.3, 0.95, 0.95, 2.5]
     
     df = df.unstack('RolloutMonths')
     OutputToFile(df, visualDir + 'focus_data_in')
@@ -38,6 +38,5 @@ def MakeGraphs(dataDir, measureCols):
     df[0].plot()
     df[8].plot()
     df[12].plot()
-    df[16].plot()
     
     OutputToFile(df, visualDir + 'focus_scenario')
