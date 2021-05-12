@@ -5,28 +5,74 @@ import numpy as np
 
 from utilities import OutputToFile
 from utilities import ToHeatmap
+from processedOutputToReport import OutputLineCompare
 
 
-def HeatmapProcess(df):
-    df.index = df.index.droplevel('measure')
+def HeatmapProcessNoRollout(df):
     df = df.reset_index()
-    
+
     df = ToHeatmap(df,
-        ['param_policy', 'Var_R0_mult', 'R0', 'VacKids'],
-        ['VacEfficacy', 'VacEff_VarMult', 'RolloutMonths'],
+        ['param_policy', 'R0', 'Var_R0_mult', 'VacKids'],
+        ['VacEfficacy', 'VacEff_VarMult'],
         sort_rows=[
             ['param_policy', {
-                'Stage2' : 'b',
-                'Stage2b' : 'a',
+                'ModerateSupress_No_4' : 'b',
+                'ModerateSupress' : 'a',
+            }],
+            ['R0', {
+                2.5 : 'a',
+                3 : 'b',
             }],
             ['Var_R0_mult', {
                 1.3 : 'a',
                 1.45 : 'b',
                 1.6 : 'c',
             }],
+            ['VacKids', {
+                'Yes' : 'a',
+                'No' : 'b',
+            }],
+        ], 
+        sort_cols=[
+            ['VacEfficacy', {
+                0.75 : 'c',
+                0.875 : 'b',
+                0.95 : 'a',
+            }],
+            ['VacEff_VarMult', {
+                0.8 : 'b',
+                0.95 : 'a',
+            }],
+        ]
+    )
+    
+    df = df[df.index.get_level_values('Var_R0_mult') != 1.45]
+    df = df.transpose()
+    df = df[df.index.get_level_values('VacEfficacy') != 0.875]
+    df = df.transpose()
+    
+    return df
+
+
+def HeatmapProcess(df):
+    df = df.reset_index()
+
+    df = ToHeatmap(df,
+        ['param_policy', 'R0', 'Var_R0_mult', 'VacKids'],
+        ['VacEfficacy', 'VacEff_VarMult', 'RolloutMonths'],
+        sort_rows=[
+            ['param_policy', {
+                'ModerateSupress_No_4' : 'b',
+                'ModerateSupress' : 'a',
+            }],
             ['R0', {
                 2.5 : 'a',
                 3 : 'b',
+            }],
+            ['Var_R0_mult', {
+                1.3 : 'a',
+                1.45 : 'b',
+                1.6 : 'c',
             }],
             ['VacKids', {
                 'Yes' : 'a',
@@ -44,14 +90,20 @@ def HeatmapProcess(df):
                 0.95 : 'a',
             }],
             ['RolloutMonths', {
-                0 : 'a',
-                8 : 'b',
-                12 : 'c',
-                16 : 'd',
+                8 : 'a',
+                12 : 'b',
+                16 : 'c',
             }],
         ]
     )
+    
+    df = df[df.index.get_level_values('Var_R0_mult') != 1.45]
+    df = df.transpose()
+    df = df[df.index.get_level_values('VacEfficacy') != 0.875]
+    df = df.transpose()
+    
     return df
+
     
 def SmartFormat(x):
     if x > 1 or x < -1:
@@ -92,27 +144,43 @@ def ProcessGDP(subfolder, measureCols):
     return stageDf
     
     
-def ProcessHealthPerspective(df, reportDir, subfolder, measureCols, addGDP=False):
+def ProcessHealthPerspective(df, reportDir, subfolder, measureCols, healthPerspectiveRows, addGDP=False):
     df = df['life']
     df_HALY = df['HALY']
-    df_HALY = df_HALY.sub(df_HALY[0.0], axis=0) * -1
+    df_HALY_diff = df_HALY.sub(df_HALY[0.0], axis=0) * -1
     df_spent = df['spent']
-    df_spent = df_spent.sub(df_spent[0.0], axis=0)
-    df_spent_12b = df_spent
+    df_spent_diff = df_spent.sub(df_spent[0.0], axis=0)
     
     gdpCost = ProcessGDP(subfolder, measureCols)
-    gdpCost = gdpCost.sub(gdpCost[0.0], axis=0)
-    #print(gdpCost[12])
-    #print((df_spent[12] + 1.2 * 10**9))
-    #print(df_HALY[12])
-    df_ICER = (df_spent[12] + 1.2 * 10**9 + gdpCost[12]) / df_HALY[12]
-    #print(df_column_one)
+    gdpCost_diff = gdpCost.sub(gdpCost[0.0], axis=0)
     
+    df_ICER = (df_spent_diff[12] + 1.2 * 10**9) / df_HALY_diff[12]
     df_spend_to_8 = 1300 * (df_HALY[12] - df_HALY[8]) - (df_spent[12] - df_spent[8])
-    print(df_column_two)
+    if addGDP:
+        df_ICER = df_ICER + gdpCost_diff[12] / df_HALY_diff[12]
+        df_spend_to_8 = df_spend_to_8 - (gdpCost[12] - gdpCost[8])
+    
+    df_full = pd.DataFrame({'ICER' : df_ICER, 'spendTo8' : df_spend_to_8})
+
+    path = reportDir + 'health_perspective'
+    heatmapPath = subfolder + '/PMSLT_heatmaps/ICER'
+    if addGDP:
+        path = path + '_add_gdp'
+        heatmapPath = heatmapPath + '_add_gdp'
+    
+    OutputToFile(HeatmapProcessNoRollout(df_ICER), heatmapPath)
+    
+    def SmartFormat(x, exponent=10**6):
+        if abs(x) > 10**6:
+            return '{:,.1f}'.format(x/10**6)
+        return '{:,.0f}'.format(x)
+    
+    for values in healthPerspectiveRows:
+        OutputLineCompare(df_full, False, False, path, *values, formatFunc=SmartFormat)
     
 
-def ProcessPMSLTResults(dataDir, measureCols):
+def ProcessPMSLTResults(dataDir, measureCols, healthPerspectiveRows):
+    print('ProcessPMSLTResults')
     processDir = dataDir + '/PMSLT_out/'
     reportDir = dataDir + '/Report_out/'
     
@@ -120,6 +188,7 @@ def ProcessPMSLTResults(dataDir, measureCols):
                      index_col=list(range(1 + len(measureCols))),
                      header=list(range(2)))
     
+    print('HeatmapProcess')
     OutputToFile(HeatmapProcess(df[[['life', 'deaths']]].stack('measure')), dataDir + '/PMSLT_heatmaps/deaths')
     
     df = df.unstack('RolloutMonths')
@@ -129,7 +198,10 @@ def ProcessPMSLTResults(dataDir, measureCols):
     df_vac = df_vac.reorder_levels([2, 1, 0], axis=1)
     df = df.reorder_levels([2, 1, 0], axis=1)
     
-    ProcessHealthPerspective(df, reportDir, dataDir, measureCols)
+    print('ProcessHealthPerspective')
+    ProcessHealthPerspective(df, reportDir, dataDir, measureCols, healthPerspectiveRows, False)
+    ProcessHealthPerspective(df, reportDir, dataDir, measureCols, healthPerspectiveRows, True)
     
+    print('OutputMedianUncertainTables')
     OutputMedianUncertainTables(df, reportDir + 'process_describe', ['measure', 'period'])
     OutputMedianUncertainTables(df_vac, reportDir + 'process_describe_vacCompare', ['measure', 'period'])

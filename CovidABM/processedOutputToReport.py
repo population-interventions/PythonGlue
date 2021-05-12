@@ -286,7 +286,7 @@ def ProcessAverageOverSeeds(subfolder, measureCols):
     
 ############### Median Table Processing ###############
 
-def SplitDfByMeasure(df, measure=False):
+def SplitDfByMeasure(df, measure=False, formatFunc=False):
     if measure:
         df = df.unstack(measure)
         
@@ -294,11 +294,13 @@ def SplitDfByMeasure(df, measure=False):
     df = df.transpose()
     if measure:
         df = df.unstack(measure)
-    #print(df[['50%']].applymap(SmartFormat))
+    #print(df[['50%']].applymap(formatFunc))
+    if not formatFunc:
+        formatFunc = SmartFormat
     
-    df_med = df[['50%']].applymap(SmartFormat)
-    df_upper = df[['95%']].applymap(SmartFormat)
-    df_lower = df[['5%']].applymap(SmartFormat)
+    df_med = df[['50%']].applymap(formatFunc)
+    df_upper = df[['95%']].applymap(formatFunc)
+    df_lower = df[['5%']].applymap(formatFunc)
     
     if measure:
         df_med.columns = df_med.columns.droplevel(0)
@@ -313,24 +315,27 @@ def SplitDfByMeasure(df, measure=False):
     return df_out
 
 
-def OutputLineCompare(infectDf, df_s34, df_s4, path, measure=False,
-                      paramList=False, doFourOnly=False):
+def OutputLineCompare(infectDf, df_s34=False, df_s4=False, path='', measure=False,
+                      paramList=False, doFourOnly=False, formatFunc=False):
     if measure:
         print('Output ' + measure)
     else:
         print('Output Full')
-    infectDf = SplitDfByMeasure(infectDf, measure)
-    df_s34 = SplitDfByMeasure(df_s34, measure)
-    df_s4 = SplitDfByMeasure(df_s4, measure)
+    infectDf = SplitDfByMeasure(infectDf, measure, formatFunc)
+    if type(df_s34) != bool:
+        df_s34 = SplitDfByMeasure(df_s34, measure, formatFunc)
+    if type(df_s4) != bool:
+        df_s4 = SplitDfByMeasure(df_s4, measure, formatFunc)
 
     if paramList:
         for param in paramList:
             df = infectDf[[param]].transpose().reset_index(drop=True)
             df = df.rename(index={0 : measure + '_' + str(param)})
             OutputToFile(df, path)
-            df = df_s34[[param]].transpose().reset_index(drop=True)
-            df = df.rename(index={0 : measure + '_' + str(param) + '_s34'})
-            OutputToFile(df, path)
+            if type(df_s34) != bool:
+                df = df_s34[[param]].transpose().reset_index(drop=True)
+                df = df.rename(index={0 : measure + '_' + str(param) + '_s34'})
+                OutputToFile(df, path)
             if doFourOnly and param in doFourOnly:
                 df = df_s4[[param]].transpose().reset_index(drop=True)
                 df = df.rename(index={0 : measure + '_' + str(param) + '_s4'})
@@ -340,9 +345,10 @@ def OutputLineCompare(infectDf, df_s34, df_s4, path, measure=False,
         df = infectDf.transpose().reset_index(drop=True)
         df = df.rename(index={0 : 'full'})
         OutputToFile(df, path)
-        df = df_s34.transpose().reset_index(drop=True)
-        df = df.rename(index={0 : 'full_s34'})
-        OutputToFile(df, path)
+        if type(df_s34) != bool:
+            df = df_s34.transpose().reset_index(drop=True)
+            df = df.rename(index={0 : 'full_s34'})
+            OutputToFile(df, path)
 
 
 def MakeTableFive(subfolder, measureCols, table5Rows, doDiff=False):
@@ -399,7 +405,9 @@ def ProcessGDP(subfolder, measureCols, doDiff=False):
     stageDf = stageDf.mul(gdp_effects['gdpPerWeek'], axis=0).transpose()
     stageDf = stageDf.unstack(['RolloutMonths']).groupby(level=[1], axis=1).sum()
     stageDf = stageDf.unstack('year').reorder_levels([1, 0], axis=1)
-    stageDf['1'] = stageDf['0'] + stageDf['1']
+    
+    if '1' in stageDf.columns.get_level_values('year'):
+        stageDf['1'] = stageDf['0'] + stageDf['1']
     stageDf = stageDf.reorder_levels([1, 0], axis=1)
     
     path = subfolder + '/Report_out/gdp'

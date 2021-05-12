@@ -7,26 +7,26 @@ from utilities import OutputToFile
 from utilities import ToHeatmap
 
 
-def HeatmapProcess(df):
+def HeatmapProcess(df, dropMiddleValues=True):
     df = df.reset_index()
     df = df.drop(columns=['global_transmissibility'])
-
+    
     df = ToHeatmap(df,
-        ['param_policy', 'Var_R0_mult', 'R0', 'VacKids'],
+        ['param_policy', 'R0', 'Var_R0_mult', 'VacKids'],
         ['VacEfficacy', 'VacEff_VarMult', 'RolloutMonths'],
         sort_rows=[
             ['param_policy', {
                 'ModerateSupress_No_4' : 'b',
                 'ModerateSupress' : 'a',
             }],
+            ['R0', {
+                2.5 : 'a',
+                3 : 'b',
+            }],
             ['Var_R0_mult', {
                 1.3 : 'a',
                 1.45 : 'b',
                 1.6 : 'c',
-            }],
-            ['R0', {
-                2.5 : 'a',
-                3 : 'b',
             }],
             ['VacKids', {
                 'Yes' : 'a',
@@ -50,10 +50,17 @@ def HeatmapProcess(df):
             }],
         ]
     )
+    
+    if dropMiddleValues:
+        df = df[df.index.get_level_values('Var_R0_mult') != 1.45]
+        df = df.transpose()
+        df = df[df.index.get_level_values('VacEfficacy') != 0.875]
+        df = df.transpose()
+    
     return df
     
 
-def MakeInfectionHeatmap(name, aggType, outputFile, inputFile, measureCols, startWeek=13, window=26):
+def MakeInfectionHeatmap(name, aggType, outputFile, inputFile, measureCols, startWeek=13, window=26, dropMiddleValues=True):
     
     df = pd.read_csv(inputFile + '.csv',
                      index_col=list(range(4 + len(measureCols))),
@@ -65,11 +72,11 @@ def MakeInfectionHeatmap(name, aggType, outputFile, inputFile, measureCols, star
     df = df[[aggType]] / 7
     df = df.rename(columns={aggType: name})
     
-    df = HeatmapProcess(df)
+    df = HeatmapProcess(df, dropMiddleValues=dropMiddleValues)
     OutputToFile(df, outputFile)
     
 
-def MakeStagesHeatmap(name, aggType, outputFile, inputFile, measureCols, startWeek=13, window=26):
+def MakeStagesHeatmap(name, aggType, outputFile, inputFile, measureCols, startWeek=13, window=26, dropMiddleValues=True):
     df = pd.read_csv(inputFile + '.csv',
                      index_col=list(range(4 + len(measureCols))),
                      header=list(range(3)))
@@ -83,11 +90,11 @@ def MakeStagesHeatmap(name, aggType, outputFile, inputFile, measureCols, startWe
     df = df[[aggType]]
     df = df.rename(columns={aggType : name})
     
-    df = HeatmapProcess(df)
+    df = HeatmapProcess(df, dropMiddleValues=dropMiddleValues)
     OutputToFile(df, outputFile)
 
 
-def MakeHeatmaps(dataDir, measureCols):
+def MakeHeatmaps(dataDir, measureCols, dropMiddleValues=True):
     processDir = dataDir + '/ABM_process/'
     visualDir = dataDir + '/ABM_heatmaps/'
     aggType = 'mean'
@@ -97,13 +104,13 @@ def MakeHeatmaps(dataDir, measureCols):
                          visualDir + 'infect_average_daily_full',
                          processDir + 'infect_unique_weeklyAgg',
                          measureCols,
-                         startWeek=0, window=104)
+                         startWeek=0, window=104, dropMiddleValues=dropMiddleValues)
     print('Processing MakeStagesHeatmap stage full')
     MakeStagesHeatmap('full', aggType,
                       visualDir + 'lockdown_proportion_full',
                       processDir + 'processed_stage',
                       measureCols,
-                      startWeek=0, window=104)
+                      startWeek=0, window=104, dropMiddleValues=dropMiddleValues)
     
     start = 0
     for i in range(4):
@@ -112,10 +119,10 @@ def MakeHeatmaps(dataDir, measureCols):
                              visualDir + 'infect_average_daily_' + str(start) + '_to_' + str(start + 26),
                              processDir + 'infect_unique_weeklyAgg',
                              measureCols,
-                             startWeek=start, window=26)
+                             startWeek=start, window=26, dropMiddleValues=dropMiddleValues)
         MakeStagesHeatmap(str(start) + '_to_' + str(start + 26), aggType,
                           visualDir + 'lockdown_proportion_' + str(start) + '_to_' + str(start + 26),
                           processDir + 'processed_stage',
                           measureCols,
-                          startWeek=start, window=26)
+                          startWeek=start, window=26, dropMiddleValues=dropMiddleValues)
         start = start + 26

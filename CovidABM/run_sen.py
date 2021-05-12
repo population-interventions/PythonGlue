@@ -7,7 +7,7 @@ Created on Wed Mar 31 12:16:11 2021
 
 from processNetlogoOutput import DoAbmProcessing
 from makeHeatmaps import MakeHeatmaps
-from makeGraphs import MakeStage2Graphs
+from makeGraphs import MakeFullGraphs, MakeFavouriteGraph
 from processedOutputToPMSLT import DoProcessingForPMSLT
 from processedOutputToPMSLT import GetAggregates
 from processedOutputToReport import DoProcessingForReport
@@ -15,11 +15,15 @@ from processPMSLTOutput import ProcessPMSLTResults
 
 table5Rows = [
     [False, False],
-    ['R0', [2.5, 3]],
-    ['param_policy', ['Stage2', 'Stage2b']],
 ]
 
-dataDir = '2021_05_11_stage2b'
+healthPerspectiveRows = [
+    [False, False],
+]
+
+#dataDir = '2021_05_04'
+#dataDir = '2021_05_12_sensitive_simple'
+dataDir = '2021_05_12_sensitive_asy0531'
 
 measureCols_raw =  ['param_policy', 'param_vac_rate_mult', 'param_final_phase',
         'variant_transmiss_growth', 'param_vac_tran_reduct', 'vac_variant_eff_prop']
@@ -27,11 +31,12 @@ measureCols_raw =  ['param_policy', 'param_vac_rate_mult', 'param_final_phase',
 measureCols =  ['param_policy', 'RolloutMonths', 'VacKids',
         'VacEfficacy', 'VacEff_VarMult', 'Var_R0_mult'] 
 
-#DoAbmProcessing(dataDir, measureCols, measureCols_raw)
-#MakeHeatmaps(dataDir, measureCols)
-#DoProcessingForPMSLT(dataDir, measureCols, months=24)
-#DoProcessingForReport(dataDir, measureCols, table5Rows, months=24)
+DoAbmProcessing(dataDir, measureCols, measureCols_raw)
+MakeHeatmaps(dataDir, measureCols, dropMiddleValues=False)
+DoProcessingForPMSLT(dataDir, measureCols, months=24)
+DoProcessingForReport(dataDir, measureCols, table5Rows, months=24)
 
-MakeStage2Graphs(dataDir, measureCols)
+MakeFullGraphs(dataDir, measureCols)
+MakeFavouriteGraph(dataDir, measureCols)
 
-#ProcessPMSLTResults(dataDir, measureCols)
+#ProcessPMSLTResults(dataDir, measureCols, healthPerspectiveRows)
