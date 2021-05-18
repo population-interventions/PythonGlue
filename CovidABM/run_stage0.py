@@ -32,4 +32,4 @@ DoProcessingForReport(dataDir, measureCols, table5Rows, months=12)
 
 MakeStage0Graphs(dataDir, measureCols)
 
-#ProcessPMSLTResults(dataDir, measureCols)
+#ProcessPMSLTResults(dataDir, measureCols, table5Rows)

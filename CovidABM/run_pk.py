@@ -43,11 +43,11 @@ measureCols =  ['param_policy', 'RolloutMonths', 'VacKids',
         'VacEfficacy', 'VacEff_VarMult', 'Var_R0_mult'] 
 
 #DoAbmProcessing(dataDir, measureCols, measureCols_raw)
-#MakeHeatmaps(dataDir, measureCols)
+MakeHeatmaps(dataDir, measureCols, dropMiddleValues=False)
 #DoProcessingForPMSLT(dataDir, measureCols, months=24)
-#DoProcessingForReport(dataDir, measureCols, table5Rows, months=24)
+DoProcessingForReport(dataDir, measureCols, table5Rows, months=24)
 
-#MakeFullGraphs(dataDir, measureCols)
-MakeFavouriteGraph(dataDir, measureCols)
+MakeFullGraphs(dataDir, measureCols)
+#MakeFavouriteGraph(dataDir, measureCols)
 
-#ProcessPMSLTResults(dataDir, measureCols, healthPerspectiveRows)
+ProcessPMSLTResults(dataDir, measureCols, healthPerspectiveRows)

@@ -203,5 +203,5 @@ def ProcessPMSLTResults(dataDir, measureCols, healthPerspectiveRows):
     ProcessHealthPerspective(df, reportDir, dataDir, measureCols, healthPerspectiveRows, True)
     
     print('OutputMedianUncertainTables')
-    OutputMedianUncertainTables(df, reportDir + 'process_describe', ['measure', 'period'])
-    OutputMedianUncertainTables(df_vac, reportDir + 'process_describe_vacCompare', ['measure', 'period'])
+    OutputMedianUncertainTables(df, reportDir + 'pmslt_describe', ['measure', 'period'])
+    OutputMedianUncertainTables(df_vac, reportDir + 'pmslt_describe_diff', ['measure', 'period'])

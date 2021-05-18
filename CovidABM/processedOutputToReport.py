@@ -414,7 +414,7 @@ def ProcessGDP(subfolder, measureCols, doDiff=False):
     if doDiff:
         path = path + '_diff'
         stageDf = stageDf.sub(stageDf[0], axis=0) * -1
-    OutputMedianUncertainTables(stageDf, path, ['year'], exponent=10**9)
+    OutputMedianUncertainTables(stageDf, path, ['year'], exponent=10**0)
 
 
 ############### Organisation (mostly for commenting) ###############
