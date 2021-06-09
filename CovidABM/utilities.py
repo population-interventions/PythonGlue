@@ -86,19 +86,19 @@ def AddFiles(outputName, fileList, index=1, header=1):
     OutputToFile(df, outputName)
 
 
-def ToHeatmap(df, index_rows, index_cols, sort_rows=[], sort_cols=[]):
+def ToHeatmap(df, structure):
     if df.index.name != None:
         df = df.reset_index()
     
     df['_sort_row'] = ''
-    for value in sort_rows:
+    for value in structure['sort_rows']:
         df['_sort_row'] = df['_sort_row'] + df[value[0]].replace(value[1]).astype(str)
     df['_sort_col'] = ''
-    for value in sort_cols:
+    for value in structure['sort_cols']:
         df['_sort_col'] = df['_sort_col'] + df[value[0]].replace(value[1]).astype(str)
         
-    df = df.set_index(['_sort_row', '_sort_col'] + index_rows + index_cols)
-    df = df.unstack(['_sort_col'] + index_cols)
+    df = df.set_index(['_sort_row', '_sort_col'] + structure['index_rows'] + structure['index_cols'])
+    df = df.unstack(['_sort_col'] + structure['index_cols'])
     df = df.sort_index(axis=0, level=0)
     df = df.sort_index(axis=1, level=0)
     

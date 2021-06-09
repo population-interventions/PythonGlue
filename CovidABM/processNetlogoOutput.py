@@ -25,15 +25,15 @@ def SplitOutDailyData(chunk, cohorts, days, name, filePath, fileAppend):
     OutputToFile(df, filePath + '_' + fileAppend)
 
 
-def ProcessAbmChunk(chunk: pd.DataFrame, outputStaticData, filename, measureCols_raw, day_override=False):
+def ProcessAbmChunk(chunk: pd.DataFrame, outputStaticData, filename,
+                    measureCols_raw, indexRenameFunc, day_override=False):
     # Drop colums that are probably never useful.
     
     chunk = chunk[[
         '[run number]', 'rand_seed',
         'stage_listOut', 'scalephase', 'cumulativeInfected', 'casesReportedToday',
         'Deathcount', 'totalOverseasIncursions', 'infectNoVacArray_listOut', 'infectVacArray_listOut',
-        'age_listOut', 'atsi_listOut', 'morbid_listOut',
-        'global_transmissibility'
+        'age_listOut', 'atsi_listOut', 'morbid_listOut'
     ] + measureCols_raw]
     
     cohorts = len(chunk.iloc[0].age_listOut.split(' '))
@@ -49,9 +49,7 @@ def ProcessAbmChunk(chunk: pd.DataFrame, outputStaticData, filename, measureCols
     
     chunk = chunk.drop(['age_listOut', 'atsi_listOut', 'morbid_listOut'], axis=1)
     chunk = chunk.rename(mapper={'[run number]' : 'run'}, axis=1)
-    chunk = chunk.set_index([
-        'run', 'rand_seed', 'param_policy', 'global_transmissibility',
-    ] + measureCols_raw)
+    chunk = chunk.set_index(['run', 'rand_seed',] + measureCols_raw)
     
     secondaryData = [
         'scalephase', 'cumulativeInfected', 'casesReportedToday',
@@ -60,34 +58,14 @@ def ProcessAbmChunk(chunk: pd.DataFrame, outputStaticData, filename, measureCols
     
     OutputToFile(chunk[secondaryData], filename + '_secondary')
     chunk = chunk.drop(secondaryData, axis=1)
-    
-    index = chunk.index.to_frame()
-    index['R0'] = index['global_transmissibility'].apply(lambda x: 2.5 if x < 0.3 else 3)
-    index['param_final_phase'] = index['param_final_phase'].replace({
-        -1 : 'Yes',
-        5 : 'No',
-    })
-    index['param_vac_rate_mult'] = index['param_vac_rate_mult'].replace({
-        0.75 : 16,
-        1 : 12,
-        1.5 : 8
-    })
-    index = index.rename(columns={
-        'param_final_phase' : 'VacKids',
-        'param_vac_rate_mult' : 'RolloutMonths',
-        'vac_variant_eff_prop' : 'VacEff_VarMult',
-        'variant_transmiss_growth' : 'Var_R0_mult',
-        'param_vac_tran_reduct' : 'VacEfficacy',
-    })
-    
-    chunk.index = pd.MultiIndex.from_frame(index)
+    chunk = indexRenameFunc(chunk)
     
     SplitOutDailyData(chunk, 1, days, 'stage', filename, 'stage')
     SplitOutDailyData(chunk, cohorts, days, 'infectNoVacArray', filename, 'infectNoVac')
     SplitOutDailyData(chunk, cohorts, days, 'infectVacArray', filename, 'infectVac')
 
 
-def ProcessAbmOutput(subfolder, measureCols_raw, day_override=False):
+def ProcessAbmOutput(subfolder, indexRenameFunc, measureCols_raw, day_override=False):
     outputFile = subfolder + '/ABM_process/' + 'processed'
     filelist = [subfolder + '/ABM_out/' + 'MergedResults']
     chunksize = 4 ** 7
@@ -95,7 +73,8 @@ def ProcessAbmOutput(subfolder, measureCols_raw, day_override=False):
     firstProcess = True
     for filename in filelist:
         for chunk in tqdm(pd.read_csv(filename + '.csv', chunksize=chunksize, header=6), total=4):
-            ProcessAbmChunk(chunk, firstProcess, outputFile, measureCols_raw, day_override=day_override)
+            ProcessAbmChunk(chunk, firstProcess, outputFile, measureCols_raw,
+                            indexRenameFunc, day_override=day_override)
             firstProcess = False
 
 
@@ -136,16 +115,16 @@ def ProcessFileToVisualisation(subfolder, append, measureCols):
     chunksize = 4 ** 7
     filename = subfolder + '/ABM_process/' + 'processed'
     for chunk in tqdm(pd.read_csv(filename + '_' + append + '.csv', chunksize=chunksize,
-                                  index_col=list(range(4 + len(measureCols))),
+                                  index_col=list(range(2 + len(measureCols))),
                                   header=list(range(3)),
                                   dtype={'day' : int, 'cohort' : int}),
                       total=4):
         ToVisualisation(chunk, filename, append, measureCols)
 
     
-def DoAbmProcessing(dataDir, measureCols, measureCols_raw, day_override=False):
+def DoAbmProcessing(dataDir, indexRenameFunc, measureCols, measureCols_raw, day_override=False):
     print('Processing ABM Output', dataDir)
-    ProcessAbmOutput(dataDir, measureCols_raw, day_override=day_override)
+    ProcessAbmOutput(dataDir, indexRenameFunc, measureCols_raw, day_override=day_override)
     
     print('Processing infectNoVac')
     ProcessFileToVisualisation(dataDir, 'infectNoVac', measureCols) 
@@ -156,6 +135,7 @@ def DoAbmProcessing(dataDir, measureCols, measureCols_raw, day_override=False):
             dataDir + '/ABM_process/' + 'processed_infectNoVac_weeklyAgg',
             dataDir + '/ABM_process/' + 'processed_infectVac_weeklyAgg',
         ],
-        index=(4 + len(measureCols))
+        index=(2 + len(measureCols))
     )
+    ProcessFileToVisualisation(dataDir, 'stage', measureCols)
 

@@ -12,7 +12,7 @@ from utilities import OutputToFile, GetCohortData
 
 def Output(df, path):
     index = df.index.to_frame(index=False)
-    index = index.drop(columns=['run', 'global_transmissibility'])
+    index = index.drop(columns=['run'])
     df.index = pd.MultiIndex.from_frame(index)
     df = df.rename('value')
     
@@ -107,7 +107,7 @@ def ProcessInfectCohorts(measureCols, filename, cohortFile, outputPrefix, months
     chunksize = 4 ** 7
     
     for chunk in tqdm(pd.read_csv(filename + '.csv', 
-                             index_col=list(range(4 + len(measureCols))),
+                             index_col=list(range(2 + len(measureCols))),
                              header=list(range(3)),
                              dtype={'day' : int, 'cohort' : int},
                              chunksize=chunksize),
@@ -151,7 +151,7 @@ def ProcessInfectionTable(df, months=12):
 def MultiplyByCohortEffect(measureCols, df, multDf):
     df = df.mul(multDf, axis=0)
     df.index = df.index.reorder_levels(order=(measureCols + [
-        'R0', 'sex', 'age_start', 'age_end', 'year_start', 'year_end']))
+        'sex', 'age_start', 'age_end', 'year_start', 'year_end']))
     return df
     
 
@@ -159,11 +159,11 @@ def AddAndFinalisePmsltInputs(measureCols, subfolder, path, output, months=12):
     cohortEffect = GetEffectsData(subfolder + '/other_input/chort_effects')
     
     df_infect_vac = CombineDrawColumnsAndFindDraw0(path + 'infect_results/', 'infect_vac',
-                                                   index_size=(3 + len(measureCols)))
+                                                   index_size=(2 + len(measureCols)))
     df_infect_vac = ProcessInfectionTable(df_infect_vac, months)
     
     df_infect_NoVac = CombineDrawColumnsAndFindDraw0(path + 'infect_results/', 'infect_noVac',
-                                                     index_size=(3 + len(measureCols)))
+                                                     index_size=(2 + len(measureCols)))
     df_infect_NoVac = ProcessInfectionTable(df_infect_NoVac, months)
     
     df_mort_vac   = MultiplyByCohortEffect(measureCols, df_infect_vac, cohortEffect.loc[1]['mort'])
@@ -202,7 +202,7 @@ def ProcessStageCohorts(measureCols, filename, outputPrefix):
     chunksize = 4 ** 7
     
     for chunk in tqdm(pd.read_csv(filename + '.csv', 
-                             index_col=list(range(4 + len(measureCols))),
+                             index_col=list(range(2 + len(measureCols))),
                              header=list(range(3)),
                              dtype={'day' : int, 'cohort' : int},
                              chunksize=chunksize),
@@ -213,18 +213,16 @@ def ProcessStageCohorts(measureCols, filename, outputPrefix):
 ############### Stages Step 2 - Combine and Process ###############
 
 def CombineDrawsStageAndFinalise(measureCols, subfolder, path, output, months=12):
-    df = CombineDrawColumnsAndFindDraw0(path, 'stage',
-        index_size=(2 + len(measureCols)))
+    df = CombineDrawColumnsAndFindDraw0(path, 'stage', index_size=(1 + len(measureCols)))
     
     index = df.index.to_frame()
-    index = index[measureCols + ['R0', 'month']]
+    index = index[measureCols + ['month']]
     index['year_start'] = (index['month'])/12
     index['year_end']   = (index['month'] + 1)/12
-    index['R0'] = index['R0'].replace({0.43 : 3.125,})
     index = index.drop(columns=['month'])
     df.index = pd.MultiIndex.from_frame(index)
 
-    enddf = df[df.index.isin([(months - 0.5)/12], level=7)]
+    enddf = df[df.index.isin([(months - 0.5)/12], level=1 + len(measureCols))]
     enddf = enddf*0
     index = enddf.index.to_frame()
     index['year_start'] = index['year_end']

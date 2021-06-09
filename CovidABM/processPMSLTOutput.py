@@ -8,43 +8,10 @@ from utilities import ToHeatmap
 from processedOutputToReport import OutputLineCompare
 
 
-def HeatmapProcessNoRollout(df):
+def HeatmapProcessNoRollout(df, heatmapStructure):
     df = df.reset_index()
 
-    df = ToHeatmap(df,
-        ['param_policy', 'R0', 'Var_R0_mult', 'VacKids'],
-        ['VacEfficacy', 'VacEff_VarMult'],
-        sort_rows=[
-            ['param_policy', {
-                'ModerateSupress_No_4' : 'b',
-                'ModerateSupress' : 'a',
-            }],
-            ['R0', {
-                2.5 : 'a',
-                3 : 'b',
-            }],
-            ['Var_R0_mult', {
-                1.3 : 'a',
-                1.45 : 'b',
-                1.6 : 'c',
-            }],
-            ['VacKids', {
-                'Yes' : 'a',
-                'No' : 'b',
-            }],
-        ], 
-        sort_cols=[
-            ['VacEfficacy', {
-                0.75 : 'c',
-                0.875 : 'b',
-                0.95 : 'a',
-            }],
-            ['VacEff_VarMult', {
-                0.8 : 'b',
-                0.95 : 'a',
-            }],
-        ]
-    )
+    df = ToHeatmap(df, heatmapStructure)
     
     df = df[df.index.get_level_values('Var_R0_mult') != 1.45]
     df = df.transpose()
@@ -54,48 +21,10 @@ def HeatmapProcessNoRollout(df):
     return df
 
 
-def HeatmapProcess(df):
+def HeatmapProcess(df, heatmapStructure):
     df = df.reset_index()
 
-    df = ToHeatmap(df,
-        ['param_policy', 'R0', 'Var_R0_mult', 'VacKids'],
-        ['VacEfficacy', 'VacEff_VarMult', 'RolloutMonths'],
-        sort_rows=[
-            ['param_policy', {
-                'ModerateSupress_No_4' : 'b',
-                'ModerateSupress' : 'a',
-            }],
-            ['R0', {
-                2.5 : 'a',
-                3 : 'b',
-            }],
-            ['Var_R0_mult', {
-                1.3 : 'a',
-                1.45 : 'b',
-                1.6 : 'c',
-            }],
-            ['VacKids', {
-                'Yes' : 'a',
-                'No' : 'b',
-            }],
-        ], 
-        sort_cols=[
-            ['VacEfficacy', {
-                0.75 : 'c',
-                0.875 : 'b',
-                0.95 : 'a',
-            }],
-            ['VacEff_VarMult', {
-                0.8 : 'b',
-                0.95 : 'a',
-            }],
-            ['RolloutMonths', {
-                8 : 'a',
-                12 : 'b',
-                16 : 'c',
-            }],
-        ]
-    )
+    df = ToHeatmap(df, heatmapStructure)
     
     df = df[df.index.get_level_values('Var_R0_mult') != 1.45]
     df = df.transpose()
@@ -144,7 +73,8 @@ def ProcessGDP(subfolder, measureCols):
     return stageDf
     
     
-def ProcessHealthPerspective(df, reportDir, subfolder, measureCols, healthPerspectiveRows, addGDP=False):
+def ProcessHealthPerspective(df, heatmapStructure, reportDir, subfolder,
+                             measureCols, healthPerspectiveRows, addGDP=False):
     df = df['life']
     df_HALY = df['HALY']
     df_HALY_diff = df_HALY.sub(df_HALY[0.0], axis=0) * -1
@@ -168,7 +98,7 @@ def ProcessHealthPerspective(df, reportDir, subfolder, measureCols, healthPerspe
         path = path + '_add_gdp'
         heatmapPath = heatmapPath + '_add_gdp'
     
-    OutputToFile(HeatmapProcessNoRollout(df_ICER), heatmapPath)
+    OutputToFile(HeatmapProcessNoRollout(df_ICER, heatmapStructure), heatmapPath)
     
     def SmartFormat(x, exponent=10**6):
         if abs(x) > 10**6:
@@ -179,7 +109,7 @@ def ProcessHealthPerspective(df, reportDir, subfolder, measureCols, healthPerspe
         OutputLineCompare(df_full, False, False, path, *values, formatFunc=SmartFormat)
     
 
-def ProcessPMSLTResults(dataDir, measureCols, healthPerspectiveRows):
+def ProcessPMSLTResults(dataDir, measureCols, heatmapStructure, healthPerspectiveRows):
     print('ProcessPMSLTResults')
     processDir = dataDir + '/PMSLT_out/'
     reportDir = dataDir + '/Report_out/'
@@ -189,7 +119,8 @@ def ProcessPMSLTResults(dataDir, measureCols, healthPerspectiveRows):
                      header=list(range(2)))
     
     print('HeatmapProcess')
-    OutputToFile(HeatmapProcess(df[[['life', 'deaths']]].stack('measure')), dataDir + '/PMSLT_heatmaps/deaths')
+    OutputToFile(HeatmapProcess(df[[['life', 'deaths']]].stack('measure'), heatmapStructure),
+                 dataDir + '/PMSLT_heatmaps/deaths')
     
     df = df.unstack('RolloutMonths')
     df = df.reorder_levels([2, 1, 0], axis=1)
@@ -199,8 +130,10 @@ def ProcessPMSLTResults(dataDir, measureCols, healthPerspectiveRows):
     df = df.reorder_levels([2, 1, 0], axis=1)
     
     print('ProcessHealthPerspective')
-    ProcessHealthPerspective(df, reportDir, dataDir, measureCols, healthPerspectiveRows, False)
-    ProcessHealthPerspective(df, reportDir, dataDir, measureCols, healthPerspectiveRows, True)
+    ProcessHealthPerspective(df, heatmapStructure, reportDir, dataDir,
+                             measureCols, healthPerspectiveRows, False)
+    ProcessHealthPerspective(df, heatmapStructure, reportDir, dataDir,
+                             measureCols, healthPerspectiveRows, True)
     
     print('OutputMedianUncertainTables')
     OutputMedianUncertainTables(df, reportDir + 'pmslt_describe', ['measure', 'period'])
