@@ -9,7 +9,6 @@ from utilities import ToHeatmap
 
 def HeatmapProcess(df, heatmapStructure, dropMiddleValues=True):
     df = df.reset_index()
-    
     df = ToHeatmap(df, heatmapStructure)
     
     if dropMiddleValues:
@@ -32,7 +31,7 @@ def MakeInfectionHeatmap(name, aggType, heatmapStructure, outputFile, inputFile,
     df = df.transpose().describe().transpose()
     df = df[[aggType]] / 7
     df = df.rename(columns={aggType: name})
-    
+
     df = HeatmapProcess(df, heatmapStructure, dropMiddleValues=dropMiddleValues)
     OutputToFile(df, outputFile)
     
@@ -65,25 +64,29 @@ def MakeHeatmaps(dataDir, measureCols, heatmapStructure, dropMiddleValues=True):
                          visualDir + 'infect_average_daily_full',
                          processDir + 'infect_unique_weeklyAgg',
                          measureCols,
-                         startWeek=0, window=104, dropMiddleValues=dropMiddleValues)
+                         startWeek=0, window=104,
+                         dropMiddleValues=dropMiddleValues)
     print('Processing MakeStagesHeatmap stage full')
     MakeStagesHeatmap('full', aggType, heatmapStructure,
                       visualDir + 'lockdown_proportion_full',
                       processDir + 'processed_stage',
                       measureCols,
-                      startWeek=0, window=104, dropMiddleValues=dropMiddleValues)
+                         startWeek=0, window=104,
+                         dropMiddleValues=dropMiddleValues)
     
     start = 0
-    for i in range(4):
-        print('Processing ' + str(start) + '_to_' + str(start + 26))
-        MakeInfectionHeatmap(str(start) + '_to_' + str(start + 26), aggType, heatmapStructure,
-                             visualDir + 'infect_average_daily_' + str(start) + '_to_' + str(start + 26),
+    for i in range(2):
+        print('Processing ' + str(start) + '_to_' + str(start + 52))
+        MakeInfectionHeatmap(str(start) + '_to_' + str(start + 52), aggType, heatmapStructure,
+                             visualDir + 'infect_average_daily_' + str(start) + '_to_' + str(start + 52),
                              processDir + 'infect_unique_weeklyAgg',
                              measureCols,
-                             startWeek=start, window=26, dropMiddleValues=dropMiddleValues)
-        MakeStagesHeatmap(str(start) + '_to_' + str(start + 26), aggType, heatmapStructure,
-                          visualDir + 'lockdown_proportion_' + str(start) + '_to_' + str(start + 26),
+                             startWeek=start, window=52,
+                             dropMiddleValues=dropMiddleValues)
+        MakeStagesHeatmap(str(start) + '_to_' + str(start + 52), aggType, heatmapStructure,
+                          visualDir + 'lockdown_proportion_' + str(start) + '_to_' + str(start + 52),
                           processDir + 'processed_stage',
                           measureCols,
-                          startWeek=start, window=26, dropMiddleValues=dropMiddleValues)
-        start = start + 26
+                          startWeek=start, window=52,
+                          dropMiddleValues=dropMiddleValues)
+        start = start + 52

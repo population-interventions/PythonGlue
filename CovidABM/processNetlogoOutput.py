@@ -9,6 +9,7 @@ import math
 import pandas as pd
 import numpy as np
 from tqdm import tqdm
+import pathlib
 import time
 import os
 
@@ -67,9 +68,15 @@ def ProcessAbmChunk(chunk: pd.DataFrame, outputStaticData, filename,
 
 def ProcessAbmOutput(subfolder, indexRenameFunc, measureCols_raw, day_override=False):
     outputFile = subfolder + '/ABM_process/' + 'processed'
-    filelist = [subfolder + '/ABM_out/' + 'MergedResults']
+    inputPath = pathlib.Path(subfolder + '/ABM_out/')
+    suffix = '.csv'
+    pathList = sorted(inputPath.glob('*{}'.format(suffix)))
+    filelist = [] # TODO - Do better.
+    for path in pathList:
+        filelist.append(subfolder + '/ABM_out/' + str(path.name)[:-len(suffix)] )
+        
+    print("Processing Files", filelist)
     chunksize = 4 ** 7
-    
     firstProcess = True
     for filename in filelist:
         for chunk in tqdm(pd.read_csv(filename + '.csv', chunksize=chunksize, header=6), total=4):

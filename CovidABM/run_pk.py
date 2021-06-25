@@ -4,10 +4,12 @@ Created on Wed Mar 31 12:16:11 2021
 
 @author: wilsonte
 """
+import pandas as pd
+import numpy as np
 
 from processNetlogoOutput import DoAbmProcessing
 from makeHeatmaps import MakeHeatmaps
-from makeGraphs import MakeFullGraphs, MakeFavouriteGraph
+from makeGraphs import MakePrettyGraphs, MakeMultiSplitGraphs, MakeStageGraphs, MakeFavouriteGraph
 from processedOutputToPMSLT import DoProcessingForPMSLT
 from processedOutputToPMSLT import GetAggregates
 from processedOutputToReport import DoProcessingForReport
@@ -35,7 +37,7 @@ healthPerspectiveRows = [
 
 heatmapStructure = {
     'index_rows' : ['param_policy', 'R0', 'Var_R0_mult', 'VacKids'],
-    'index_cols' : ['VacEfficacy', 'VacEff_VarMult'],
+    'index_cols' : ['VacEfficacy', 'VacEff_VarMult', 'RolloutMonths'],
     'sort_rows' : [
         ['param_policy', {
             'ModerateSupress_No_4' : 'b',
@@ -65,8 +67,20 @@ heatmapStructure = {
             0.8 : 'b',
             0.95 : 'a',
         }],
+        ['RolloutMonths', {
+            0 : 'a',
+            8 : 'b',
+            12 : 'c',
+            16 : 'd',
+        }],
     ]
 }
+
+measureCols_raw =  ['global_transmissibility', 'param_policy', 'param_vac_rate_mult', 'param_final_phase',
+        'variant_transmiss_growth', 'param_vac_tran_reduct', 'vac_variant_eff_prop']
+
+measureCols =  ['R0', 'param_policy', 'RolloutMonths', 'VacKids',
+        'VacEfficacy', 'VacEff_VarMult', 'Var_R0_mult'] 
 
 def indexRenameFunc(chunk):
     index = chunk.index.to_frame()
@@ -87,6 +101,7 @@ def indexRenameFunc(chunk):
         'variant_transmiss_growth' : 'Var_R0_mult',
         'param_vac_tran_reduct' : 'VacEfficacy',
     })
+    index = index.drop(columns=['global_transmissibility'])
     
     chunk.index = pd.MultiIndex.from_frame(index)
     return chunk
@@ -95,18 +110,15 @@ def indexRenameFunc(chunk):
 #dataDir = '2021_05_04'
 dataDir = '2021_05_10'
 
-measureCols_raw =  ['global_transmissibility', 'param_policy', 'param_vac_rate_mult', 'param_final_phase',
-        'variant_transmiss_growth', 'param_vac_tran_reduct', 'vac_variant_eff_prop']
-
-measureCols =  ['R0', 'param_policy', 'RolloutMonths', 'VacKids',
-        'VacEfficacy', 'VacEff_VarMult', 'Var_R0_mult'] 
 
 #DoAbmProcessing(dataDir, indexRenameFunc, measureCols, measureCols_raw)
 MakeHeatmaps(dataDir, measureCols, heatmapStructure, dropMiddleValues=False)
 #DoProcessingForPMSLT(dataDir, measureCols, months=24)
-DoProcessingForReport(dataDir, measureCols, table5Rows, 'RolloutMonths', compareCol=0, months=24)
+#DoProcessingForReport(dataDir, measureCols, table5Rows, 'RolloutMonths', compareCol=0, months=24)
 
-MakeFullGraphs(dataDir, measureCols)
+#MakePrettyGraphs(dataDir, 'infect_unique', measureCols, 'RolloutMonths', mean=False)
+#MakeMultiSplitGraphs(dataDir, 'infect_unique', measureCols, ['RolloutMonths', 'R0'], mean=False)
+#MakeStageGraphs(dataDir, measureCols, {'VacKids' : 'Yes'}, 'RolloutMonths')
 #MakeFavouriteGraph(dataDir, measureCols)
 
-ProcessPMSLTResults(dataDir, measureCols, heatmapStructure, healthPerspectiveRows)
+#ProcessPMSLTResults(dataDir, measureCols, heatmapStructure, healthPerspectiveRows)
