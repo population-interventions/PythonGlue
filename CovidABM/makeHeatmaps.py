@@ -36,11 +36,11 @@ def MakeInfectionHeatmap(name, aggType, heatmapStructure, outputFile, inputFile,
     OutputToFile(df, outputFile)
     
 
-def MakeStagesHeatmap(name, aggType, heatmapStructure, outputFile, inputFile, measureCols, startWeek=13, window=26, dropMiddleValues=True):
+def MakeStagesHeatmap(name, aggType, heatmapStructure, outputFile, inputFile, measureCols, stage_limit=2, startWeek=13, window=26, dropMiddleValues=True):
     df = pd.read_csv(inputFile + '.csv',
                      index_col=list(range(2 + len(measureCols))),
                      header=list(range(3)))
-    df = df.apply(lambda c: [1 if x > 2 else 0 for x in c])
+    df = df.apply(lambda c: [1 if x > stage_limit else 0 for x in c])
     df = df.groupby(level=list(range(2, 2 + len(measureCols))), axis=0).mean()
     
     df = df.droplevel([0, 2], axis=1)
@@ -54,7 +54,7 @@ def MakeStagesHeatmap(name, aggType, heatmapStructure, outputFile, inputFile, me
     OutputToFile(df, outputFile)
 
 
-def MakeHeatmaps(dataDir, measureCols, heatmapStructure, dropMiddleValues=True):
+def MakeHeatmaps(dataDir, measureCols, heatmapStructure, dropMiddleValues=True, windowSize=52, windowCount=2):
     processDir = dataDir + '/ABM_process/'
     visualDir = dataDir + '/ABM_heatmaps/'
     aggType = 'mean'
@@ -64,29 +64,29 @@ def MakeHeatmaps(dataDir, measureCols, heatmapStructure, dropMiddleValues=True):
                          visualDir + 'infect_average_daily_full',
                          processDir + 'infect_unique_weeklyAgg',
                          measureCols,
-                         startWeek=0, window=104,
+                         startWeek=0, window=windowSize * windowCount,
                          dropMiddleValues=dropMiddleValues)
     print('Processing MakeStagesHeatmap stage full')
     MakeStagesHeatmap('full', aggType, heatmapStructure,
                       visualDir + 'lockdown_proportion_full',
                       processDir + 'processed_stage',
-                      measureCols,
-                         startWeek=0, window=104,
+                      measureCols,stage_limit=0,
+                         startWeek=0, window=windowSize * windowCount,
                          dropMiddleValues=dropMiddleValues)
     
     start = 0
-    for i in range(2):
-        print('Processing ' + str(start) + '_to_' + str(start + 52))
-        MakeInfectionHeatmap(str(start) + '_to_' + str(start + 52), aggType, heatmapStructure,
-                             visualDir + 'infect_average_daily_' + str(start) + '_to_' + str(start + 52),
+    for i in range(windowCount):
+        print('Processing ' + str(start) + '_to_' + str(start + windowSize))
+        MakeInfectionHeatmap(str(start) + '_to_' + str(start + windowSize), aggType, heatmapStructure,
+                             visualDir + 'infect_average_daily_' + str(start) + '_to_' + str(start + windowSize),
                              processDir + 'infect_unique_weeklyAgg',
                              measureCols,
-                             startWeek=start, window=52,
+                             startWeek=start, window=windowSize,
                              dropMiddleValues=dropMiddleValues)
-        MakeStagesHeatmap(str(start) + '_to_' + str(start + 52), aggType, heatmapStructure,
-                          visualDir + 'lockdown_proportion_' + str(start) + '_to_' + str(start + 52),
+        MakeStagesHeatmap(str(start) + '_to_' + str(start + windowSize), aggType, heatmapStructure,
+                          visualDir + 'lockdown_proportion_' + str(start) + '_to_' + str(start + windowSize),
                           processDir + 'processed_stage',
-                          measureCols,
-                          startWeek=start, window=52,
+                          measureCols,stage_limit=0,
+                          startWeek=start, window=windowSize,
                           dropMiddleValues=dropMiddleValues)
-        start = start + 52
+        start = start + windowSize

@@ -17,36 +17,43 @@ from processPMSLTOutput import ProcessPMSLTResults
 
 table5Rows = [
     [False, False],
-    ['mask_efficacy_mult', [0, 1]],
-    ['param_vacincurmult', [1.28, 5.12]],
-    ['param_trace_mult', [0, 0.5, 1]],
-    ['param_vac_uptake', [0, 0.5, 0.7, 0.9]],
-    ['compound_param', ['None', 'Hetro_Test']],
+    ['Masks', ['Yes', 'No']],
+    ['HetoMult', [1, 0.2]],
+    ['Trace', ['Off', 'Half', 'Full']],
+    ['IncursionMult', [1.28, 5.12]],
 ]
 
 healthPerspectiveRows = [
     [False, False],
-    ['mask_efficacy_mult', [0, 1]],
-    ['param_vacincurmult', [1.28, 5.12]],
-    ['param_trace_mult', [0, 0.5, 1]],
-    ['param_vac_uptake', [0, 0.5, 0.7, 0.9]],
-    ['compound_param', ['None', 'Hetro_Test']],
+    ['Masks', ['Yes', 'No']],
+    ['HetoMult', [1, 0.2]],
+    ['Trace', ['Off', 'Half', 'Full']],
+    ['IncursionMult', [1.28, 5.12]],
 ]
 
-measureCols_raw = ['mask_efficacy_mult', 'param_vacincurmult', 'param_trace_mult', 'compound_param', 'param_vac_uptake']
-measureCols =  ['HetoMult', 'Masks', 'Trace', 'VacUptake', 'IncursionMult'] 
+measureCols_raw = ['param_final_phase', 'param_vacincurmult', 
+                   'param_trace_mult', 'compound_mask_param', 
+                   'param_vac_uptake', 'r0_range', 
+                   'param_force_vaccine', 'policy_pipeline']
+measureCols =  ['Masks', 'Trace', 'VacUptake', 'IncursionMult',
+                'VacKids', 'R0', 'VacForce', 'Policy'] 
         
 heatmapStructure = {
-    'index_rows' : ['HetoMult', 'Masks', 'Trace'],
-    'index_cols' : ['VacUptake', 'IncursionMult'],
+    'index_rows' : ['Policy', 'Masks', 'R0', 'Trace', ],
+    'index_cols' : ['VacUptake', 'IncursionMult', 'VacKids', 'VacForce'],
     'sort_rows' : [
-        ['HetoMult', {
-            1 : 'a',
-            0.2 : 'b',
+        ['Policy', {
+            'ME_TS_BS' : 'a',
+            'ME_TS_S1' : 'b',
         }],
         ['Masks', {
-            'Yes' : 'a',
-            'No' : 'b',
+            'Min100' : 'a',
+            'Min50' : 'b',
+            'NoMask' : 'c',
+        }],
+        ['R0', {
+            5 : 'a',
+            6 : 'b',
         }],
         ['Trace', {
             'Full' : 'a',
@@ -59,36 +66,56 @@ heatmapStructure = {
             0.9 : 'a',
             0.7 : 'b',
             0.5 : 'c',
-            0 : 'd',
+            0.3 : 'd',
+            0 : 'e',
         }],
         ['IncursionMult', {
-            1.28 : 'a',
-            5.12 : 'b',
+            1 : 'a',
+            5 : 'b',
+            25 : 'c',
+        }],
+        ['VacKids', {
+            'Yes' : 'a',
+            'No' : 'b',
+        }],
+        ['VacForce', {
+            'Pf' : 'a',
+            '-' : 'b',
+            'AZ' : 'c',
         }],
     ]
 }
 
 def indexRenameFunc(chunk):
     index = chunk.index.to_frame()
-    index['compound_param'] = index['compound_param'].replace({
-        'None' : 1,
-        'Hetro_Test' : 0.2,
-    })
-    index['mask_efficacy_mult'] = index['mask_efficacy_mult'].replace({
-        0 : 'No',
-        1 : 'Yes',
-    })
+    #index['compound_param'] = index['compound_param'].replace({
+    #    'None' : 1,
+    #    'Hetro_Test' : 0.2,
+    #})
     index['param_trace_mult'] = index['param_trace_mult'].replace({
         0 : 'Off',
         0.5 : 'Half',
         1 : 'Full',
     })
+    index['param_final_phase'] = index['param_final_phase'].replace({
+        2 : 'No',
+        3 : 'Yes',
+    })
+    index['param_force_vaccine'] = index['param_force_vaccine'].replace({
+        'Disabled' : '-',
+        'AZ' : 'AZ',
+        'Pfizer' : 'Pf',
+    })
     index = index.rename(columns={
-        'compound_param' : 'HetoMult',
-        'mask_efficacy_mult' : 'Masks',
+        #'compound_param' : 'HetoMult',
+        'compound_mask_param' : 'Masks',
         'param_trace_mult' : 'Trace',
+        'param_force_vaccine' : 'VacForce',
         'param_vac_uptake' : 'VacUptake',
-        'param_vacincurmult' : 'IncursionMult'
+        'param_vacincurmult' : 'IncursionMult',
+        'param_final_phase' : 'VacKids',
+        'policy_pipeline' : 'Policy',
+        'r0_range' : 'R0',
     })
     
     chunk.index = pd.MultiIndex.from_frame(index)
@@ -98,12 +125,12 @@ def indexRenameFunc(chunk):
 favouriteParams = [4.5, 'ME_TS_LS', 'No', 12.5, 0.7]
 
 #dataDir = '2021_05_04'
-dataDir = 'Vic2/2021_06_25_sensitive'
+dataDir = 'Vic2/2021_07_02_sensitive'
 
 DoAbmProcessing(dataDir, indexRenameFunc, measureCols, measureCols_raw)
 MakeHeatmaps(dataDir, measureCols, heatmapStructure, dropMiddleValues=False)
 #DoProcessingForPMSLT(dataDir, measureCols, months=24)
-#DoProcessingForReport(dataDir, measureCols, table5Rows, 'param_vac_uptake', months=24)
+#DoProcessingForReport(dataDir, measureCols, table5Rows, 'VacUptake', months=24)
 
 #MakePrettyGraphs(dataDir, 'infect_unique', measureCols, 'param_policy', median=False)
 #MakePrettyGraphs(dataDir, 'processed_stage', measureCols, 'param_policy')

@@ -39,10 +39,10 @@ heatmapStructure = {
     'index_cols' : ['param_vac_uptake', 'param_vacincurmult'],
     'sort_rows' : [
         ['policy_pipeline', {
-            'ME_ME_ME' : 'a',
             'ME_ME_TS' : 'b',
             'ME_ME_LS' : 'c',
             'ME_TS_LS' : 'd',
+            'ME_TS_BS' : 'e',
         }],
         ['r0_range', {
             4.5 : 'a',
@@ -92,7 +92,7 @@ favouriteParams = [4.5, 'ME_TS_LS', 'No', 12.5, 0.7]
 #dataDir = '2021_05_04'
 dataDir = 'Vic2/2021_06_25'
 
-DoAbmProcessing(dataDir, indexRenameFunc, measureCols, measureCols_raw)
+#DoAbmProcessing(dataDir, indexRenameFunc, measureCols, measureCols_raw)
 MakeHeatmaps(dataDir, measureCols, heatmapStructure, dropMiddleValues=False)
 #DoProcessingForPMSLT(dataDir, measureCols, months=24)
 #DoProcessingForReport(dataDir, measureCols, table5Rows, 'param_vac_uptake', months=24)
