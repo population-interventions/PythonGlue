@@ -95,9 +95,9 @@ dataDir = 'Vic2/2021_07_05'
 #PreProcessMortHosp(dataDir, measureCols)
 #DrawMortHospDistributions(dataDir, measureCols)
 #FinaliseMortHosp(dataDir, measureCols)
-#MakeMortHospHeatmaps(dataDir, measureCols, heatmapStructure)
+MakeMortHospHeatmaps(dataDir, measureCols, heatmapStructure)
 
-MakeHeatmaps(dataDir, measureCols, heatmapStructure, dropMiddleValues=False)
+#MakeHeatmaps(dataDir, measureCols, heatmapStructure, dropMiddleValues=False)
 #DoProcessingForPMSLT(dataDir, measureCols, months=24)
 #DoProcessingForReport(dataDir, measureCols, table5Rows, 'param_vac_uptake', months=24)
 

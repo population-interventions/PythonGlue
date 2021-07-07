@@ -287,7 +287,6 @@ def DoHeatmaps(subfolder, measureCols, heatmapStructure, metric):
                     index_col=list(range(2 + len(measureCols))),
                     header=list(range(1)))
     
-    print(df)
     df = df.groupby(level=measureCols, axis=0).mean()
     df_full = ToHeatmap(df.sum(axis=1).reset_index(), heatmapStructure)
     df_year1 = ToHeatmap(df['0'].reset_index(), heatmapStructure)
@@ -317,10 +316,20 @@ def DoHeatmapsDraw(subfolder, measureCols, heatmapStructure, metric):
     }
     
     df['full'] = df['0'] + df['1']
+    
+    dfMean = df.copy()
+    dfMean = dfMean.groupby(level=measureCols, axis=0).mean()
+    
     df = df.groupby(level=measureCols, axis=0).quantile(percentList)
     df.index.names = measureCols + ['percentile']
     df = df.reorder_levels([5, 0, 1, 2, 3, 4]).sort_index()
-    
+
+    for year in yearList:
+        dfHeat = ToHeatmap(dfMean.loc[:, year].reset_index(), heatmapStructure)
+        name =  metric + '_total_' + nameMap.get(year) + '_' + 'mean'
+        print('Output heatmap {}'.format(name))
+        OutputToFile(dfHeat, subfolder + '/Mort_heatmaps/' + name, head=False)
+        
     for pc in percentList:
         for year in yearList:
             dfHeat = ToHeatmap(df.loc[pc, year].reset_index(), heatmapStructure)
