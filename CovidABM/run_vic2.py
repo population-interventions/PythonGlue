@@ -8,6 +8,7 @@ import pandas as pd
 import numpy as np
 
 from processNetlogoOutput import DoAbmProcessing
+from processToMortHosp import PreProcessMortHosp, FinaliseMortHosp, MakeMortHospHeatmaps, DrawMortHospDistributions
 from makeHeatmaps import MakeHeatmaps
 from makeGraphs import MakePrettyGraphs, MakeFavouriteGraph
 from processedOutputToPMSLT import DoProcessingForPMSLT
@@ -40,14 +41,12 @@ heatmapStructure = {
     'sort_rows' : [
         ['policy_pipeline', {
             'ME_ME_TS' : 'b',
-            'ME_ME_LS' : 'c',
             'ME_TS_LS' : 'd',
             'ME_TS_BS' : 'e',
         }],
         ['r0_range', {
-            4.5 : 'a',
-            4.833 : 'b',
-            5.166 : 'c',
+            5 : 'a',
+            6 : 'b',
         }],
         ['VacKids', {
             'Yes' : 'a',
@@ -63,11 +62,10 @@ heatmapStructure = {
             0.5 : 'e',
         }],
         ['param_vacincurmult', {
-            0.02 : 'a',
-            0.08 : 'b',
-            0.32 : 'c',
-            1.28 : 'd',
-            5.12 : 'e',
+            0.2 : 'a',
+            1 : 'b',
+            5 : 'c',
+            25 : 'd',
         }],
     ]
 }
@@ -87,12 +85,18 @@ def indexRenameFunc(chunk):
     return chunk
 
 # R0_range param_policy VacKids param_vacincurmult param_vac_uptake
-favouriteParams = [4.5, 'ME_TS_LS', 'No', 12.5, 0.7]
+favouriteParams = [5, 'ME_TS_LS', 'No', 5, 0.7]
 
 #dataDir = '2021_05_04'
-dataDir = 'Vic2/2021_06_25'
+dataDir = 'Vic2/2021_07_05'
 
 #DoAbmProcessing(dataDir, indexRenameFunc, measureCols, measureCols_raw)
+
+#PreProcessMortHosp(dataDir, measureCols)
+#DrawMortHospDistributions(dataDir, measureCols)
+#FinaliseMortHosp(dataDir, measureCols)
+#MakeMortHospHeatmaps(dataDir, measureCols, heatmapStructure)
+
 MakeHeatmaps(dataDir, measureCols, heatmapStructure, dropMiddleValues=False)
 #DoProcessingForPMSLT(dataDir, measureCols, months=24)
 #DoProcessingForReport(dataDir, measureCols, table5Rows, 'param_vac_uptake', months=24)

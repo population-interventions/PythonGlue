@@ -21,7 +21,7 @@ def MakePath(path):
         os.mkdir(out_folder)
 
 
-def OutputToFile(df, path, index=True):
+def OutputToFile(df, path, index=True, head=True):
     # Write dataframe to a file.
     # Appends dataframe when called with the same name.
     fullFilePath = path + '.csv'
@@ -33,8 +33,28 @@ def OutputToFile(df, path, index=True):
     else:
         fileCreated[fullFilePath] = True
         df.to_csv(fullFilePath, index=index) 
-        if HEAD_MODE:
+        if HEAD_MODE and head:
             df.head(100).to_csv(path + '_head' + '.csv', index=index) 
+
+
+def CrossDf(df1, df2):
+    return (df1
+        .assign(_cross_merge_key=1)
+        .merge(df2.assign(_cross_merge_key=1), on="_cross_merge_key")
+        .drop("_cross_merge_key", axis=1)
+    )
+
+
+def CrossIndex(df, indexDf):
+    indexNames = [x for x in df.index.names if x != None]
+    if len(indexNames) == 0:
+        df = df.reset_index(drop=True)
+    else:
+        df = df.reset_index()
+    df = CrossDf(df, indexDf)
+    df = df.set_index(list(indexDf.columns) + indexNames)
+    df = df.sort_index(axis=0)
+    return df
 
 
 def SplitNetlogoList(chunk, cohorts, name, outputName):
@@ -84,6 +104,11 @@ def AddFiles(outputName, fileList, index=1, header=1):
                                   index_col=list(range(index)),
                                   header=list(range(header)))
     OutputToFile(df, outputName)
+
+
+def ListRemove(myList, element):
+    myList.remove(element)
+    return myList
 
 
 def ToHeatmap(df, structure):
