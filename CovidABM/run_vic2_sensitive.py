@@ -8,6 +8,7 @@ import pandas as pd
 import numpy as np
 
 from processNetlogoOutput import DoAbmProcessing
+from processToMortHosp import PreProcessMortHosp, FinaliseMortHosp, MakeMortHospHeatmaps, DrawMortHospDistributions
 from makeHeatmaps import MakeHeatmaps
 from makeGraphs import MakePrettyGraphs, MakeFavouriteGraph
 from processedOutputToPMSLT import DoProcessingForPMSLT
@@ -127,8 +128,9 @@ favouriteParams = [4.5, 'ME_TS_LS', 'No', 12.5, 0.7]
 #dataDir = '2021_05_04'
 dataDir = 'Vic2/2021_07_02_sensitive'
 
-DoAbmProcessing(dataDir, indexRenameFunc, measureCols, measureCols_raw)
-MakeHeatmaps(dataDir, measureCols, heatmapStructure, dropMiddleValues=False)
+#DoAbmProcessing(dataDir, indexRenameFunc, measureCols, measureCols_raw)
+#MakeHeatmaps(dataDir, measureCols, heatmapStructure, dropMiddleValues=False)
+PreProcessMortHosp(dataDir, measureCols)
 #DoProcessingForPMSLT(dataDir, measureCols, months=24)
 #DoProcessingForReport(dataDir, measureCols, table5Rows, 'VacUptake', months=24)
 

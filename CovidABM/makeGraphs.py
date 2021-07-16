@@ -45,29 +45,28 @@ def MakeFavouriteGraph(dataDir, dataName, measureCols, favParams, median=True, m
     
 
 def MakePrettyGraphs(dataDir, dataName, measureCols, splitParam,
-                     median=True, mean=True, si=False):
+                     median=True, mean=True, si=False, filterIndex=[], weeks=52):
     processDir = dataDir + '/ABM_process/'
     visualDir = dataDir + '/Graphs/'
     inputFile = processDir + dataName + '_weeklyAgg'
     
     df = pd.read_csv(inputFile + '.csv',
-                     index_col=list(range(3 + len(measureCols))),
+                     index_col=list(range(2 + len(measureCols))),
                      header=list(range(1)))
     
-    df = df.drop(columns=['0.0', '105.0']) # The last week is incomplete)
+    df = df.drop(columns=[str(weeks) + '.0']) # The last week is incomplete)
     df.index = df.index.droplevel(['run'])
-    df = df.reorder_levels([1, 3, 4, 5, 6, 7, 8, 0, 2], axis=0)
+    df = df.reorder_levels(measureCols + ['rand_seed'], axis=0)
     df = df.sort_index()
     
     df = df / 7
-    df = df.xs('Yes', level='VacKids')
+    for toFilter in filterIndex:
+        df = df.xs(toFilter[1], level=toFilter[0])
+    plotCols = [x for x in measureCols if x not in [y[0] for y in filterIndex]]
     
     df.columns.name = 'week'
-    df = df.stack('week').unstack('rand_seed')
-    df = df.mean(axis=1)
-    df = df.unstack('week')
-    
-    df = df.unstack([splitParam])
+    df = df.drop_duplicates(subset=None, keep='first')
+    df = df.unstack(plotCols)
     OutputToFile(df, visualDir + 'focus_data_in')
     
     metrics = []
@@ -80,23 +79,24 @@ def MakePrettyGraphs(dataDir, dataName, measureCols, splitParam,
     
     smallFont = 20
     bigFont = 26
-       
+    
     df = df.describe(percentiles=[0.05, 0.95])
     df = df.loc[metrics].stack(splitParam).transpose()
     df.index = df.index.astype(float)
     df = df.sort_index(axis=0)
     df = df.sort_index(axis=1)
+    print(df)
     
     plt.rcParams.update(plt.rcParamsDefault)
     
     figure = df.plot(figsize=(16.1, 10), linewidth=4, fontsize=smallFont)
     plt.grid(which='both')
-    figure.set_ylim(0, 1500000)
+    figure.set_ylim(0, 250)
     plt.legend(['No vaccination', '8 month rollout',
                 '12 month rollout', '16 month rollout'], fontsize=bigFont)
     plt.xlabel("Week", fontsize=bigFont)
     plt.ylabel("Median daily infections", fontsize=bigFont)
-    plt.xticks([x*13 for x in range(9)])
+    plt.xticks([x*13 for x in range(math.ceil(weeks/13))])
     plt.show()
     #OutputToFile(df, visualDir + dataName + 'fullGraphPlot')
 

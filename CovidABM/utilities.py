@@ -7,6 +7,7 @@ Created on Wed Mar 31 12:14:53 2021
 
 import pandas as pd
 import os
+import pathlib
 
 fileCreated = {}
 HEAD_MODE = True
@@ -19,6 +20,17 @@ def MakePath(path):
     if not os.path.exists(out_folder):
         MakePath(out_folder)
         os.mkdir(out_folder)
+
+
+def GetFiles(subfolder):
+    inputPath = pathlib.Path(subfolder)
+    print('Reading files from {}'.format(inputPath))
+    suffix = '.csv'
+    pathList = sorted(inputPath.glob('*{}'.format(suffix)))
+    filelist = [] # TODO - Do better.
+    for path in pathList:
+        filelist.append(subfolder + str(path.name)[:-len(suffix)])
+    return filelist
 
 
 def OutputToFile(df, path, index=True, head=True):
@@ -69,13 +81,20 @@ def SplitNetlogoList(chunk, cohorts, name, outputName):
     return chunk
     
   
-def SplitNetlogoNestedList(chunk, cohorts, days, colName, name):
+def SplitNetlogoNestedList(chunk, cohorts, days, colName, name, fillTo=365):
     split_names = [(name, j, i) for j in range(0, days) for i in range(0, cohorts)]
     df = chunk[colName].str.replace('\[', '').str.replace('\]', '').str.split(' ', expand=True)
     if days * cohorts - 1 not in df:
         for i in range(days * cohorts):
             if i not in df:
                 df[i] = 0
+    if fillTo:
+        for i in [fillTo - j for j in range(1, fillTo)]:
+            if i in df.columns:
+                break
+            else:
+                df[i] = 0
+        df = df.replace({None : 0})
     df.columns = pd.MultiIndex.from_tuples(split_names, names=['metric', 'day', 'cohort'])
     return df
 
