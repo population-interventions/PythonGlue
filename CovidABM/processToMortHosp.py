@@ -188,6 +188,7 @@ def ApplyCohortEffects(subfolder, measureCols):
 ############### Multiplication Uncertainty ###############
 
 def AggregateAgeAndVacDraw(dfVac, dfNoVac, cohortEffect, timeName, metric, measureCols):
+    print(cohortEffect.loc[1][metric])
     dfVac = dfVac.mul(cohortEffect.loc[1][metric], axis=0)
     dfNoVac = dfNoVac.mul(cohortEffect.loc[1][metric], axis=0)
     
@@ -235,7 +236,7 @@ def ApplyCohortEffectsUncertainty(subfolder, measureCols):
 
 ############### Draw ###############
 
-def LoadDfDraw(subfolder):
+def LoadDfDraw(subfolder, padMult=100):
     df = pd.read_csv(subfolder + '/other_input/death_and_hospital_draws' + '.csv',
                 header=[0])
     df = df.rename(columns={
@@ -249,10 +250,18 @@ def LoadDfDraw(subfolder):
     df = df.set_index(['draw', 'age', 'sex'])
     df = df.groupby(level=['draw', 'age'], axis=0).mean()
     df = CrossIndex(df, pd.DataFrame({'vaccine' : [0, 1]}))
+    
+    # HAX ALERT: Duplicate externally sourced draws to match current data.
+    df = CrossIndex(df, pd.DataFrame({'drawPad' : [i*padMult for i in range(padMult)]}))
+    index = df.index.to_frame()
+    index['draw'] = index['drawPad'] + index['draw']
+    index = index.drop(columns=['drawPad'])
+    df.index = pd.MultiIndex.from_frame(index)
+    
     return df.astype(float)
 
 
-def LoadDfDrawMult(subfolder):
+def LoadDfDrawMult(subfolder, drawCount=100, padMult=100):
 
     df = pd.read_csv(subfolder + '/other_input/death_and_hospital_mult' + '.csv',
                 header=[0])
@@ -264,7 +273,7 @@ def LoadDfDrawMult(subfolder):
     df = df[df['sex'] == 'female']
     df = df.drop(columns=['sex'])
     df = df.set_index(['vaccine', 'age'])
-    df = CrossIndex(df, pd.DataFrame({'draw' : list(range(100))}))
+    df = CrossIndex(df, pd.DataFrame({'draw' : list(range(drawCount))}))
     
     df_beta = pd.read_csv(subfolder + '/other_input/vaccine_lookup' + '.csv',
                 header=[0])
@@ -274,12 +283,19 @@ def LoadDfDrawMult(subfolder):
     distParams = {k : (df_beta.loc[k, 'alpha'], df_beta.loc[k, 'beta']) for k in toDraw}
     
     np.random.seed(21845)
-    for i in range(100):
+    for i in range(drawCount):
         df.loc[i, :] = df.loc[i, :].replace({
             k : np.random.beta(
                 distParams.get(k)[0], distParams.get(k)[1]
             ) for k in toDraw
         }).values
+    
+    # HAX ALERT: Duplicate because the above loop takes too long at 10000 draws.
+    df = CrossIndex(df, pd.DataFrame({'drawPad' : [i*padMult for i in range(padMult)]}))
+    index = df.index.to_frame()
+    index['draw'] = index['drawPad'] + index['draw']
+    index = index.drop(columns=['drawPad'])
+    df.index = pd.MultiIndex.from_frame(index)
     
     return df.astype(float)
 
@@ -296,11 +312,18 @@ def DoDraws(subfolder, measureCols):
 
 ############### Heatmaps ###############
 
-def DoHeatmaps(subfolder, measureCols, heatmapStructure, metric, years=1):
+def DoHeatmaps(subfolder, measureCols, heatmapStructure, metric, years=1, describe=False):
     df = pd.read_csv(subfolder + '/Mort_out/' + metric + '_yearlyAgg' + '.csv', 
                     index_col=list(range(2 + len(measureCols))),
                     header=list(range(1)))
     
+    if describe:
+        print('Describe {}'.format(metric))
+        df_describe = df.copy()
+        index = heatmapStructure.get('index_rows') + heatmapStructure.get('index_cols')
+        df_describe = df_describe.unstack(index)
+        print(df_describe.describe(percentiles=[0.05,0.25,0.75,0.95]))
+        
     df = df.groupby(level=measureCols, axis=0).mean()
     df_full = ToHeatmap(df.sum(axis=1).reset_index(), heatmapStructure)
     df_year1 = ToHeatmap(df['0'].reset_index(), heatmapStructure)
@@ -308,18 +331,21 @@ def DoHeatmaps(subfolder, measureCols, heatmapStructure, metric, years=1):
         df_year2 = ToHeatmap(df['1'].reset_index(), heatmapStructure)
     
     OutputToFile(df_full, subfolder + '/Mort_heatmaps/' + metric + '_total_full', head=False)
-    OutputToFile(df_year1, subfolder + '/Mort_heatmaps/' + metric + '_total_0_to_52', head=False)
     if years == 2:
+        OutputToFile(df_year1, subfolder + '/Mort_heatmaps/' + metric + '_total_0_to_52', head=False)
         OutputToFile(df_year2, subfolder + '/Mort_heatmaps/' + metric + '_total_52_to_104', head=False)
 
 
-def DoHeatmapsDraw(subfolder, measureCols, heatmapStructure, metric, years=1):
+def DoHeatmapsDraw(subfolder, measureCols, heatmapStructure, metric, years=1, describe=False):
     df = pd.read_csv(subfolder + '/Mort_out/' + metric + '_yearlyAgg' + '.csv', 
                     index_col=list(range(2 + len(measureCols))),
                     header=list(range(1)))
     
     percentList = [0.05, 0.5, 0.95]
-    yearList = [str(i) for i in range(years)] + ['full']
+    yearList = ['full']
+    if years > 1:
+        yearList += [str(i) for i in range(years)]
+    
     percMap = {
         0.05: 'percentile_005',
         0.95 : 'percentile_095',
@@ -335,7 +361,15 @@ def DoHeatmapsDraw(subfolder, measureCols, heatmapStructure, metric, years=1):
         df['full'] = df['0'] + df['1']
     else:
         df['full'] = df['0']
-    
+
+    for year in yearList:
+        if describe:
+            print('Describe {} draws'.format(metric))
+            df_describe = df.loc[:, year].copy()
+            index = heatmapStructure.get('index_rows') + heatmapStructure.get('index_cols')
+            df_describe = df_describe.unstack(index)
+            print(df_describe.describe(percentiles=[0.05,0.25,0.75,0.95]))
+        
     dfMean = df.copy()
     dfMean = dfMean.groupby(level=measureCols, axis=0).mean()
     
@@ -365,16 +399,16 @@ def PreProcessMortHosp(subfolder, measureCols):
 
 def FinaliseMortHosp(subfolder, measureCols):
     ApplyCohortEffects(subfolder, measureCols)
-    ApplyCohortEffectsUncertainty(subfolder, measureCols)
+    #ApplyCohortEffectsUncertainty(subfolder, measureCols)
     
     
 def DrawMortHospDistributions(subfolder, measureCols):
     DoDraws(subfolder, measureCols)
     
     
-def MakeMortHospHeatmaps(subfolder, measureCols, heatmapStructure, years=1):
-    DoHeatmaps(subfolder, measureCols, heatmapStructure, 'deaths', years=years)
-    DoHeatmaps(subfolder, measureCols, heatmapStructure, 'hospital', years=years)
-    DoHeatmapsDraw(subfolder, measureCols, heatmapStructure, 'deaths', years=years)
-    DoHeatmapsDraw(subfolder, measureCols, heatmapStructure, 'hospital', years=years)
+def MakeMortHospHeatmaps(subfolder, measureCols, heatmapStructure, years=1, describe=False):
+    DoHeatmaps(subfolder, measureCols, heatmapStructure, 'deaths', years=years, describe=describe)
+    DoHeatmaps(subfolder, measureCols, heatmapStructure, 'hospital', years=years, describe=describe)
+    #DoHeatmapsDraw(subfolder, measureCols, heatmapStructure, 'deaths_draw', years=years, describe=describe)
+    #DoHeatmapsDraw(subfolder, measureCols, heatmapStructure, 'hospital_draw', years=years, describe=describe)
 

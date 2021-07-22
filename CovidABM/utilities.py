@@ -12,6 +12,18 @@ import pathlib
 fileCreated = {}
 HEAD_MODE = True
 
+def FindRepeat(listIn, threshold=1):
+    repeats = {}
+    for val in listIn:
+        if val in repeats:
+            repeats[val] = repeats.get(val) + 1
+        else:
+            repeats[val] = 1
+    if not threshold:
+        threshold = sum(list(repeats.values())) / len(list(repeats.values()))
+        return [x for x in repeats.keys() if repeats.get(x) >= threshold]
+    return [x for x in repeats.keys() if repeats.get(x) > threshold]
+
 
 def MakePath(path):
     if '/' not in path:
@@ -22,7 +34,7 @@ def MakePath(path):
         os.mkdir(out_folder)
 
 
-def GetFiles(subfolder):
+def GetFiles(subfolder, firstOnly=False):
     inputPath = pathlib.Path(subfolder)
     print('Reading files from {}'.format(inputPath))
     suffix = '.csv'
@@ -30,6 +42,8 @@ def GetFiles(subfolder):
     filelist = [] # TODO - Do better.
     for path in pathList:
         filelist.append(subfolder + str(path.name)[:-len(suffix)])
+        if firstOnly:
+            return filelist
     return filelist
 
 
@@ -46,7 +60,8 @@ def OutputToFile(df, path, index=True, head=True):
         fileCreated[fullFilePath] = True
         df.to_csv(fullFilePath, index=index) 
         if HEAD_MODE and head:
-            df.head(100).to_csv(path + '_head' + '.csv', index=index) 
+            last = path.rfind('/')
+            df.head(100).to_csv(path[:last + 1] + '_head_' + path[last + 1:] + '.csv', index=index) 
 
 
 def CrossDf(df1, df2):

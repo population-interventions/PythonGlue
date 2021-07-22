@@ -44,6 +44,64 @@ def MakeFavouriteGraph(dataDir, dataName, measureCols, favParams, median=True, m
     df.plot()
     
 
+def MakeDailyGraphs(dataDir, dataName, measureCols, splitParam,
+                     median=True, mean=True, si=False, filterIndex=[], days=364):
+    processDir = dataDir + '/ABM_process/'
+    visualDir = dataDir + '/Graphs/'
+    
+    df = pd.read_csv(processDir + dataName + '_daily' + '.csv',
+                     index_col=list(range(2 + len(measureCols))),
+                     header=list(range(1)))
+    #OutputToFile(df, visualDir + 'daily_infections')
+    
+    #df = df.drop(columns=[str(weeks) + '.0']) # The last week is incomplete)
+    df.index = df.index.droplevel(['run'])
+    df = df.reorder_levels(measureCols + ['rand_seed'], axis=0)
+    df = df.sort_index()
+    
+    for toFilter in filterIndex:
+        df = df.xs(toFilter[1], level=toFilter[0])
+    plotCols = [x for x in measureCols if x not in [y[0] for y in filterIndex]]
+    
+    df.columns.name = 'week'
+    df = df.drop_duplicates(subset=None, keep='first')
+    df = df.unstack(plotCols)
+    OutputToFile(df, visualDir + 'focus_data_in')
+    
+    metrics = []
+    if median:
+        metrics += ['50%']
+    if mean:
+        metrics += ['mean']
+    if si:
+        if si == True:
+            si = [0.25, 0.75]
+        metrics += ['{:.0f}%'.format(x*100) for x in si]
+    
+    smallFont = 20
+    bigFont = 26
+    
+    df = df.describe(percentiles=si)
+    df = df.loc[metrics].stack(splitParam).transpose()
+    df.index = df.index.astype(float)
+    df = df.sort_index(axis=0)
+    df = df.sort_index(axis=1)
+    print(df)
+    
+    plt.rcParams.update(plt.rcParamsDefault)
+    
+    figure = df.plot(figsize=(16.1, 10), linewidth=4, fontsize=smallFont)
+    plt.grid(which='both')
+    figure.set_ylim(0, 500)
+    plt.legend(fontsize=bigFont)
+    plt.xlabel("Day", fontsize=bigFont)
+    plt.ylabel("Daily infections", fontsize=bigFont)
+    plt.xticks([x*14 for x in range(math.ceil(days/14))])
+    figure.set_xlim(0, 300)
+    plt.show()
+    #OutputToFile(df, visualDir + dataName + 'fullGraphPlot')
+
+
 def MakePrettyGraphs(dataDir, dataName, measureCols, splitParam,
                      median=True, mean=True, si=False, filterIndex=[], weeks=52):
     processDir = dataDir + '/ABM_process/'
@@ -54,7 +112,7 @@ def MakePrettyGraphs(dataDir, dataName, measureCols, splitParam,
                      index_col=list(range(2 + len(measureCols))),
                      header=list(range(1)))
     
-    df = df.drop(columns=[str(weeks) + '.0']) # The last week is incomplete)
+    #df = df.drop(columns=[str(weeks) + '.0']) # The last week is incomplete)
     df.index = df.index.droplevel(['run'])
     df = df.reorder_levels(measureCols + ['rand_seed'], axis=0)
     df = df.sort_index()
@@ -75,12 +133,14 @@ def MakePrettyGraphs(dataDir, dataName, measureCols, splitParam,
     if mean:
         metrics += ['mean']
     if si:
-        metrics += ['5%', '95%']
+        if si == True:
+            si = [0.25, 0.75]
+        metrics += ['{:.0f}%'.format(x*100) for x in si]
     
     smallFont = 20
     bigFont = 26
     
-    df = df.describe(percentiles=[0.05, 0.95])
+    df = df.describe(percentiles=si)
     df = df.loc[metrics].stack(splitParam).transpose()
     df.index = df.index.astype(float)
     df = df.sort_index(axis=0)
@@ -91,9 +151,8 @@ def MakePrettyGraphs(dataDir, dataName, measureCols, splitParam,
     
     figure = df.plot(figsize=(16.1, 10), linewidth=4, fontsize=smallFont)
     plt.grid(which='both')
-    figure.set_ylim(0, 250)
-    plt.legend(['No vaccination', '8 month rollout',
-                '12 month rollout', '16 month rollout'], fontsize=bigFont)
+    figure.set_ylim(0, 300)
+    plt.legend(fontsize=bigFont)
     plt.xlabel("Week", fontsize=bigFont)
     plt.ylabel("Median daily infections", fontsize=bigFont)
     plt.xticks([x*13 for x in range(math.ceil(weeks/13))])

@@ -34,6 +34,8 @@ def ProcessAbmChunk(chunk: pd.DataFrame, outputStaticData, filename,
         '[run number]', 'rand_seed',
         'stage_listOut', 'scalephase', 'cumulativeInfected',
         'infectNoVacArray_listOut', 'infectVacArray_listOut',
+        'case_listOut', 'case7_listOut',
+        'case14_listOut', 'case28_listOut',
         'age_listOut', 'atsi_listOut', 'morbid_listOut'
     ] + measureCols_raw]
     
@@ -60,6 +62,9 @@ def ProcessAbmChunk(chunk: pd.DataFrame, outputStaticData, filename,
     chunk = chunk.drop(secondaryData, axis=1)
     chunk = indexRenameFunc(chunk)
     
+    SplitOutDailyData(chunk, 1, days, 'case', filename, 'case', fillTo=day_override)
+    SplitOutDailyData(chunk, 1, days, 'case7', filename, 'case7', fillTo=day_override)
+    SplitOutDailyData(chunk, 1, days, 'case14', filename, 'case14', fillTo=day_override)
     SplitOutDailyData(chunk, 1, days, 'stage', filename, 'stage', fillTo=day_override)
     SplitOutDailyData(chunk, cohorts, days, 'infectNoVacArray', filename, 'infectNoVac', fillTo=day_override)
     SplitOutDailyData(chunk, cohorts, days, 'infectVacArray', filename, 'infectVac', fillTo=day_override)
@@ -84,12 +89,19 @@ def ProcessAbmOutput(subfolder, indexRenameFunc, measureCols_raw, day_override=F
             firstProcess = False
 
 
-def ToVisualisation(chunk, filename, append, measureCols, dayStartOffset=0):
+def ToVisualisation(chunk, filename, append, measureCols, divisor=False, dayStartOffset=0, outputDay=False):
     chunk.columns.set_levels(chunk.columns.levels[1].astype(int), level=1, inplace=True)
     chunk.columns.set_levels(chunk.columns.levels[2].astype(int), level=2, inplace=True)
     chunk = chunk.groupby(level=[0, 1], axis=1).sum()
     chunk.sort_values('day', axis=1, inplace=True)
+    if divisor:
+        chunk = chunk / divisor
     
+    if outputDay:
+        chunk_day = chunk.copy()
+        chunk_day.columns = chunk_day.columns.droplevel(level=0)
+        OutputToFile(chunk_day, filename + '_' + append + '_daily')
+        
     index = chunk.columns.to_frame()
     index['week'] = np.floor((index['day'] - dayStartOffset)/7)
     
@@ -101,7 +113,7 @@ def ToVisualisation(chunk, filename, append, measureCols, dayStartOffset=0):
     OutputToFile(chunk, filename + '_' + append + '_weeklyAgg')
 
 
-def ProcessFileToVisualisation(subfolder, append, measureCols, dayStartOffset=None):
+def ProcessFileToVisualisation(subfolder, append, measureCols, divisor=False, dayStartOffset=None, outputDay=False):
     chunksize = 4 ** 7
     filename = subfolder + '/ABM_process/' + 'processed'
     for chunk in tqdm(pd.read_csv(filename + '_' + append + '.csv', chunksize=chunksize,
@@ -109,13 +121,10 @@ def ProcessFileToVisualisation(subfolder, append, measureCols, dayStartOffset=No
                                   header=list(range(3)),
                                   dtype={'day' : int, 'cohort' : int}),
                       total=4):
-        ToVisualisation(chunk, filename, append, measureCols, dayStartOffset=dayStartOffset)
+        ToVisualisation(chunk, filename, append, measureCols, divisor=divisor, dayStartOffset=dayStartOffset, outputDay=outputDay)
 
-    
-def DoAbmProcessing(dataDir, indexRenameFunc, measureCols, measureCols_raw, day_override=False, dayStartOffset=0):
-    print('Processing ABM Output', dataDir)
-    ProcessAbmOutput(dataDir, indexRenameFunc, measureCols_raw, day_override=day_override)
-    
+
+def InfectionsAndStageVisualise(dataDir, measureCols, dayStartOffset=0):
     print('Processing infectNoVac')
     ProcessFileToVisualisation(dataDir, 'infectNoVac', measureCols, dayStartOffset=dayStartOffset) 
     print('Processing infectVac')
@@ -128,6 +137,21 @@ def DoAbmProcessing(dataDir, indexRenameFunc, measureCols, measureCols_raw, day_
         index=(2 + len(measureCols))
     )
     ProcessFileToVisualisation(dataDir, 'stage', measureCols, dayStartOffset=dayStartOffset)
+
+
+def CasesVisualise(dataDir, measureCols, dayStartOffset=0):
+    print('Processing cases')
+    ProcessFileToVisualisation(dataDir, 'case', measureCols, divisor=False, dayStartOffset=dayStartOffset, outputDay=True) 
+    ProcessFileToVisualisation(dataDir, 'case7', measureCols, divisor=7, dayStartOffset=dayStartOffset, outputDay=True) 
+    ProcessFileToVisualisation(dataDir, 'case14', measureCols, divisor=14, dayStartOffset=dayStartOffset, outputDay=True) 
+
+
+def DoAbmProcessing(dataDir, indexRenameFunc, measureCols, measureCols_raw, day_override=False, dayStartOffset=0):
+    print('Processing ABM Output', dataDir)
+    ProcessAbmOutput(dataDir, indexRenameFunc, measureCols_raw, day_override=day_override)
+    
+    CasesVisualise(dataDir, measureCols, dayStartOffset=dayStartOffset)
+    InfectionsAndStageVisualise(dataDir, measureCols, dayStartOffset=dayStartOffset)
     
     
     

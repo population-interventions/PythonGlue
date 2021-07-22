@@ -33,7 +33,7 @@ def MakeInfectionHeatmap(name, heatmapStructure, outputFile, inputFile, measureC
                      header=list(range(1)))
     
     # Do (startWeek + 1) because week 0 consists of a single day, day 0.
-    df = df[[str(i + startWeek + 1) + '.0' for i in range(window)]]
+    df = df[[str(i + startWeek) + '.0' for i in range(window)]]
     df = df.mean(axis=1) / 7
     
     if percentile:
@@ -58,7 +58,7 @@ def MakeStagesHeatmap(name, heatmapStructure, outputFile, inputFile, measureCols
     # Add 1 to the day because week 0 consists of a single day, day 0.
     df = df.droplevel([0, 2], axis=1)
     
-    df = df[[str(i + startWeek*7 + 1) for i in range(window*7)]]
+    df = df[[str(i + startWeek*7) for i in range(window*7)]]
     df = df.mean(axis=1)
     
     if percentile:

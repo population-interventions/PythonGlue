@@ -9,10 +9,12 @@ import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 import matplotlib.ticker as ticker
+import matplotlib
 import seaborn as sns
 import pathlib
 import utilities as util
 #from tqdm import tqdm
+
 
 def GetIndexPickStr(indexVals):
     lbl = "with"
@@ -40,9 +42,7 @@ def PickOutIndexAndMetric(df, axis, metric, index, indexVals, bucketWidth=False,
     #print(indexVals)
     if bucketWidth:
         if loglog:
-            print(df[axis])
             df[axis] = np.exp(np.floor(np.log(df[axis]) / bucketWidth) * bucketWidth)
-            print(df[axis])
         else:
             df[axis] = np.floor(df[axis] / bucketWidth) * bucketWidth + bucketWidth/2
     # splitNames should only have one entry.
@@ -51,13 +51,108 @@ def PickOutIndexAndMetric(df, axis, metric, index, indexVals, bucketWidth=False,
     return df, splitNames[0]
 
 
+def PrintMetrics(subfolder, df, axis, index, indexVals, name=False):
+    df = PickOutIndex(df, indexVals)
+    indexList = ['rand_seed'] + index
+    df = df[indexList + [axis]].set_index(indexList)
+    df = df.unstack('rand_seed').transpose()
+    df = df.describe(percentiles=[0.05,0.25,0.75,0.95])
+    if not name:
+        name = axis
+    util.OutputToFile(df, subfolder + '/ABM_metrics/' + name, head=False)
+
+
+def PrintMetricsManyIndex(subfolder, df, indexVals, axis, **kwargs):
+    for preset in indexVals:
+        PrintMetrics(subfolder, df, axis, preset['ind'], preset['val'], **kwargs)
+      
+        
+def PlotViolin(df, axis, xSplit, indexVals,
+                     size=(9, 4.5), hlines=False, nameOverride=False,
+                     titlePrepend='', loglog=False, date=False, xlabels=False):
+    print('PlotIntegerRange', axis, xSplit)
+    df = PickOutIndex(df, indexVals)
+    
+    print('Plotting')
+    #sns.set_palette("tab10")
+    #sns.palplot(sns.color_palette("tab10"))
+    palette = "muted"
+    
+    #print(df[[axis, xSplit]])
+    if loglog:
+        df[axis] = np.log10(df[axis])
+    figure = sns.violinplot(x=xSplit, y=axis, data=df, linewidth=0.5,
+                            inner='quartile', scale='area', palette=palette,
+                            width=0.98, gridsize=200)
+    if loglog:
+        plt.gca().yaxis.set_major_formatter(ticker.StrMethodFormatter("$10^{{{x:.0f}}}$"))
+        
+        lower = int(np.floor(figure.get_ylim()[0]))
+        upper = int(np.ceil(figure.get_ylim()[1]))
+        print(lower, upper)
+        
+        plt.gca().yaxis.set_ticks([p for p in range(lower, upper)])
+        plt.gca().yaxis.set_ticks([np.log10(x) for p in range(lower, upper) for x in np.linspace(10**p, 10**(p+1), 6)], minor=True)
+    else:
+        plt.gca().yaxis.set_major_locator(ticker.MaxNLocator(nbins=6))
+        plt.gca().yaxis.set_minor_locator(ticker.AutoMinorLocator())
+        
+    plt.grid(which='major', axis='y')
+    plt.grid(which='minor', axis='y', linewidth=0.2)
+    plt.gca().set_axisbelow(True)
+    
+    if date:
+        dateList = ["11$^{th}$ July '21", "1$^{st}$ Sep '21", "1$^{st}$ Nov '21",
+                    "1$^{st}$ Jan '22", "1$^{st}$ Mar '22", "1$^{st}$ May '22",
+                    "1$^{st}$ July '22"]
+        #plt.yticks(rotation = 45)
+        plt.gca().yaxis.set_ticks([0, 51, 112, 173, 234, 295, 356])
+        plt.gca().yaxis.set_minor_locator(ticker.AutoMinorLocator())
+        plt.gca().set_yticklabels(dateList)
+        figure.set_ylim(0, 380)
+        
+    if xlabels:
+        plt.gca().set_xticklabels(xlabels)
+    
+    for l in plt.gca().lines:
+        l.set_linestyle('--')
+        l.set_linewidth(0.9)
+        l.set_color('black')
+        l.set_alpha(0.6)
+    for l in plt.gca().lines[1::3]:
+        l.set_linestyle('-')
+        l.set_linewidth(1)
+        l.set_color('black')
+        l.set_alpha(0.8)
+    
+    plt.gcf().set_size_inches(size[0], size[1])
+    plt.xticks(rotation=0)
+    plt.ylabel(axis)
+    if not (loglog or date):
+        figure.set_ylim(min(figure.get_ylim()[0], 0), max(figure.get_ylim()[1], 1))
+
+    if nameOverride:
+        figure.set_title(titlePrepend + nameOverride, fontsize=18)
+    else:
+        figure.set_title(titlePrepend + '{} by {} {}'.format(xSplit, axis, GetIndexPickStr(indexVals)))
+    
+    if hlines:
+        for v in hlines:
+            figure.axhline(y=v, linewidth=0.9, color='k', zorder=0, linestyle='--')
+            plt.text(0.1, v + 8, '18$^{th}$ July - Restrictions applied', fontsize=8, rotation=0)
+    
+    plt.ylabel(None)
+    plt.xlabel(None)
+    plt.show()
+
+
 def PlotIntegerRange(df, axis, metric, index, indexVals,
-                     bar=False, doSum=False, doCount=False,
+                     bar=False, doSum=False, doCount=False, xlim=False,
                      size=(9,4.5), hlines=False, nameOverride=False,
                      bucketWidth=False, titlePrepend='', loglog=False):
     print('PlotIntegerRange', axis, metric)
     df, splitName = PickOutIndexAndMetric(df, axis, metric, index, indexVals, bucketWidth=bucketWidth, loglog=loglog)
-    
+
     if doCount:
         df = df.groupby(level=[1, 2]).count()
     elif doSum:
@@ -92,6 +187,9 @@ def PlotIntegerRange(df, axis, metric, index, indexVals,
     else:
         plt.ylabel(metric)
     figure.set_ylim(min(figure.get_ylim()[0], 0), max(figure.get_ylim()[1], 1))
+    
+    if xlim:
+        figure.set_xlim(xlim[0], xlim[1])
     
     if nameOverride:
         figure.set_title(titlePrepend + nameOverride)
@@ -168,14 +266,15 @@ def PlotPartialStackedBar(df, axis, metric, index, indexVals, size=(9, 4.5), hli
     plt.show()
 
 
-def PlotRangeManyIndex(df, indexVals, axis, metric, bar=False, doSum=False, loglog=False,
-                       doCount=False, hlines=False, bucketWidth=False, titlePrepend=''):
+def PlotRangeManyIndex(df, indexVals, axis, metric, **kwargs):
     for preset in indexVals:
-        PlotIntegerRange(df, axis, metric, preset['ind'], preset['val'],
-                         loglog=loglog,
-                         bar=bar, doSum=doSum, doCount=doCount, hlines=hlines,
-                         bucketWidth=bucketWidth, titlePrepend=titlePrepend)
+        PlotIntegerRange(df, axis, metric, preset['ind'], preset['val'], **kwargs)
+  
 
+def PlotViolinManyIndex(df, indexVals, axis, xSplit, **kwargs):
+    for preset in indexVals:
+        PlotViolin(df, axis, xSplit, preset['val'], **kwargs)
+        
 
 def PlotStackedManyIndex(df, indexVals, axis, metric, bar=False, doSum=False,
                          doCount=False, hlines=False, bucketWidth=False, titlePrepend=''):
@@ -204,7 +303,7 @@ def PrintSomeStats(df, indexVals):
     
     
 
-def ProcessResults(nameList):
+def ProcessResults(subfolder, nameList):
     name = nameList[0]
     interestingColumns = [
         'param_trace_mult', 'sympt_present_prop',
@@ -223,8 +322,9 @@ def ProcessResults(nameList):
         'casesinperiod7_min',
         'casesinperiod7_switchTime',
         'cumulativeInfected_switchTime',
+        'param_vac_rate_mult', 'compound_essential', 'input_population_table',
     ]
-    notFloatCol = ['param_policy']
+    notFloatCol = ['param_policy', 'compound_essential', 'input_population_table']
     df = pd.DataFrame(columns=interestingColumns)
     for v in nameList:
         pdf = pd.read_csv(v + '.csv', header=6)
@@ -250,6 +350,9 @@ def ProcessResults(nameList):
         'casesinperiod7_max' : 'maxCasesDailyOverWeek',
         'casesReportedToday_max' : 'maxCasesDaily',
         'casesinperiod7_switchTime' : 'intCasesWeekDaily',
+        'param_vac_rate_mult' : 'VacRate',
+        'compound_essential' : 'Essential',
+        'input_population_table' : 'Rollout'
     })
     
     df = df.set_index(['rand_seed', 'TraceMult', 'param_policy'])
@@ -259,34 +362,63 @@ def ProcessResults(nameList):
     df['combinedStop'] = df.apply(lambda row:
         row['pre_stop_day'] if row['pre_stop_day'] > -1 else row['End_Day'], axis=1)
     
+    df['cumulativeInfected'] = df['cumulativeInfected'] - 9000
+    
+    df['Rollout'] = df['Rollout'].replace({
+        'input/pop_essential_2007_int.csv' : 'INT',
+        'input/pop_essential_2007_bau.csv' : 'BAU',
+    })
     
     df['maxCasesDailyOverWeek'] = df['maxCasesDailyOverWeek'] / 7
     df['intCasesWeekDaily'] = df['intCasesWeekDaily'] / 7
     df['culTrace'] = df['culTrackAll'] - df['culNotice']
     df['success'] = 0
-    df.loc[df['casesinperiod7_min'] < 5, 'success'] = 1
+    df.loc[df['pre_stop_day'] > -1, 'success'] = 1
     df['any_trace'] = 0
     df.loc[df['first_trace_occur'] >= 0, 'any_trace'] = 1
     df['any_transmit'] = 0
     df.loc[df['cumulativeInfected'] > 1, 'any_transmit'] = 1
     
     # Reset plot parameters
-    dailyCaseLimit = 61
+    dailyCaseLimit = 0
     plt.rcParams.update(plt.rcParamsDefault)
-    df = df[df['maxCasesDailyOverWeek'] >= dailyCaseLimit]
+    
+    df = df[df['maxCasesDailyOverWeek'] >= 5]
     df = df.sort_index()
-    print(df.index)
     
     if True:
         PlotIntegerRange(df, 'TraceMult', 'success',
                          ['TraceMult', 'param_policy'],
-                         {'TraceMult' : 0.5},
-                         bar=True, nameOverride='Success in runs with a week of at least {} average daily cases.'.format(dailyCaseLimit))
+                         {'TraceMult' : 1},
+                         bar=True,
+                         nameOverride='Success in runs with a week of at least {} average daily cases.'.format(dailyCaseLimit))
+        
+        metricList = [
+            {'ind' : ['VacRate', 'Essential', 'Rollout'], 
+             'val' : {}},
+        ]
+        
         indexList = [
             #{'ind' : ['IsoComply', 'TraceMult', 'PresentProp', 'R0'], 
             # 'val' : {'TraceMult' : 1, 'PresentProp' : 0.5, 'R0' : 5}},
-            {'ind' : ['TraceMult', 'param_policy'], 
-             'val' : {'TraceMult' : 0.5}},
+            {'ind' : ['VacRate', 'Essential', 'Rollout'], 
+             'val' : {'VacRate' : 1, 'Essential' : 'Normal'}},
+            {'ind' : ['VacRate', 'Essential', 'Rollout'], 
+             'val' : {'VacRate' : 1, 'Essential' : 'Extreme'}},
+            {'ind' : ['VacRate', 'Essential', 'Rollout'], 
+             'val' : {'VacRate' : 0.5, 'Essential' : 'Normal'}},
+            {'ind' : ['VacRate', 'Essential', 'Rollout'], 
+             'val' : {'VacRate' : 0.5, 'Essential' : 'Extreme'}},
+            {'ind' : ['VacRate', 'Essential', 'Rollout'], 
+             'val' : {'Rollout' : 'INT', 'Essential' : 'Normal'}},
+            {'ind' : ['VacRate', 'Essential', 'Rollout'], 
+             'val' : {'VacRate' : 1, 'Rollout' : 'INT'}},
+            {'ind' : ['VacRate', 'Essential', 'Rollout'], 
+             'val' : {'VacRate' : 1, 'Rollout' : 'BAU'}},
+            {'ind' : ['VacRate', 'Essential', 'Rollout'], 
+             'val' : {'Rollout' : 'BAU', 'Essential' : 'Normal'}},
+            {'ind' : ['VacRate', 'Essential', 'Rollout'], 
+             'val' : {'Rollout' : 'BAU', 'Essential' : 'Extreme'}},
             #{'ind' : ['IsoComply', 'TraceMult', 'PresentProp', 'R0'], 
             # 'val' : {'IsoComply' : 0.97, 'TraceMult' : 1, 'R0' : 2.5}},
             #{'ind' : ['IsoComply', 'TraceMult', 'PresentProp', 'R0'], 
@@ -318,22 +450,43 @@ def ProcessResults(nameList):
             #PlotRangeManyIndex(df[df['first_trace_occur'] >= 0], indexList, 'first_trace_occur', 'success')
             titlePrepend = '[min daily for week = {}] '.format(dailyCaseLimit)
             
-            PlotRangeManyIndex(df, indexList, 'intCasesWeekDaily', 'success', doCount=True, bucketWidth=32/7, titlePrepend=titlePrepend)
+            PrintMetricsManyIndex(subfolder, df, metricList, 'combinedStop')
+            PrintMetricsManyIndex(subfolder, df, metricList, 'cumulativeInfected')
             
-            PlotRangeManyIndex(df, indexList, 'combinedStop', 'success', doCount=True, bucketWidth=5, titlePrepend=titlePrepend)
-            PlotRangeManyIndex(df, indexList, 'cumulativeInfected', 'combinedStop', loglog=True, doCount=True, bucketWidth=1/15, titlePrepend=titlePrepend)
+            #PlotRangeManyIndex(df, indexList, 'intCasesWeekDaily', 'success', doCount=True, bucketWidth=32/7, titlePrepend=titlePrepend)
+            PlotRangeManyIndex(df, indexList, 'combinedStop', 'success', xlim=(30, 80), doCount=True, bucketWidth=2)
+            PlotRangeManyIndex(df, indexList, 'cumulativeInfected', 'combinedStop', xlim=(600, 14000), loglog=True, doCount=True, bucketWidth=1/15)
+            
+            #PlotViolinManyIndex(df, indexList, 
+            #                    'intCasesWeekDaily', 
+            #                    'param_policy',
+            #                    nameOverride='Daily cases over the week prior to lockdown',
+            #                    )
+            #PlotViolinManyIndex(df,
+            #                    indexList, 'combinedStop', 
+            #                    'param_policy', 
+            #                    hlines=[14], date=True,
+            #                    xlabels=['Stage 2', 'Stage 3', 'Stage 4'],
+            #                    nameOverride='Expected date of five daily cases',
+            #                    )
+            #PlotViolinManyIndex(df, indexList,
+            #                    'cumulativeInfected', 
+            #                    'param_policy', loglog=True,
+            #                    xlabels=['Stage 2', 'Stage 3', 'Stage 4'],
+            #                    nameOverride='Expected infections prior to reaching five daily cases',
+            #                    )
             
             #PlotRangeManyIndex(df, indexList, 'maxCasesDailyOverWeek', 'success', doCount=True, bucketWidth=25, titlePrepend=titlePrepend)
             #PlotRangeManyIndex(df, indexList, 'maxCasesDailyOverWeek', 'success', bucketWidth=25, titlePrepend=titlePrepend)
-            PlotStackedManyIndex(df[df['maxCasesDailyOverWeek'] < 350], indexList, 'maxCasesDailyOverWeek', 'success', bucketWidth=20, titlePrepend=titlePrepend)
+            #PlotStackedManyIndex(df[df['maxCasesDailyOverWeek'] < 350], indexList, 'maxCasesDailyOverWeek', 'success', bucketWidth=20, titlePrepend=titlePrepend)
     
     print('Total runs {}'.format(df['combinedStop'].count()))
-    for i in range(2, 5):
-        print('Sucesse Rate max stage {} {}'.format(i, df.loc[(slice(None), slice(None), 'Stage{}'.format(i)),'success'].mean()))
+    #for i in range(2, 5):
+    #    print('Sucesse Rate max stage {} {}'.format(i, df.loc[(slice(None), slice(None), 'Stage{}'.format(i)),'success'].mean()))
     #PrintSomeStats(df, {'IsoComply' : 0.93, 'TraceMult' : 1, 'PresentProp' : 0.5})
 
 
 def DoPreProcessChecks(subfolder):
-    ProcessResults(util.GetFiles(subfolder + '/ABM_out/'))
+    ProcessResults(subfolder, util.GetFiles(subfolder + '/ABM_out/', firstOnly=False))
     
-
+    
