@@ -84,6 +84,33 @@ heatmapStructure = {
 filterIndex = [
 ]
 
+defaultValues = [
+	{
+		'R0' : 6,
+		'VacUptake' : 0.7,
+		'non_infective_time' : 0,
+		'Essential' : 'Normal',
+		'Rollout' : 'BAU',
+		'Policy' : 'Stage4',
+	},
+	{
+		'R0' : 6,
+		'VacUptake' : 0.7,
+		'non_infective_time' : 0,
+		'Essential' : 'Normal',
+		'Rollout' : 'INT',
+		'Policy' : 'Stage4',
+	},
+	{
+		'R0' : 6,
+		'VacUptake' : 0.7,
+		'non_infective_time' : 0,
+		'Essential' : 'Normal',
+		'Rollout' : 'MORE_AZ',
+		'Policy' : 'Stage4',
+	},
+]
+
 def indexRenameFunc(chunk):
 	index = chunk.index.to_frame()
 	#index['R0'] = index['global_transmissibility_out'].apply(lambda x: 3.75 if x < 0.61333 else (4.17 if x < 0.681666 else 4.58))
@@ -109,17 +136,19 @@ def indexRenameFunc(chunk):
 favouriteParams = [5, 'ME_TS_LS', 'No', 5, 0.7]
 
 #dataDir = '2021_05_04'
-dataDir = 'NSW/2021_07_24'
+dataDir = 'NSW/2021_07_test'
 
-DoPreProcessChecks(dataDir, indexRenameFunc, measureCols, measureCols_raw)
-#DoAbmProcessing(dataDir, indexRenameFunc, measureCols, measureCols_raw, day_override=728)
+dryRun = True
 
-#PreProcessMortHosp(dataDir, measureCols)
-#DrawMortHospDistributions(dataDir, measureCols, padMult=20)
-#FinaliseMortHosp(dataDir, measureCols)
-#MakeMortHospHeatmaps(dataDir, measureCols, heatmapStructure, years=2, describe=True)
+DoPreProcessChecks(dataDir, indexRenameFunc, measureCols, measureCols_raw, defaultValues, firstOnly=dryRun)
+DoAbmProcessing(dataDir, indexRenameFunc, measureCols, measureCols_raw, firstOnly=dryRun, day_override=728)
 
-#MakeHeatmaps(dataDir, measureCols, heatmapStructure, windowCount=1, dropMiddleValues=False)
+PreProcessMortHosp(dataDir, measureCols)
+DrawMortHospDistributions(dataDir, measureCols, padMult=20)
+FinaliseMortHosp(dataDir, measureCols)
+MakeMortHospHeatmaps(dataDir, measureCols, heatmapStructure, years=2, describe=True)
+
+MakeHeatmaps(dataDir, measureCols, heatmapStructure, windowCount=1, dropMiddleValues=False)
 #DoProcessingForPMSLT(dataDir, measureCols, months=24)
 #DoProcessingForReport(dataDir, measureCols, table5Rows, 'param_vac_uptake', months=24)
 

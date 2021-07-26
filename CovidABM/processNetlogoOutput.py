@@ -88,9 +88,12 @@ def ProcessAbmOutput(
 	chunksize = 4 ** 7
 	firstProcess = True
 	for filename in filelist:
-		for chunk in tqdm(pd.read_csv(filename + '.csv', chunksize=chunksize, header=6), total=4):
-			ProcessAbmChunk(chunk, firstProcess, outputFile, measureCols_raw,
-							indexRenameFunc, day_override=day_override)
+		for chunk in tqdm(pd.read_csv(
+					filename + '.csv', chunksize=chunksize, header=6),
+				total=4):
+			ProcessAbmChunk(
+				chunk, firstProcess, outputFile, measureCols_raw,
+				indexRenameFunc, day_override=day_override)
 			firstProcess = False
 			if firstOnly:
 				return
@@ -149,9 +152,15 @@ def InfectionsAndStageVisualise(dataDir, measureCols, dayStartOffset=0):
 
 def CasesVisualise(dataDir, measureCols, dayStartOffset=0):
 	print('Processing cases')
-	ProcessFileToVisualisation(dataDir, 'case', measureCols divisor=False, dayStartOffset=dayStartOffset, outputDay=True) 
-	ProcessFileToVisualisation(dataDir, 'case7', measureCols, divisor=7, dayStartOffset=dayStartOffset, outputDay=True) 
-	ProcessFileToVisualisation(dataDir, 'case14', measureCols, divisor=14, dayStartOffset=dayStartOffset, outputDay=True) 
+	ProcessFileToVisualisation(
+		dataDir, 'case', measureCols,divisor=False,
+		dayStartOffset=dayStartOffset, outputDay=True)
+	ProcessFileToVisualisation(
+		dataDir, 'case7', measureCols, divisor=7,
+		dayStartOffset=dayStartOffset, outputDay=True)
+	ProcessFileToVisualisation(
+		dataDir, 'case14', measureCols, divisor=14,
+		dayStartOffset=dayStartOffset, outputDay=True)
 
 
 def DoAbmProcessing(dataDir, indexRenameFunc, measureCols, measureCols_raw, firstOnly=False, day_override=False, dayStartOffset=0):
