@@ -30,52 +30,43 @@ healthPerspectiveRows = [
 ]
 
 measureCols_raw = [
-	'global_transmissibility',
-	'param_vac_uptake_mult',
-	'non_infective_time',
+	'r0_range',
 	'compound_essential',
 	'data_suffix',
+	'param_vac_rate_mult',
 	'param_policy',
 ]
 measureCols = [
 	'R0',
-	'VacUptake',
-	'non_infective_time',
 	'Essential',
 	'Rollout',
+	'VacRate',
 	'Policy',
 ]
 
 heatmapStructure = {
-	'index_rows' : ['R0', 'VacUptake', 'non_infective_time'],
-	'index_cols' : ['Essential', 'Rollout', 'Policy'],
+	'index_rows' : ['R0', 'Essential', 'VacRate', ],
+	'index_cols' : ['Rollout', 'Policy', ],
 	'sort_rows' : [
 		['R0', {
-			6 : 'a',
-			8 : 'b',
-			10: 'c',
+			5 : 'a',
+			6 : 'b',
+			8 : 'c',
 		}],
-		['VacUptake', {
-			0.7 : 'a',
-			0.85 : 'b',
-		}],
-		['non_infective_time', {
-			0 : 'a',
-			1 : 'b',
-		}],
-	], 
-	'sort_cols' : [
 		['Essential', {
 			'Normal' : 'a',
 			'Extreme' : 'b',
 		}],
+	], 
+	'sort_cols' : [
 		['Rollout', {
 			'BAU' : 'a',
 			'INT' : 'b',
-			'MORE_AZ' : 'c',
+			'AZ_25' : 'c',
+			'AZ_50' : 'c',
 		}],
 		['Policy', {
-			'Stage3' : 'a',
+			'Stage3b' : 'a',
 			'Stage4' : 'b',
 		}],
 	]
@@ -87,27 +78,17 @@ filterIndex = [
 defaultValues = [
 	{
 		'R0' : 6,
-		'VacUptake' : 0.7,
-		'non_infective_time' : 0,
-		'Essential' : 'Normal',
+		'Essential' : 'Extreme',
 		'Rollout' : 'BAU',
 		'Policy' : 'Stage4',
+		'VacRate' : 0.5,
 	},
 	{
 		'R0' : 6,
-		'VacUptake' : 0.7,
-		'non_infective_time' : 0,
-		'Essential' : 'Normal',
-		'Rollout' : 'INT',
+		'Essential' : 'Extreme',
+		'Rollout' : 'AZ_50',
 		'Policy' : 'Stage4',
-	},
-	{
-		'R0' : 6,
-		'VacUptake' : 0.7,
-		'non_infective_time' : 0,
-		'Essential' : 'Normal',
-		'Rollout' : 'MORE_AZ',
-		'Policy' : 'Stage4',
+		'VacRate' : 0.5,
 	},
 ]
 
@@ -118,12 +99,8 @@ def indexRenameFunc(chunk):
 	index['data_suffix'] = index['data_suffix'].replace({
 		'_bau.csv' : 'BAU',
 		'_int.csv' : 'INT',
-		'_fast_az.csv' : 'MORE_AZ',
-	})
-	index['global_transmissibility'] = index['global_transmissibility'].replace({
-		0.27 : 6,
-		0.365 : 8,
-		0.47 : 10,
+		'_az_25.csv' : 'AZ_25',
+		'_az_50.csv' : 'AZ_50',
 	})
 	
 	renameCols = {measureCols_raw[i] : measureCols[i] for i in range(len(measureCols))}
@@ -136,19 +113,24 @@ def indexRenameFunc(chunk):
 favouriteParams = [5, 'ME_TS_LS', 'No', 5, 0.7]
 
 #dataDir = '2021_05_04'
-dataDir = 'NSW/2021_07_test'
+dataDir = 'NSW/2021_08_02'
 
-dryRun = True
+dryRun = False
+extraProcess = True
+preChecks = False
 
-DoPreProcessChecks(dataDir, indexRenameFunc, measureCols, measureCols_raw, defaultValues, firstOnly=dryRun)
-DoAbmProcessing(dataDir, indexRenameFunc, measureCols, measureCols_raw, firstOnly=dryRun, day_override=728)
+if preChecks:
+	DoPreProcessChecks(dataDir, indexRenameFunc, measureCols, measureCols_raw, defaultValues, firstOnly=dryRun)
 
-PreProcessMortHosp(dataDir, measureCols)
-DrawMortHospDistributions(dataDir, measureCols, padMult=20)
-FinaliseMortHosp(dataDir, measureCols)
-MakeMortHospHeatmaps(dataDir, measureCols, heatmapStructure, years=2, describe=True)
+if extraProcess:
+	DoAbmProcessing(dataDir, indexRenameFunc, measureCols, measureCols_raw, firstOnly=dryRun, day_override=728)
+	
+	PreProcessMortHosp(dataDir, measureCols)
+	DrawMortHospDistributions(dataDir, measureCols, padMult=20)
+	FinaliseMortHosp(dataDir, measureCols)
+	MakeMortHospHeatmaps(dataDir, measureCols, heatmapStructure, years=2, describe=True)
 
-MakeHeatmaps(dataDir, measureCols, heatmapStructure, windowCount=1, dropMiddleValues=False)
+	MakeHeatmaps(dataDir, measureCols, heatmapStructure, windowCount=1, dropMiddleValues=False)
 #DoProcessingForPMSLT(dataDir, measureCols, months=24)
 #DoProcessingForReport(dataDir, measureCols, table5Rows, 'param_vac_uptake', months=24)
 
