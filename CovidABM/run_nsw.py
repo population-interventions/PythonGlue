@@ -79,15 +79,8 @@ defaultValues = [
 	{
 		'R0' : 6,
 		'Essential' : 'Extreme',
-		'Rollout' : 'BAU',
-		'Policy' : 'Stage4',
-		'VacRate' : 0.5,
-	},
-	{
-		'R0' : 6,
-		'Essential' : 'Extreme',
 		'Rollout' : 'AZ_50',
-		'Policy' : 'Stage4',
+		'Policy' : 'Stage3b',
 		'VacRate' : 0.5,
 	},
 ]
@@ -116,9 +109,9 @@ favouriteParams = [5, 'ME_TS_LS', 'No', 5, 0.7]
 dataDir = 'NSW/2021_08_02'
 rawDataDir = 'NSW/2021_08_02/ABM_out/'
 
-dryRun = True
-extraProcess = True
-preChecks = False
+dryRun = False
+extraProcess = False
+preChecks = True
 
 if preChecks:
 	DoPreProcessChecks(dataDir, rawDataDir, indexRenameFunc, measureCols, measureCols_raw, defaultValues, firstOnly=dryRun)

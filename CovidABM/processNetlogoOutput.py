@@ -100,10 +100,10 @@ def ProcessAbmOutput(
 
 
 def ToVisualisation(chunk, filename, append, measureCols, divisor=False, dayStartOffset=0, outputDay=False):
-	chunk.columns.set_levels(chunk.columns.levels[1].astype(int), level=1, inplace=True)
-	chunk.columns.set_levels(chunk.columns.levels[2].astype(int), level=2, inplace=True)
+	chunk.columns = chunk.columns.set_levels(chunk.columns.levels[1].astype(int), level=1)
+	chunk.columns = chunk.columns.set_levels(chunk.columns.levels[2].astype(int), level=2)
 	chunk = chunk.groupby(level=[0, 1], axis=1).sum()
-	chunk.sort_values('day', axis=1, inplace=True)
+	chunk = chunk.sort_values('day', axis=1)
 	if divisor:
 		chunk = chunk / divisor
 	

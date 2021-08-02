@@ -43,7 +43,7 @@ def CombineDrawColumnsAndFindDraw0(prefix, append, index_size=8):
 	for n, value in tqdm(enumerate(nameList), total=len(nameList)):
 		if n == 0:
 			df = LoadColumn(draw_prefix, str(value), index_size)
-			df.rename(columns={'value' : 'draw_1'}, inplace=True)
+			df = df.rename(columns={'value' : 'draw_1'})
 		else:
 			df['draw_' + str(n + 1)] = LoadColumn(draw_prefix, str(value), index_size)['value']
 
@@ -54,12 +54,12 @@ def CombineDrawColumnsAndFindDraw0(prefix, append, index_size=8):
 ############### Infection Step 1 - Make two csvs for each random seed ###############
 
 def ProcessInfectChunk(df, chortDf, outputPrefix, months):
-	df.columns.set_levels(df.columns.levels[1].astype(int), level=1, inplace=True)
-	df.columns.set_levels(df.columns.levels[2].astype(int), level=2, inplace=True)
-	df.sort_values(['cohort', 'day'], axis=1, inplace=True)
+	df.columns = df.columns.set_levels(df.columns.levels[1].astype(int), level=1)
+	df.columns = df.columns.set_levels(df.columns.levels[2].astype(int), level=2)
+	df = df.sort_values(['cohort', 'day'], axis=1)
 	
 	col_index = df.columns.to_frame()
-	col_index.reset_index(drop=True, inplace=True)
+	col_index = col_index.reset_index(drop=True)
 	col_index['month'] = np.floor(col_index['day']*12/365).astype(int)
 	col_index = pd.merge(
 		col_index, chortDf,
@@ -145,7 +145,7 @@ def ProcessInfectionTable(df, months=12):
 	df = df.append(enddf)
 	
 	df = pd.concat([df, df], axis=1, keys=('male','female'))/2
-	df.columns.set_names('sex', level=[0], inplace=True)
+	df.columns = df.columns.set_names('sex', level=[0])
 	df = df.stack(level=[0])
 	return df
 
@@ -183,13 +183,13 @@ def AddAndFinalisePmsltInputs(measureCols, subfolder, path, output, months=12):
 ############### Stages Step 1 - Output each random seed to csv ###############     
 
 def ProcessChunkStage(df, outputPrefix):
-	df.columns.set_levels(df.columns.levels[1].astype(int), level=1, inplace=True)
-	df.columns.set_levels(df.columns.levels[2].astype(int), level=2, inplace=True)
+	df.columns = df.columns.set_levels(df.columns.levels[1].astype(int), level=1)
+	df.columns = df.columns.set_levels(df.columns.levels[2].astype(int), level=2)
 	
 	df.columns = df.columns.droplevel([0, 2])
 	
 	col_index = df.columns.to_frame()
-	col_index.reset_index(drop=True, inplace=True)
+	col_index = col_index.reset_index(drop=True)
 	col_index['month'] = np.floor(col_index['day']*12/365).astype(int)
 	df.columns = pd.MultiIndex.from_frame(col_index)
 	

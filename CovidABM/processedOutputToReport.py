@@ -40,12 +40,12 @@ def SetAgeRange(x):
 
 
 def ProcessInfectChunk(df, chortDf, outputPrefix, months):
-	df.columns.set_levels(df.columns.levels[1].astype(int), level=1, inplace=True)
-	df.columns.set_levels(df.columns.levels[2].astype(int), level=2, inplace=True)
-	df.sort_values(['cohort', 'day'], axis=1, inplace=True)
+	df.columns = df.columns.set_levels(df.columns.levels[1].astype(int), level=1)
+	df.columns = df.columns.set_levels(df.columns.levels[2].astype(int), level=2)
+	df = df.sort_values(['cohort', 'day'], axis=1)
 	
 	col_index = df.columns.to_frame()
-	col_index.reset_index(drop=True, inplace=True)
+	col_index = col_index.reset_index(drop=True)
 	col_index['year'] = np.floor(col_index['day']/365).astype(int)
 	col_index = pd.merge(
 		col_index, chortDf,
@@ -98,19 +98,19 @@ def MakeStageMeanDf(df, stageName, stageNum):
 	df = df.apply(lambda c: [1 if x == stageNum else 0 for x in c])
 	df = df.groupby(level=[1], axis=1).mean()
 	col_index = df.columns.to_frame()
-	col_index.reset_index(drop=True, inplace=True)
+	col_index = col_index.reset_index(drop=True)
 	col_index['stage'] = stageName
 	df.columns = pd.MultiIndex.from_frame(col_index)
 	return df
 
 def ProcessChunkStage(df, outputPrefix):
-	df.columns.set_levels(df.columns.levels[1].astype(int), level=1, inplace=True)
-	df.columns.set_levels(df.columns.levels[2].astype(int), level=2, inplace=True)
+	df.columns = df.columns.set_levels(df.columns.levels[1].astype(int), level=1)
+	df.columns = df.columns.set_levels(df.columns.levels[2].astype(int), level=2)
 	
 	df.columns = df.columns.droplevel([0, 2])
 	
 	col_index = df.columns.to_frame()
-	col_index.reset_index(drop=True, inplace=True)
+	col_index = col_index.reset_index(drop=True)
 	col_index['year'] = np.floor(col_index['day']/365).astype(int)
 	df.columns = pd.MultiIndex.from_frame(col_index)
 	

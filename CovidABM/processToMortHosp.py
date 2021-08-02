@@ -53,12 +53,12 @@ def OutputYear(df, outputPrefix):
 
 
 def ProcessInfectChunk(df, chortDf, outputPrefix):
-	df.columns.set_levels(df.columns.levels[1].astype(int), level=1, inplace=True)
-	df.columns.set_levels(df.columns.levels[2].astype(int), level=2, inplace=True)
-	df.sort_values(['cohort', 'day'], axis=1, inplace=True)
+	df.columns = df.columns.set_levels(df.columns.levels[1].astype(int), level=1)
+	df.columns = df.columns.set_levels(df.columns.levels[2].astype(int), level=2)
+	df = df.sort_values(['cohort', 'day'], axis=1)
 	
 	col_index = df.columns.to_frame()
-	col_index.reset_index(drop=True, inplace=True)
+	col_index = col_index.reset_index(drop=True)
 	col_index = pd.merge(
 		col_index, chortDf,
 		on='cohort',
