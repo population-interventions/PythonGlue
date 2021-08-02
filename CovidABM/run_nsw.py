@@ -114,16 +114,17 @@ favouriteParams = [5, 'ME_TS_LS', 'No', 5, 0.7]
 
 #dataDir = '2021_05_04'
 dataDir = 'NSW/2021_08_02'
+rawDataDir = 'NSW/2021_08_02/ABM_out/'
 
-dryRun = False
+dryRun = True
 extraProcess = True
 preChecks = False
 
 if preChecks:
-	DoPreProcessChecks(dataDir, indexRenameFunc, measureCols, measureCols_raw, defaultValues, firstOnly=dryRun)
+	DoPreProcessChecks(dataDir, rawDataDir, indexRenameFunc, measureCols, measureCols_raw, defaultValues, firstOnly=dryRun)
 
 if extraProcess:
-	DoAbmProcessing(dataDir, indexRenameFunc, measureCols, measureCols_raw, firstOnly=dryRun, day_override=728)
+	DoAbmProcessing(dataDir, rawDataDir, indexRenameFunc, measureCols, measureCols_raw, firstOnly=dryRun, day_override=728)
 	
 	PreProcessMortHosp(dataDir, measureCols)
 	DrawMortHospDistributions(dataDir, measureCols, padMult=20)

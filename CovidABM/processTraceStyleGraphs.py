@@ -457,9 +457,9 @@ def ProcessResults(
 
 
 def DoPreProcessChecks(
-		subfolder, indexRenameFunc, measureCols, measureCols_raw,
+		subfolder, rawDataDir, indexRenameFunc, measureCols, measureCols_raw,
 		defaultValues, firstOnly=False):
 	ProcessResults(
 		subfolder, indexRenameFunc, measureCols, measureCols_raw,
 		defaultValues,
-		util.GetFiles(subfolder + '/ABM_out/', firstOnly=firstOnly))
+		util.GetFiles(rawDataDir, firstOnly=firstOnly))

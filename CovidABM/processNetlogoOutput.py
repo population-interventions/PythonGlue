@@ -74,15 +74,15 @@ def ProcessAbmChunk(
 
 
 def ProcessAbmOutput(
-		subfolder, indexRenameFunc, measureCols_raw,
+		subfolder, rawDataDir, indexRenameFunc, measureCols_raw,
 		firstOnly=False, day_override=False):
 	outputFile = subfolder + '/ABM_process/' + 'processed'
-	inputPath = pathlib.Path(subfolder + '/ABM_out/')
+	inputPath = pathlib.Path(rawDataDir)
 	suffix = '.csv'
 	pathList = sorted(inputPath.glob('*{}'.format(suffix)))
 	filelist = [] # TODO - Do better.
 	for path in pathList:
-		filelist.append(subfolder + '/ABM_out/' + str(path.name)[:-len(suffix)] )
+		filelist.append(rawDataDir + str(path.name)[:-len(suffix)] )
 		
 	print("Processing Files", filelist)
 	chunksize = 4 ** 7
@@ -163,9 +163,9 @@ def CasesVisualise(dataDir, measureCols, dayStartOffset=0):
 		dayStartOffset=dayStartOffset, outputDay=True)
 
 
-def DoAbmProcessing(dataDir, indexRenameFunc, measureCols, measureCols_raw, firstOnly=False, day_override=False, dayStartOffset=0):
+def DoAbmProcessing(dataDir, rawDataDir, indexRenameFunc, measureCols, measureCols_raw, firstOnly=False, day_override=False, dayStartOffset=0):
 	print('Processing ABM Output', dataDir)
-	ProcessAbmOutput(dataDir, indexRenameFunc, measureCols_raw, firstOnly=firstOnly, day_override=day_override)
+	ProcessAbmOutput(dataDir, rawDataDir, indexRenameFunc, measureCols_raw, firstOnly=firstOnly, day_override=day_override)
 	
 	CasesVisualise(dataDir, measureCols, dayStartOffset=dayStartOffset)
 	InfectionsAndStageVisualise(dataDir, measureCols, dayStartOffset=dayStartOffset)
