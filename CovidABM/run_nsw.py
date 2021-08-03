@@ -8,6 +8,7 @@ import pandas as pd
 import numpy as np
 
 from processNetlogoOutput import DoAbmProcessing
+from aggregateSpartan import DoSpartanAggregate
 from processToMortHosp import PreProcessMortHosp, FinaliseMortHosp, MakeMortHospHeatmaps, DrawMortHospDistributions
 from makeHeatmaps import MakeHeatmaps
 from makeGraphs import MakePrettyGraphs, MakeFavouriteGraph, MakeDailyGraphs
@@ -110,21 +111,25 @@ dataDir = 'NSW/2021_08_02'
 rawDataDir = 'NSW/2021_08_02/ABM_out/'
 
 dryRun = False
-extraProcess = False
-preChecks = True
+extraProcess = True
+preChecks = False
 
 if preChecks:
 	DoPreProcessChecks(dataDir, rawDataDir, indexRenameFunc, measureCols, measureCols_raw, defaultValues, firstOnly=dryRun)
 
-if extraProcess:
+oldNonSpartan = False
+if oldNonSpartan:
 	DoAbmProcessing(dataDir, rawDataDir, indexRenameFunc, measureCols, measureCols_raw, firstOnly=dryRun, day_override=728)
+
+if extraProcess:
+	DoSpartanAggregate(dataDir, measureCols)
 	
 	PreProcessMortHosp(dataDir, measureCols)
 	DrawMortHospDistributions(dataDir, measureCols, padMult=20)
 	FinaliseMortHosp(dataDir, measureCols)
 	MakeMortHospHeatmaps(dataDir, measureCols, heatmapStructure, years=2, describe=True)
 
-	MakeHeatmaps(dataDir, measureCols, heatmapStructure, windowCount=1, dropMiddleValues=False)
+	#MakeHeatmaps(dataDir, measureCols, heatmapStructure, windowCount=1, dropMiddleValues=False)
 #DoProcessingForPMSLT(dataDir, measureCols, months=24)
 #DoProcessingForReport(dataDir, measureCols, table5Rows, 'param_vac_uptake', months=24)
 

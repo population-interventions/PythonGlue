@@ -8,6 +8,7 @@ Created on Wed Mar 31 12:14:53 2021
 import pandas as pd
 import os
 import pathlib
+from tqdm import tqdm
 
 fileCreated = {}
 HEAD_MODE = True
@@ -138,9 +139,9 @@ def GetCohortData(cohortFile):
 	return df
 
 
-def AddFiles(outputName, fileList, index=1, header=1):
+def AddFiles(outputName, fileList, index=1, header=1, doTqdm=False):
 	first = True
-	for fileName in fileList:
+	for fileName in (tqdm(fileList) if doTqdm else fileList):
 		if first:
 			first = False
 			df = pd.read_csv(
