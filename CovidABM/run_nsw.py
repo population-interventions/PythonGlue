@@ -46,17 +46,13 @@ measureCols = [
 ]
 
 heatmapStructure = {
-	'index_rows' : ['R0', 'Essential', 'VacRate', ],
-	'index_cols' : ['Rollout', 'Policy', ],
+	'index_rows' : ['Policy', ],
+	'index_cols' : ['Rollout', ],
 	'sort_rows' : [
-		['R0', {
-			5 : 'a',
-			6 : 'b',
-			8 : 'c',
-		}],
-		['Essential', {
-			'Normal' : 'a',
-			'Extreme' : 'b',
+		['Policy', {
+			'Stage3' : 'a',
+			'Stage3b' : 'b',
+			'Stage4' : 'c',
 		}],
 	], 
 	'sort_cols' : [
@@ -65,10 +61,6 @@ heatmapStructure = {
 			'INT' : 'b',
 			'AZ_25' : 'c',
 			'AZ_50' : 'c',
-		}],
-		['Policy', {
-			'Stage3b' : 'a',
-			'Stage4' : 'b',
 		}],
 	]
 }
@@ -120,16 +112,16 @@ if preChecks:
 oldNonSpartan = False
 if oldNonSpartan:
 	DoAbmProcessing(dataDir, rawDataDir, indexRenameFunc, measureCols, measureCols_raw, firstOnly=dryRun, day_override=728)
+	PreProcessMortHosp(dataDir, measureCols)
 
 if extraProcess:
-	DoSpartanAggregate(dataDir, measureCols)
+	#DoSpartanAggregate(dataDir, measureCols)
 	
-	PreProcessMortHosp(dataDir, measureCols)
 	DrawMortHospDistributions(dataDir, measureCols, padMult=20)
 	FinaliseMortHosp(dataDir, measureCols)
 	MakeMortHospHeatmaps(dataDir, measureCols, heatmapStructure, years=2, describe=True)
 
-	#MakeHeatmaps(dataDir, measureCols, heatmapStructure, windowCount=1, dropMiddleValues=False)
+	MakeHeatmaps(dataDir, measureCols, heatmapStructure, windowCount=1, dropMiddleValues=False)
 #DoProcessingForPMSLT(dataDir, measureCols, months=24)
 #DoProcessingForReport(dataDir, measureCols, table5Rows, 'param_vac_uptake', months=24)
 

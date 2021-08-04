@@ -156,6 +156,23 @@ def AddFiles(outputName, fileList, index=1, header=1, doTqdm=False):
 	OutputToFile(df, outputName)
 
 
+def AppendFiles(outputName, fileList, index=1, header=1, doTqdm=False):
+	first = True
+	for fileName in (tqdm(fileList) if doTqdm else fileList):
+		if first:
+			first = False
+			df = pd.read_csv(
+				fileName + '.csv',
+				index_col=list(range(index)),
+				header=list(range(header)))
+		else:
+			df = df.append(pd.read_csv(
+				fileName + '.csv',
+				index_col=list(range(index)),
+				header=list(range(header))))
+	OutputToFile(df, outputName)
+	
+
 def ListRemove(myList, element):
 	myList.remove(element)
 	return myList

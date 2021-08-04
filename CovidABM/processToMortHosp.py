@@ -404,17 +404,17 @@ def DoHeatmapsDraw(subfolder, measureCols, heatmapStructure, metric, years=1, de
 
 def PreProcessMortHosp(subfolder, measureCols):
 	ProcessInfectionCohorts(subfolder, measureCols)
-	
-	
+
+
 def DrawMortHospDistributions(subfolder, measureCols, **kwargs):
 	DoDraws(subfolder, measureCols, **kwargs)
-	
+
 
 def FinaliseMortHosp(subfolder, measureCols):
 	ApplyCohortEffects(subfolder, measureCols)
 	ApplyCohortEffectsUncertainty(subfolder, measureCols)
-	
- 
+
+
 def MakeMortHospHeatmaps(subfolder, measureCols, heatmapStructure, years=1, describe=False):
 	DoHeatmaps(subfolder, measureCols, heatmapStructure, 'deaths', years=years, describe=describe)
 	DoHeatmaps(subfolder, measureCols, heatmapStructure, 'hospital', years=years, describe=describe)
