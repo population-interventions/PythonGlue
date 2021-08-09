@@ -65,10 +65,12 @@ def DoSpartanAggregate(dataDir, measureCols):
 			#'noVac', # Takes too long
 			'noVac_daily',
 			'noVac_weeklyAgg',
+			'noVac_tendayAgg',
 			'noVac_yearlyAgg',
 			#'vac', # Takes too long
 			'vac_daily',
 			'vac_weeklyAgg',
+			'vac_tendayAgg',
 			'vac_yearlyAgg',
 		],
 	)

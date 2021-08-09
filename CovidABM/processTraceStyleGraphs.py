@@ -424,8 +424,8 @@ def ProcessResults(
 			PrintMetricsManyIndex(subfolder, df, metricList, 'cumulativeInfected')
 			
 			#PlotRangeManyIndex(df, indexList, 'intCasesWeekDaily', 'success', doCount=True, bucketWidth=32/7, titlePrepend=titlePrepend)
-			PlotRangeManyIndex(df, indexList, 'combinedStop', 'success', doCount=True, bucketWidth=5)
-			PlotRangeManyIndex(df, indexList, 'cumulativeInfected', 'combinedStop', loglog=True, doCount=True, bucketWidth=1/15)
+			PlotRangeManyIndex(df, indexList, 'combinedStop', 'success', xlim=(20, 340), doCount=True, bucketWidth=5)
+			PlotRangeManyIndex(df, indexList, 'cumulativeInfected', 'combinedStop', xlim=(10**3, 10**7), loglog=True, doCount=True, bucketWidth=1/15)
 			
 			#PlotViolinManyIndex(df, indexList, 
 			#                    'intCasesWeekDaily', 

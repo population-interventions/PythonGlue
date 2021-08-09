@@ -9,7 +9,8 @@ import numpy as np
 
 from processNetlogoOutput import DoAbmProcessing
 from aggregateSpartan import DoSpartanAggregate
-from processToMortHosp import PreProcessMortHosp, FinaliseMortHosp, MakeMortHospHeatmaps, DrawMortHospDistributions
+from processToMortHosp import PreProcessMortHosp, FinaliseMortHosp, DrawMortHospDistributions
+from processToMortHosp import MakeMortHospHeatmaps, MakeMortHospHeatmapRange
 from makeHeatmaps import MakeHeatmaps
 from makeGraphs import MakePrettyGraphs, MakeFavouriteGraph, MakeDailyGraphs
 from processedOutputToPMSLT import DoProcessingForPMSLT
@@ -72,6 +73,27 @@ defaultValues = [
 	{
 		'R0' : 6,
 		'Essential' : 'Extreme',
+		'Rollout' : 'BAU',
+		'Policy' : 'Stage3b',
+		'VacRate' : 0.5,
+	},
+	{
+		'R0' : 6,
+		'Essential' : 'Extreme',
+		'Rollout' : 'INT',
+		'Policy' : 'Stage3b',
+		'VacRate' : 0.5,
+	},
+	{
+		'R0' : 6,
+		'Essential' : 'Extreme',
+		'Rollout' : 'AZ_25',
+		'Policy' : 'Stage3b',
+		'VacRate' : 0.5,
+	},
+	{
+		'R0' : 6,
+		'Essential' : 'Extreme',
 		'Rollout' : 'AZ_50',
 		'Policy' : 'Stage3b',
 		'VacRate' : 0.5,
@@ -99,12 +121,13 @@ def indexRenameFunc(chunk):
 favouriteParams = [5, 'ME_TS_LS', 'No', 5, 0.7]
 
 #dataDir = '2021_05_04'
-dataDir = 'NSW/2021_08_02'
-rawDataDir = 'NSW/2021_08_02/ABM_out/'
+dataDir = 'NSW/2021_08_05'
+rawDataDir = 'NSW/2021_08_05/ABM_out/'
 
 dryRun = False
-extraProcess = True
 preChecks = False
+aggregateSpartan = True
+makeOutput = True
 
 if preChecks:
 	DoPreProcessChecks(dataDir, rawDataDir, indexRenameFunc, measureCols, measureCols_raw, defaultValues, firstOnly=dryRun)
@@ -114,14 +137,18 @@ if oldNonSpartan:
 	DoAbmProcessing(dataDir, rawDataDir, indexRenameFunc, measureCols, measureCols_raw, firstOnly=dryRun, day_override=728)
 	PreProcessMortHosp(dataDir, measureCols)
 
-if extraProcess:
-	#DoSpartanAggregate(dataDir, measureCols)
-	
-	DrawMortHospDistributions(dataDir, measureCols, padMult=20)
+if aggregateSpartan:
+	DoSpartanAggregate(dataDir, measureCols)
+
+if makeOutput:
+	DrawMortHospDistributions(dataDir, measureCols, padMult=4)
 	FinaliseMortHosp(dataDir, measureCols)
 	MakeMortHospHeatmaps(dataDir, measureCols, heatmapStructure, years=2, describe=True)
+	MakeMortHospHeatmapRange(dataDir, measureCols, heatmapStructure, 'weeklyAgg', 0, 14, describe=True)
 
-	MakeHeatmaps(dataDir, measureCols, heatmapStructure, windowCount=1, dropMiddleValues=False)
+	# Redudnant? Bundled into mortHosp
+	#MakeHeatmaps(dataDir, measureCols, heatmapStructure, windowCount=1, dropMiddleValues=False)
+
 #DoProcessingForPMSLT(dataDir, measureCols, months=24)
 #DoProcessingForReport(dataDir, measureCols, table5Rows, 'param_vac_uptake', months=24)
 
