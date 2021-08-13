@@ -314,6 +314,7 @@ def PrintSomeStats(df, indexVals):
 def ProcessResults(
 		subfolder, indexRenameFunc, measureCols, measureCols_raw,
 		defaultValues, nameList):
+	print(nameList)
 	name = nameList[0]
 	interestingColumns = [
 		'param_trace_mult', 'sympt_present_prop',

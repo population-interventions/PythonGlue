@@ -21,6 +21,10 @@ def isfloat(value):
 		return False
 
 
+def DecimalLimit(f, limit):
+	return format(f, '.{}f'.format(limit)).rstrip('0').rstrip('.')
+
+
 def FindRepeat(listIn, threshold=1):
 	repeats = {}
 	for val in listIn:
@@ -189,7 +193,7 @@ def ToHeatmap(df, structure):
 	df['_sort_col'] = ''
 	for value in structure['sort_cols']:
 		df['_sort_col'] = df['_sort_col'] + df[value[0]].replace(value[1]).astype(str)
-		
+	
 	df = df.set_index(['_sort_row', '_sort_col'] + structure['index_rows'] + structure['index_cols'])
 	df = df.unstack(['_sort_col'] + structure['index_cols'])
 	df = df.sort_index(axis=0, level=0)
@@ -198,3 +202,47 @@ def ToHeatmap(df, structure):
 	df.columns = df.columns.droplevel(level='_sort_col')
 	df.index = df.index.droplevel(level='_sort_row')
 	return df
+
+
+def MakeDescribedHeatmapSet(
+		subfolder, df, heatStruct, prefixName,
+		describe=False):
+	
+	percentList = [0.05, 0.5, 0.95]
+	percMap = {
+		0.05: 'percentile_005',
+		0.95 : 'percentile_095',
+		0.5 : 'percentile_050',
+	}
+	
+	relevantMeasureCols = heatStruct.get('index_rows') + heatStruct.get('index_cols')
+	
+	if describe:
+		name = prefixName + '_total_describe'
+		print('Describe {} draws'.format(prefixName))
+		df_describe = df.copy()
+		df_describe = df_describe.unstack(relevantMeasureCols)
+		df_describe = df_describe.describe(percentiles=[0.05,0.25,0.75,0.95])
+		OutputToFile(df_describe, subfolder + name, head=False)
+		
+	dfMean = df.copy()
+	dfMean = dfMean.groupby(level=relevantMeasureCols, axis=0).mean().to_frame()
+	dfMean = dfMean.rename(columns={0 : 'mean'})
+	
+	df = df.groupby(level=relevantMeasureCols, axis=0).quantile(percentList)
+	df.index.names = relevantMeasureCols + ['percentile']
+	df = df.reorder_levels(['percentile'] + relevantMeasureCols).sort_index()
+
+	dfHeat = ToHeatmap(dfMean.reset_index().rename({0 : 'mean'}), heatStruct)
+	name =  prefixName + '_total_mean'
+	print('Output heatmap {}'.format(name))
+	OutputToFile(dfHeat, subfolder + name, head=False)
+	
+	for pc in percentList:
+		#dfHeat = df.loc[pc, :]
+		dfHeat = df[pc].to_frame().rename(columns={0 : 'pc_{}'.format(pc)})
+		dfHeat = ToHeatmap(dfHeat.reset_index(), heatStruct)
+		name =  prefixName + '_total_' + percMap.get(pc)
+		print('Output heatmap {}'.format(name))
+		OutputToFile(dfHeat, subfolder + name, head=False)
+	

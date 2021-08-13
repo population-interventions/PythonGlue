@@ -80,6 +80,8 @@ def MakeDailyGraphs(
 		if si == True:
 			si = [0.25, 0.75]
 		metrics += ['{:.0f}%'.format(x*100) for x in si]
+	else:
+		si = [0.25, 0.75]
 	
 	smallFont = 20
 	bigFont = 26
@@ -107,10 +109,10 @@ def MakeDailyGraphs(
 
 def MakePrettyGraphs(
 		dataDir, dataName, measureCols, splitParam,
-		median=True, mean=True, si=False, filterIndex=[], weeks=52):
+		median=True, mean=True, si=False, filterIndex=[], timesteps=30):
 	processDir = dataDir + '/ABM_process/'
 	visualDir = dataDir + '/Graphs/'
-	inputFile = processDir + dataName + '_weeklyAgg'
+	inputFile = processDir + dataName
 	
 	df = pd.read_csv(
 		inputFile + '.csv',
@@ -122,12 +124,12 @@ def MakePrettyGraphs(
 	df = df.reorder_levels(measureCols + ['rand_seed'], axis=0)
 	df = df.sort_index()
 	
-	df = df / 7
+	df = df
 	for toFilter in filterIndex:
 		df = df.xs(toFilter[1], level=toFilter[0])
 	plotCols = [x for x in measureCols if x not in [y[0] for y in filterIndex]]
 	
-	df.columns.name = 'week'
+	df.columns.name = 'time'
 	df = df.drop_duplicates(subset=None, keep='first')
 	df = df.unstack(plotCols)
 	OutputToFile(df, visualDir + 'focus_data_in')
@@ -141,12 +143,15 @@ def MakePrettyGraphs(
 		if si == True:
 			si = [0.25, 0.75]
 		metrics += ['{:.0f}%'.format(x*100) for x in si]
+	else:
+		si = [0.25, 0.75]
 	
 	smallFont = 20
 	bigFont = 26
 	
 	df = df.describe(percentiles=si)
 	df = df.loc[metrics].stack(splitParam).transpose()
+	print(df)
 	df.index = df.index.astype(float)
 	df = df.sort_index(axis=0)
 	df = df.sort_index(axis=1)
@@ -156,11 +161,12 @@ def MakePrettyGraphs(
 	
 	figure = df.plot(figsize=(16.1, 10), linewidth=4, fontsize=smallFont)
 	plt.grid(which='both')
-	figure.set_ylim(0, 300)
+	figure.set_ylim(0, 1000)
+	figure.set_xlim(0, timesteps)
 	plt.legend(fontsize=bigFont)
-	plt.xlabel("Week", fontsize=bigFont)
-	plt.ylabel("Median daily infections", fontsize=bigFont)
-	plt.xticks([x*13 for x in range(math.ceil(weeks/13))])
+	plt.xlabel("Day", fontsize=bigFont)
+	plt.ylabel("Median " + dataName, fontsize=bigFont)
+	plt.xticks([x*7 for x in range(math.ceil(timesteps/7))])
 	plt.show()
 	#OutputToFile(df, visualDir + dataName + 'fullGraphPlot')
 

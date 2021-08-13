@@ -138,6 +138,7 @@ def GetEffectsData(file):
 		'hospitalPerInfect' : 'hosp',
 	})
 	df = df.set_index(['vaccine', 'age', 'sex'])
+	
 	df = df.groupby(level=[0, 1], axis=0).mean()
 	return df
 
@@ -154,40 +155,6 @@ def LoadDf(subfolder, measureCols, timeName, vacName):
 def MultiplyByCohortEffect(df, multDf):
 	df = df.mul(multDf, axis=0)
 	return df
-	
-
-def AggregateAgeAndVac(dfVac, dfNoVac, cohortEffect, timeName, metric):
-	dfMultVac = MultiplyByCohortEffect(dfVac, cohortEffect.loc[1][metric])
-	dfMultNoVac = MultiplyByCohortEffect(dfNoVac, cohortEffect.loc[0][metric])
-	
-	dfMetric = dfMultVac + dfMultNoVac
-	dfMetric = dfMetric.transpose()
-	dfMetric = dfMetric.unstack(level=[timeName])
-	
-	dfMetric = dfMetric.groupby(level=[timeName], axis=1).sum()
-	return dfMetric
-
-
-def OutputTimeTables(subfolder, dataPath, measureCols, timeName):
-	cohortEffect = GetEffectsData(subfolder + '/other_input/death_and_hospital')
-	
-	print('loading DF', timeName)
-	dfVac = LoadDf(dataPath, measureCols, timeName, 'vac')
-	dfNoVac = LoadDf(dataPath, measureCols, timeName, 'noVac')
-	
-	print('Aggregating', timeName)
-	dfDeaths = AggregateAgeAndVac(dfVac, dfNoVac, cohortEffect, timeName, 'mort')
-	dfHospital = AggregateAgeAndVac(dfVac, dfNoVac, cohortEffect, timeName, 'hosp')
-	
-	OutputToFile(dfDeaths, subfolder + '/Mort_out/deaths_' + timeName)
-	OutputToFile(dfHospital, subfolder + '/Mort_out/hospital_' + timeName)
-		
-
-def ApplyCohortEffects(subfolder, measureCols):
-	print('ApplyCohortEffects yearlyAgg')
-	OutputTimeTables(subfolder, subfolder + '/Mort_process/', measureCols, 'yearlyAgg')
-	print('ApplyCohortEffects weeklyAgg')
-	OutputTimeTables(subfolder, subfolder + '/Mort_process/', measureCols, 'weeklyAgg')
 
 
 ############### Multiplication Uncertainty ###############
@@ -217,8 +184,17 @@ def OutputTimeTablesDraw(subfolder, dataPath, measureCols, timeName):
 	dfVac.columns = dfVac.columns.droplevel('run')
 	dfNoVac.columns = dfNoVac.columns.droplevel('run')
 	
-	dfVac = dfVac.stack('rand_seed')
-	dfNoVac = dfNoVac.stack('rand_seed')
+	start_time = time.time()
+	dfVac = dfVac.reorder_levels(['rand_seed'] + [timeName] + measureCols, axis=1).sort_index(axis=1)
+	dfNoVac = dfNoVac.reorder_levels(['rand_seed'] + [timeName] + measureCols, axis=1).sort_index(axis=1)
+	#print(dfVac)
+	#print(dfNoVac)
+	
+	# unstack is 20x faster than stack here.
+	dfVac = dfVac.transpose().unstack('rand_seed').transpose()
+	dfNoVac = dfNoVac.transpose().unstack('rand_seed').transpose()
+	elapsed_time = time.time() - start_time
+	print('elapsed_time {}'.format(elapsed_time))
 	
 	# Map draw to random seeds
 	drawToSeed = { i:k for i,k in enumerate(list(dfVac.index.unique(level='rand_seed')))}
@@ -236,8 +212,8 @@ def OutputTimeTablesDraw(subfolder, dataPath, measureCols, timeName):
 	OutputToFile(dfDeaths, subfolder + '/Mort_out/deaths_draw_' + timeName)
 	OutputToFile(dfHospital, subfolder + '/Mort_out/hospital_draw_' + timeName)
 	OutputToFile(dfInfect, subfolder + '/Mort_out/infect_' + timeName)
-	
-	
+
+
 def ApplyCohortEffectsUncertainty(subfolder, measureCols, haveTenday=True):
 	print('ApplyCohortEffects yearlyAgg')
 	OutputTimeTablesDraw(subfolder, subfolder + '/Mort_process/', measureCols, 'yearlyAgg')
@@ -261,6 +237,7 @@ def LoadDfDraw(subfolder, drawCount=100, padMult=20):
 	df = df[df['draw'] >= 0]
 	df = df.set_index(['draw', 'age', 'sex'])
 	df = df.groupby(level=['draw', 'age'], axis=0).mean()
+	df = df[['hosp', 'mort']]
 	df = CrossIndex(df, pd.DataFrame({'vaccine' : [0, 1]}))
 	
 	# HAX ALERT: Duplicate externally sourced draws to match current data.
@@ -285,6 +262,7 @@ def LoadDfDrawMult(subfolder, drawCount=100, padMult=20):
 	df = df[df['sex'] == 'female']
 	df = df.drop(columns=['sex'])
 	df = df.set_index(['vaccine', 'age'])
+	df = df[['hosp', 'mort']]
 	df = CrossIndex(df, pd.DataFrame({'draw' : list(range(drawCount))}))
 	
 	df_beta = pd.read_csv(subfolder + '/other_input/vaccine_lookup' + '.csv',
@@ -324,135 +302,31 @@ def DoDraws(subfolder, measureCols, **kwargs):
 
 ############### Heatmaps ###############
 
-def DoHeatmaps(subfolder, measureCols, heatmapStructure, metric, years=1, describe=False):
-	df = pd.read_csv(subfolder + '/Mort_out/' + metric + '_yearlyAgg' + '.csv', 
-					index_col=list(range(2 + len(measureCols))),
-					header=list(range(1)))
-	
-	if describe:
-		print('Describe {}'.format(metric))
-		name =  metric + '_full_' + 'describe'
-		df_describe = df.copy()
-		index = heatmapStructure.get('index_rows') + heatmapStructure.get('index_cols')
-		df_describe = df_describe.unstack(index)
-		df_describe = df_describe.describe(percentiles=[0.05,0.25,0.75,0.95])
-		OutputToFile(df_describe, subfolder + '/Mort_heatmaps/' + name, head=False)
-		
-	df = df.groupby(level=measureCols, axis=0).mean()
-	df_full = ToHeatmap(df.sum(axis=1).reset_index(), heatmapStructure)
-	df_year1 = ToHeatmap(df['0'].reset_index(), heatmapStructure)
-	if years == 2:
-		df_year2 = ToHeatmap(df['1'].reset_index(), heatmapStructure)
-	
-	OutputToFile(df_full, subfolder + '/Mort_heatmaps/' + metric + '_total_full', head=False)
-	if years == 2:
-		OutputToFile(df_year1, subfolder + '/Mort_heatmaps/' + metric + '_total_0_to_52', head=False)
-		OutputToFile(df_year2, subfolder + '/Mort_heatmaps/' + metric + '_total_52_to_104', head=False)
-
-
-def DoHeatmapsDraw(subfolder, measureCols, heatmapStructure, metric, years=1, describe=False):
-	df = pd.read_csv(subfolder + '/Mort_out/' + metric + '_yearlyAgg' + '.csv', 
-					index_col=list(range(1 + len(measureCols))),
-					header=list(range(1)))
-	
-	percentList = [0.05, 0.5, 0.95]
-	yearList = ['full']
-	if years > 1:
-		yearList += [str(i) for i in range(years)]
-	
-	percMap = {
-		0.05: 'percentile_005',
-		0.95 : 'percentile_095',
-		0.5 : 'percentile_050',
-	}
-	nameMap = {
-		'0': '0_to_52',
-		'1': '52_to_104',
-		'full' : 'full'
-	}
-	
-	df['full'] = df['0']
-	if years == 2:
-		df['full'] = df['0'] + df['1']
-
-	if describe:
-		for year in yearList:
-			name =  metric + '_total_' + nameMap.get(year) + '_' + 'describe'
-			print('Describe {} draws'.format(metric))
-			df_describe = df.loc[:, year].copy()
-			index = heatmapStructure.get('index_rows') + heatmapStructure.get('index_cols')
-			df_describe = df_describe.unstack(index)
-			df_describe = df_describe.describe(percentiles=[0.05,0.25,0.75,0.95])
-			OutputToFile(df_describe, subfolder + '/Mort_heatmaps/' + name, head=False)
-		
-	dfMean = df.copy()
-	dfMean = dfMean.groupby(level=measureCols, axis=0).mean()
-	
-	df = df.groupby(level=measureCols, axis=0).quantile(percentList)
-	df.index.names = measureCols + ['percentile']
-	df = df.reorder_levels(['percentile'] + measureCols).sort_index()
-
-	for year in yearList:
-		dfHeat = ToHeatmap(dfMean.loc[:, year].reset_index(), heatmapStructure)
-		name =  metric + '_total_' + nameMap.get(year) + '_' + 'mean'
-		print('Output heatmap {}'.format(name))
-		OutputToFile(dfHeat, subfolder + '/Mort_heatmaps/' + name, head=False)
-		
-	for pc in percentList:
-		for year in yearList:
-			dfHeat = ToHeatmap(df.loc[pc, year].reset_index(), heatmapStructure)
-			name =  metric + '_total_' + nameMap.get(year) + '_' + percMap.get(pc)
-			print('Output heatmap {}'.format(name))
-			OutputToFile(dfHeat, subfolder + '/Mort_heatmaps/' + name, head=False)
-
-
 def DoHeatmapsDrawRange(
-		subfolder, measureCols, heatmapStructure, timeName,
-		start, end, describe=False):
-	df = pd.read_csv(subfolder + '/Mort_out/' + timeName + '.csv', 
-					index_col=list(range(1 + len(measureCols))),
+		subfolder, measureCols, heatStruct, timeName,
+		start, end, describe=False, hasRunCol=False):
+	df = pd.read_csv(subfolder + timeName + '.csv', 
+					index_col=list(range((2 if hasRunCol else 1) + len(measureCols))),
 					header=list(range(1)))
 	
-	percentList = [0.05, 0.5, 0.95]
-	percMap = {
-		0.05: 'percentile_005',
-		0.95 : 'percentile_095',
-		0.5 : 'percentile_050',
-	}
+	prefixName = '{}_from_{}_to_{}'.format(
+		timeName, util.DecimalLimit(start, 4), util.DecimalLimit(end, 4))
 	
-	prefixName = '{}_from_{}_to_{}'.format(timeName, start, end)
+	df = df[[str(x) for x in range(math.floor(start), math.ceil(end))]]
 	
-	df = df[[str(x) for x in range(start, end)]]
+	# Take a fraction of the metric in fractional weeks.
+	if math.floor(start) < start:
+		first = str(math.floor(start))
+		df[first] = df[first] * (1 - start + math.floor(start))
+	if math.ceil(end) > end:
+		last = str(math.ceil(end - 1))
+		df[last] = df[last] * (1 - math.ceil(end) + end)
+	
 	df = df.sum(axis=1)
-	
-	if describe:
-		name = prefixName + '_total_describe'
-		print('Describe {} draws'.format(prefixName))
-		df_describe = df.copy()
-		index = heatmapStructure.get('index_rows') + heatmapStructure.get('index_cols')
-		df_describe = df_describe.unstack(index)
-		df_describe = df_describe.describe(percentiles=[0.05,0.25,0.75,0.95])
-		OutputToFile(df_describe, subfolder + '/Mort_heatmaps/' + name, head=False)
-		
-	dfMean = df.copy()
-	dfMean = dfMean.groupby(level=measureCols, axis=0).mean()
-	
-	df = df.groupby(level=measureCols, axis=0).quantile(percentList)
-	df.index.names = measureCols + ['percentile']
-	df = df.reorder_levels(['percentile'] + measureCols).sort_index()
+	util.MakeDescribedHeatmapSet(
+		subfolder + '/Heatmaps/', df,
+		heatStruct, prefixName, describe=describe)
 
-
-	dfHeat = ToHeatmap(dfMean.reset_index(), heatmapStructure)
-	name =  prefixName + '_total_mean'
-	print('Output heatmap {}'.format(name))
-	OutputToFile(dfHeat, subfolder + '/Mort_heatmaps/' + name, head=False)
-	
-	for pc in percentList:
-		dfHeat = ToHeatmap(df.loc[pc, :].reset_index(), heatmapStructure)
-		name =  prefixName + '_total_' + percMap.get(pc)
-		print('Output heatmap {}'.format(prefixName))
-		OutputToFile(dfHeat, subfolder + '/Mort_heatmaps/' + name, head=False)
-	
 
 ############### API ###############
 
@@ -466,21 +340,16 @@ def DrawMortHospDistributions(subfolder, measureCols, **kwargs):
 
 def FinaliseMortHosp(subfolder, measureCols):
 	# Don't calculate based on mean, as it can be confusing.
-	#ApplyCohortEffects(subfolder, measureCols)
 	ApplyCohortEffectsUncertainty(subfolder, measureCols)
 
 
-def MakeMortHospHeatmapRange(subfolder, measureCols, heatStruc, timeName, start, end, describe=False):
-	DoHeatmapsDrawRange(subfolder, measureCols, heatStruc,'deaths_draw_' + timeName, start, end, describe=False)
-	DoHeatmapsDrawRange(subfolder, measureCols, heatStruc, 'hospital_draw_' + timeName, start, end, describe=False)
-	DoHeatmapsDrawRange(subfolder, measureCols, heatStruc, 'infect_' + timeName, start, end, describe=False)
+def MakeMortHospHeatmapRange(subfolder, measureCols, heatStruc, timeName, start, window, describe=False, deathLag=0):
+	end = start + window
+	DoHeatmapsDrawRange(subfolder + '/Mort_out/', measureCols, heatStruc,'deaths_draw_' + timeName,  max(0, start - deathLag), end - deathLag, describe=describe)
+	DoHeatmapsDrawRange(subfolder + '/Mort_out/', measureCols, heatStruc, 'hospital_draw_' + timeName, start, end, describe=describe)
+	DoHeatmapsDrawRange(subfolder + '/Mort_out/', measureCols, heatStruc, 'infect_' + timeName, start, end, describe=describe)
 
 
-def MakeMortHospHeatmaps(subfolder, measureCols, heatStruc, years=1, describe=False):
-	# Don't calculate based on mean, as it can be confusing.
-	#DoHeatmaps(subfolder, measureCols, heatStruc, 'deaths', years=years, describe=describe)
-	#DoHeatmaps(subfolder, measureCols, heatStruc, 'hospital', years=years, describe=describe)
-	for i in range(years):
-		DoHeatmapsDrawRange(subfolder, measureCols, heatStruc,'deaths_draw_yearlyAgg', i, i + 1, describe=describe)
-		DoHeatmapsDrawRange(subfolder, measureCols, heatStruc, 'hospital_draw_yearlyAgg', i, i + 1, describe=describe)
-		DoHeatmapsDrawRange(subfolder, measureCols, heatStruc, 'infect_yearlyAgg', i, i + 1, describe=describe)
+def MakeCaseHeatmaps(subfolder, measureCols, heatStruc, timeName, start, window, describe=False):
+	end = start + window
+	DoHeatmapsDrawRange(subfolder + '/Trace/', measureCols, heatStruc, 'processed_case7_' + timeName, start, end, describe=describe, hasRunCol=True)

@@ -32,36 +32,10 @@ def AppendParallels(dataDir, outDir, measureCols, outputSubdir, prefix, arrayInd
 		)
 
 
-def DoSpartanAggregate(dataDir, measureCols):
-	AppendParallels(
-		dataDir, '/ABM_process/', measureCols,
-		'/outputs_post/step_1/', 'processed', 100, [
-			'case',
-			'case7',
-			'case14',
-			#'infectNoVac', # Takes too long
-			#'infectVac', # Takes too long
-			'stage',
-		],
-		header=3,
-	)
-	AppendParallels(
-		dataDir, '/ABM_process/', measureCols,
-		'/outputs_post/visualise/', 'processed', 100, [
-			'case_daily',
-			'case_weeklyAgg',
-			'case7_daily',
-			'case7_weeklyAgg',
-			'case14_daily',
-			'case14_weeklyAgg',
-			'infectNoVac_weeklyAgg',
-			'infectVac_weeklyAgg',
-			'stage_weeklyAgg',
-		],
-	)
+def DoSpartanAggregate(dataDir, measureCols, arraySize=100):
 	AppendParallels(
 		dataDir, '/Mort_process/', measureCols,
-		'/outputs_post/cohort/', 'infect', 100, [
+		'/outputs_post/cohort/', 'infect', arraySize, [
 			#'noVac', # Takes too long
 			'noVac_daily',
 			'noVac_weeklyAgg',
@@ -75,10 +49,38 @@ def DoSpartanAggregate(dataDir, measureCols):
 		],
 	)
 	
-	AddFiles(dataDir + '/ABM_process/' + 'infect_unique_weeklyAgg',
+	AppendParallels(
+		dataDir, '/Traces/', measureCols,
+		'/outputs_post/step_1/', 'processed', arraySize, [
+			'case',
+			'case7',
+			'case14',
+			#'infectNoVac', # Takes too long
+			#'infectVac', # Takes too long
+			'stage',
+		],
+		header=3,
+	)
+	
+	AppendParallels(
+		dataDir, '/Traces/', measureCols,
+		'/outputs_post/visualise/', 'processed', arraySize, [
+			'case_daily',
+			'case_weeklyAgg',
+			'case7_daily',
+			'case7_weeklyAgg',
+			'case14_daily',
+			'case14_weeklyAgg',
+			'infectNoVac_weeklyAgg',
+			'infectVac_weeklyAgg',
+			'stage_weeklyAgg',
+		],
+	)
+	
+	AddFiles(dataDir + '/Traces/' + 'infect_unique_weeklyAgg',
 		[
-			dataDir + '/ABM_process/' + 'processed_infectNoVac_weeklyAgg',
-			dataDir + '/ABM_process/' + 'processed_infectVac_weeklyAgg',
+			dataDir + '/Traces/' + 'processed_infectNoVac_weeklyAgg',
+			dataDir + '/Traces/' + 'processed_infectVac_weeklyAgg',
 		],
 		index=(2 + len(measureCols))
 	)
