@@ -32,22 +32,32 @@ def AppendParallels(dataDir, outDir, measureCols, outputSubdir, prefix, arrayInd
 		)
 
 
-def DoSpartanAggregate(dataDir, measureCols, arraySize=100):
+def DoSpartanAggregate(dataDir, measureCols, arraySize=100, doTenday=False, doLong=False):
+	mortAgg = [
+		'noVac_daily',
+		'noVac_weeklyAgg',
+		'noVac_yearlyAgg',
+		'vac_daily',
+		'vac_weeklyAgg',
+		'vac_yearlyAgg',
+	]
+	
+	if doTenday:
+		mortAgg = mortAgg + [
+			'noVac_tendayAgg',
+			'vac_tendayAgg',
+		]
+	
+	if doLong:
+		# May not exist as these files are large.
+		mortAgg = mortAgg + [
+			'noVac',
+			'vac',
+		]
+	
 	AppendParallels(
 		dataDir, '/Mort_process/', measureCols,
-		'/outputs_post/cohort/', 'infect', arraySize, [
-			#'noVac', # Takes too long
-			'noVac_daily',
-			'noVac_weeklyAgg',
-			'noVac_tendayAgg',
-			'noVac_yearlyAgg',
-			#'vac', # Takes too long
-			'vac_daily',
-			'vac_weeklyAgg',
-			'vac_tendayAgg',
-			'vac_yearlyAgg',
-		],
-	)
+		'/outputs_post/cohort/', 'infect', arraySize, mortAgg)
 	
 	AppendParallels(
 		dataDir, '/Traces/', measureCols,

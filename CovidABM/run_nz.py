@@ -32,43 +32,33 @@ healthPerspectiveRows = [
 ]
 
 heatmapStructure = {
-	'index_rows' : ['Policy', 'R0', 'Kids'],
-	'index_cols' : ['TracePower', 'VacUptake', 'IncurRate'],
+	'index_rows' : ['Policy', 'R0', 'AgeLimit'],
+	'index_cols' : ['VacUptake', 'IncurRate'],
 	'sort_rows' : [
 		['Policy', {
-			'ME_ME_TS' : 'a',
-			'ME_TS_LS' : 'b',
-			'ME_TS_BS' : 'c',
+			'AggressElim' : 'a',
+			'ModerateElim' : 'b',
 		}],
 		['R0', {
-			5 : 'a',
-			6.5 : 'b',
-			8 : 'c',
+			6.5 : 'a',
 		}],
-		['Kids', {
-			'Yes' : 'a',
-			'No' : 'b',
+		['AgeLimit', {
+			'5+' : 'a',
+			'10+' : 'b',
+			'16+' : 'c',
 		}],
 	], 
 	'sort_cols' : [
-		['TracePower', {
-			'ass200_90at5' : 'a',
-			'ass100_90at5_iso' : 'b',
-			'ass100_90at5' : 'c',
-			'ass50_70at5' : 'd',
-		}],
 		['VacUptake', {
-			0.95 : 'a',
-			0.9 : 'b',
-			0.8 : 'c',
-			0.7 : 'd',
-			0.3 : 'e',
+			'95%' : 'a',
+			'85%' : 'b',
+			'70%' : 'c',
 		}],
 		['IncurRate', {
-			0.2 : 'a',
+			0.5 : 'a',
 			1 : 'b',
 			5 : 'c',
-			25 : 'd',
+			10 : 'd',
 		}],
 	]
 }
@@ -83,22 +73,19 @@ defaultValues = [
 		'IncurRate' : 5,
 	},
 ]
-
 measureCols_raw = [
 	'r0_range',
-	'policy_pipeline',
-	'param_vac_uptake_mult',
-	'param_final_phase',
+	'param_policy',
+	'data_suffix',
+	'data_suffix_2',
 	'param_vacincurmult',
-	'compound_trace',
 ]
 measureCols = [
 	'R0',
 	'Policy',
 	'VacUptake',
-	'Kids',
+	'AgeLimit',
 	'IncurRate',
-	'TracePower',
 ]
 
 def indexRenameFunc(chunk):
@@ -111,9 +98,15 @@ def indexRenameFunc(chunk):
 	#	'_az_25.csv' : 'AZ_25',
 	#	'_az_50.csv' : 'AZ_50',
 	#})
-	index['param_final_phase'] = index['param_final_phase'].replace({
-		3 : 'No',
-		4 : 'Yes',
+	index['data_suffix'] = index['data_suffix'].replace({
+		'_70' : '70%',
+		'_85' : '85%',
+		'_95' : '95%',
+	})
+	index['data_suffix_2'] = index['data_suffix_2'].replace({
+		'_15.csv' : '16+',
+		'_10.csv' : '10+',
+		'_5.csv' : '5+',
 	})
 	
 	renameCols = {measureCols_raw[i] : measureCols[i] for i in range(len(measureCols))}
@@ -123,18 +116,19 @@ def indexRenameFunc(chunk):
 	return chunk
 
 
+
 # R0_range param_policy VacKids param_vacincurmult param_vac_uptake
 favouriteParams = [5, 'ME_TS_LS', 'No', 5, 0.7]
 
 #dataDir = '2021_05_04'
-dataDir = 'Vic3/2021_08_20'
+dataDir = 'NZ/2021_08_19'
 rawDataDir = dataDir + '/outputs_snowy/'
 day_override = 574
 
 dryRun = False
 preChecks = False
-aggregateSpartan = False
-doDraws = False
+aggregateSpartan = True
+doDraws = True
 makeOutput = True
 
 if preChecks:
@@ -148,20 +142,16 @@ if oldNonSpartan:
 	#PreProcessMortHosp(dataDir, measureCols)
 
 if aggregateSpartan:
-	DoSpartanAggregate(dataDir, measureCols, arraySize=100)
+	DoSpartanAggregate(dataDir, measureCols, arraySize=20)
 
 if doDraws:
 	DrawMortHospDistributions(dataDir, measureCols, drawCount=100, padMult=1)
 	FinaliseMortHosp(dataDir, measureCols)
 
 if makeOutput:
-	MakeMortHospHeatmapRange(dataDir, measureCols, heatmapStructure, 'weeklyAgg', 0, 30, aggSize=7, describe=True)
-	MakeMortHospHeatmapRange(dataDir, measureCols, heatmapStructure, 'weeklyAgg', 30, 52, aggSize=7, describe=True)
-	MakeMortHospHeatmapRange(dataDir, measureCols, heatmapStructure, 'weeklyAgg', 0, 82, aggSize=7, describe=True)
+	MakeMortHospHeatmapRange(dataDir, measureCols, heatmapStructure, 'weeklyAgg', 0, 52, aggSize=7, describe=True)
 
-	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 0, 210, describe=True)
-	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 210, 364, describe=True)
-	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 0, 574, describe=True)
+	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 0, 364, describe=True)
 
 #DoProcessingForPMSLT(dataDir, measureCols, months=24)
 #DoProcessingForReport(dataDir, measureCols, table5Rows, 'param_vac_uptake', months=24)

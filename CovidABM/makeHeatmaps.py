@@ -13,7 +13,7 @@ def DoMakeStagesHeatmap(
 		subfolder, measureCols, heatStruct,
 		stage_limit=2, start=0, window=100, describe=False):
 	df = pd.read_csv(
-		subfolder + '/Trace/processed_stage' + '.csv',
+		subfolder + '/Traces/processed_stage' + '.csv',
 		index_col=list(range(2 + len(measureCols))),
 		header=list(range(3)))
 	

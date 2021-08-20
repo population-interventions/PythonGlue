@@ -218,7 +218,7 @@ def MakeDescribedHeatmapSet(
 	relevantMeasureCols = heatStruct.get('index_rows') + heatStruct.get('index_cols')
 	
 	if describe:
-		name = prefixName + '_total_describe'
+		name = prefixName + '_describe'
 		print('Describe {} draws'.format(prefixName))
 		df_describe = df.copy()
 		df_describe = df_describe.unstack(relevantMeasureCols)
@@ -234,7 +234,7 @@ def MakeDescribedHeatmapSet(
 	df = df.reorder_levels(['percentile'] + relevantMeasureCols).sort_index()
 
 	dfHeat = ToHeatmap(dfMean.reset_index().rename({0 : 'mean'}), heatStruct)
-	name =  prefixName + '_total_mean'
+	name =  prefixName + '_mean'
 	print('Output heatmap {}'.format(name))
 	OutputToFile(dfHeat, subfolder + name, head=False)
 	
@@ -242,7 +242,7 @@ def MakeDescribedHeatmapSet(
 		#dfHeat = df.loc[pc, :]
 		dfHeat = df[pc].to_frame().rename(columns={0 : 'pc_{}'.format(pc)})
 		dfHeat = ToHeatmap(dfHeat.reset_index(), heatStruct)
-		name =  prefixName + '_total_' + percMap.get(pc)
+		name =  prefixName + '_' + percMap.get(pc)
 		print('Output heatmap {}'.format(name))
 		OutputToFile(dfHeat, subfolder + name, head=False)
 	

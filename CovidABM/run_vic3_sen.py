@@ -32,9 +32,11 @@ healthPerspectiveRows = [
 ]
 
 heatmapStructure = {
-	'index_rows' : ['Policy', 'R0', 'Kids'],
-	'index_cols' : ['TracePower', 'VacUptake', 'IncurRate'],
+	'index_rows' : ['sensitivity', 'Policy', 'R0', 'Kids'],
+	'index_cols' : ['Rollout', 'VacUptake', 'IncurRate'],
 	'sort_rows' : [
+		['sensitivity', {
+		}],
 		['Policy', {
 			'ME_ME_TS' : 'a',
 			'ME_TS_LS' : 'b',
@@ -51,18 +53,15 @@ heatmapStructure = {
 		}],
 	], 
 	'sort_cols' : [
-		['TracePower', {
-			'ass200_90at5' : 'a',
-			'ass100_90at5_iso' : 'b',
-			'ass100_90at5' : 'c',
-			'ass50_70at5' : 'd',
+		['Rollout', {
+			'INT' : 'a',
+			'AZ_25' : 'b',
 		}],
 		['VacUptake', {
 			0.95 : 'a',
 			0.9 : 'b',
 			0.8 : 'c',
 			0.7 : 'd',
-			0.3 : 'e',
 		}],
 		['IncurRate', {
 			0.2 : 'a',
@@ -87,30 +86,32 @@ defaultValues = [
 measureCols_raw = [
 	'r0_range',
 	'policy_pipeline',
+	'data_suffix',
 	'param_vac_uptake_mult',
 	'param_final_phase',
 	'param_vacincurmult',
-	'compound_trace',
+	'sensitivity',
 ]
 measureCols = [
 	'R0',
 	'Policy',
+	'Rollout',
 	'VacUptake',
 	'Kids',
 	'IncurRate',
-	'TracePower',
+	'sensitivity',
 ]
 
 def indexRenameFunc(chunk):
 	index = chunk.index.to_frame()
 	#index['R0'] = index['global_transmissibility_out'].apply(lambda x: 3.75 if x < 0.61333 else (4.17 if x < 0.681666 else 4.58))
 	
-	#index['data_suffix'] = index['data_suffix'].replace({
-	#	'_bau.csv' : 'BAU',
-	#	'_int.csv' : 'INT',
-	#	'_az_25.csv' : 'AZ_25',
-	#	'_az_50.csv' : 'AZ_50',
-	#})
+	index['data_suffix'] = index['data_suffix'].replace({
+		'_bau.csv' : 'BAU',
+		'_int.csv' : 'INT',
+		'_az_25.csv' : 'AZ_25',
+		'_az_50.csv' : 'AZ_50',
+	})
 	index['param_final_phase'] = index['param_final_phase'].replace({
 		3 : 'No',
 		4 : 'Yes',
@@ -127,7 +128,7 @@ def indexRenameFunc(chunk):
 favouriteParams = [5, 'ME_TS_LS', 'No', 5, 0.7]
 
 #dataDir = '2021_05_04'
-dataDir = 'Vic3/2021_08_20'
+dataDir = 'Vic3/2021_08_17_sen'
 rawDataDir = dataDir + '/outputs_snowy/'
 day_override = 574
 
@@ -148,7 +149,7 @@ if oldNonSpartan:
 	#PreProcessMortHosp(dataDir, measureCols)
 
 if aggregateSpartan:
-	DoSpartanAggregate(dataDir, measureCols, arraySize=100)
+	DoSpartanAggregate(dataDir, measureCols, arraySize=50)
 
 if doDraws:
 	DrawMortHospDistributions(dataDir, measureCols, drawCount=100, padMult=1)
