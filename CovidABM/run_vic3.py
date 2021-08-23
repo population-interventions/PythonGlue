@@ -127,7 +127,7 @@ def indexRenameFunc(chunk):
 favouriteParams = [5, 'ME_TS_LS', 'No', 5, 0.7]
 
 #dataDir = '2021_05_04'
-dataDir = 'Vic3/2021_08_20'
+dataDir = 'Vic3/2021_08_18'
 rawDataDir = dataDir + '/outputs_snowy/'
 day_override = 574
 
@@ -135,7 +135,7 @@ dryRun = False
 preChecks = False
 aggregateSpartan = False
 doDraws = False
-makeOutput = True
+makeOutput = False
 
 if preChecks:
 	DoPreProcessChecks(
@@ -148,10 +148,10 @@ if oldNonSpartan:
 	#PreProcessMortHosp(dataDir, measureCols)
 
 if aggregateSpartan:
-	DoSpartanAggregate(dataDir, measureCols, arraySize=100)
+	DoSpartanAggregate(dataDir, measureCols, arraySize=250)
 
 if doDraws:
-	DrawMortHospDistributions(dataDir, measureCols, drawCount=100, padMult=1)
+	DrawMortHospDistributions(dataDir, measureCols, drawCount=100, padMult=5)
 	FinaliseMortHosp(dataDir, measureCols)
 
 if makeOutput:
@@ -162,6 +162,9 @@ if makeOutput:
 	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 0, 210, describe=True)
 	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 210, 364, describe=True)
 	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 0, 574, describe=True)
+
+MakeMortHospHeatmapRange(dataDir, measureCols, heatmapStructure, 'weeklyAgg', 26, 4, aggSize=7, describe=True)
+MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 182, 28, describe=True)
 
 #DoProcessingForPMSLT(dataDir, measureCols, months=24)
 #DoProcessingForReport(dataDir, measureCols, table5Rows, 'param_vac_uptake', months=24)
