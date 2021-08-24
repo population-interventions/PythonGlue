@@ -101,6 +101,14 @@ measureCols = [
 	'TracePower',
 ]
 
+heatAges = [
+	#[0, 5],
+	#[5, 15],
+	#[15, 60],
+	#[60, 110],
+	[0, 110],
+]
+
 def indexRenameFunc(chunk):
 	index = chunk.index.to_frame()
 	#index['R0'] = index['global_transmissibility_out'].apply(lambda x: 3.75 if x < 0.61333 else (4.17 if x < 0.681666 else 4.58))
@@ -134,8 +142,8 @@ day_override = 574
 dryRun = False
 preChecks = False
 aggregateSpartan = False
-doDraws = False
-makeOutput = False
+doDraws = True
+makeOutput = True
 
 if preChecks:
 	DoPreProcessChecks(
@@ -151,21 +159,20 @@ if aggregateSpartan:
 	DoSpartanAggregate(dataDir, measureCols, arraySize=250)
 
 if doDraws:
-	DrawMortHospDistributions(dataDir, measureCols, drawCount=100, padMult=5)
-	FinaliseMortHosp(dataDir, measureCols)
+	#DrawMortHospDistributions(dataDir, measureCols, drawCount=100, padMult=5)
+	FinaliseMortHosp(dataDir, measureCols, heatAges)
 
 if makeOutput:
-	MakeMortHospHeatmapRange(dataDir, measureCols, heatmapStructure, 'weeklyAgg', 0, 30, aggSize=7, describe=True)
-	MakeMortHospHeatmapRange(dataDir, measureCols, heatmapStructure, 'weeklyAgg', 30, 52, aggSize=7, describe=True)
-	MakeMortHospHeatmapRange(dataDir, measureCols, heatmapStructure, 'weeklyAgg', 0, 82, aggSize=7, describe=True)
+	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 0, 30, aggSize=7, describe=True)
+	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 30, 52, aggSize=7, describe=True)
+	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 0, 82, aggSize=7, describe=True)
 
-	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 0, 210, describe=True)
-	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 210, 364, describe=True)
-	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 0, 574, describe=True)
+	MakeStagesHeatmap(dataDir, measureCols, heatAges, heatmapStructure, 0, 210, describe=True)
+	MakeStagesHeatmap(dataDir, measureCols, heatAges, heatmapStructure, 210, 364, describe=True)
+	MakeStagesHeatmap(dataDir, measureCols, heatAges, heatmapStructure, 0, 574, describe=True)
 
-#MakeMortHospHeatmapRange(dataDir, measureCols, heatmapStructure, 'weeklyAgg', 26, 4, aggSize=7, describe=True)
-MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 182, 28, describe=True)
-MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 210, 364, describe=True)
+	MakeStagesHeatmap(dataDir, measureCols, heatAges, heatmapStructure, 182, 28, describe=True)
+	MakeStagesHeatmap(dataDir, measureCols, heatAges, heatmapStructure, 210, 364, describe=True)
 
 #DoProcessingForPMSLT(dataDir, measureCols, months=24)
 #DoProcessingForReport(dataDir, measureCols, table5Rows, 'param_vac_uptake', months=24)

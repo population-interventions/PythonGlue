@@ -161,25 +161,31 @@ def MultiplyByCohortEffect(df, multDf):
 
 ############### Multiplication Uncertainty ###############
 
-def AggregateAgeAndVacDraw(dfVac, dfNoVac, cohortEffect, timeName, metric, measureCols):
+def AggregateAgeAndVacDraw(dfVac, dfNoVac, cohortEffect, timeName, heatAge, outFile, metric, measureCols):
 	if metric != 'infect':
 		dfVac = dfVac.mul(cohortEffect.loc[1][metric], axis=0)
 		dfNoVac = dfNoVac.mul(cohortEffect.loc[1][metric], axis=0)
 	
 	dfMetric = dfVac + dfNoVac
-	del dfVac
-	del dfNoVac
-	gc.collect()
+	#del dfVac
+	#del dfNoVac
+	#gc.collect()
+	
+	wantedAges = [i*5 for i in range(int(heatAge[0]/5), int(heatAge[1]/5))]
 	
 	dfMetric = dfMetric.transpose()
 	dfMetric = dfMetric.stack(level=['rand_seed'])
 	dfMetric = dfMetric.unstack(level=[timeName])
+	dfMetric = dfMetric[wantedAges]
 	dfMetric = dfMetric.groupby(level=[timeName], axis=1).sum()
 	dfMetric = dfMetric.reorder_levels(['rand_seed'] + measureCols).sort_index()
-	return dfMetric
+	
+	fileName = (outFile + '_{}_age_{}_{}').format(timeName, heatAge[0], heatAge[1])
+	print(fileName)
+	OutputToFile(dfMetric, fileName)
 
 
-def OutputTimeTablesDraw(subfolder, dataPath, measureCols, timeName):
+def OutputTimeTablesDraw(subfolder, dataPath, measureCols, heatAges, timeName):
 	cohortEffect = pd.read_csv(subfolder + '/draw_cache/mortHosp_final' + '.csv',
 				index_col=[0,1,2], header=[0]).reorder_levels([1, 0, 2])
 	
@@ -224,23 +230,31 @@ def OutputTimeTablesDraw(subfolder, dataPath, measureCols, timeName):
 	start_time = time.time()
 	print('Aggregating', timeName)
 	
-	dfDeaths = AggregateAgeAndVacDraw(dfVac, dfNoVac, cohortEffect, timeName, 'mort', measureCols)
-	dfIcu = AggregateAgeAndVacDraw(dfVac, dfNoVac, cohortEffect, timeName, 'icu', measureCols)
-	dfHospital = AggregateAgeAndVacDraw(dfVac, dfNoVac, cohortEffect, timeName, 'hosp', measureCols)
-	dfInfect = AggregateAgeAndVacDraw(dfVac, dfNoVac, cohortEffect, timeName, 'infect', measureCols)
-	
-	OutputToFile(dfDeaths, subfolder + '/Mort_out/deaths_draw_' + timeName)
-	OutputToFile(dfIcu, subfolder + '/Mort_out/icu_draw_' + timeName)
-	OutputToFile(dfHospital, subfolder + '/Mort_out/hospital_draw_' + timeName)
-	OutputToFile(dfInfect, subfolder + '/Mort_out/infect_' + timeName)
+	for heatAge in heatAges:
+		AggregateAgeAndVacDraw(
+			dfVac, dfNoVac, cohortEffect, timeName, heatAge,
+			subfolder + '/Mort_out/infect',
+			'infect', measureCols)
+		AggregateAgeAndVacDraw(
+			dfVac, dfNoVac, cohortEffect, timeName, heatAge,
+			subfolder + '/Mort_out/deaths',
+			'mort', measureCols)
+		AggregateAgeAndVacDraw(
+			dfVac, dfNoVac, cohortEffect, timeName, heatAge,
+			subfolder + '/Mort_out/icu',
+			'icu', measureCols)
+		AggregateAgeAndVacDraw(
+			dfVac, dfNoVac, cohortEffect, timeName, heatAge,
+			subfolder + '/Mort_out/hospital',
+			'hosp', measureCols)
 
 
-def ApplyCohortEffectsUncertainty(subfolder, measureCols, doTenday=False):
+def ApplyCohortEffectsUncertainty(subfolder, measureCols, heatAges, doTenday=False):
 	print('ApplyCohortEffects yearlyAgg')
-	#OutputTimeTablesDraw(subfolder, subfolder + '/Mort_process/', measureCols, 'yearlyAgg')
+	OutputTimeTablesDraw(subfolder, subfolder + '/Mort_process/', measureCols, heatAges, 'yearlyAgg')
 	if doTenday:
 		OutputTimeTablesDraw(subfolder, subfolder + '/Mort_process/', measureCols, 'tendayAgg')
-	OutputTimeTablesDraw(subfolder, subfolder + '/Mort_process/', measureCols, 'weeklyAgg')
+	OutputTimeTablesDraw(subfolder, subfolder + '/Mort_process/', measureCols, heatAges, 'weeklyAgg')
 
 
 ############### Draw ###############
@@ -325,15 +339,19 @@ def DoDraws(subfolder, measureCols, **kwargs):
 
 ############### Heatmaps ###############
 
-def DoHeatmapsDrawRange(
-		subfolder, measureCols, heatStruct, timeName,
+def DoHeatmapsDrawRangeHeatAge(
+		subfolder, measureCols, heatStruct, heatAge, timeName, metric,
 		start, end, describe=False, hasRunCol=False, divide=False):
-	df = pd.read_csv(subfolder + '/Mort_out/' + timeName + '.csv', 
-					index_col=list(range((2 if hasRunCol else 1) + len(measureCols))),
-					header=list(range(1)))
 	
-	prefixName = '{}_from_{}_to_{}'.format(
-		timeName, util.DecimalLimit(start, 4), util.DecimalLimit(end, 4))
+	fileIn = '{}_{}_age_{}_{}'.format(metric, timeName, heatAge[0], heatAge[1])
+	df = pd.read_csv(
+		subfolder + '/Mort_out/' + fileIn + '.csv', 
+		index_col=list(range((2 if hasRunCol else 1) + len(measureCols))),
+		header=list(range(1)))
+	
+	prefixName = '{}_from_{}_to_{}_age_{}_{}'.format(
+		timeName, util.DecimalLimit(start, 4), util.DecimalLimit(end, 4),
+		heatAge[0], heatAge[1])
 	
 	df = df[[str(x) for x in range(math.floor(start), math.ceil(end))]]
 	
@@ -356,6 +374,14 @@ def DoHeatmapsDrawRange(
 		subfolder + '/Heatmaps/', df,
 		heatStruct, prefixName, describe=describe)
 
+def DoHeatmapsDrawRange(
+		subfolder, measureCols, heatStruct, heatAges, timeName, metric,
+		start, end, **kwargs):
+	
+	for heatAge in heatAges:
+		DoHeatmapsDrawRangeHeatAge(
+			subfolder, measureCols, heatStruct, heatAge, timeName, metric,
+			start, end, **kwargs)
 
 ############### API ###############
 
@@ -367,21 +393,26 @@ def DrawMortHospDistributions(subfolder, measureCols, **kwargs):
 	DoDraws(subfolder, measureCols, **kwargs)
 
 
-def FinaliseMortHosp(subfolder, measureCols, doTenday=False):
-	# Don't calculate based on mean, as it can be confusing.
-	ApplyCohortEffectsUncertainty(subfolder, measureCols, doTenday=doTenday)
+def FinaliseMortHosp(subfolder, measureCols, heatAges, doTenday=False):
+	ApplyCohortEffectsUncertainty(subfolder, measureCols, heatAges, doTenday=doTenday)
 
 
-def MakeMortHospHeatmapRange(subfolder, measureCols, heatStruc, timeName, start, window, describe=False, deathLag=0, aggSize=7):
+def MakeMortHospHeatmapRange(subfolder, measureCols, heatAges, heatStruc, timeName, start, window, describe=False, deathLag=0, aggSize=7):
 	end = start + window
 	totalDays = aggSize * window
-	DoHeatmapsDrawRange(subfolder, measureCols, heatStruc,'deaths_draw_' + timeName,  max(0, start - deathLag), end - deathLag, describe=describe)
-	DoHeatmapsDrawRange(subfolder, measureCols, heatStruc, 'hospital_draw_' + timeName, start, end, describe=describe)
-	DoHeatmapsDrawRange(subfolder, measureCols, heatStruc, 'icu_draw_' + timeName, start, end, describe=describe)
-	DoHeatmapsDrawRange(subfolder, measureCols, heatStruc, 'infect_' + timeName, start, end, describe=describe)
-	DoHeatmapsDrawRange(subfolder, measureCols, heatStruc, 'infect_' + timeName, start, end, divide=totalDays, describe=describe)
+	DoHeatmapsDrawRange(
+		subfolder, measureCols, heatStruc, heatAges, timeName, 'deaths',
+		max(0, start - deathLag), end - deathLag, describe=describe)
+	DoHeatmapsDrawRange(
+		subfolder, measureCols, heatStruc, heatAges, timeName, 'icu',
+		start, end, describe=describe)
+	DoHeatmapsDrawRange(
+		subfolder, measureCols, heatStruc, heatAges, timeName, 'infect',
+		start, end, describe=describe)
+	DoHeatmapsDrawRange(
+		subfolder, measureCols, heatStruc, heatAges, timeName, 'infect',
+		start, end, divide=totalDays, describe=describe)
 
-
-def MakeCaseHeatmaps(subfolder, measureCols, heatStruc, timeName, start, window, describe=False):
+def MakeCaseHeatmaps(subfolder, measureCols, heatAges, heatStruc, timeName, start, window, describe=False):
 	end = start + window
 	DoHeatmapsDrawRange(subfolder + '/Trace/', measureCols, heatStruc, 'processed_case7_' + timeName, start, end, describe=describe, hasRunCol=True)
