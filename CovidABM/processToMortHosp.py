@@ -12,6 +12,7 @@ from tqdm import tqdm
 import pathlib
 import time
 import os
+import gc
 
 from utilities import AddFiles
 from utilities import ToHeatmap, CrossIndex
@@ -166,6 +167,10 @@ def AggregateAgeAndVacDraw(dfVac, dfNoVac, cohortEffect, timeName, metric, measu
 		dfNoVac = dfNoVac.mul(cohortEffect.loc[1][metric], axis=0)
 	
 	dfMetric = dfVac + dfNoVac
+	del dfVac
+	del dfNoVac
+	gc.collect()
+	
 	dfMetric = dfMetric.transpose()
 	dfMetric = dfMetric.stack(level=['rand_seed'])
 	dfMetric = dfMetric.unstack(level=[timeName])
@@ -179,13 +184,19 @@ def OutputTimeTablesDraw(subfolder, dataPath, measureCols, timeName):
 				index_col=[0,1,2], header=[0]).reorder_levels([1, 0, 2])
 	
 	print('loading DF', timeName)
+	start_time = time.time()
+	
 	dfVac = LoadDf(dataPath, measureCols, timeName, 'vac')
 	dfNoVac = LoadDf(dataPath, measureCols, timeName, 'noVac')
 	
 	dfVac.columns = dfVac.columns.droplevel('run')
 	dfNoVac.columns = dfNoVac.columns.droplevel('run')
 	
+	elapsed_time = time.time() - start_time
+	print('elapsed_time {}'.format(elapsed_time))
 	start_time = time.time()
+	print('reoder levels and transpose', timeName)
+	
 	dfVac = dfVac.reorder_levels(['rand_seed'] + [timeName] + measureCols, axis=1).sort_index(axis=1)
 	dfNoVac = dfNoVac.reorder_levels(['rand_seed'] + [timeName] + measureCols, axis=1).sort_index(axis=1)
 	#print(dfVac)
@@ -194,8 +205,11 @@ def OutputTimeTablesDraw(subfolder, dataPath, measureCols, timeName):
 	# unstack is 20x faster than stack here.
 	dfVac = dfVac.transpose().unstack('rand_seed').transpose()
 	dfNoVac = dfNoVac.transpose().unstack('rand_seed').transpose()
+	
 	elapsed_time = time.time() - start_time
 	print('elapsed_time {}'.format(elapsed_time))
+	start_time = time.time()
+	print('mapping draws', timeName)
 	
 	# Map draw to random seeds
 	drawToSeed = { i:k for i,k in enumerate(list(dfVac.index.unique(level='rand_seed')))}
@@ -205,7 +219,11 @@ def OutputTimeTablesDraw(subfolder, dataPath, measureCols, timeName):
 	cohortEffect.index = pd.MultiIndex.from_frame(index)
 	cohortEffect = cohortEffect.sort_index(axis=0)
 	
+	elapsed_time = time.time() - start_time
+	print('elapsed_time {}'.format(elapsed_time))
+	start_time = time.time()
 	print('Aggregating', timeName)
+	
 	dfDeaths = AggregateAgeAndVacDraw(dfVac, dfNoVac, cohortEffect, timeName, 'mort', measureCols)
 	dfIcu = AggregateAgeAndVacDraw(dfVac, dfNoVac, cohortEffect, timeName, 'icu', measureCols)
 	dfHospital = AggregateAgeAndVacDraw(dfVac, dfNoVac, cohortEffect, timeName, 'hosp', measureCols)
@@ -219,7 +237,7 @@ def OutputTimeTablesDraw(subfolder, dataPath, measureCols, timeName):
 
 def ApplyCohortEffectsUncertainty(subfolder, measureCols, doTenday=False):
 	print('ApplyCohortEffects yearlyAgg')
-	OutputTimeTablesDraw(subfolder, subfolder + '/Mort_process/', measureCols, 'yearlyAgg')
+	#OutputTimeTablesDraw(subfolder, subfolder + '/Mort_process/', measureCols, 'yearlyAgg')
 	if doTenday:
 		OutputTimeTablesDraw(subfolder, subfolder + '/Mort_process/', measureCols, 'tendayAgg')
 	OutputTimeTablesDraw(subfolder, subfolder + '/Mort_process/', measureCols, 'weeklyAgg')

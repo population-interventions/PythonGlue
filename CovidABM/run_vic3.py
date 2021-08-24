@@ -32,9 +32,15 @@ healthPerspectiveRows = [
 ]
 
 heatmapStructure = {
-	'index_rows' : ['Policy', 'R0', 'Kids'],
-	'index_cols' : ['TracePower', 'VacUptake', 'IncurRate'],
+	'index_rows' : ['TracePower', 'Policy', 'R0'],
+	'index_cols' : ['IncurRate', 'VacUptake', 'Kids'],
 	'sort_rows' : [
+		['TracePower', {
+			'ass200_90at5' : 'a',
+			'ass100_90at5_iso' : 'b',
+			'ass100_90at5' : 'c',
+			'ass50_70at5' : 'd',
+		}],
 		['Policy', {
 			'ME_ME_TS' : 'a',
 			'ME_TS_LS' : 'b',
@@ -45,17 +51,13 @@ heatmapStructure = {
 			6.5 : 'b',
 			8 : 'c',
 		}],
-		['Kids', {
-			'Yes' : 'a',
-			'No' : 'b',
-		}],
 	], 
 	'sort_cols' : [
-		['TracePower', {
-			'ass200_90at5' : 'a',
-			'ass100_90at5_iso' : 'b',
-			'ass100_90at5' : 'c',
-			'ass50_70at5' : 'd',
+		['IncurRate', {
+			0.2 : 'a',
+			1 : 'b',
+			5 : 'c',
+			25 : 'd',
 		}],
 		['VacUptake', {
 			0.95 : 'a',
@@ -64,11 +66,9 @@ heatmapStructure = {
 			0.7 : 'd',
 			0.3 : 'e',
 		}],
-		['IncurRate', {
-			0.2 : 'a',
-			1 : 'b',
-			5 : 'c',
-			25 : 'd',
+		['Kids', {
+			'Yes' : 'a',
+			'No' : 'b',
 		}],
 	]
 }
@@ -163,8 +163,9 @@ if makeOutput:
 	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 210, 364, describe=True)
 	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 0, 574, describe=True)
 
-MakeMortHospHeatmapRange(dataDir, measureCols, heatmapStructure, 'weeklyAgg', 26, 4, aggSize=7, describe=True)
+#MakeMortHospHeatmapRange(dataDir, measureCols, heatmapStructure, 'weeklyAgg', 26, 4, aggSize=7, describe=True)
 MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 182, 28, describe=True)
+MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 210, 364, describe=True)
 
 #DoProcessingForPMSLT(dataDir, measureCols, months=24)
 #DoProcessingForReport(dataDir, measureCols, table5Rows, 'param_vac_uptake', months=24)
