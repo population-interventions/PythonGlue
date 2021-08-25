@@ -161,12 +161,19 @@ def MultiplyByCohortEffect(df, multDf):
 
 ############### Multiplication Uncertainty ###############
 
-def AggregateAgeAndVacDraw(dfVac, dfNoVac, cohortEffect, timeName, heatAge, outFile, metric, measureCols):
+def AggregateAgeAndVacDraw(
+		dfVac, dfNoVac, cohortEffect, timeName, heatAge, outFile,
+		metric, measureCols, vacOnly=False, noVacOnly=False):
 	if metric != 'infect':
 		dfVac = dfVac.mul(cohortEffect.loc[1][metric], axis=0)
-		dfNoVac = dfNoVac.mul(cohortEffect.loc[1][metric], axis=0)
+		dfNoVac = dfNoVac.mul(cohortEffect.loc[0][metric], axis=0)
 	
-	dfMetric = dfVac + dfNoVac
+	if vacOnly:
+		dfMetric = dfVac
+	elif noVacOnly:
+		dfMetric = dfNoVac
+	else:
+		dfMetric = dfVac + dfNoVac
 	#del dfVac
 	#del dfNoVac
 	#gc.collect()
@@ -185,7 +192,9 @@ def AggregateAgeAndVacDraw(dfVac, dfNoVac, cohortEffect, timeName, heatAge, outF
 	OutputToFile(dfMetric, fileName)
 
 
-def OutputTimeTablesDraw(subfolder, dataPath, measureCols, heatAges, timeName):
+def OutputTimeTablesDraw(
+		subfolder, dataPath, measureCols, heatAges, timeName):
+	
 	cohortEffect = pd.read_csv(subfolder + '/draw_cache/mortHosp_final' + '.csv',
 				index_col=[0,1,2], header=[0]).reorder_levels([1, 0, 2])
 	
@@ -231,6 +240,14 @@ def OutputTimeTablesDraw(subfolder, dataPath, measureCols, heatAges, timeName):
 	print('Aggregating', timeName)
 	
 	for heatAge in heatAges:
+		AggregateAgeAndVacDraw(
+			dfVac, dfNoVac, cohortEffect, timeName, heatAge,
+			subfolder + '/Mort_out/infect_vac',
+			'infect', measureCols, vacOnly=True)
+		AggregateAgeAndVacDraw(
+			dfVac, dfNoVac, cohortEffect, timeName, heatAge,
+			subfolder + '/Mort_out/infect_noVac',
+			'infect', measureCols, noVacOnly=True)
 		AggregateAgeAndVacDraw(
 			dfVac, dfNoVac, cohortEffect, timeName, heatAge,
 			subfolder + '/Mort_out/infect',
@@ -339,7 +356,7 @@ def DoDraws(subfolder, measureCols, **kwargs):
 
 ############### Heatmaps ###############
 
-def DoHeatmapsDrawRangeHeatAge(
+def LoadHeatmapInputDf(
 		subfolder, measureCols, heatStruct, heatAge, timeName, metric,
 		start, end, describe=False, hasRunCol=False, divide=False):
 	
@@ -349,17 +366,10 @@ def DoHeatmapsDrawRangeHeatAge(
 		index_col=list(range((2 if hasRunCol else 1) + len(measureCols))),
 		header=list(range(1)))
 	
-	prefixName = '{}_from_{}_to_{}_age_{}_{}'.format(
-		timeName, util.DecimalLimit(start, 4), util.DecimalLimit(end, 4),
-		heatAge[0], heatAge[1])
-	
 	df = df[[str(x) for x in range(math.floor(start), math.ceil(end))]]
 	
 	if divide:
-		prefixName = prefixName + '_daily'
 		df = df / divide
-	else:
-		prefixName = prefixName + '_total'
 	
 	# Take a fraction of the metric in fractional weeks.
 	if math.floor(start) < start:
@@ -370,6 +380,37 @@ def DoHeatmapsDrawRangeHeatAge(
 		df[last] = df[last] * (1 - math.ceil(end) + end)
 	
 	df = df.sum(axis=1)
+	return df
+
+
+def DoHeatmapsDrawRangeHeatAge(
+		subfolder, measureCols, heatStruct, heatAge, timeName, metric,
+		start, end, describe=False, hasRunCol=False, divide=False, rateDivide=False):
+	
+	prefixName = '{}_{}_from_{}_to_{}_age_{}_{}'.format(
+		timeName,metric,
+		util.DecimalLimit(start, 4),util.DecimalLimit(end, 4),
+		heatAge[0], heatAge[1])
+	
+	if divide:
+		prefixName = prefixName + '_daily'
+	else:
+		prefixName = prefixName + '_total'
+	
+	df = LoadHeatmapInputDf(
+		subfolder, measureCols, heatStruct, heatAge, timeName, metric,
+		start, end, describe=describe, hasRunCol=hasRunCol,
+		divide=divide)
+	
+	if rateDivide:
+		prefixName = prefixName + '_divide_' + rateDivide
+		dfDivide = LoadHeatmapInputDf(
+			subfolder, measureCols, heatStruct, heatAge, timeName, rateDivide,
+			start, end, describe=describe, hasRunCol=hasRunCol,
+			divide=divide)
+		
+		df = df.div(dfDivide)
+		
 	util.MakeDescribedHeatmapSet(
 		subfolder + '/Heatmaps/', df,
 		heatStruct, prefixName, describe=describe)
@@ -397,21 +438,47 @@ def FinaliseMortHosp(subfolder, measureCols, heatAges, doTenday=False):
 	ApplyCohortEffectsUncertainty(subfolder, measureCols, heatAges, doTenday=doTenday)
 
 
-def MakeMortHospHeatmapRange(subfolder, measureCols, heatAges, heatStruc, timeName, start, window, describe=False, deathLag=0, aggSize=7):
+def MakeMortHospHeatmapRange(
+		subfolder, measureCols, heatAges, heatStruc, timeName, start, window,
+		describe=False, doExtras=False, doIfr=True, doVacSplit=False,
+		deathLag=0, aggSize=7):
 	end = start + window
 	totalDays = aggSize * window
+	
 	DoHeatmapsDrawRange(
 		subfolder, measureCols, heatStruc, heatAges, timeName, 'deaths',
 		max(0, start - deathLag), end - deathLag, describe=describe)
 	DoHeatmapsDrawRange(
-		subfolder, measureCols, heatStruc, heatAges, timeName, 'icu',
-		start, end, describe=describe)
-	DoHeatmapsDrawRange(
 		subfolder, measureCols, heatStruc, heatAges, timeName, 'infect',
 		start, end, describe=describe)
-	DoHeatmapsDrawRange(
-		subfolder, measureCols, heatStruc, heatAges, timeName, 'infect',
-		start, end, divide=totalDays, describe=describe)
+	
+	if doIfr:
+		DoHeatmapsDrawRange(
+			subfolder, measureCols, heatStruc, heatAges, timeName, 'deaths',
+			max(0, start - deathLag), end - deathLag, describe=describe, rateDivide='infect')
+	
+	if doVacSplit:
+		DoHeatmapsDrawRange(
+			subfolder, measureCols, heatStruc, heatAges, timeName, 'infect_vac',
+			start, end, describe=describe, rateDivide='infect')
+		DoHeatmapsDrawRange(
+			subfolder, measureCols, heatStruc, heatAges, timeName, 'infect_noVac',
+			start, end, describe=describe, rateDivide='infect')
+		DoHeatmapsDrawRange(
+			subfolder, measureCols, heatStruc, heatAges, timeName, 'infect_vac',
+			start, end, describe=describe, rateDivide='infect_noVac')
+	
+	if doExtras:
+		DoHeatmapsDrawRange(
+			subfolder, measureCols, heatStruc, heatAges, timeName, 'infect',
+			start, end, divide=totalDays, describe=describe)
+		DoHeatmapsDrawRange(
+			subfolder, measureCols, heatStruc, heatAges, timeName, 'hospital',
+			start, end, describe=describe)
+		DoHeatmapsDrawRange(
+			subfolder, measureCols, heatStruc, heatAges, timeName, 'icu',
+			start, end, describe=describe)
+
 
 def MakeCaseHeatmaps(subfolder, measureCols, heatAges, heatStruc, timeName, start, window, describe=False):
 	end = start + window
