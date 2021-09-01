@@ -224,7 +224,7 @@ def MakeDescribedHeatmapSet(
 		df_describe = df_describe.unstack(relevantMeasureCols)
 		df_describe = df_describe.describe(percentiles=[0.05,0.25,0.75,0.95])
 		OutputToFile(df_describe, subfolder + name, head=False)
-		
+	
 	dfMean = df.copy()
 	dfMean = dfMean.groupby(level=relevantMeasureCols, axis=0).mean().to_frame()
 	dfMean = dfMean.rename(columns={0 : 'mean'})
@@ -232,7 +232,7 @@ def MakeDescribedHeatmapSet(
 	df = df.groupby(level=relevantMeasureCols, axis=0).quantile(percentList)
 	df.index.names = relevantMeasureCols + ['percentile']
 	df = df.reorder_levels(['percentile'] + relevantMeasureCols).sort_index()
-
+	
 	dfHeat = ToHeatmap(dfMean.reset_index().rename({0 : 'mean'}), heatStruct)
 	name =  prefixName + '_mean'
 	print('Output heatmap {}'.format(name))

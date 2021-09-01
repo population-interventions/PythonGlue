@@ -1,0 +1,11 @@
+The format is {1}_{2}_from_{3}_to_{4}_age_{5}_{6}_{7}_[_divide_{8}]_{9}
+1. Aggregate timeframe. This is the resolution of the time categories in the trace data that generated the heatmap.
+2. The metric that is being measured. Infections is new infections in the period. ICU/hosp/deaths are those metrics caused by infections in the period. 
+3. The start time in units of the aggregate timeframe.
+4. The end time in units of the aggregate timeframe. So 0_to_52 is a year for weelyAgg.
+5. The lower bound on the ages in the data.
+6. The upper bound on the ages in the data. Note that the upper bounds for time and age are exclusive.
+7. Either ‘daily’ or ‘total’. The only difference is multiplication by the number of days in the timeframe. Total means you need to divide by 52 to get the number per week.
+8. Divide is optional and is for things like IFRs. Parameter eight will be a secondary metric, like parameter 2. The heatmap is of per-run division of the primary metric by the secondary metric.
+9. The statistical output. Mean is the average of the 100 runs. ‘percentil_x’ is the xth percentile. ‘describe’ is a table of these outputs rather than a heatmap.
+ 

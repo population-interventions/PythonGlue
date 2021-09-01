@@ -10,7 +10,7 @@ import numpy as np
 from processNetlogoOutput import DoAbmProcessing
 from aggregateSpartan import DoSpartanAggregate
 from processToMortHosp import PreProcessMortHosp, FinaliseMortHosp, DrawMortHospDistributions
-from processToMortHosp import MakeMortHospHeatmapRange
+from processToMortHosp import MakeMortHospHeatmapRange, MakeIcuHeatmaps
 from makeHeatmaps import MakeStagesHeatmap
 from makeGraphs import MakePrettyGraphs, MakeFavouriteGraph, MakeDailyGraphs
 from processedOutputToPMSLT import DoProcessingForPMSLT
@@ -38,27 +38,29 @@ heatmapStructure = {
 		['Policy', {
 			'AggressElim' : 'a',
 			'ModerateElim' : 'b',
+			'TightSupress' : 'c',
+			'LooseSupress' : 'd',
 		}],
 		['R0', {
 			6.5 : 'a',
 		}],
 		['AgeLimit', {
 			'5+' : 'a',
-			'10+' : 'b',
-			'16+' : 'c',
+			'12+' : 'b',
 		}],
 	], 
 	'sort_cols' : [
 		['VacUptake', {
-			'95%' : 'a',
-			'85%' : 'b',
-			'70%' : 'c',
+			0.95 : 'a',
+			0.80 : 'b',
+			0.65 : 'c',
 		}],
 		['IncurRate', {
 			0.5 : 'a',
 			1 : 'b',
 			5 : 'c',
-			10 : 'd',
+			15 : 'd',
+			25 : 'e',
 		}],
 	]
 }
@@ -73,6 +75,15 @@ defaultValues = [
 		'IncurRate' : 5,
 	},
 ]
+
+heatAges = [
+	#[0, 5],
+	#[5, 15],
+	[0, 60],
+	[60, 110],
+	[0, 110],
+]
+
 measureCols_raw = [
 	'r0_range',
 	'param_policy',
@@ -99,13 +110,16 @@ def indexRenameFunc(chunk):
 	#	'_az_50.csv' : 'AZ_50',
 	#})
 	index['data_suffix'] = index['data_suffix'].replace({
-		'_70' : '70%',
-		'_85' : '85%',
-		'_95' : '95%',
+		'_65' : 0.65,
+		'_70' : 0.7,
+		'_80' : 0.8,
+		'_85' : 0.85,
+		'_95' : 0.95,
 	})
 	index['data_suffix_2'] = index['data_suffix_2'].replace({
 		'_15.csv' : '16+',
 		'_10.csv' : '10+',
+		'_12.csv' : '12+',
 		'_5.csv' : '5+',
 	})
 	
@@ -116,20 +130,22 @@ def indexRenameFunc(chunk):
 	return chunk
 
 
-
 # R0_range param_policy VacKids param_vacincurmult param_vac_uptake
 favouriteParams = [5, 'ME_TS_LS', 'No', 5, 0.7]
 
 #dataDir = '2021_05_04'
-dataDir = 'NZ/2021_08_19'
+dataDir = 'NZ/2021_08_31'
 rawDataDir = dataDir + '/outputs_snowy/'
 day_override = 574
 
 dryRun = False
 preChecks = False
-aggregateSpartan = True
-doDraws = True
+aggregateSpartan = False
+doDraws = False
+doFinaliseCohortAgg = False
 makeOutput = True
+outputStages = True
+processIcu = True
 
 if preChecks:
 	DoPreProcessChecks(
@@ -142,31 +158,18 @@ if oldNonSpartan:
 	#PreProcessMortHosp(dataDir, measureCols)
 
 if aggregateSpartan:
-	DoSpartanAggregate(dataDir, measureCols, arraySize=20)
+	DoSpartanAggregate(dataDir, measureCols, arraySize=25)
 
 if doDraws:
 	DrawMortHospDistributions(dataDir, measureCols, drawCount=100, padMult=1)
-	FinaliseMortHosp(dataDir, measureCols)
+
+if doFinaliseCohortAgg:
+	FinaliseMortHosp(dataDir, measureCols, heatAges)
 
 if makeOutput:
-	MakeMortHospHeatmapRange(dataDir, measureCols, heatmapStructure, 'weeklyAgg', 0, 52, aggSize=7, describe=True)
-
+	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 0, 52, aggSize=7, describe=True)
 	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 0, 364, describe=True)
 
-#DoProcessingForPMSLT(dataDir, measureCols, months=24)
-#DoProcessingForReport(dataDir, measureCols, table5Rows, 'param_vac_uptake', months=24)
+if processIcu:
+	MakeIcuHeatmaps(dataDir, measureCols, heatmapStructure, 0, 52, describe=True)
 
-filterIndex = [
-	('R0', 6.5),
-	('Essential', 'Extreme'),
-	('Rollout', 'BAU'),
-	('VacRate', 0.5),
-]
-
-#MakeDailyGraphs(dataDir, 'processed_case14', measureCols, 'VacRate', mean=False, filterIndex=filterIndex)
-#MakePrettyGraphs(dataDir, 'processed_case_daily', measureCols, 'Policy', mean=False, filterIndex=filterIndex)
-#MakePrettyGraphs(dataDir, 'processed_stage', measureCols, 'param_policy')
-#MakeFavouriteGraph(dataDir, 'processed_stage', measureCols, favouriteParams)
-#MakeFavouriteGraph(dataDir, 'infect_unique', measureCols, favouriteParams)
-
-#ProcessPMSLTResults(dataDir, measureCols, heatmapStructure, healthPerspectiveRows)

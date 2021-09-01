@@ -358,7 +358,7 @@ def DoDraws(subfolder, measureCols, **kwargs):
 
 def LoadHeatmapInputDf(
 		subfolder, measureCols, heatStruct, heatAge, timeName, metric,
-		start, end, describe=False, hasRunCol=False, divide=False):
+		start, end, describe=False, hasRunCol=False, divide=False, doSum=True):
 	
 	fileIn = '{}_{}_age_{}_{}'.format(metric, timeName, heatAge[0], heatAge[1])
 	df = pd.read_csv(
@@ -379,7 +379,8 @@ def LoadHeatmapInputDf(
 		last = str(math.ceil(end - 1))
 		df[last] = df[last] * (1 - math.ceil(end) + end)
 	
-	df = df.sum(axis=1)
+	if doSum:
+		df = df.sum(axis=1)
 	return df
 
 
@@ -410,7 +411,7 @@ def DoHeatmapsDrawRangeHeatAge(
 			divide=divide)
 		
 		df = df.div(dfDivide)
-		
+	
 	util.MakeDescribedHeatmapSet(
 		subfolder + '/Heatmaps/', df,
 		heatStruct, prefixName, describe=describe)
@@ -423,6 +424,63 @@ def DoHeatmapsDrawRange(
 		DoHeatmapsDrawRangeHeatAge(
 			subfolder, measureCols, heatStruct, heatAge, timeName, metric,
 			start, end, **kwargs)
+
+############### ICU ###############
+
+def DoIcuHeatmaps(
+		subfolder, measureCols, heatStruct, start, end,
+		icuStart, icuEnd, icuCapacity, describe):
+	
+	prefixName = 'icu_delay_{}_to_{}_cap_{}_from_{}_to_{}'.format(
+		util.DecimalLimit(icuStart*7, 2),util.DecimalLimit(icuEnd*7, 2), icuCapacity,
+		util.DecimalLimit(start, 2),util.DecimalLimit(end, 2))
+	
+	traceName = 'icu_delay_{}_to_{}_from_{}_to_{}'.format(
+		util.DecimalLimit(icuStart*7, 2),util.DecimalLimit(icuEnd*7, 2),
+		util.DecimalLimit(start, 4),util.DecimalLimit(end, 4))
+	
+	dfIcu = LoadHeatmapInputDf(
+		subfolder, measureCols, heatStruct, [0, 110], 'weeklyAgg', 'icu',
+		0, end, describe=describe, doSum=False)
+	
+	df = dfIcu.copy()
+	
+	# Add the ICU intake from the previous <icuWeeks> weeks
+	df.columns = list(range(0, end))
+	df = df.applymap(lambda x: 0)
+	
+	if icuStart != math.ceil(icuStart):
+		window = math.floor(icuStart)
+		dfAdd = dfIcu.copy()
+		dfAdd.columns = list(range(window, end + window))
+		dfAdd = dfAdd[list(range(window, end))]
+		dfAdd = dfAdd * (math.ceil(icuStart) - icuStart)
+		df = df.add(dfAdd, fill_value=0)
+	
+	if icuEnd != math.floor(icuEnd):
+		window = math.floor(icuEnd)
+		dfAdd = dfIcu.copy()
+		dfAdd.columns = list(range(window, end + window))
+		dfAdd = dfAdd[list(range(window, end))]
+		dfAdd = dfAdd * (icuEnd - math.floor(icuEnd))
+		df = df.add(dfAdd, fill_value=0)
+	
+	for i in range(math.ceil(icuStart), math.floor(icuEnd)):
+		dfAdd = dfIcu.copy()
+		dfAdd.columns = list(range(i, end + i))
+		dfAdd = dfAdd[list(range(i, end))]
+		df = df.add(dfAdd, fill_value=0)
+	
+	df = df[list(range(math.floor(start), math.ceil(end)))]
+	OutputToFile(df, subfolder + '/Traces/' + traceName)
+	
+	df = df.applymap(lambda x: 0 if x < icuCapacity else 1)
+	df = df.mean(axis=1)
+	
+	util.MakeDescribedHeatmapSet(
+		subfolder + '/Heatmaps/', df,
+		heatStruct, prefixName, describe=describe)
+
 
 ############### API ###############
 
@@ -438,48 +496,56 @@ def FinaliseMortHosp(subfolder, measureCols, heatAges, doTenday=False):
 	ApplyCohortEffectsUncertainty(subfolder, measureCols, heatAges, doTenday=doTenday)
 
 
+def MakeIcuHeatmaps(
+		subfolder, measureCols, heatStruct, start, window,
+		icuStart=10/7, icuEnd=19/7, icuCapacity=515, describe=True):
+	DoIcuHeatmaps(
+		subfolder, measureCols, heatStruct, start, start + window,
+		icuStart, icuEnd, icuCapacity, describe)
+
+
 def MakeMortHospHeatmapRange(
-		subfolder, measureCols, heatAges, heatStruc, timeName, start, window,
-		describe=False, doExtras=False, doIfr=True, doVacSplit=False,
+		subfolder, measureCols, heatAges, heatStruct, timeName, start, window,
+		describe=True, doExtras=True, doIfr=True, doVacSplit=True,
 		deathLag=0, aggSize=7):
 	end = start + window
 	totalDays = aggSize * window
 	
 	DoHeatmapsDrawRange(
-		subfolder, measureCols, heatStruc, heatAges, timeName, 'deaths',
+		subfolder, measureCols, heatStruct, heatAges, timeName, 'deaths',
 		max(0, start - deathLag), end - deathLag, describe=describe)
 	DoHeatmapsDrawRange(
-		subfolder, measureCols, heatStruc, heatAges, timeName, 'infect',
+		subfolder, measureCols, heatStruct, heatAges, timeName, 'infect',
 		start, end, describe=describe)
 	
 	if doIfr:
 		DoHeatmapsDrawRange(
-			subfolder, measureCols, heatStruc, heatAges, timeName, 'deaths',
+			subfolder, measureCols, heatStruct, heatAges, timeName, 'deaths',
 			max(0, start - deathLag), end - deathLag, describe=describe, rateDivide='infect')
 	
 	if doVacSplit:
 		DoHeatmapsDrawRange(
-			subfolder, measureCols, heatStruc, heatAges, timeName, 'infect_vac',
+			subfolder, measureCols, heatStruct, heatAges, timeName, 'infect_vac',
 			start, end, describe=describe, rateDivide='infect')
 		DoHeatmapsDrawRange(
-			subfolder, measureCols, heatStruc, heatAges, timeName, 'infect_noVac',
+			subfolder, measureCols, heatStruct, heatAges, timeName, 'infect_noVac',
 			start, end, describe=describe, rateDivide='infect')
 		DoHeatmapsDrawRange(
-			subfolder, measureCols, heatStruc, heatAges, timeName, 'infect_vac',
+			subfolder, measureCols, heatStruct, heatAges, timeName, 'infect_vac',
 			start, end, describe=describe, rateDivide='infect_noVac')
 	
 	if doExtras:
 		DoHeatmapsDrawRange(
-			subfolder, measureCols, heatStruc, heatAges, timeName, 'infect',
+			subfolder, measureCols, heatStruct, heatAges, timeName, 'infect',
 			start, end, divide=totalDays, describe=describe)
 		DoHeatmapsDrawRange(
-			subfolder, measureCols, heatStruc, heatAges, timeName, 'hospital',
+			subfolder, measureCols, heatStruct, heatAges, timeName, 'hospital',
 			start, end, describe=describe)
 		DoHeatmapsDrawRange(
-			subfolder, measureCols, heatStruc, heatAges, timeName, 'icu',
+			subfolder, measureCols, heatStruct, heatAges, timeName, 'icu',
 			start, end, describe=describe)
 
 
-def MakeCaseHeatmaps(subfolder, measureCols, heatAges, heatStruc, timeName, start, window, describe=False):
+def MakeCaseHeatmaps(subfolder, measureCols, heatAges, heatStruct, timeName, start, window, describe=False):
 	end = start + window
-	DoHeatmapsDrawRange(subfolder + '/Trace/', measureCols, heatStruc, 'processed_case7_' + timeName, start, end, describe=describe, hasRunCol=True)
+	DoHeatmapsDrawRange(subfolder + '/Trace/', measureCols, heatStruct, 'processed_case7_' + timeName, start, end, describe=describe, hasRunCol=True)
