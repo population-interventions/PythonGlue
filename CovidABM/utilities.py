@@ -42,6 +42,9 @@ def PrintDuplicateRows(df):
 	df = df[df.duplicated()]
 	print(df)
 
+def HasDuplicateIndex(df):
+	df = df.index.duplicated()
+	return (True in df)
 
 def MakePath(path):
 	if '/' not in path:
@@ -214,6 +217,7 @@ def MakeDescribedHeatmapSet(
 		0.95 : 'percentile_095',
 		0.5 : 'percentile_050',
 	}
+	df = df.sort_index()
 	
 	relevantMeasureCols = heatStruct.get('index_rows') + heatStruct.get('index_cols')
 	
@@ -227,13 +231,18 @@ def MakeDescribedHeatmapSet(
 	
 	dfMean = df.copy()
 	dfMean = dfMean.groupby(level=relevantMeasureCols, axis=0).mean().to_frame()
-	dfMean = dfMean.rename(columns={0 : 'mean'})
+	dfMean = dfMean.rename(columns={dfMean.columns[0] : 'mean'})
 	
 	df = df.groupby(level=relevantMeasureCols, axis=0).quantile(percentList)
 	df.index.names = relevantMeasureCols + ['percentile']
 	df = df.reorder_levels(['percentile'] + relevantMeasureCols).sort_index()
 	
-	dfHeat = ToHeatmap(dfMean.reset_index().rename({0 : 'mean'}), heatStruct)
+	dfMean = dfMean.reset_index()
+	dfMean = dfMean.rename({dfMean.columns[0] : 'mean'})
+	#print(dfMean)
+	dfHeat = ToHeatmap(dfMean, heatStruct)
+	#print(dfHeat)
+	
 	name =  prefixName + '_mean'
 	print('Output heatmap {}'.format(name))
 	OutputToFile(dfHeat, subfolder + name, head=False)

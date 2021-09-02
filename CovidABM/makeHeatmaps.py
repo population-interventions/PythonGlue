@@ -24,6 +24,8 @@ def DoMakeStagesHeatmap(
 	df = df.apply(lambda c: [1 if x > stage_limit else 0 for x in c])
 	
 	df = df.mean(axis=1)
+	df = df.droplevel('run', axis=0)
+	
 	util.MakeDescribedHeatmapSet(
 		subfolder + '/Heatmaps/', df,
 		heatStruct, prefixName, describe=describe)

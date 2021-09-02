@@ -412,6 +412,10 @@ def DoHeatmapsDrawRangeHeatAge(
 		
 		df = df.div(dfDivide)
 	
+	if util.HasDuplicateIndex(df):
+		print('Warning: Duplicate index')
+		df = df[~df.index.duplicated()]
+	
 	util.MakeDescribedHeatmapSet(
 		subfolder + '/Heatmaps/', df,
 		heatStruct, prefixName, describe=describe)
@@ -476,6 +480,10 @@ def DoIcuHeatmaps(
 	
 	df = df.applymap(lambda x: 0 if x < icuCapacity else 1)
 	df = df.mean(axis=1)
+	
+	if util.HasDuplicateIndex(df):
+		print('Warning: Duplicate index')
+		df = df[~df.index.duplicated()]
 	
 	util.MakeDescribedHeatmapSet(
 		subfolder + '/Heatmaps/', df,
