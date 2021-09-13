@@ -32,129 +32,62 @@ healthPerspectiveRows = [
 ]
 
 heatmapStructure = {
-	'index_rows' : ['sensitivity', 'TracePower', 'Policy', 'R0', 'Kids'],
-	'index_cols' : ['MinStage', 'VacUptake', 'IncurRate'],
+	'index_rows' : ['Stage'],
+	'index_cols' : ['VacEase'],
 	'base_value' : {
-		'MinStage' : '1a',
-		'Policy' : 'ME_TS_LS',
-		'R0' : 6.5,
-		'Kids' : 'No',
-		'VacUptake' : 0.8,
-		'IncurRate' : 1.0,
+		'Stage' : 3.5,
+		'VacEase' : 0.6,
 	},
 	'sort_rows' : [
-		['sensitivity', {
-			'None' : '_',
-		}],
-		['TracePower', {
-			'ass200_90at5' : 'a',
-			'ass100_90at5_iso' : 'b',
-			'ass100_90at5' : 'c',
-			'ass50_70at5' : 'd',
-		}],
-		['Policy', {
-			'ME_ME_TS' : 'a',
-			'ME_TS_LS' : 'b',
-			'ME_TS_BS' : 'c',
-		}],
-		['R0', {
-			5 : 'a',
-			6.5 : 'b',
-			8 : 'c',
-		}],
-		['Kids', {
-			'Yes' : 'a',
-			'No' : 'b',
+		['Stage', {
+			3.3 : 'a',
+			3.4 : 'b',
+			3.5 : 'c',
 		}],
 	], 
 	'sort_cols' : [
-		['MinStage', {
-			2 : 'b',
-			'2' : 'b',
-			'1a' : 'a',
-		}],
-		['VacUptake', {
-			0.95 : 'a',
-			0.9 : 'b',
-			0.8 : 'c',
-			0.7 : 'd',
-			0.3 : 'e',
-		}],
-		['IncurRate', {
-			0.2 : 'a',
-			1 : 'b',
-			5 : 'c',
-			25 : 'd',
+		['VacEase', {
+			0.0 : 'a',
+			0.2 : 'b',
+			0.4 : 'c',
+			0.6 : 'd',
+			0.8 : 'e',
+			1.0 : 'f',
 		}],
 	]
 }
 
 defaultValues = [
 	{
-		'R0' : 6,
-		'Policy' : 'ME_TS_LS',
-		'Rollout' : 'INT',
-		'VacUptake' : 0.8,
-		'Kids' : 'Yes',
-		'IncurRate' : 5,
+		'Stage' : 3.35,
 	},
 ]
 
 heatAges = [
-	[0, 15],
-	[15, 25],
-	[25, 35],
-	[35, 45],
-	[45, 55],
-	[55, 65],
-	[65, 75],
-	[75, 85],
-	[85, 95],
-	[95, 110],
+	#[0, 15],
+	#[15, 25],
+	#[25, 35],
+	#[35, 45],
+	#[45, 55],
+	#[55, 65],
+	#[65, 75],
+	#[75, 85],
+	#[85, 95],
+	#[95, 110],
 	[0, 110],
 ]
 
 measureCols_raw = [
-	'r0_range',
-	'policy_pipeline',
-	'data_suffix',
-	'param_final_phase',
-	'param_vacincurmult',
-	'compound_trace',
-	'min_stage',
-	'sensitivity',
+	'cont_stage',
 ]
 measureCols = [
-	'R0',
-	'Policy',
-	'VacUptake',
-	'Kids',
-	'IncurRate',
-	'TracePower',
-	'MinStage',
-	'sensitivity',
+	'Stage',
 ]
 
 def indexRenameFunc(chunk):
 	index = chunk.index.to_frame()
 	#index['R0'] = index['global_transmissibility_out'].apply(lambda x: 3.75 if x < 0.61333 else (4.17 if x < 0.681666 else 4.58))
 
-	index['data_suffix'] = index['data_suffix'].replace({
-		"_az_25.csv" : 0.80,
-		"_az_25_95.csv" : 0.95,
-		"_az_25_90.csv" : 0.9,
-		"_az_25_80.csv" : 0.8,
-		"_az_25_70.csv" : 0.7,
-	})
-	index['param_final_phase'] = index['param_final_phase'].replace({
-		3 : 'No',
-		4 : 'Yes',
-	})
-	index['min_stage'] = index['min_stage'].replace({
-		0 : '1a',
-		2 : '2',
-	})
-	
 	renameCols = {measureCols_raw[i] : measureCols[i] for i in range(len(measureCols))}
 	index = index.rename(columns=renameCols)
 	
@@ -166,22 +99,22 @@ def indexRenameFunc(chunk):
 favouriteParams = [5, 'ME_TS_LS', 'No', 5, 0.7]
 
 #dataDir = '2021_05_04'
-dataDir = 'Vic3/2021_09_09_sen'
+dataDir = 'NSW/2021_09_13a'
 rawDataDir = dataDir + '/outputs_snowy/'
-day_override = 574
+day_override = False
 
 compareHeatmap = 'weeklyAgg_infect_from_30_to_82_age_0_110_total_percentile_050'
 compareStages = 'stageAbove_2_from_210_to_574_percentile_050'
 
 dryRun = False
-preChecks = False
-aggregateSpartan = True
-doDraws = True
-doFinaliseCohortAgg = True
-makeOutput = True
-outputStages = True
-processIcu = True
-makeComparison = True
+preChecks = True
+aggregateSpartan = False
+doDraws = False
+doFinaliseCohortAgg = False
+makeOutput = False
+outputStages = False
+processIcu = False
+makeComparison = False
 
 if preChecks:
 	DoPreProcessChecks(
@@ -203,9 +136,10 @@ if doFinaliseCohortAgg:
 	FinaliseMortHosp(dataDir, measureCols, heatAges)
 
 if makeOutput:
-	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 0, 82, aggSize=7, describe=True)
-	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 0, 30, aggSize=7, describe=True)
-	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 30, 52, aggSize=7, describe=True)
+	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 0, 6, aggSize=7, describe=True)
+	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 0, 37/7, aggSize=7, describe=True)
+	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 0, 16, aggSize=7, describe=True)
+	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 0, 68, aggSize=7, describe=True)
 
 if outputStages:
 	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 0, 210, describe=True)
@@ -216,8 +150,9 @@ if outputStages:
 	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 210, 364, describe=True)
 
 if processIcu:
-	MakeIcuHeatmaps(dataDir, measureCols, heatmapStructure, 0, 82, describe=True)
-	MakeIcuHeatmaps(dataDir, measureCols, heatmapStructure, 30, 52, describe=True)
+	MakeIcuHeatmaps(dataDir, measureCols, heatmapStructure, 0, 6, describe=True)
+	MakeIcuHeatmaps(dataDir, measureCols, heatmapStructure, 0, 16, describe=True)
+	MakeIcuHeatmaps(dataDir, measureCols, heatmapStructure, 0, 68, describe=True)
 
 if makeComparison:
 	MakeComparisionHeatmap(dataDir, heatmapStructure, compareHeatmap)

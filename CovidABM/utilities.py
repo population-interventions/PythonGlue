@@ -42,9 +42,11 @@ def PrintDuplicateRows(df):
 	df = df[df.duplicated()]
 	print(df)
 
+
 def HasDuplicateIndex(df):
 	df = df.index.duplicated()
 	return (True in df)
+
 
 def MakePath(path):
 	if '/' not in path:
@@ -182,8 +184,13 @@ def AppendFiles(outputName, fileList, index=1, header=1, doTqdm=False):
 	
 
 def ListRemove(myList, element):
-	myList.remove(element)
-	return myList
+	myCopy= myList.copy()
+	myCopy.remove(element)
+	return myCopy
+
+
+def ListUnique(myList):
+	return list(dict.fromkeys(myList))
 
 
 def ToHeatmap(df, structure):
@@ -245,6 +252,7 @@ def MakeDescribedHeatmapSet(
 	
 	name =  prefixName + '_mean'
 	print('Output heatmap {}'.format(name))
+	dfHeat = dfHeat.drop_duplicates()
 	OutputToFile(dfHeat, subfolder + name, head=False)
 	
 	for pc in percentList:
@@ -253,5 +261,6 @@ def MakeDescribedHeatmapSet(
 		dfHeat = ToHeatmap(dfHeat.reset_index(), heatStruct)
 		name =  prefixName + '_' + percMap.get(pc)
 		print('Output heatmap {}'.format(name))
+		dfHeat = dfHeat.drop_duplicates()
 		OutputToFile(dfHeat, subfolder + name, head=False)
 	

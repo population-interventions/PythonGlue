@@ -17,6 +17,8 @@ import utilities as util
 
 
 def GetIndexPickStr(indexVals):
+	if len(indexVals) == 0:
+		return ''
 	lbl = "with"
 	first = True
 	for key in indexVals:
@@ -140,7 +142,7 @@ def PlotViolin(
 	if nameOverride:
 		figure.set_title(titlePrepend + nameOverride, fontsize=18)
 	else:
-		figure.set_title(titlePrepend + '{} by {} {}'.format(xSplit, axis, GetIndexPickStr(indexVals)))
+		figure.set_title(titlePrepend + '{} by {} {}'.format(axis, xSplit, GetIndexPickStr(indexVals)))
 	
 	if hlines:
 		for v in hlines:
@@ -279,9 +281,9 @@ def PlotRangeManyIndex(df, indexVals, axis, metric, **kwargs):
 		PlotIntegerRange(df, axis, metric, preset['ind'], preset['val'], **kwargs)
 
 
-def PlotViolinManyIndex(df, indexVals, axis, xSplit, **kwargs):
+def PlotViolinManyIndex(df, indexVals, axis, **kwargs):
 	for preset in indexVals:
-		PlotViolin(df, axis, xSplit, preset['val'], **kwargs)
+		PlotViolin(df, axis, preset['key'], preset['val'], **kwargs)
 
 
 def PlotStackedManyIndex(df, indexVals, axis, metric, bar=False, doSum=False,
@@ -320,7 +322,7 @@ def ProcessResults(
 		'param_trace_mult', 'sympt_present_prop',
 		'rand_seed', 'isocomply_override', 'End_Day', 'pre_stop_day',
 		'infectionsToday', 'first_trace_day', 'first_trace_infections',
-		'currentInfections', 'cumulativeInfected', 'tracked_simuls',
+		'currentInfections', 'tracked_simuls',
 		'finished_infections', 'finished_tracked',
 		'cali_timenow', 'cali_asymptomaticFlag',
 		'cali_symtomatic_present_day',
@@ -332,8 +334,14 @@ def ProcessResults(
 		'stage2time', 'stage3time', 'stage4time', 
 		'casesinperiod7_min',
 		'casesinperiod7_switchTime',
-		'cumulativeInfected_switchTime',
-		'initial_cases',
+		'cumulativeInfected_minusInit',
+		'initial_cases', 'slopeAverage',
+		'totalCasesReported',
+		'midReport_cumulativeInfected_minusInit',
+		'midReport_totalCasesReported',
+		'midReport_slopeAverage',
+		'midReport_casesinperiod7_max',
+		
 	] + measureCols_raw
 	
 	df = pd.DataFrame(columns=interestingColumns)
@@ -343,7 +351,6 @@ def ProcessResults(
 		df  = df.append(pdf)
 	
 	for colName in interestingColumns:
-		#print(df[colName].head(1)[0])
 		if colName and util.isfloat(df[colName].head(1)[0]):
 			df[colName] = df[colName].astype(float)
 	
@@ -361,6 +368,12 @@ def ProcessResults(
 		'casesinperiod7_max' : 'maxCasesDailyOverWeek',
 		'casesReportedToday_max' : 'maxCasesDaily',
 		'casesinperiod7_switchTime' : 'intCasesWeekDaily',
+		'cumulativeInfected_minusInit' : 'cumulativeInfected',
+		'totalCasesReported' : 'totalCases',
+		'midReport_cumulativeInfected_minusInit' : 'mid_cumulativeInfected',
+		'midReport_totalCasesReported' : 'mid_totalCases',
+		'midReport_slopeAverage' : 'mid_slopeAverage',
+		'midReport_casesinperiod7_max' : 'mid_maxCasesDailyOverWeek',
 	})
 	
 	df = df.set_index(['rand_seed'] + measureCols_raw)
@@ -372,9 +385,8 @@ def ProcessResults(
 	df['combinedStop'] = df.apply(lambda row:
 		row['pre_stop_day'] if row['pre_stop_day'] > -1 else row['End_Day'], axis=1)
 	
-	df['cumulativeInfected'] = df['cumulativeInfected'] - df['initial_cases']
-	
 	df['maxCasesDailyOverWeek'] = df['maxCasesDailyOverWeek'] / 7
+	df['mid_maxCasesDailyOverWeek'] = df['mid_maxCasesDailyOverWeek'] / 7
 	df['intCasesWeekDaily'] = df['intCasesWeekDaily'] / 7
 	df['culTrace'] = df['culTrackAll'] - df['culNotice']
 	df['success'] = 0
@@ -388,8 +400,9 @@ def ProcessResults(
 	dailyCaseLimit = 0
 	plt.rcParams.update(plt.rcParamsDefault)
 	
-	df = df[df['maxCasesDailyOverWeek'] >= 5]
-	df = df.sort_index()
+	#df = df[(df['maxCasesDailyOverWeek'] >= 1000) & (df['maxCasesDailyOverWeek'] <= 1800)]
+	#df = df[(df['cumulativeInfected'] >= 22000) & (df['cumulativeInfected'] <= 34000)]
+	#df = df.sort_index()
 	
 	fullIndex = measureCols
 	
@@ -411,6 +424,7 @@ def ProcessResults(
 		for valueDict in defaultValues:
 			for key, value in valueDict.items():
 				newPlot = {
+					'key' : key,
 					'ind' : fullIndex, 
 					'val' : { k : v for (k, v) in valueDict.items() if k != key},
 				}
@@ -421,18 +435,36 @@ def ProcessResults(
 			#PlotRangeManyIndex(df[df['first_trace_occur'] >= 0], indexList, 'first_trace_occur', 'success')
 			titlePrepend = '[min daily for week = {}] '.format(dailyCaseLimit)
 			
-			PrintMetricsManyIndex(subfolder, df, metricList, 'combinedStop')
+			PrintMetricsManyIndex(subfolder, df, metricList, 'maxCasesDailyOverWeek')
 			PrintMetricsManyIndex(subfolder, df, metricList, 'cumulativeInfected')
+			PrintMetricsManyIndex(subfolder, df, metricList, 'slopeAverage')
+			PrintMetricsManyIndex(subfolder, df, metricList, 'totalCases')
+			PrintMetricsManyIndex(subfolder, df, metricList, 'mid_cumulativeInfected')
+			PrintMetricsManyIndex(subfolder, df, metricList, 'mid_maxCasesDailyOverWeek')
+			PrintMetricsManyIndex(subfolder, df, metricList, 'mid_totalCases')
+			
 			
 			#PlotRangeManyIndex(df, indexList, 'intCasesWeekDaily', 'success', doCount=True, bucketWidth=32/7, titlePrepend=titlePrepend)
-			PlotRangeManyIndex(df, indexList, 'combinedStop', 'success', xlim=(20, 340), doCount=True, bucketWidth=5)
-			PlotRangeManyIndex(df, indexList, 'cumulativeInfected', 'combinedStop', xlim=(10**3, 10**7), loglog=True, doCount=True, bucketWidth=1/15)
+			PlotRangeManyIndex(df, indexList, 'cumulativeInfected', 'combinedStop', loglog=True, doCount=True, bucketWidth=1/10)
+			PlotRangeManyIndex(df, indexList, 'mid_cumulativeInfected', 'combinedStop', loglog=True, doCount=True, bucketWidth=1/10)
+			PlotRangeManyIndex(df, indexList, 'mid_maxCasesDailyOverWeek', 'success', doCount=True, bucketWidth=1200)
+			PlotRangeManyIndex(df, indexList, 'mid_totalCases', 'combinedStop', loglog=True, doCount=True, bucketWidth=1/10)
 			
-			#PlotViolinManyIndex(df, indexList, 
-			#                    'intCasesWeekDaily', 
-			#                    'param_policy',
-			#                    nameOverride='Daily cases over the week prior to lockdown',
-			#                    )
+			PlotViolinManyIndex(df, indexList, 
+			                    'cumulativeInfected',
+			                    )
+			PlotViolinManyIndex(df, indexList, 
+			                    'maxCasesDailyOverWeek', 
+			                    )
+			PlotViolinManyIndex(df, indexList, 
+			                    'mid_cumulativeInfected',
+			                    )
+			PlotViolinManyIndex(df, indexList, 
+			                    'mid_maxCasesDailyOverWeek', 
+			                    )
+			PlotViolinManyIndex(df, indexList, 
+			                    'mid_totalCases', 
+			                    )
 			#PlotViolinManyIndex(df,
 			#                    indexList, 'combinedStop', 
 			#                    'param_policy', 

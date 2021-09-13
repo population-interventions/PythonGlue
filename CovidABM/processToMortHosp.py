@@ -9,6 +9,7 @@ import math
 import pandas as pd
 import numpy as np
 from tqdm import tqdm
+import scipy.stats as stats
 import pathlib
 import time
 import os
@@ -19,6 +20,10 @@ from utilities import ToHeatmap, CrossIndex
 from utilities import OutputToFile, GetCohortData, ListRemove
 import utilities as util
 
+nameMap = {
+	'hospital' : 'hosp',
+	'deaths' : 'mort',
+}
 
 ############### Preprocessing ###############
 
@@ -164,6 +169,7 @@ def MultiplyByCohortEffect(df, multDf):
 def AggregateAgeAndVacDraw(
 		dfVac, dfNoVac, cohortEffect, timeName, heatAge, outFile,
 		metric, measureCols, vacOnly=False, noVacOnly=False):
+	
 	if metric != 'infect':
 		dfVac = dfVac.mul(cohortEffect.loc[1][metric], axis=0)
 		dfNoVac = dfNoVac.mul(cohortEffect.loc[0][metric], axis=0)
@@ -240,30 +246,20 @@ def OutputTimeTablesDraw(
 	print('Aggregating', timeName)
 	
 	for heatAge in heatAges:
-		AggregateAgeAndVacDraw(
-			dfVac, dfNoVac, cohortEffect, timeName, heatAge,
-			subfolder + '/Mort_out/infect_vac',
-			'infect', measureCols, vacOnly=True)
-		AggregateAgeAndVacDraw(
-			dfVac, dfNoVac, cohortEffect, timeName, heatAge,
-			subfolder + '/Mort_out/infect_noVac',
-			'infect', measureCols, noVacOnly=True)
-		AggregateAgeAndVacDraw(
-			dfVac, dfNoVac, cohortEffect, timeName, heatAge,
-			subfolder + '/Mort_out/infect',
-			'infect', measureCols)
-		AggregateAgeAndVacDraw(
-			dfVac, dfNoVac, cohortEffect, timeName, heatAge,
-			subfolder + '/Mort_out/deaths',
-			'mort', measureCols)
-		AggregateAgeAndVacDraw(
-			dfVac, dfNoVac, cohortEffect, timeName, heatAge,
-			subfolder + '/Mort_out/icu',
-			'icu', measureCols)
-		AggregateAgeAndVacDraw(
-			dfVac, dfNoVac, cohortEffect, timeName, heatAge,
-			subfolder + '/Mort_out/hospital',
-			'hosp', measureCols)
+		for metric in ['infect', 'icu', 'hospital', 'deaths']:
+			inName = nameMap.get(metric) if metric in nameMap else metric
+			AggregateAgeAndVacDraw(
+				dfVac, dfNoVac, cohortEffect, timeName, heatAge,
+				subfolder + '/Mort_out/' + metric,
+				inName, measureCols)
+			AggregateAgeAndVacDraw(
+				dfVac, dfNoVac, cohortEffect, timeName, heatAge,
+				subfolder + '/Mort_out/' + metric + '_vac',
+				inName, measureCols, vacOnly=True)
+			AggregateAgeAndVacDraw(
+				dfVac, dfNoVac, cohortEffect, timeName, heatAge,
+				subfolder + '/Mort_out/' + metric + '_noVac',
+				inName, measureCols, noVacOnly=True)
 
 
 def ApplyCohortEffectsUncertainty(subfolder, measureCols, heatAges, doTenday=False):
@@ -276,9 +272,10 @@ def ApplyCohortEffectsUncertainty(subfolder, measureCols, heatAges, doTenday=Fal
 
 ############### Draw ###############
 
-def LoadDfDraw(subfolder, drawCount=100, padMult=20):
-	df = pd.read_csv(subfolder + '/other_input/death_and_hospital_draws' + '.csv',
-				header=[0])
+def LoadDfDrawRawFile(subfolder, drawCount=100):
+	df = pd.read_csv(
+		subfolder + '/other_input/death_and_hospital_draws' + '.csv',
+		header=[0])
 	df = df.rename(columns={
 		'age_start' : 'age',
 		'deathPerInfect' : 'mort',
@@ -290,21 +287,55 @@ def LoadDfDraw(subfolder, drawCount=100, padMult=20):
 	df = df[df['draw'] >= 0]
 	df = df.set_index(['draw', 'age', 'sex'])
 	df = df.groupby(level=['draw', 'age'], axis=0).mean()
-	df = df[['hosp', 'icu', 'mort']]
-	df = CrossIndex(df, pd.DataFrame({'vaccine' : [0, 1]}))
 	
-	# HAX ALERT: Duplicate externally sourced draws to match current data.
+	return df.astype(float)
+
+
+def MetricDraw(df, metric):
+	#odNumber = stats.norm.ppf(df['seed'], loc=0.693147181, scale=0.14677019)
+	df[metric] = stats.norm.ppf(df['seed'], loc=df[metric + '_m'], scale=df[metric + '_se'])
+	df[metric] = 1 - 1/(1 + np.exp(df[metric]))
+	return df
+
+
+def GenerateDfFromParams(subfolder, drawCount=100):
+	dfParams = pd.read_csv(
+		subfolder + '/other_input/draw_params' + '.csv',
+		header=[0])
+	
+	dfOut = pd.DataFrame({
+		'draw' : list(range(drawCount)),
+		'seed' : np.random.rand(drawCount)
+	})
+	df = util.CrossDf(dfOut, dfParams)
+	df = df.set_index(['draw', 'age'])
+	
+	df = MetricDraw(df, 'hosp')
+	df = MetricDraw(df, 'icu')
+	df = MetricDraw(df, 'mort')
+	
+	return df
+
+
+def LoadDfDraw(subfolder, drawCount=100, padMult=20, useRawFile=False):
+	if useRawFile:
+		df = LoadDfDrawRawFile(subfolder, drawCount=drawCount)
+	else:
+		df = GenerateDfFromParams(subfolder, drawCount=drawCount)
+	
+	df = df[['hosp', 'icu', 'mort']]
+	
+	df = CrossIndex(df, pd.DataFrame({'vaccine' : [0, 1]}))
 	df = CrossIndex(df, pd.DataFrame({'drawPad' : [i*drawCount for i in range(padMult)]}))
 	index = df.index.to_frame()
 	index['draw'] = index['drawPad'] + index['draw']
 	index = index.drop(columns=['drawPad'])
 	df.index = pd.MultiIndex.from_frame(index)
 	
-	return df.astype(float)
+	return df
 
 
 def LoadDfDrawMult(subfolder, drawCount=100, padMult=20):
-
 	df = pd.read_csv(subfolder + '/other_input/death_and_hospital_mult' + '.csv',
 				header=[0])
 	df = df.rename(columns={
@@ -354,7 +385,7 @@ def DoDraws(subfolder, measureCols, **kwargs):
 	OutputToFile(df_draw, subfolder + '/draw_cache/' + 'mortHosp_final')
 
 
-############### Heatmaps ###############
+############### Age Heatmaps ###############
 
 def LoadHeatmapInputDf(
 		subfolder, measureCols, heatStruct, heatAge, timeName, metric,
@@ -429,6 +460,7 @@ def DoHeatmapsDrawRange(
 			subfolder, measureCols, heatStruct, heatAge, timeName, metric,
 			start, end, **kwargs)
 
+
 ############### ICU ###############
 
 def DoIcuHeatmaps(
@@ -450,29 +482,29 @@ def DoIcuHeatmaps(
 	df = dfIcu.copy()
 	
 	# Add the ICU intake from the previous <icuWeeks> weeks
-	df.columns = list(range(0, end))
+	df.columns = list(range(0, math.ceil(end)))
 	df = df.applymap(lambda x: 0)
 	
 	if icuStart != math.ceil(icuStart):
 		window = math.floor(icuStart)
 		dfAdd = dfIcu.copy()
-		dfAdd.columns = list(range(window, end + window))
-		dfAdd = dfAdd[list(range(window, end))]
+		dfAdd.columns = list(range(window, math.ceil(end + window)))
+		dfAdd = dfAdd[list(range(window, math.ceil(end)))]
 		dfAdd = dfAdd * (math.ceil(icuStart) - icuStart)
 		df = df.add(dfAdd, fill_value=0)
 	
 	if icuEnd != math.floor(icuEnd):
 		window = math.floor(icuEnd)
 		dfAdd = dfIcu.copy()
-		dfAdd.columns = list(range(window, end + window))
-		dfAdd = dfAdd[list(range(window, end))]
+		dfAdd.columns = list(range(window, math.ceil(end + window)))
+		dfAdd = dfAdd[list(range(window, math.ceil(end)))]
 		dfAdd = dfAdd * (icuEnd - math.floor(icuEnd))
 		df = df.add(dfAdd, fill_value=0)
 	
 	for i in range(math.ceil(icuStart), math.floor(icuEnd)):
 		dfAdd = dfIcu.copy()
-		dfAdd.columns = list(range(i, end + i))
-		dfAdd = dfAdd[list(range(i, end))]
+		dfAdd.columns = list(range(i, math.ceil(end + i)))
+		dfAdd = dfAdd[list(range(i, math.ceil(end)))]
 		df = df.add(dfAdd, fill_value=0)
 	
 	df = df[list(range(math.floor(start), math.ceil(end)))]
@@ -488,6 +520,60 @@ def DoIcuHeatmaps(
 	util.MakeDescribedHeatmapSet(
 		subfolder + '/Heatmaps/', df,
 		heatStruct, prefixName, describe=describe)
+
+
+############### Load Heatmaps From Traces ###############
+
+def LoadHeatmapTraceInputDf(
+		subfolder, measureCols, heatStruct, timeName, metric,
+		start, end, describe=False, hasRunCol=False, divide=False, doSum=True):
+	
+	fileIn = 'processed_{}_{}'.format(metric, timeName)
+	df = pd.read_csv(
+		subfolder + '/Traces/' + fileIn + '.csv', 
+		index_col=list(range((2 if hasRunCol else 1) + len(measureCols))),
+		header=list(range(1)))
+	
+	df = df[[str(float(x)) for x in range(math.floor(start), math.ceil(end))]]
+	
+	if divide:
+		df = df / divide
+	
+	# Take a fraction of the metric in fractional weeks.
+	if math.floor(start) < start:
+		first = str(float(math.floor(start)))
+		df[first] = df[first] * (1 - start + math.floor(start))
+	if math.ceil(end) > end:
+		last = str(float(math.ceil(end - 1)))
+		df[last] = df[last] * (1 - math.ceil(end) + end)
+	
+	if doSum:
+		df = df.sum(axis=1)
+		
+	return df
+
+
+def DoHeatmapsRangeFromTrace(
+		subfolder, measureCols, heatStruct, timeName, metric, aggSize,
+		start, end, describe):
+	
+	prefixName = '{}_{}_from_{}_to_{}_age_{}_{}'.format(
+		timeName, metric,
+		util.DecimalLimit(start, 4),util.DecimalLimit(end, 4),
+		0, 110)
+	
+	df = LoadHeatmapTraceInputDf(subfolder, measureCols, heatStruct, timeName, metric, start, end, hasRunCol=True)
+	
+	util.MakeDescribedHeatmapSet(
+		subfolder + '/Heatmaps/', df,
+		heatStruct, prefixName, describe=describe)
+
+
+def DoTraceHeatmaps(
+		subfolder, measureCols, heatStruct, timeName, aggSize,
+		start, end, describe):
+	
+	DoHeatmapsRangeFromTrace(subfolder, measureCols, heatStruct, timeName,  'case7', aggSize, start, end, describe)
 
 
 ############### API ###############
@@ -506,19 +592,51 @@ def FinaliseMortHosp(subfolder, measureCols, heatAges, doTenday=False):
 
 def MakeIcuHeatmaps(
 		subfolder, measureCols, heatStruct, start, window,
-		icuStart=10/7, icuEnd=19/7, icuCapacity=515, describe=True):
+		icuStart=10/7, icuEnd=19/7, icuCapacity=600, describe=True):
 	DoIcuHeatmaps(
 		subfolder, measureCols, heatStruct, start, start + window,
 		icuStart, icuEnd, icuCapacity, describe)
 
 
+def MakeCaseHeatmaps(subfolder, measureCols, heatAges, heatStruct, timeName, start, window, describe=True):
+	end = start + window
+	DoHeatmapsDrawRange(subfolder + '/Trace/', measureCols, heatStruct, 'processed_case7_' + timeName, start, end, describe=describe, hasRunCol=True)
+
+
 def MakeMortHospHeatmapRange(
 		subfolder, measureCols, heatAges, heatStruct, timeName, start, window,
-		describe=True, doExtras=True, doIfr=True, doVacSplit=True,
+		describe=True, doExtras=True, doIfr=True, doVacSplit=False,
 		deathLag=0, aggSize=7):
 	end = start + window
 	totalDays = aggSize * window
 	
+	DoTraceHeatmaps(subfolder, measureCols, heatStruct, timeName, aggSize, start, end, describe=describe)
+	
+	DoHeatmapsDrawRange(
+		subfolder, measureCols, heatStruct, heatAges, timeName, 'icu_vac',
+		start, end, describe=describe)
+	DoHeatmapsDrawRange(
+		subfolder, measureCols, heatStruct, heatAges, timeName, 'infect_vac',
+		start, end, describe=describe)
+	DoHeatmapsDrawRange(
+		subfolder, measureCols, heatStruct, heatAges, timeName, 'hospital_vac',
+			start, end, describe=describe)
+	DoHeatmapsDrawRange(
+		subfolder, measureCols, heatStruct, heatAges, timeName, 'deaths_vac',
+		max(0, start - deathLag), end - deathLag, describe=describe)
+	DoHeatmapsDrawRange(
+		subfolder, measureCols, heatStruct, heatAges, timeName, 'infect_noVac',
+		start, end, describe=describe)
+	DoHeatmapsDrawRange(
+		subfolder, measureCols, heatStruct, heatAges, timeName, 'icu_noVac',
+		start, end, describe=describe)
+	DoHeatmapsDrawRange(
+		subfolder, measureCols, heatStruct, heatAges, timeName, 'hospital_noVac',
+			start, end, describe=describe)
+	DoHeatmapsDrawRange(
+		subfolder, measureCols, heatStruct, heatAges, timeName, 'deaths_noVac',
+		max(0, start - deathLag), end - deathLag, describe=describe)
+
 	DoHeatmapsDrawRange(
 		subfolder, measureCols, heatStruct, heatAges, timeName, 'deaths',
 		max(0, start - deathLag), end - deathLag, describe=describe)
@@ -553,7 +671,3 @@ def MakeMortHospHeatmapRange(
 			subfolder, measureCols, heatStruct, heatAges, timeName, 'icu',
 			start, end, describe=describe)
 
-
-def MakeCaseHeatmaps(subfolder, measureCols, heatAges, heatStruct, timeName, start, window, describe=False):
-	end = start + window
-	DoHeatmapsDrawRange(subfolder + '/Trace/', measureCols, heatStruct, 'processed_case7_' + timeName, start, end, describe=describe, hasRunCol=True)
