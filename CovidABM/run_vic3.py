@@ -166,7 +166,7 @@ def indexRenameFunc(chunk):
 favouriteParams = [5, 'ME_TS_LS', 'No', 5, 0.7]
 
 #dataDir = '2021_05_04'
-dataDir = 'Vic3/2021_09_09_sen'
+dataDir = 'Vic3/2021_09_13_sen'
 rawDataDir = dataDir + '/outputs_snowy/'
 day_override = 574
 
@@ -175,7 +175,7 @@ compareStages = 'stageAbove_2_from_210_to_574_percentile_050'
 
 dryRun = False
 preChecks = False
-aggregateSpartan = True
+aggregateSpartan = False
 doDraws = True
 doFinaliseCohortAgg = True
 makeOutput = True
