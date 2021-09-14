@@ -252,7 +252,7 @@ def MakeDescribedHeatmapSet(
 	
 	name =  prefixName + '_mean'
 	print('Output heatmap {}'.format(name))
-	dfHeat = dfHeat.drop_duplicates()
+	#dfHeat = dfHeat.drop_duplicates()
 	OutputToFile(dfHeat, subfolder + name, head=False)
 	
 	for pc in percentList:
@@ -261,6 +261,6 @@ def MakeDescribedHeatmapSet(
 		dfHeat = ToHeatmap(dfHeat.reset_index(), heatStruct)
 		name =  prefixName + '_' + percMap.get(pc)
 		print('Output heatmap {}'.format(name))
-		dfHeat = dfHeat.drop_duplicates()
+		#dfHeat = dfHeat.drop_duplicates()
 		OutputToFile(dfHeat, subfolder + name, head=False)
 	

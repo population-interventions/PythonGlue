@@ -32,34 +32,34 @@ healthPerspectiveRows = [
 ]
 
 heatmapStructure = {
-	'index_rows' : ['Stage'],
-	'index_cols' : ['VacEase'],
+	'index_rows' : ['Stage', 'VacEaseStage'],
+	'index_cols' : ['VacEaseSchoolOpen'],
 	'base_value' : {
-		'Stage' : 3.5,
-		'VacEase' : 0.6,
+		'Stage' : 3.25,
+		'VacEaseSchoolOpen' : 0,
 	},
 	'sort_rows' : [
 		['Stage', {
-			3.3 : 'a',
-			3.4 : 'b',
-			3.5 : 'c',
+			3.25 : 'a',
+		}],
+		['VacEaseStage', {
+			'1b' : 'a',
+			'2a' : 'b',
 		}],
 	], 
 	'sort_cols' : [
-		['VacEase', {
-			0.0 : 'a',
-			0.2 : 'b',
-			0.4 : 'c',
-			0.6 : 'd',
-			0.8 : 'e',
-			1.0 : 'f',
+		['VacEaseSchoolOpen', {
+			0 : 'a',
+			1 : 'b',
 		}],
 	]
 }
 
 defaultValues = [
 	{
-		'Stage' : 3.35,
+		'Stage' : 3.25,
+		'VacEaseSchoolOpen' : 0,
+		'VacEaseStage' : '2a',
 	},
 ]
 
@@ -79,9 +79,13 @@ heatAges = [
 
 measureCols_raw = [
 	'cont_stage',
+	'vac_ease_schools_open',
+	'vac_ease_stage',
 ]
 measureCols = [
 	'Stage',
+	'VacEaseSchoolOpen',
+	'VacEaseStage',
 ]
 
 def indexRenameFunc(chunk):
@@ -99,7 +103,7 @@ def indexRenameFunc(chunk):
 favouriteParams = [5, 'ME_TS_LS', 'No', 5, 0.7]
 
 #dataDir = '2021_05_04'
-dataDir = 'NSW/2021_09_13a'
+dataDir = 'NSW/2021_09_14b'
 rawDataDir = dataDir + '/outputs_snowy/'
 day_override = False
 
@@ -137,8 +141,7 @@ if doFinaliseCohortAgg:
 
 if makeOutput:
 	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 0, 6, aggSize=7, describe=True)
-	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 0, 37/7, aggSize=7, describe=True)
-	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 0, 16, aggSize=7, describe=True)
+	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 0, 11, aggSize=7, describe=True)
 	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 0, 68, aggSize=7, describe=True)
 
 if outputStages:

@@ -101,16 +101,16 @@ defaultValues = [
 ]
 
 heatAges = [
-	[0, 15],
-	[15, 25],
-	[25, 35],
-	[35, 45],
-	[45, 55],
-	[55, 65],
-	[65, 75],
-	[75, 85],
-	[85, 95],
-	[95, 110],
+	#[0, 15],
+	#[15, 25],
+	#[25, 35],
+	#[35, 45],
+	#[45, 55],
+	#[55, 65],
+	#[65, 75],
+	#[75, 85],
+	#[85, 95],
+	#[95, 110],
 	[0, 110],
 ]
 
@@ -176,12 +176,12 @@ compareStages = 'stageAbove_2_from_210_to_574_percentile_050'
 dryRun = False
 preChecks = False
 aggregateSpartan = False
-doDraws = True
-doFinaliseCohortAgg = True
+doDraws = False
+doFinaliseCohortAgg = False
 makeOutput = True
 outputStages = True
-processIcu = True
-makeComparison = True
+processIcu = False
+makeComparison = False
 
 if preChecks:
 	DoPreProcessChecks(

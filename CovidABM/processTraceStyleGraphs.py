@@ -446,8 +446,9 @@ def ProcessResults(
 			
 			#PlotRangeManyIndex(df, indexList, 'intCasesWeekDaily', 'success', doCount=True, bucketWidth=32/7, titlePrepend=titlePrepend)
 			PlotRangeManyIndex(df, indexList, 'cumulativeInfected', 'combinedStop', loglog=True, doCount=True, bucketWidth=1/10)
+			PlotRangeManyIndex(df, indexList, 'maxCasesDailyOverWeek', 'success', loglog=True, doCount=True, bucketWidth=1/10)
 			PlotRangeManyIndex(df, indexList, 'mid_cumulativeInfected', 'combinedStop', loglog=True, doCount=True, bucketWidth=1/10)
-			PlotRangeManyIndex(df, indexList, 'mid_maxCasesDailyOverWeek', 'success', doCount=True, bucketWidth=1200)
+			PlotRangeManyIndex(df, indexList, 'mid_maxCasesDailyOverWeek', 'success', loglog=True, doCount=True, bucketWidth=1/10)
 			PlotRangeManyIndex(df, indexList, 'mid_totalCases', 'combinedStop', loglog=True, doCount=True, bucketWidth=1/10)
 			
 			PlotViolinManyIndex(df, indexList, 
