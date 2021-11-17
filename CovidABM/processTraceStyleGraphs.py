@@ -56,14 +56,16 @@ def PickOutIndexAndMetric(
 	return df, splitNames[0]
 
 
-def PrintMetrics(subfolder, df, axis, index, indexVals, name=False):
+def PrintMetrics(
+		subfolder, df, axis, index, indexVals, name=False,
+		describeList=[x*0.01 for x in range(1, 100)]):
 	df = PickOutIndex(df, indexVals)
 	indexList = ['rand_seed'] + index
 	df = df[indexList + [axis]].set_index(indexList)
 	#print(df)
 	util.PrintDuplicateRows(df.index.to_frame())
 	df = df.unstack('rand_seed').transpose()
-	df = df.describe(percentiles=[0.05,0.25,0.75,0.95])
+	df = df.describe(percentiles=describeList)
 	if not name:
 		name = axis
 	util.OutputToFile(df, subfolder + '/ABM_metrics/' + name, head=False)
@@ -400,8 +402,8 @@ def ProcessResults(
 	dailyCaseLimit = 0
 	plt.rcParams.update(plt.rcParamsDefault)
 	
-	#df = df[(df['maxCasesDailyOverWeek'] >= 1000) & (df['maxCasesDailyOverWeek'] <= 1800)]
-	#df = df[(df['cumulativeInfected'] >= 22000) & (df['cumulativeInfected'] <= 34000)]
+	df = df[(df['mid_maxCasesDailyOverWeek'] >= 1000) & (df['mid_maxCasesDailyOverWeek'] <= 1800)]
+	df = df[(df['mid_totalCases'] >= 32400) & (df['mid_totalCases'] <= 40200)]
 	#df = df.sort_index()
 	
 	fullIndex = measureCols

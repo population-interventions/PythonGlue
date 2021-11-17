@@ -166,7 +166,7 @@ def indexRenameFunc(chunk):
 favouriteParams = [5, 'ME_TS_LS', 'No', 5, 0.7]
 
 #dataDir = '2021_05_04'
-dataDir = 'Vic3/2021_09_13_sen'
+dataDir = 'Vic3/2021_09_03a'
 rawDataDir = dataDir + '/outputs_snowy/'
 day_override = 574
 
@@ -178,7 +178,7 @@ preChecks = False
 aggregateSpartan = False
 doDraws = False
 doFinaliseCohortAgg = False
-makeOutput = True
+makeOutput = False
 outputStages = True
 processIcu = False
 makeComparison = False
@@ -208,12 +208,19 @@ if makeOutput:
 	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 30, 52, aggSize=7, describe=True)
 
 if outputStages:
-	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 0, 210, describe=True)
-	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 210, 364, describe=True)
-	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 0, 574, describe=True)
+	#MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 0, 210, describe=True)
+	#MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 210, 364, describe=True)
+	#MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 0, 574, describe=True)
 
-	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 182, 28, describe=True)
+	#MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 182, 28, describe=True)
 	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 210, 364, describe=True)
+	
+	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 210, 364, stage_set=0, describe=True)
+	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 210, 364, stage_set=1, describe=True)
+	#MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 210, 364, stage_set=2, describe=True)
+	#MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 210, 364, stage_set=3, describe=True)
+	#MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 210, 364, stage_set=4, describe=True)
+
 
 if processIcu:
 	MakeIcuHeatmaps(dataDir, measureCols, heatmapStructure, 0, 82, describe=True)

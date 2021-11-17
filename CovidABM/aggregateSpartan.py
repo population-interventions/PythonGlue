@@ -18,21 +18,26 @@ from utilities import SplitNetlogoNestedList
 from utilities import OutputToFile
 from utilities import AddFiles, AppendFiles
 from utilities import ToHeatmap
+import utilities as util
 
 
-def AppendParallels(dataDir, outDir, measureCols, outputSubdir, prefix, arrayIndex, fileNames, header=1):
+def AppendParallels(dataDir, outDir, measureCols, outputSubdir, prefix, indexList, fileNames, header=1):
 	for file in fileNames:
 		print('\n' + file)
 		AppendFiles(
 			dataDir + outDir + prefix + '_' + file,
-			[dataDir + outputSubdir + prefix + '_' + file + '_' + str(x + 1) for x in range(arrayIndex)],
+			[dataDir + outputSubdir + prefix + '_' + file + '_' + str(x) for x in indexList],
 			doTqdm=True,
 			index=len(measureCols) + 2,
 			header=header,
 		)
 
 
-def DoSpartanAggregate(dataDir, measureCols, arraySize=100, doTenday=False, doLong=False):
+def DoSpartanAggregate(dataDir, measureCols, arraySize=100, skip=False, doTenday=False, doLong=False):
+	indexList = range(1, arraySize + 1)
+	if skip:
+		indexList = util.ListRemove(indexList, skip)
+	
 	mortAgg = [
 		'noVac_daily',
 		'noVac_weeklyAgg',
@@ -57,11 +62,11 @@ def DoSpartanAggregate(dataDir, measureCols, arraySize=100, doTenday=False, doLo
 	
 	AppendParallels(
 		dataDir, '/Mort_process/', measureCols,
-		'/outputs_post/cohort/', 'infect', arraySize, mortAgg)
+		'/outputs_post/cohort/', 'infect', indexList, mortAgg)
 	
 	AppendParallels(
 		dataDir, '/Traces/', measureCols,
-		'/outputs_post/step_1/', 'processed', arraySize, [
+		'/outputs_post/step_1/', 'processed', indexList, [
 			'case',
 			'case7',
 			'case14',
@@ -74,7 +79,7 @@ def DoSpartanAggregate(dataDir, measureCols, arraySize=100, doTenday=False, doLo
 	
 	AppendParallels(
 		dataDir, '/Traces/', measureCols,
-		'/outputs_post/visualise/', 'processed', arraySize, [
+		'/outputs_post/visualise/', 'processed', indexList, [
 			'case_daily',
 			'case_weeklyAgg',
 			'case7_daily',

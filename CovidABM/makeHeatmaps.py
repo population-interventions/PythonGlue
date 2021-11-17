@@ -11,17 +11,18 @@ import utilities as util
 
 def DoMakeStagesHeatmap(
 		subfolder, measureCols, heatStruct,
-		stage_limit=2, start=0, window=100, describe=False):
+		stage_min=3, stage_max=4, start=0, window=100, describe=False):
 	df = pd.read_csv(
 		subfolder + '/Traces/processed_stage' + '.csv',
 		index_col=list(range(2 + len(measureCols))),
 		header=list(range(3)))
 	
-	prefixName = 'stageAbove_{}_from_{}_to_{}'.format(stage_limit, start, start + window)
+	prefixName = 'stageMin_{}_max_{}_from_{}_to_{}'.format(
+		stage_min, stage_max, start, start + window)
 	
 	df = df.droplevel([0, 2], axis=1)
 	df = df[[str(x) for x in range(start, start + window)]]
-	df = df.apply(lambda c: [1 if x > stage_limit else 0 for x in c])
+	df = df.apply(lambda c: [1 if x >= stage_min and x <= stage_max else 0 for x in c])
 	
 	df = df.mean(axis=1)
 	df = df.droplevel('run', axis=0)
@@ -32,10 +33,19 @@ def DoMakeStagesHeatmap(
 	
 
 def MakeStagesHeatmap(
-		subfolder, measureCols, heatStruct, start, window, describe=False):
+		subfolder, measureCols, heatStruct, start, window,
+		stage_set=False, describe=False):
+	
+	stage_min = 3
+	stage_max = 4
+	if stage_set is not False:
+		stage_min = stage_set
+		stage_max = stage_set
+	
 	DoMakeStagesHeatmap(
 		subfolder, measureCols, heatStruct,
-		stage_limit=2, start=start, window=window, describe=describe)
+		stage_min=stage_min, stage_max=stage_max,
+		start=start, window=window, describe=describe)
 
 
 def OutputHeatmapIndexComparision(

@@ -184,7 +184,7 @@ def AppendFiles(outputName, fileList, index=1, header=1, doTqdm=False):
 	
 
 def ListRemove(myList, element):
-	myCopy= myList.copy()
+	myCopy = list(myList).copy()
 	myCopy.remove(element)
 	return myCopy
 
@@ -216,7 +216,8 @@ def ToHeatmap(df, structure):
 
 def MakeDescribedHeatmapSet(
 		subfolder, df, heatStruct, prefixName,
-		describe=False):
+		describe=False,
+		describeList=[x*0.01 for x in range(1, 100)]):
 	
 	percentList = [0.05, 0.5, 0.95]
 	percMap = {
@@ -233,7 +234,7 @@ def MakeDescribedHeatmapSet(
 		print('Describe {} draws'.format(prefixName))
 		df_describe = df.copy()
 		df_describe = df_describe.unstack(relevantMeasureCols)
-		df_describe = df_describe.describe(percentiles=[0.05,0.25,0.75,0.95])
+		df_describe = df_describe.describe(percentiles=describeList)
 		OutputToFile(df_describe, subfolder + name, head=False)
 	
 	dfMean = df.copy()

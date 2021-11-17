@@ -33,7 +33,7 @@ healthPerspectiveRows = [
 
 heatmapStructure = {
 	'index_rows' : ['Stage', 'VacEaseStage'],
-	'index_cols' : ['VacEaseSchoolOpen'],
+	'index_cols' : ['VacEaseSchoolOpen', 'VacEaseEveryone'],
 	'base_value' : {
 		'Stage' : 3.25,
 		'VacEaseSchoolOpen' : 0,
@@ -43,12 +43,17 @@ heatmapStructure = {
 			3.25 : 'a',
 		}],
 		['VacEaseStage', {
-			'1b' : 'a',
-			'2a' : 'b',
+			'2a_mask3a' : 'a',
+			'1b_mask2a' : 'b',
+			'1b' : 'c',
 		}],
 	], 
 	'sort_cols' : [
 		['VacEaseSchoolOpen', {
+			0 : 'a',
+			1 : 'b',
+		}],
+		['VacEaseEveryone', {
 			0 : 'a',
 			1 : 'b',
 		}],
@@ -59,7 +64,8 @@ defaultValues = [
 	{
 		'Stage' : 3.25,
 		'VacEaseSchoolOpen' : 0,
-		'VacEaseStage' : '2a',
+		'VacEaseStage' : '2a_mask3a',
+		'VacEaseEveryone' : 1,
 	},
 ]
 
@@ -81,11 +87,13 @@ measureCols_raw = [
 	'cont_stage',
 	'vac_ease_schools_open',
 	'vac_ease_stage',
+	'vac_ease_everyone',
 ]
 measureCols = [
 	'Stage',
 	'VacEaseSchoolOpen',
 	'VacEaseStage',
+	'VacEaseEveryone',
 ]
 
 def indexRenameFunc(chunk):
@@ -103,7 +111,7 @@ def indexRenameFunc(chunk):
 favouriteParams = [5, 'ME_TS_LS', 'No', 5, 0.7]
 
 #dataDir = '2021_05_04'
-dataDir = 'NSW/2021_09_14b'
+dataDir = 'NSW/2021_09_22'
 rawDataDir = dataDir + '/outputs_snowy/'
 day_override = False
 
@@ -111,8 +119,8 @@ compareHeatmap = 'weeklyAgg_infect_from_30_to_82_age_0_110_total_percentile_050'
 compareStages = 'stageAbove_2_from_210_to_574_percentile_050'
 
 dryRun = False
-preChecks = True
-aggregateSpartan = False
+preChecks = False
+aggregateSpartan = True
 doDraws = False
 doFinaliseCohortAgg = False
 makeOutput = False
@@ -131,10 +139,10 @@ if oldNonSpartan:
 	#PreProcessMortHosp(dataDir, measureCols)
 
 if aggregateSpartan:
-	DoSpartanAggregate(dataDir, measureCols, arraySize=25)
+	DoSpartanAggregate(dataDir, measureCols, doLong=True, arraySize=25)
 
 if doDraws:
-	DrawMortHospDistributions(dataDir, measureCols, drawCount=100, padMult=1)
+	DrawMortHospDistributions(dataDir, measureCols, drawCount=100, padMult=60)
 
 if doFinaliseCohortAgg:
 	FinaliseMortHosp(dataDir, measureCols, heatAges)
@@ -142,7 +150,8 @@ if doFinaliseCohortAgg:
 if makeOutput:
 	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 0, 6, aggSize=7, describe=True)
 	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 0, 11, aggSize=7, describe=True)
-	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 0, 68, aggSize=7, describe=True)
+	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 0, 20, aggSize=7, describe=True)
+	MakeMortHospHeatmapRange(dataDir, measureCols, heatAges, heatmapStructure, 'weeklyAgg', 11, 9, aggSize=7, describe=True)
 
 if outputStages:
 	MakeStagesHeatmap(dataDir, measureCols, heatmapStructure, 0, 210, describe=True)
@@ -154,8 +163,9 @@ if outputStages:
 
 if processIcu:
 	MakeIcuHeatmaps(dataDir, measureCols, heatmapStructure, 0, 6, describe=True)
-	MakeIcuHeatmaps(dataDir, measureCols, heatmapStructure, 0, 16, describe=True)
-	MakeIcuHeatmaps(dataDir, measureCols, heatmapStructure, 0, 68, describe=True)
+	MakeIcuHeatmaps(dataDir, measureCols, heatmapStructure, 0, 11, describe=True)
+	MakeIcuHeatmaps(dataDir, measureCols, heatmapStructure, 0, 63, describe=True)
+	MakeIcuHeatmaps(dataDir, measureCols, heatmapStructure, 11, 52, describe=True)
 
 if makeComparison:
 	MakeComparisionHeatmap(dataDir, heatmapStructure, compareHeatmap)
