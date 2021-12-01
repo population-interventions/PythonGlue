@@ -75,16 +75,18 @@ def getFutureRatesForAgeGroup(
 	plt.close()
 
 
-
-
-for disease_name in [
+disease_names = [
 	"bladder_cancer","cervical_cancer","colorectal_cancer",
 	"copd","diabetes","endometrial_cancer","ihd","kidney_cancer",
 	"liver_cancer","lung_cancer","melanoma","mouth_oropharynx_cancer",
 	"oesophagus_cancer","pancreas_cancer","stomach_cancer","stroke",
-	"thyroid_cancer"]:
-	for age_grp in [20, 40, 60, 80]:
-		print(f"Plotting:\n- disease: {disease_name}\n- age: {age_grp} ")
+	"thyroid_cancer"]
+age_grps = [20, 40, 60, 80]
+
+idx=1
+for disease_name in disease_names:
+	for age_grp in age_grps:
+		print(f"Plotting {idx}/{len(disease_names)*len(age_grps)}...\n- disease: {disease_name}\n- age: {age_grp} ")
 		print("------------------------------------")
 		getFutureRatesForAgeGroup(
 			age_grp=age_grp,
@@ -92,6 +94,7 @@ for disease_name in [
 			disease_data_dir="PMSLT_plot_checking/data/tobacco_output/raw/bau_disease",
 			output_dir="PMSLT_plot_checking/plots/tobacco"
 		)	
+		idx += 1
 
 
 print("done")

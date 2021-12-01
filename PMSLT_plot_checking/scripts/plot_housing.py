@@ -76,18 +76,21 @@ def getFutureRatesForAgeGroup(
 
 
 
+disease_names = ["ihd", "copd", "stroke", "atrial_fib_and_flutter", "chronic_kidney_disease"]
+age_grps = [20, 40, 60, 80]
 
-
-for disease_name in ["ihd", "copd", "stroke", "atrial_fib_and_flutter", "chronic_kidney_disease"]:
-	for age_grp in [20, 40, 60, 80]:
-		print(f"Plotting:\n- disease: {disease_name}\n- age: {age_grp} ")
+idx=1
+for disease_name in disease_names:
+	for age_grp in age_grps:
+		print(f"Plotting {idx}/{len(disease_names)*len(age_grps)}...\n- disease: {disease_name}\n- age: {age_grp} ")
 		print("------------------------------------")
 		getFutureRatesForAgeGroup(
 			age_grp=age_grp,
 			disease_name=disease_name,
 			disease_data_dir="PMSLT_plot_checking/data/housing_output/raw/bau_disease",
 			output_dir="PMSLT_plot_checking/plots/housing"
-		)	
+		)
+		idx+=1
 
 
 print("done")
