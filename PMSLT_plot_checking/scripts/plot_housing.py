@@ -54,6 +54,7 @@ def getFutureRatesForAgeGroup(
 
 			axes[row_idx, col_idx].set_title(f"{rate}: {sex} aged {age_grp}")
 			axes[row_idx, col_idx].grid()
+			axes[row_idx, col_idx].legend(loc="upper right")
 			
 			idx += 1
 
@@ -63,7 +64,7 @@ def getFutureRatesForAgeGroup(
 		
 	plt.tight_layout()
 	fig.subplots_adjust(bottom=0.1) 
-	fig.legend(labels=["SES1", "SES2", "SES3", "SES4", "SES5"], loc="lower center", ncol=5)
+	# fig.legend(labels=["SES1", "SES2", "SES3", "SES4", "SES5"], loc="lower center", ncol=5)
 
 
 	if not os.path.exists(f"{output_dir}/{disease_name}"):

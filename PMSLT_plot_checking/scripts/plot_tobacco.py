@@ -48,12 +48,13 @@ def getFutureRatesForAgeGroup(
 
 				plot_df = plot_df.merge(temp_df, on="year", how="inner")
 
-			plot_df.plot(ax=axes[row_idx, col_idx], x="year", y=["maori", "non-maori"], legend=None)
+			plot_df.plot(ax=axes[row_idx, col_idx], x="year", y=["maori", "non-maori"])
 
 			y_lim = max(y_lim, plot_df[["maori", "non-maori"]].max().max()*1.5)	
 
 			axes[row_idx, col_idx].set_title(f"{rate}: {sex} aged {age_grp}")
 			axes[row_idx, col_idx].grid()
+			axes[row_idx, col_idx].legend(loc="upper right")
 			
 			idx += 1
 		
@@ -63,7 +64,7 @@ def getFutureRatesForAgeGroup(
 
 	plt.tight_layout()
 	fig.subplots_adjust(bottom=0.1) 
-	fig.legend(labels=["maori", "non-maori"], loc="lower center", ncol=5)
+	# fig.legend(labels=["maori", "non-maori"], loc="lower center", ncol=5)
 
 
 	if not os.path.exists(f"{output_dir}/{disease_name}"):
