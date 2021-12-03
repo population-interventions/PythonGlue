@@ -134,7 +134,7 @@ def indexRenameFunc(chunk):
 favouriteParams = [5, 'ME_TS_LS', 'No', 5, 0.7]
 
 #dataDir = '2021_05_04'
-dataDir = 'NZ/2021_09_02a'
+dataDir = 'NZ/2021_12_03'
 rawDataDir = dataDir + '/outputs_snowy/'
 day_override = 574
 
