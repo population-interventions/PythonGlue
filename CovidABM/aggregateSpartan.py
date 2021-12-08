@@ -21,19 +21,19 @@ from utilities import ToHeatmap
 import utilities as util
 
 
-def AppendParallels(dataDir, outDir, measureCols, outputSubdir, prefix, indexList, fileNames, header=1):
+def AppendParallels(dataDir, rawDataDir, outDir, measureCols, outputSubdir, prefix, indexList, fileNames, header=1):
 	for file in fileNames:
 		print('\n' + file)
 		AppendFiles(
 			dataDir + outDir + prefix + '_' + file,
-			[dataDir + outputSubdir + prefix + '_' + file + '_' + str(x) for x in indexList],
+			[rawDataDir + outputSubdir + prefix + '_' + file + '_' + str(x) for x in indexList],
 			doTqdm=True,
 			index=len(measureCols) + 2,
 			header=header,
 		)
 
 
-def DoSpartanAggregate(dataDir, measureCols, arraySize=100, skip=False, doTenday=False, doLong=False):
+def DoSpartanAggregate(dataDir, rawDataDir, measureCols, arraySize=100, skip=False, doTenday=False, doLong=False):
 	indexList = range(1, arraySize + 1)
 	if skip:
 		indexList = util.ListRemove(indexList, skip)
@@ -61,12 +61,12 @@ def DoSpartanAggregate(dataDir, measureCols, arraySize=100, skip=False, doTenday
 		]
 	
 	AppendParallels(
-		dataDir, '/Mort_process/', measureCols,
-		'/outputs_post/cohort/', 'infect', indexList, mortAgg)
+		dataDir, rawDataDir, '/Mort_process/', measureCols,
+		'/cohort/', 'infect', indexList, mortAgg)
 	
 	AppendParallels(
-		dataDir, '/Traces/', measureCols,
-		'/outputs_post/step_1/', 'processed', indexList, [
+		dataDir, rawDataDir, '/Traces/', measureCols,
+		'/step_1/', 'processed', indexList, [
 			'case',
 			'case7',
 			'case14',
@@ -78,8 +78,8 @@ def DoSpartanAggregate(dataDir, measureCols, arraySize=100, skip=False, doTenday
 	)
 	
 	AppendParallels(
-		dataDir, '/Traces/', measureCols,
-		'/outputs_post/visualise/', 'processed', indexList, [
+		dataDir, rawDataDir, '/Traces/', measureCols,
+		'/visualise/', 'processed', indexList, [
 			'case_daily',
 			'case_weeklyAgg',
 			'case7_daily',

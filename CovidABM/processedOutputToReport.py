@@ -380,11 +380,11 @@ def MakeTableFive(subfolder, measureCols, table5Rows, groupMeasure, doDiff=False
 	
 ############### Process GDP ###############
 	
-def ProcessGDP(subfolder, measureCols, groupMeasure, doDiff=False):
+def ProcessGDP(subfolder, inputDir, measureCols, groupMeasure, doDiff=False):
 	print('ProcessGDP')
 	
 	gdp_effects = pd.read_csv(
-		subfolder + '/other_input/gdp_cost' + '.csv',
+		inputDir + '/gdp_cost' + '.csv',
 		header=[0])
 	gdp_effects = gdp_effects.set_index(['stage'])
 	
@@ -440,7 +440,7 @@ def ProcessInfection(subfolder, measureCols, months=12):
 
 ###############  ###############
 
-def DoProcessingForReport(subfolder, measureCols, table5Rows, groupMeasure, doDiff=False, compareCol=False, months=12):
+def DoProcessingForReport(subfolder, inputDir, measureCols, table5Rows, groupMeasure, doDiff=False, compareCol=False, months=12):
 	ProcessStages(subfolder, measureCols)
 	ProcessInfection(subfolder, measureCols, months)
 	AddAndCleanInfections(subfolder, measureCols)
@@ -453,9 +453,9 @@ def DoProcessingForReport(subfolder, measureCols, table5Rows, groupMeasure, doDi
 	if doDiff:
 		MakeTableFive(subfolder, measureCols, table5Rows, groupMeasure, doDiff=True)
 	
-	ProcessGDP(subfolder, measureCols, groupMeasure)
+	ProcessGDP(subfolder, inputDir, measureCols, groupMeasure)
 	if doDiff:
-		ProcessGDP(subfolder, measureCols, groupMeasure, doDiff=True)
+		ProcessGDP(subfolder, inputDir, measureCols, groupMeasure, doDiff=True)
 
 
 

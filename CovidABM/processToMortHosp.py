@@ -266,15 +266,15 @@ def ApplyCohortEffectsUncertainty(subfolder, measureCols, heatAges, doTenday=Fal
 	print('ApplyCohortEffects yearlyAgg')
 	OutputTimeTablesDraw(subfolder, subfolder + '/Mort_process/', measureCols, heatAges, 'yearlyAgg')
 	if doTenday:
-		OutputTimeTablesDraw(subfolder, subfolder + '/Mort_process/', measureCols, 'tendayAgg')
+		OutputTimeTablesDraw(subfolder, subfolder + '/Mort_process/', measureCols, heatAges, 'tendayAgg')
 	OutputTimeTablesDraw(subfolder, subfolder + '/Mort_process/', measureCols, heatAges, 'weeklyAgg')
 
 
 ############### Draw ###############
 
-def LoadDfDrawRawFile(subfolder, drawCount=100):
+def LoadDfDrawRawFile(inputDir, drawCount=100):
 	df = pd.read_csv(
-		subfolder + '/other_input/death_and_hospital_draws' + '.csv',
+		inputDir + '/death_and_hospital_draws' + '.csv',
 		header=[0])
 	df = df.rename(columns={
 		'age_start' : 'age',
@@ -298,9 +298,9 @@ def MetricDraw(df, metric):
 	return df
 
 
-def GenerateDfFromParams(subfolder, drawCount=100):
+def GenerateDfFromParams(inputDir, drawCount=100):
 	dfParams = pd.read_csv(
-		subfolder + '/other_input/draw_params' + '.csv',
+		inputDir + '/draw_params' + '.csv',
 		header=[0])
 	
 	dfOut = pd.DataFrame({
@@ -317,11 +317,11 @@ def GenerateDfFromParams(subfolder, drawCount=100):
 	return df
 
 
-def LoadDfDraw(subfolder, drawCount=100, padMult=20, useRawFile=False):
+def LoadDfDraw(subfolder, inputDir, drawCount=100, padMult=20, useRawFile=False):
 	if useRawFile:
-		df = LoadDfDrawRawFile(subfolder, drawCount=drawCount)
+		df = LoadDfDrawRawFile(inputDir, drawCount=drawCount)
 	else:
-		df = GenerateDfFromParams(subfolder, drawCount=drawCount)
+		df = GenerateDfFromParams(inputDir, drawCount=drawCount)
 	
 	df = df[['hosp', 'icu', 'mort']]
 	
@@ -335,8 +335,8 @@ def LoadDfDraw(subfolder, drawCount=100, padMult=20, useRawFile=False):
 	return df
 
 
-def LoadDfDrawMult(subfolder, drawCount=100, padMult=20):
-	df = pd.read_csv(subfolder + '/other_input/death_and_hospital_mult' + '.csv',
+def LoadDfDrawMult(inputDir, drawCount=100, padMult=20):
+	df = pd.read_csv(inputDir + '/death_and_hospital_mult' + '.csv',
 				header=[0])
 	df = df.rename(columns={
 		'age_start' : 'age',
@@ -350,7 +350,7 @@ def LoadDfDrawMult(subfolder, drawCount=100, padMult=20):
 	df = df[['hosp', 'icu', 'mort']]
 	df = CrossIndex(df, pd.DataFrame({'draw' : list(range(drawCount))}))
 	
-	df_beta = pd.read_csv(subfolder + '/other_input/vaccine_lookup' + '.csv',
+	df_beta = pd.read_csv(inputDir + '/vaccine_lookup' + '.csv',
 				header=[0])
 	toDraw = list(df_beta['metric'])
 	df_beta = df_beta.set_index(['metric'])
@@ -375,9 +375,9 @@ def LoadDfDrawMult(subfolder, drawCount=100, padMult=20):
 	return df.astype(float)
 
 
-def DoDraws(subfolder, measureCols, **kwargs):
-	df_draw = LoadDfDraw(subfolder, **kwargs)
-	df_mult = LoadDfDrawMult(subfolder, **kwargs)
+def DoDraws(subfolder, inputDir, measureCols, **kwargs):
+	df_draw = LoadDfDraw(subfolder, inputDir, **kwargs)
+	df_mult = LoadDfDrawMult(inputDir, **kwargs)
 	
 	OutputToFile(df_draw, subfolder + '/draw_cache/' + 'mortHosp_draw')
 	OutputToFile(df_mult, subfolder + '/draw_cache/' + 'mortHosp_mult')
@@ -582,8 +582,8 @@ def PreProcessMortHosp(subfolder, measureCols):
 	ProcessInfectionCohorts(subfolder, measureCols)
 
 
-def DrawMortHospDistributions(subfolder, measureCols, **kwargs):
-	DoDraws(subfolder, measureCols, **kwargs)
+def DrawMortHospDistributions(subfolder, inputDir, measureCols, **kwargs):
+	DoDraws(subfolder, inputDir, measureCols, **kwargs)
 
 
 def FinaliseMortHosp(subfolder, measureCols, heatAges, doTenday=False):

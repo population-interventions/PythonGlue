@@ -54,9 +54,9 @@ def OutputMedianUncertainTables(df, outFile, toSort):
 	df_out = df_med + ' (' + df_lower + ' to ' + df_upper + ')'
 	OutputToFile(df_out, outFile)
 
-   
+
 def ProcessGDP(subfolder, measureCols):
-	gdp_effects = pd.read_csv(subfolder + '/other_input/gdp_cost' + '.csv',
+	gdp_effects = pd.read_csv(subfolder + '/gdp_cost' + '.csv',
 				header=[0])
 	gdp_effects = gdp_effects.set_index(['stage'])
 	

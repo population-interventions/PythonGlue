@@ -157,8 +157,8 @@ def MultiplyByCohortEffect(measureCols, df, multDf):
 	return df
 	
 
-def AddAndFinalisePmsltInputs(measureCols, subfolder, path, output, months=12):
-	cohortEffect = GetEffectsData(subfolder + '/other_input/chort_effects')
+def AddAndFinalisePmsltInputs(measureCols, subfolder, inputDir, path, output, months=12):
+	cohortEffect = GetEffectsData(inputDir + '/chort_effects')
 	
 	df_infect_vac = CombineDrawColumnsAndFindDraw0(path + 'infect_results/', 'infect_vac',
 												   index_size=(2 + len(measureCols)))
@@ -264,12 +264,12 @@ def ProcessInfectionCohorts(subfolder, measureCols, months):
 		subfolder + '/PMSLT_process/infect_results/infect_noVac',
 		months)
 	
-def ProcessInfection(subfolder, measureCols, months=12):
+def ProcessInfection(subfolder, inputDir, measureCols, months=12):
 	ProcessInfectionCohorts(subfolder, measureCols, months)
 	
 	print('Finalising infection PMSLT input')
 	AddAndFinalisePmsltInputs(
-		measureCols, subfolder,
+		measureCols, subfolder, inputDir,
 		subfolder + '/PMSLT_process/', subfolder + '/PMSLT_input',
 		months=12)
 
@@ -285,8 +285,8 @@ def ProcessStages(subfolder, measureCols, months=12):
 		months=12)
 
 
-def DoProcessingForPMSLT(subfolder, measureCols, months=12):
-	ProcessInfection(subfolder, measureCols, months)
+def DoProcessingForPMSLT(subfolder, inputDir, measureCols, months=12):
+	ProcessInfection(subfolder, inputDir, measureCols, months)
 	ProcessStages(subfolder, measureCols, months)
 
 
