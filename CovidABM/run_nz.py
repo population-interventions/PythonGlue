@@ -134,7 +134,7 @@ def indexRenameFunc(chunk):
 favouriteParams = [5, 'ME_TS_LS', 'No', 5, 0.7]
 
 #dataDir = '2021_05_04'
-dataDir = 'NZ/2021_09_02a'
+dataDir = 'NZ/2021_12_03'
 rawDataDir = dataDir + '/outputs_snowy/'
 day_override = 574
 
@@ -158,7 +158,7 @@ if oldNonSpartan:
 	#PreProcessMortHosp(dataDir, measureCols)
 
 if aggregateSpartan:
-	DoSpartanAggregate(dataDir, measureCols, arraySize=25)
+	DoSpartanAggregate(dataDir, measureCols, arraySize=4)
 
 if doDraws:
 	DrawMortHospDistributions(dataDir, measureCols, drawCount=100, padMult=1)
