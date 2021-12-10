@@ -158,7 +158,7 @@ if oldNonSpartan:
 	#PreProcessMortHosp(dataDir, measureCols)
 
 if aggregateSpartan:
-	DoSpartanAggregate(dataDir, measureCols, arraySize=4)
+	DoSpartanAggregate(dataDir, measureCols, arraySize=25)
 
 if doDraws:
 	DrawMortHospDistributions(dataDir, measureCols, drawCount=100, padMult=1)
