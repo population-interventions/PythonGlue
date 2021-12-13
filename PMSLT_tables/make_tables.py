@@ -7,6 +7,7 @@ def make_tables(files):
 	path_prefix= "PMSLT_tables/drawAgg"
 	for file in files:
 		df = pd.read_csv(f"{path_prefix}/{file['file_name']}")
+
 		
 		# Make population column
 		df["Population"] = df[["Sex", "Strata"]].agg(" ".join, axis=1)
@@ -28,7 +29,7 @@ def make_tables(files):
 		level_0_cols = df.columns
 		df.columns = pd.MultiIndex.from_product([df.columns, ["Estimate"]])
 		for column in level_0_cols:
-			df[column, "Uncertainty"] = df[column, "Estimate"].str.split("(").map(lambda x: f"({x[1]}")
+			df[column, "95% UI"] = df[column, "Estimate"].str.split("(").map(lambda x: f"({x[1]}")
 			df[column, "Estimate"] = df[column, "Estimate"].str.split("(").map(lambda x: float(x[0].strip().replace(",", "")))
 
 		# Column ordering
@@ -36,7 +37,7 @@ def make_tables(files):
 			"Low nicotine","Low nicotine + media","Retail reduction",
 			"Smokefree generation","Combined interventions"
 		]
-		level_1_order = ["Estimate", "Uncertainty"]
+		level_1_order = ["Estimate", "95% UI"]
 		df = df.reindex(columns=level_0_order, level=0)
 		df = df.reindex(columns=level_1_order, level=1)
 
@@ -44,12 +45,12 @@ def make_tables(files):
 		output_path = f"PMSLT_tables/output/{file['file_name']}"
 		save_file(
 			df=df,
-			sheet_name=file["title"].replace("out_","").replace("year_year_", "").replace("discount","d").replace("_millions","")
+			sheet_name=file["title"]
 		)
 
 			
 def save_file(df, sheet_name):
-	output_path = "PMSLT_tables/output/output.xlsx"
+	output_path = "PMSLT_tables/output/tobacco_tables.xlsx"
 	book = load_workbook(output_path)
 	writer = pd.ExcelWriter(output_path, engine = 'openpyxl')
 	writer.book = book
@@ -58,34 +59,8 @@ def save_file(df, sheet_name):
 	print(sheet_name)
 	df.to_excel(writer, sheet_name=sheet_name)
 	writer.save()
-	# writer.close()
+	writer.close()
 
-
-
-
-
-
-
-
-
-
-
-
-file_names = [
-	"out_deaths_year_year_0-111_discount_0.csv", 
-	"out_HALY_year_year_0-111_discount_-0.02.csv",
-	"out_HALY_year_year_0-111_discount_-0.03.csv",
-	"out_HALY_year_year_0-111_discount_-0.05.csv",
-	"out_HALY_year_year_0-111_discount_0.csv",
-	"out_total_income_year_year_0-111_discount_-0.02_millions.csv",
-	"out_total_income_year_year_0-111_discount_-0.03_millions.csv",
-	"out_total_income_year_year_0-111_discount_-0.05_millions.csv",
-	"out_total_income_year_year_0-111_discount_0_millions.csv",
-	"out_total_spent_year_year_0-111_discount_-0.02_millions.csv",
-	"out_total_spent_year_year_0-111_discount_-0.03_millions.csv",
-	"out_total_spent_year_year_0-111_discount_-0.05_millions.csv",
-	"out_total_spent_year_year_0-111_discount_0_millions.csv",
-]
 
 files = [
 	{"file_name": "out_deaths_year_year_0-111_discount_0.csv", "title": "deaths_discount_0"}, 
