@@ -44,7 +44,7 @@ def make_tables(files):
 		output_path = f"PMSLT_tables/output/{file['file_name']}"
 		save_file(
 			df=df,
-			sheet_name=file["file_name"].replace("out_","").replace("year_year_", "").replace("discount","d").replace("_millions","")
+			sheet_name=file["title"].replace("out_","").replace("year_year_", "").replace("discount","d").replace("_millions","")
 		)
 
 			
