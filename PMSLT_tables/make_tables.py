@@ -1,9 +1,16 @@
+from openpyxl.workbook import workbook
 import pandas as pd
 import numpy as np
-from openpyxl import load_workbook
+from openpyxl import load_workbook, Workbook
 
 
-def make_tables(files):
+def make_tables(files, output_path):
+	'''
+	Loops through files, reads file.file_name in PMSLT_tables/drawAgg, applies
+	transformations to dataframe and saves to excel spreadsheet specified
+	by output_path.
+	'''
+	init_workbook(output_path)
 	path_prefix= "PMSLT_tables/drawAgg"
 	for file in files:
 		df = pd.read_csv(f"{path_prefix}/{file['file_name']}")
@@ -42,15 +49,35 @@ def make_tables(files):
 		df = df.reindex(columns=level_1_order, level=1)
 
 		# Save file
-		output_path = f"PMSLT_tables/output/{file['file_name']}"
 		save_file(
 			df=df,
-			sheet_name=file["title"]
+			sheet_name=file["title"],
+			output_path=output_path
 		)
 
+	clean_workbook(output_path)
+
+
+def init_workbook(output_path):
+	'''
+	Initialises empty workbook	
+	'''
+	book = Workbook()
+	book.save(filename = output_path)
+	
+def clean_workbook(output_path):
+	'''
+	Removes empty sheet to avoid file corruption.
+	'''
+	book = load_workbook(output_path)
+	book.remove_sheet(book["Sheet"])
+	book.save(filename = output_path)
+
 			
-def save_file(df, sheet_name):
-	output_path = "PMSLT_tables/output/tobacco_tables.xlsx"
+def save_file(df, sheet_name, output_path):
+	'''
+	Writes dataframe to specified sheet in output excel file.
+	'''
 	book = load_workbook(output_path)
 	writer = pd.ExcelWriter(output_path, engine = 'openpyxl')
 	writer.book = book
@@ -79,5 +106,8 @@ files = [
 ]
 
 
-make_tables(files)
+make_tables(
+	files=files,
+	output_path="PMSLT_tables/output/tobacco_tables.xlsx"
+)
 print("done")
