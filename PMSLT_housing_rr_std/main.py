@@ -54,15 +54,15 @@ def get_age_ses_person_years(
 
 def compute_age_std_rr(
     num_runs, 
-    time_horizon
+    time_horizons = [[0, 3000]]
     ):
     ''' 
     Computes age-standardised relative risk based on HALYs, comapring 
     SES1 (most deprived) to SES5 (least deprived). Looks for runs in
     'PMSLT_housing_rr_std/runs'. 
     * num_runs (int): number of simulations
-    * time_horzon (list): range of years to calculate age-standardisation
-    for, i.e. [2020, 2100]. Boundaries inclusive. Default is full sample.
+    * time_horzon (list of lists): list of year ranges to calculate age-standardisation
+    for, i.e. [[2020, 2040], [2020, 2060]]. Boundaries inclusive. Default is full sample.
     '''
     age_cats = [
             {"start_age": 0, "end_age": 4, "who_weight": 0.0886}, 
@@ -89,12 +89,15 @@ def compute_age_std_rr(
     for age_group in age_cats:
         sum_who_weights += age_group["who_weight"]
     ses_cats = {
-            "SES5": {"age_std_haly_gain_per_1000py": [], "age_std_rr": []},
-            "SES4": {"age_std_haly_gain_per_1000py": [], "age_std_rr": []},
-            "SES3": {"age_std_haly_gain_per_1000py": [], "age_std_rr": []},
-            "SES2": {"age_std_haly_gain_per_1000py": [], "age_std_rr": []},
-            "SES1": {"age_std_haly_gain_per_1000py": [], "age_std_rr": []},
+            "SES5": {},
+            "SES4": {},
+            "SES3": {},
+            "SES2": {},
+            "SES1": {},
         }
+    for ses_strata in ses_cats.keys():
+        for time_horizon in time_horizons:
+            ses_cats[ses_strata][f"{time_horizon[0]}-{time_horizon[1]}"] = {"age_std_haly_gain_per_1000py": [], "age_std_rr": []}
     runs = [*range(0,num_runs)] 
     base_dir = "./PMSLT_housing_rr_std"
     
@@ -102,47 +105,49 @@ def compute_age_std_rr(
         bau_df = pd.read_csv(f"{base_dir}/runs/{str(run)}/raw/output_lifetable_bau.csv")
         int_df = pd.read_csv(f"{base_dir}/runs/{str(run)}/raw/output_lifetable_int.csv")
 
-        for i in range(0, len(age_cats)):
-            for ses_strata in ses_cats.keys():
-                age_cats[i][f"bau_halys_{ses_strata}"] = get_age_ses_halys(bau_df, age_cats[i], ses_strata, time_horizon)
-                age_cats[i][f"int_halys_{ses_strata}"] = get_age_ses_halys(int_df, age_cats[i], ses_strata, time_horizon)
-                age_cats[i][f"haly_gain_per_1000py_{ses_strata}"] = 1000 * (
-                        (age_cats[i][f"int_halys_{ses_strata}"] - age_cats[i][f"bau_halys_{ses_strata}"]) / 
-                        get_age_ses_person_years(bau_df, age_cats[i], ses_strata, time_horizon)
-                    )
-
         for ses_strata in ses_cats.keys():
-            ses_cats[ses_strata]["age_std_haly_gain_per_1000py"].append(sum(
-                    [(age_cat["who_weight"] * age_cat[f"haly_gain_per_1000py_{ses_strata}"])/sum_who_weights for age_cat in age_cats]
-                ))
-            ses_cats[ses_strata]["age_std_rr"].append((
-                    ses_cats[ses_strata]["age_std_haly_gain_per_1000py"][-1] / ses_cats["SES5"]["age_std_haly_gain_per_1000py"][-1]
-                ))
+            for time_horizon in time_horizons:
+                for i in range(0, len(age_cats)):
+                    age_cats[i][f"bau_halys_{ses_strata}"] = get_age_ses_halys(bau_df, age_cats[i], ses_strata, time_horizon)
+                    age_cats[i][f"int_halys_{ses_strata}"] = get_age_ses_halys(int_df, age_cats[i], ses_strata, time_horizon)
+                    age_cats[i][f"haly_gain_per_1000py_{ses_strata}"] = 1000 * (
+                            (age_cats[i][f"int_halys_{ses_strata}"] - age_cats[i][f"bau_halys_{ses_strata}"]) / 
+                            get_age_ses_person_years(bau_df, age_cats[i], ses_strata, time_horizon)
+                        )
+
+                ses_cats[ses_strata][f"{time_horizon[0]}-{time_horizon[1]}"]["age_std_haly_gain_per_1000py"].append(sum(
+                        [(age_cat["who_weight"] * age_cat[f"haly_gain_per_1000py_{ses_strata}"])/sum_who_weights for age_cat in age_cats]
+                    ))
+                ses_cats[ses_strata][f"{time_horizon[0]}-{time_horizon[1]}"]["age_std_rr"].append((
+                        ses_cats[ses_strata][f"{time_horizon[0]}-{time_horizon[1]}"]["age_std_haly_gain_per_1000py"][-1] / 
+                        ses_cats["SES5"][f"{time_horizon[0]}-{time_horizon[1]}"]["age_std_haly_gain_per_1000py"][-1]
+                    ))
         print(f"run ({run + 1}/{len(runs)}) ...") 
 
-
-    output = {
+    output = {}
+    for ses_strata in ses_cats.keys():
+        output[ses_strata] =  {
             key: {
-                "age_std_haly_gain_per_1000py": {
-                    "2.5th": np.percentile(np.array(value["age_std_haly_gain_per_1000py"]), 2.5),
-                    "50th": np.percentile(np.array(value["age_std_haly_gain_per_1000py"]), 50),
-                    "97.5th": np.percentile(np.array(value["age_std_haly_gain_per_1000py"]), 97.5),
-                },
-                "age_std_rr": {
-                    "2.5th": np.percentile(np.array(value["age_std_rr"]), 2.5),
-                    "50th": np.percentile(np.array(value["age_std_rr"]), 50),
-                    "97.5th": np.percentile(np.array(value["age_std_rr"]), 97.5),
-                }
+                "age_std_haly_gain_per_1000py": f"{round(np.percentile(np.array(value['age_std_haly_gain_per_1000py']), 50)),4} "  +
+                f"({round(np.percentile(np.array(value['age_std_haly_gain_per_1000py']), 2.5),4)}," + 
+                f"{round(np.percentile(np.array(value['age_std_haly_gain_per_1000py']), 97.5),4)})",
+                "age_std_rr": f"{round(np.percentile(np.array(value['age_std_rr']), 50),4)} "  +
+                f"({round(np.percentile(np.array(value['age_std_rr']), 2.5), 4)}," + 
+                f"{round(np.percentile(np.array(value['age_std_rr']), 97.5), 4)})",
             }
-            for key, value in ses_cats.items()
+            for key, value in ses_cats[ses_strata].items()
         }
-
     print(json.dumps(output, indent=4))
+    output_df = pd.concat({k: pd.DataFrame(v).T for k, v in output.items()}, axis=0)
+    output_df.to_csv(f"{base_dir}/output.csv")
 
 
 compute_age_std_rr(
         num_runs=10,
-        time_horizon=[2020,2030]
+        time_horizons=[
+            [2020,2040], 
+            [2020,2050],
+        ]
     )
 
 
