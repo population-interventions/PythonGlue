@@ -2,34 +2,67 @@ import pandas as pd
 import numpy as np
 import json
 
-def get_age_ses_halys_per_capita(df, age_cat, ses_strata):
-    age_df = df.loc[
-            (df["age"].isin([*range(age_cat["start_age"], age_cat["end_age"])]))
+def get_age_ses_halys(
+    df, 
+    age_cat, 
+    ses_strata, 
+    time_horizon
+    ):
+    '''
+    Returns sum of HALYs for an age-SES sub-group, for a given time horizon. Age refers
+    to age in future years. I.e., inputing an age category of 20-25 will return the
+    sum of HALYs for 20-25 y/o's in 2020, 2021, ..., 2XXX.
+    * df (pandas dataframe): dataframe to search (either int or bau)
+    * age_cat (object): object of form {"start_age": int, "end_age": int}
+    * ses_strata (str): SES strata to look up
+    * time_horzon (list): range of years to calculate age-standardisation
+    for, i.e. [2020, 2100]. Boundaries inclusive. Default is full sample.
+    '''
+    df2 = df.loc[
+            (df["age"].between(age_cat["start_age"], age_cat["end_age"])) &
+            (df["strata"] == ses_strata) &
+            (df["year"].between(time_horizon[0], time_horizon[1]))
         ]
-    ses_df = age_df[
-            (age_df["strata"] == ses_strata)
-        ]
-    ses_halys_per_capita = ses_df["HALY"].sum() 
+    ses_halys_per_capita = df2["HALY"].sum() 
     return ses_halys_per_capita
 
 
-def bau_person_years_for_age_ses(df, age_cat, ses_strata):
-    age_df = df.loc[
-            (df["age"].isin([*range(age_cat["start_age"], age_cat["end_age"])]))
+def get_age_ses_person_years(
+    df, 
+    age_cat, 
+    ses_strata,
+    time_horizon
+    ):
+    '''
+    Returns sum of person-years for an age-SES sub-group, for a given time horizon. 
+    Age refers to age in future years. I.e., inputing an age category of 20-25 will
+    return the sum of person-years for 20-25 y/o's in 2020, 2021, ..., 2XXX.
+    * df (pandas dataframe): dataframe to search (either int or bau)
+    * age_cat (object): object of form {"start_age": int, "end_age": int}
+    * ses_strata (str): SES strata to look up
+    * time_horzon (list): range of years to calculate age-standardisation
+    for, i.e. [2020, 2100]. Boundaries inclusive. Default is full sample.
+    '''
+    df2 = df.loc[
+            (df["age"].between(age_cat["start_age"], age_cat["end_age"])) &
+            (df["strata"] == ses_strata) &
+            (df["year"].between(time_horizon[0], time_horizon[1]))
         ]
-    ses_df = age_df[
-            (age_df["strata"] == ses_strata)
-        ]
-    person_years = ses_df["person_years"].sum()
+    person_years = df2["person_years"].sum()
     return person_years
 
 
-def compute_age_std_rr(num_runs):
+def compute_age_std_rr(
+    num_runs, 
+    time_horizon
+    ):
     ''' 
     Computes age-standardised relative risk based on HALYs, comapring 
     SES1 (most deprived) to SES5 (least deprived). Looks for runs in
     'PMSLT_housing_rr_std/runs'. 
     * num_runs (int): number of simulations
+    * time_horzon (list): range of years to calculate age-standardisation
+    for, i.e. [2020, 2100]. Boundaries inclusive. Default is full sample.
     '''
     age_cats = [
             {"start_age": 0, "end_age": 4, "who_weight": 0.0886}, 
@@ -55,7 +88,6 @@ def compute_age_std_rr(num_runs):
     sum_who_weights = 0
     for age_group in age_cats:
         sum_who_weights += age_group["who_weight"]
-    print(sum_who_weights)
     ses_cats = {
             "SES5": {"age_std_haly_gain_per_1000py": [], "age_std_rr": []},
             "SES4": {"age_std_haly_gain_per_1000py": [], "age_std_rr": []},
@@ -72,11 +104,11 @@ def compute_age_std_rr(num_runs):
 
         for i in range(0, len(age_cats)):
             for ses_strata in ses_cats.keys():
-                age_cats[i][f"bau_halys_{ses_strata}"] = get_age_ses_halys_per_capita(bau_df, age_cats[i], ses_strata)
-                age_cats[i][f"int_halys_{ses_strata}"] = get_age_ses_halys_per_capita(int_df, age_cats[i], ses_strata)
+                age_cats[i][f"bau_halys_{ses_strata}"] = get_age_ses_halys(bau_df, age_cats[i], ses_strata, time_horizon)
+                age_cats[i][f"int_halys_{ses_strata}"] = get_age_ses_halys(int_df, age_cats[i], ses_strata, time_horizon)
                 age_cats[i][f"haly_gain_per_1000py_{ses_strata}"] = 1000 * (
                         (age_cats[i][f"int_halys_{ses_strata}"] - age_cats[i][f"bau_halys_{ses_strata}"]) / 
-                        bau_person_years_for_age_ses(bau_df, age_cats[i], ses_strata)
+                        get_age_ses_person_years(bau_df, age_cats[i], ses_strata, time_horizon)
                     )
 
         for ses_strata in ses_cats.keys():
@@ -109,7 +141,8 @@ def compute_age_std_rr(num_runs):
 
 
 compute_age_std_rr(
-        num_runs=10
+        num_runs=10,
+        time_horizon=[2020,2030]
     )
 
 
