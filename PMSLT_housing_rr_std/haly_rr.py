@@ -139,7 +139,7 @@ def compute_age_std_rr(
         }
     print(json.dumps(output, indent=4))
     output_df = pd.concat({k: pd.DataFrame(v).T for k, v in output.items()}, axis=0)
-    output_df.to_csv(f"{base_dir}/output.csv")
+    output_df.to_csv(f"{base_dir}/output_haly_rr.csv")
 
 
 compute_age_std_rr(
