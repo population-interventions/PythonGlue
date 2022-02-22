@@ -5,7 +5,7 @@ run_id = int(sys.argv[1])
 
 process_run(
 	run_id=run_id,
-	base_path="../../../pmslt/results/hiic/",
+	base_path="../../../pmslt/results/hiic",
 	metrics=["incidence", "mortality", "disability"],
 	age_categories=[
 		{"age_start": 0, "age_end": 14},
