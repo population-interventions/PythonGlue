@@ -1,4 +1,0 @@
-ihd
-rate_0.05
-delay_5
-dur_20

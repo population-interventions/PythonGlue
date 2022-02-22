@@ -1,4 +1,0 @@
-low_back_pain
-rate_0.5
-delay_20
-dur_10

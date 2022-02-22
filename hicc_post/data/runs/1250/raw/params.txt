@@ -1,4 +1,0 @@
-self_harm
-rate_0.1
-delay_10
-dur_1

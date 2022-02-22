@@ -1,4 +1,0 @@
-diabetes_mellitus
-rate_0.05
-delay_20
-dur_20

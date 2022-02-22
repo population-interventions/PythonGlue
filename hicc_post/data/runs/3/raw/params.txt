@@ -1,4 +1,0 @@
-alcohol_use_disorders
-rate_0.025
-delay_0
-dur_20

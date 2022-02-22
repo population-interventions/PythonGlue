@@ -1,4 +1,0 @@
-stroke
-rate_0.05
-delay_5
-dur_110

@@ -1,4 +1,0 @@
-asthma
-rate_0.1
-delay_5
-dur_10

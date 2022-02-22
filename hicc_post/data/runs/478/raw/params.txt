@@ -1,4 +1,0 @@
-copd
-rate_0.2
-delay_20
-dur_20

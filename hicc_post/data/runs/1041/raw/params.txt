@@ -1,4 +1,0 @@
-prostate_cancer
-rate_0.1
-delay_0
-dur_5

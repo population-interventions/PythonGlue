@@ -1,4 +1,0 @@
-breast_cancer
-rate_0.1
-delay_5
-dur_5

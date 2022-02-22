@@ -1,4 +1,0 @@
-lung_cancer
-rate_0.05
-delay_20
-dur_10
