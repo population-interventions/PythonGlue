@@ -1,3 +1,6 @@
 *.csv
 *.xlsx
 venv
+/hiic_post/**/*.txt
+/hiic_post/**/*.json
+__pycache__
