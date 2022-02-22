@@ -1,0 +1,4 @@
+road_injuries
+rate_0.5
+delay_20
+dur_110

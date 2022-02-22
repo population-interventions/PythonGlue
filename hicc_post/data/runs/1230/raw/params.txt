@@ -1,0 +1,4 @@
+self_harm
+rate_0.05
+delay_10
+dur_1

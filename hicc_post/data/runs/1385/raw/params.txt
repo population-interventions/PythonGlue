@@ -1,0 +1,4 @@
+stroke
+rate_0.5
+delay_5
+dur_1

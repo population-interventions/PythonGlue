@@ -1,0 +1,4 @@
+asthma
+rate_0.2
+delay_5
+dur_1

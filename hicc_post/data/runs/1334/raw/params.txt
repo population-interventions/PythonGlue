@@ -1,0 +1,4 @@
+stroke
+rate_0.05
+delay_10
+dur_110

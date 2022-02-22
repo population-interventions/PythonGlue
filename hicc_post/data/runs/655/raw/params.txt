@@ -1,0 +1,4 @@
+ihd
+rate_0.1
+delay_20
+dur_1

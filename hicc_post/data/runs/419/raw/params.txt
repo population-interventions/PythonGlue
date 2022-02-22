@@ -1,0 +1,4 @@
+copd
+rate_0.025
+delay_20
+dur_110
