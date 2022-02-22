@@ -272,6 +272,12 @@ def process_run(run_id, base_path, metrics, age_categories, sex_categories, outc
 	Returns:
 	None
 	"""
+	metadata = open(f"{base_path}/{str(run_id)}/raw/params.txt", "r").read()
+	print("-------------------------------------")
+	print(f"run_id: {run_id}")
+	print("-------------------------------------")
+	print(metadata)
+	
 	params = {"type": "BAU"}
 	bau_df = read_data(
 		base_path=base_path,
@@ -345,21 +351,21 @@ def make_output_files(runs, base_path, metrics, age_categories, sex_categories, 
 		)
 
 
-# make_output_files(
-# 	runs=[*range(0,1400)],
-# 	base_path="hiic_post/data/runs",
-# 	metrics=["incidence", "mortality", "disability"],
-# 	age_categories=[
-# 		{"age_start": 0, "age_end": 14},
-# 		{"age_start": 15, "age_end": 24},
-# 		{"age_start": 25, "age_end": 44},
-# 		{"age_start": 45, "age_end": 64},
-# 		{"age_start": 65, "age_end": 84},
-# 		{"age_start": 85, "age_end": 110},
-# 		{"age_start": 85, "age_end": 110},
-# 	],
-# 	sex_categories=["male", "female"],
-# 	outcome_categories=["HALY", "total_spent", "total_income"]
-# )
+make_output_files(
+	runs=[*range(0,10)],
+	base_path="data/runs",
+	metrics=["incidence", "mortality", "disability"],
+	age_categories=[
+		{"age_start": 0, "age_end": 14},
+		{"age_start": 15, "age_end": 24},
+		{"age_start": 25, "age_end": 44},
+		{"age_start": 45, "age_end": 64},
+		{"age_start": 65, "age_end": 84},
+		{"age_start": 85, "age_end": 110},
+		{"age_start": 85, "age_end": 110},
+	],
+	sex_categories=["male", "female"],
+	outcome_categories=["HALY", "total_spent", "total_income"]
+)
 
-# print("Finished")
+print("Finished")
