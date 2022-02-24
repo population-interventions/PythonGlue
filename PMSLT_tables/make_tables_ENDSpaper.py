@@ -23,14 +23,14 @@ def make_tables(files, output_path):
 		# Drop columns and rename
 		df.drop(["BAU","fullcease","fullceasevape", "Sex", "Strata"], axis=1 ,inplace=True)
 		df.rename({
-			"ENDS in pharmacies only": "Intervention 1",
-			"ENDS in pharmacies only + advice to quit smoking": "Intervention 2",
+			"ENDS sales in pharmacies only": "Intervention 1",
+			"ENDS sales in pharmacies only + advice to quit smoking": "Intervention 2",
 			"sensitivity on effect of advice": "Intervention 2.1",
 			"ENDS in pharmacies only + advice to quit vaping": "Intervention 3",
 			"ENDS in pharmacies + GP prescription" : "Intervention 4",
 			"ENDS in pharmacies + GP prescription + advice to quit smoking/vaping" : "Intervention 5",
 			"MLPA_scenario1" : "MLPA Scenario 1",
-			"MLPA_scenario2" : "MLPA Scenario 2"
+			"MLPA_scenario2" : "MLPA Scenario 2",
 		},
 		axis="columns", inplace=True)
 		df.set_index(["Population", "Year"], inplace=True)
@@ -44,8 +44,8 @@ def make_tables(files, output_path):
 
 		# Column ordering
 		level_0_order = [
-			"Intervention 1","Intervention 2","Intervention 2.1",
-			"Intervention 3","Intervention 4", "Intervention 5", "MLPA Scenario 1", "MLPA Scenario 2"
+			"Intervention 1","Intervention 2","Intervention 2.1","Intervention 3","Intervention 4", "Intervention 5", 
+			"MLPA Scenario 1", "MLPA Scenario 2",
 		]
 		level_1_order = ["Estimate", "95% UI"]
 		df = df.reindex(columns=level_0_order, level=0)
