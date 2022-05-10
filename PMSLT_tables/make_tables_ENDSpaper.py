@@ -26,9 +26,10 @@ def make_tables(files, output_path):
 			"ENDS sales in pharmacies only": "Intervention 1",
 			"ENDS sales in pharmacies only + advice to quit smoking": "Intervention 2",
 			"sensitivity on effect of advice": "Intervention 2.1",
-			"ENDS in pharmacies only + advice to quit vaping": "Intervention 3",
+			"ENDS sales in pharmacies only + advice to quit vaping": "Intervention 3",
 			"ENDS in pharmacies + GP prescription" : "Intervention 4",
 			"ENDS in pharmacies + GP prescription + advice to quit smoking/vaping" : "Intervention 5",
+			"MLPA_intervention" : "MLPA Intervention",
 			"MLPA_scenario1" : "MLPA Scenario 1",
 			"MLPA_scenario2" : "MLPA Scenario 2",
 		},
@@ -45,7 +46,7 @@ def make_tables(files, output_path):
 		# Column ordering
 		level_0_order = [
 			"Intervention 1","Intervention 2","Intervention 2.1","Intervention 3","Intervention 4", "Intervention 5", 
-			"MLPA Scenario 1", "MLPA Scenario 2",
+			"MLPA Intervention", "MLPA Scenario 1", "MLPA Scenario 2",
 		]
 		level_1_order = ["Estimate", "95% UI"]
 		df = df.reindex(columns=level_0_order, level=0)
@@ -93,18 +94,18 @@ def save_file(df, sheet_name, output_path):
 
 
 files = [
-	{"file_name": "out_deaths_year_year_0-111_discount_0.csv", "title": "deaths_discount_0"}, 
-	{"file_name": "out_HALY_year_year_0-111_discount_-0.03.csv", "title": "HALYS_discount_0.03"}, 
-	{"file_name": "out_HALY_year_year_0-111_discount_0.csv", "title": "HALYS_discount_0"}, 
-	{"file_name": "out_total_income_year_year_0-111_discount_-0.03_millions.csv", "title": "income_discount_0.03"}, 
-	{"file_name": "out_total_income_year_year_0-111_discount_0_millions.csv", "title": "income_discount_0"}, 
-	{"file_name": "out_total_spent_year_year_0-111_discount_-0.03_millions.csv", "title": "expenditure_discount_0.03"}, 
-	{"file_name": "out_total_spent_year_year_0-111_discount_0_millions.csv", "title": "expenditure_discount_0"}, 
+	{"file_name": "out_deaths_year_year_0-110_discount_0.csv", "title": "deaths_discount_0"}, 
+	{"file_name": "out_HALY_year_year_0-110_discount_-0.03.csv", "title": "HALYS_discount_0.03"}, 
+	{"file_name": "out_HALY_year_year_0-110_discount_0.csv", "title": "HALYS_discount_0"}, 
+	{"file_name": "out_total_income_year_year_0-110_discount_-0.03_millions.csv", "title": "income_discount_0.03"}, 
+	{"file_name": "out_total_income_year_year_0-110_discount_0_millions.csv", "title": "income_discount_0"}, 
+	{"file_name": "out_total_spent_year_year_0-110_discount_-0.03_millions.csv", "title": "expenditure_discount_0.03"}, 
+	{"file_name": "out_total_spent_year_year_0-110_discount_0_millions.csv", "title": "expenditure_discount_0"}, 
 ]
 
 
 make_tables(
 	files=files,
-	output_path="PMSLT_tables/output/vaping_tables.xlsx"
+	output_path="output/vaping_tables.xlsx"
 )
 print("done")

@@ -11,7 +11,7 @@ def make_tables(files, output_path):
 	by output_path.
 	'''
 	init_workbook(output_path)
-	path_prefix= "drawAgg"
+	path_prefix= "PMSLT_tables/drawAgg"
 	for file in files:
 		df = pd.read_csv(f"{path_prefix}/{file['file_name']}")
 
@@ -90,14 +90,14 @@ def save_file(df, sheet_name, output_path):
 
 
 files = [
-	{"file_name": "out_deaths_year_year_0-111_discount_0.csv", "title": "deaths_discount_0"}, 
-	{"file_name": "out_HALY_year_year_0-111_discount_-0.03.csv", "title": "HALYS_discount_0.03"}, 
-	{"file_name": "out_HALY_year_year_0-111_discount_0.csv", "title": "HALYS_discount_0"}, 
+	{"file_name": "out_deaths_year_year_0-110_discount_0.csv", "title": "deaths_discount_0"}, 
+	{"file_name": "out_HALY_year_year_0-110_discount_-0.03.csv", "title": "HALYS_discount_0.03"}, 
+	{"file_name": "out_HALY_year_year_0-110_discount_0.csv", "title": "HALYS_discount_0"}, 
 ]
 
 
 make_tables(
 	files=files,
-	output_path="output/tobacco_tables.xlsx"
+	output_path="PMSLT_tables/output/tobacco_tables.xlsx"
 )
 print("done")
