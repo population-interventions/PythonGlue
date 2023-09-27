@@ -27,18 +27,18 @@ SCENE_MAP = {
 	'mass_media_uk' : 'UK mass media campaign',
 	'package_uk' : 'UK salt reduction program',
 	'reform_who' : 'Who mandatory',
-	'reform_who_90' : 'Who 90%',
-	'reform_who_70' : 'Who 70%',
-	'reform_who_50' : 'Who 50%',
 	'none' : 'No change'
 }
 
 tablesToMake = {
 	'HALY' : 'halys',
+	'deaths' : 'deaths',
 	'total_spent_gov_ind_inc_conservative_millions' : 'healthExpendGovIndConservativeMinusIncomeMillions',
+	'total_spent_gov_ind_inc_millions' : 'healthExpendGovIndMinusIncomeMillions',
 	'total_spent_gov_millions' : 'healthExpendGovMillions',
 	'total_spent_pp_only_millions' : 'healthExpendMillions',
 	'icer_gov_ind_inc_conservative_thousands_per_haly' : 'ICERhealthExpendGovIndConservativeMinusIncomeThousandsPerHaly',
+	'icer_gov_ind_inc_thousands_per_haly' : 'ICERhealthExpendGovIndMinusIncomeThousandsPerHaly',
 	'icer_gov_thousands_per_haly' : 'ICERhealthExpendGovThousandsPerHaly',
 	'total_income_millions' : 'personIncomeMillions',
 	'person_years' : 'personYears',
