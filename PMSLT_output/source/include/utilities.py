@@ -211,13 +211,17 @@ def RoundNumber(x, sigFigs):
 		return '-Infinity'
 	if np.isnan(x):
 		return 'NaN'
-	if abs(x) < 0.001:
-		return '{:,.0f}'.format(x)
-	if abs(x) < 1:
-		return '{:,.2f}'.format(x)
-	if abs(x) < 10:
-		return '{:,.1f}'.format(x)
-	return '{:,.0f}'.format(GetFigMult(x, sigFigs)*round(x/GetFigMult(x, sigFigs)))
+	
+	if abs(x) > 10**sigFigs:
+		return '{:,.0f}'.format(GetFigMult(x, sigFigs)*round(x/GetFigMult(x, sigFigs)))
+	
+	numStr = '{:.{}e}'.format(x, sigFigs)
+	if 'e' not in numStr:
+		return numStr
+	mantissa, exponent = numStr.split('e')
+	mantissa = float(mantissa)
+	exponent = int(exponent)
+	return '{:,.{}f}'.format(x, max(0, sigFigs - exponent - 1))
 
 
 def PrettyRoundDf(df, sigFigs, divisor=1):
@@ -345,6 +349,16 @@ def OutputToFile(df, path, index=True, head=False, replace=False):
 		if HEAD_MODE and head:
 			last = path.rfind('/')
 			df.head(100).to_csv(path[:last + 1] + '_head_' + path[last + 1:] + '.csv', index=index) 
+
+
+def OutputRawRowsToFile(rows, path):
+	# Write dataframe to a file.
+	# Appends dataframe when called with the same name.
+	fullFilePath = path + '.txt'
+	MakePath(path)
+	with open(fullFilePath, 'w') as f:
+		for row in rows:
+			f.write('\t'.join(row) + '\n')
 
 
 def CleanCsv(df):

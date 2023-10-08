@@ -1,0 +1,17 @@
+Reformulation
+Mandatory - Australia (100% Compliance)	209	(146 to 297)	573	(397 to 819)
+Australia 90% compliance	187	(130 to 268)	516	(356 to 739)
+Australia 70% compliance	146	(101 to 208)	403	(274 to 570)
+Australia 50% compliance	104	(73.0 to 148)	288	(199 to 411)
+Mandatory UK (100% compliance)	457	(320 to 655)	1,250	(862 to 1,800)
+UK 90% compliance	412	(286 to 588)	1,120	(778 to 1,610)
+UK 70% compliance	321	(223 to 457)	875	(604 to 1,250)
+UK 50% compliance	231	(160 to 329)	627	(433 to 902)
+Mandatory WHO	784	(543 to 1,090)	2,170	(1,470 to 3,050)
+Substitution of NaCl with KCl
+30% immediate substitution of all foods	2,180	(1,490 to 3,050)	5,390	(3,680 to 7,560)
+10% substitution all foods, over 10 years	341	(239 to 482)	1,400	(963 to 2,010)
+30% substitution discretionary over 3 years	270	(191 to 390)	793	(548 to 1,150)
+Programs
+UK mass media campaign	21.8	(10.9 to 39.7)	25.9	(12.7 to 47.4)
+UK salt reduction program	137	(95.5 to 193)	386	(265 to 545)

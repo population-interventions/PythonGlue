@@ -1,0 +1,31 @@
+Reformulation
+Mandatory - Australia (100% Compliance)	Cost Saving	10,500	-130	 	5,190	62,100	320
+ 	 	(7,330 to 15,600)	(-260 to -9.08)	 	(Cost Saving to 13,200)	(42,000 to 92,700)	(-150 to 1,030)
+Australia 90% compliance	Cost Saving	9,470	-105	 	5,440	55,900	301
+ 	(Cost Saving to 202)	(6,550 to 14,100)	(-221 to 1.82)	 	(Cost Saving to 13,200)	(38,000 to 84,500)	(-133 to 936)
+Australia 70% compliance	Cost Saving	7,350	-58.7	 	6,010	43,500	255
+ 	(Cost Saving to 4,190)	(5,070 to 10,900)	(-154 to 29.4)	 	(Cost Saving to 13,800)	(29,400 to 65,500)	(-82.1 to 749)
+Australia 50% compliance	Cost Saving	5,270	-12.4	 	6,940	31,100	214
+ 	(Cost Saving to 11,900)	(3,660 to 7,820)	(-87.9 to 57.5)	 	(Cost Saving to 14,900)	(21,200 to 47,200)	(-23.6 to 570)
+Mandatory UK (100% compliance)	Cost Saving	24,000	-385	 	5,170	140,000	725
+ 	 	(16,100 to 35,900)	(-667 to -131)	 	(Cost Saving to 13,200)	(93,300 to 211,000)	(-376 to 2,440)
+UK 90% compliance	Cost Saving	21,600	-338	 	5,310	127,000	668
+ 	 	(14,600 to 32,000)	(-589 to -111)	 	(Cost Saving to 13,300)	(84,300 to 190,000)	(-334 to 2,240)
+UK 70% compliance	Cost Saving	16,800	-240	 	5,560	99,100	542
+ 	 	(11,300 to 25,100)	(-436 to -64.0)	 	(Cost Saving to 13,500)	(65,800 to 149,000)	(-231 to 1,780)
+UK 50% compliance	Cost Saving	12,100	-143	 	6,040	71,000	420
+ 	 	(8,160 to 18,000)	(-287 to -5.75)	 	(Cost Saving to 13,900)	(47,100 to 107,000)	(-141 to 1,300)
+Mandatory WHO	Cost Saving	38,200	-756	 	3,730	226,000	822
+ 	 	(26,000 to 54,800)	(-1,200 to -369)	 	(Cost Saving to 11,500)	(151,000 to 327,000)	(-865 to 3,230)
+Substitution of NaCl with KCl
+30% immediate substitution of all foods	Cost Saving	98,200	-2,160	 	2,270	488,000	1,110
+ 	 	(68,400 to 139,000)	(-3,190 to -1,210)	 	(Cost Saving to 9,890)	(336,000 to 704,000)	(-2,520 to 5,990)
+10% substitution all foods, over 10 years	Cost Saving	14,800	-337	 	4,500	145,000	652
+ 	 	(10,200 to 21,900)	(-547 to -161)	 	(Cost Saving to 12,600)	(97,900 to 217,000)	(-476 to 2,370)
+30% substitution discretionary over 3 years	Cost Saving	12,500	-215	 	4,320	78,800	335
+ 	 	(8,620 to 18,200)	(-369 to -81.1)	 	(Cost Saving to 12,200)	(53,400 to 116,000)	(-265 to 1,220)
+Programs
+UK mass media campaign	4,280	1,080	4.70	 	10,800	1,940	20.7
+ 	(Cost Saving to 33,100)	(527 to 2,000)	(-15.6 to 21.2)	 	(1,560 to 26,600)	(967 to 3,580)	(3.61 to 38.8)
+UK salt reduction program	Cost Saving	6,540	-8.42	 	6,640	38,000	249
+ 	(Cost Saving to 12,000)	(4,510 to 9,530)	(-93.7 to 71.6)	 	(Cost Saving to 14,400)	(25,800 to 56,300)	(-45.8 to 672)
