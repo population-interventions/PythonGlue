@@ -15,3 +15,8 @@ Substitution of NaCl with KCl
 Programs
 UK mass media campaign	0.00629%	(0.00301% to 0.0122%)
 UK salt reduction program	0.0990%	(0.0663% to 0.147%)
+Extras
+Mandatory Aus followed by UK (100% compliance)	0.337%	(0.221% to 0.508%)
+Aus followed by UK, both 90% compliance	0.302%	(0.200% to 0.453%)
+Aus followed by UK, both 70% compliance	0.236%	(0.155% to 0.352%)
+Aus followed by UK, both 50% compliance	0.169%	(0.112% to 0.252%)

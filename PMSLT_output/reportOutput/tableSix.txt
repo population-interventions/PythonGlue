@@ -15,3 +15,8 @@ Substitution of NaCl with KCl
 Programs
 UK mass media campaign	21.8	(10.9 to 39.7)	25.9	(12.7 to 47.4)
 UK salt reduction program	137	(95.5 to 193)	386	(265 to 545)
+Extras
+Mandatory Aus followed by UK (100% compliance)	391	(276 to 552)	1,180	(820 to 1,680)
+Aus followed by UK, both 90% compliance	353	(250 to 496)	1,060	(742 to 1,510)
+Aus followed by UK, both 70% compliance	274	(195 to 387)	825	(578 to 1,170)
+Aus followed by UK, both 50% compliance	197	(140 to 275)	590	(414 to 836)

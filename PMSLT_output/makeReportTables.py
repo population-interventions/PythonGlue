@@ -5,7 +5,7 @@ import copy
 
 import source.include.utilities as util
 
-SOURCE = 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_09_27_nohsr2000'
+SOURCE = 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_09_30_nohsr2000'
 
 
 SCENE_MAP = {
@@ -17,6 +17,10 @@ SCENE_MAP = {
 	'reform_uk_90' : 'UK 90% compliance',
 	'reform_uk_70' : 'UK 70% compliance',
 	'reform_uk_50' : 'UK 50% compliance',
+	'reform_ausuk' : 'Mandatory Aus followed by UK (100% compliance)',
+	'reform_ausuk_90' : 'Aus followed by UK, both 90% compliance',
+	'reform_ausuk_70' : 'Aus followed by UK, both 70% compliance',
+	'reform_ausuk_50' : 'Aus followed by UK, both 50% compliance',
 	'reform_who' : 'Mandatory WHO',
 	'reform_kcl_all' : '30% immediate substitution of all foods',
 	'reform_kcl_10' : '10% substitution all foods, over 10 years',
@@ -36,6 +40,9 @@ HEADINGS = {
 	],
 	'Programs' : [
 		'mass_media_uk', 'package_uk',
+	],
+	'Extras' : [
+		'reform_ausuk', 'reform_ausuk_90', 'reform_ausuk_70', 'reform_ausuk_50',
 	],
 }
 
@@ -293,8 +300,6 @@ def MakeFormattedTable(tableName, tableData):
 			rows = rows + MakeTableRows(rawName, outName, tableData)
 	util.OutputRawRowsToFile(rows, 'reportOutput/{}'.format(tableName))
 
-
-outputTables = {'supTableThree' : outputTables['supTableThree']}
 
 for tableName, tableData in outputTables.items():
 	print('Making', tableName)
