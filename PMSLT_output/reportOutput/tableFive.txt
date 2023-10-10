@@ -1,3 +1,6 @@
+Expenditure in 2023 AU$ discounted at 3%
+	Health - 20 Years	Health - Lifetime	Health + Govt - 20 Years	Health + Govt - Lifetime	Health + Govt + Industry - 20 Years	Health + Govt + Industry - Lifetime	Health + Govt + Industry (conservative) - 20 Years	Health + Govt + Industry (conservative) - Lifetime
+=== Copyable table below ===
 Reformulation
 Mandatory - Australia (100% Compliance)	-234	214	-130	320	-3.22	443	52.7	509
  	(-355 to -125)	(-251 to 909)	(-260 to -9.08)	(-150 to 1,030)	(-145 to 162)	(-27.3 to 1,150)	(-107 to 267)	(30.6 to 1,220)
@@ -18,12 +21,12 @@ UK 50% compliance	-248	316	-143	420	-42.1	523	7.21	574
 Mandatory WHO	-862	716	-756	822	-403	1,170	-243	1,340
  	(-1,300 to -480)	(-971 to 3,130)	(-1,200 to -369)	(-865 to 3,230)	(-898 to 86.7)	(-533 to 3,640)	(-791 to 388)	(-409 to 3,840)
 Substitution of NaCl with KCl
-30% immediate substitution of all foods	-2,160	1,110	-2,160	1,110	-2,160	1,110	-2,160	1,110
- 	(-3,190 to -1,210)	(-2,520 to 5,990)	(-3,190 to -1,210)	(-2,520 to 5,990)	(-3,190 to -1,210)	(-2,520 to 5,990)	(-3,190 to -1,210)	(-2,520 to 5,990)
-10% substitution all foods, over 10 years	-414	573	-337	652	1,640	2,720	1,640	2,720
- 	(-617 to -238)	(-553 to 2,280)	(-547 to -161)	(-476 to 2,370)	(535 to 3,970)	(1,070 to 5,420)	(535 to 3,970)	(1,070 to 5,420)
-30% substitution discretionary over 3 years	-292	259	-215	335	817	1,430	817	1,430
- 	(-441 to -161)	(-346 to 1,130)	(-369 to -81.1)	(-265 to 1,220)	(248 to 2,080)	(529 to 2,970)	(248 to 2,080)	(529 to 2,970)
+30% immediate substitution of all foods	-2,130	1,140	-2,130	1,140	-1,590	1,690	-1,590	1,690
+ 	(-3,210 to -1,240)	(-2,530 to 5,970)	(-3,210 to -1,240)	(-2,530 to 5,970)	(-2,720 to -526)	(-2,050 to 6,470)	(-2,720 to -526)	(-2,050 to 6,470)
+10% substitution all foods, over 10 years	-412	604	-332	691	-197	834	-197	834
+ 	(-631 to -246)	(-538 to 2,270)	(-554 to -136)	(-460 to 2,340)	(-426 to 31.4)	(-310 to 2,500)	(-426 to 31.4)	(-310 to 2,500)
+30% substitution discretionary over 3 years	-291	274	-212	360	-139	434	-139	434
+ 	(-442 to -161)	(-344 to 1,120)	(-367 to -58.3)	(-269 to 1,200)	(-303 to 29.8)	(-192 to 1,270)	(-303 to 29.8)	(-192 to 1,270)
 Programs
 UK mass media campaign	-18.7	-2.99	4.70	20.7	4.70	20.7	4.70	20.7
  	(-38.6 to -7.63)	(-18.2 to 11.8)	(-15.6 to 21.2)	(3.61 to 38.8)	(-15.6 to 21.2)	(3.61 to 38.8)	(-15.6 to 21.2)	(3.61 to 38.8)

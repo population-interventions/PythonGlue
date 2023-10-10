@@ -1,3 +1,6 @@
+Percentage reduction in ACMR gap from SES1 to SES5 in 2044
+	reduction in SES ACMR Gap 
+=== Copyable table below ===
 Reformulation
 Mandatory - Australia (100% Compliance)	0.158%	(0.105% to 0.241%)
 Australia 90% compliance	0.143%	(0.0943% to 0.217%)
@@ -9,9 +12,9 @@ UK 70% compliance	0.245%	(0.160% to 0.367%)
 UK 50% compliance	0.176%	(0.115% to 0.262%)
 Mandatory WHO	0.590%	(0.393% to 0.867%)
 Substitution of NaCl with KCl
-30% immediate substitution of all foods	1.43%	(0.926% to 2.09%)
-10% substitution all foods, over 10 years	0.379%	(0.251% to 0.568%)
-30% substitution discretionary over 3 years	0.209%	(0.139% to 0.313%)
+30% immediate substitution of all foods	1.42%	(0.956% to 2.06%)
+10% substitution all foods, over 10 years	0.381%	(0.254% to 0.566%)
+30% substitution discretionary over 3 years	0.211%	(0.140% to 0.308%)
 Programs
 UK mass media campaign	0.00629%	(0.00301% to 0.0122%)
 UK salt reduction program	0.0990%	(0.0663% to 0.147%)

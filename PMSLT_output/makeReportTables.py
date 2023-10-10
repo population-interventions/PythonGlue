@@ -5,8 +5,13 @@ import copy
 
 import source.include.utilities as util
 
-SOURCE = 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_09_30_nohsr2000'
+DEFAULT_SOURCE = 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_09_27_nohsr2000'
 
+scenarioSource = {
+	'reform_kcl_all' : 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_10_11_kcl2000',
+	'reform_kcl_10' : 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_10_11_kcl2000',
+	'reform_kcl_nacl' : 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_10_11_kcl2000',
+}
 
 SCENE_MAP = {
 	'reform_aus' : 'Mandatory - Australia (100% Compliance)',
@@ -51,6 +56,7 @@ DEF_HEADER = 2
 
 outputTables = {}
 outputTables['tableThree'] = {
+	'description' : 'HALYs gained in [2024, 2044) discounted at 3%',
 	'columns' : {
 		'Combined' : {
 			'file' : 'out_HALY_year_year_0-114_discount_-0.03_raw',
@@ -85,6 +91,7 @@ outputTables['tableThree'] = {
 }
 
 outputTables['tableFour'] = copy.deepcopy(outputTables['tableThree'])
+outputTables['tableFour']['description'] = 'HALYs gained over lifetime discounted at 3%'
 for k, v in outputTables['tableFour']['columns'].items():
 	if 'Year' in v['strata']:
 		v['strata']['Year'] = 'All'
@@ -102,6 +109,7 @@ for k, v in outputTables['tableFour']['columns'].items():
 		}
 
 outputTables['tableFive'] = {
+	'description' : 'Expenditure in 2023 AU$ discounted at 3%',
 	'columns' : {
 		'Health - 20 Years' : {
 			'file' : 'out_total_spent_pp_only_millions_year_year_0-114_discount_-0.03_raw',
@@ -139,6 +147,7 @@ outputTables['tableFive'] = {
 }
 
 outputTables['tableSix'] = {
+	'description' : 'Income gain in 2023 AU$ discounted at 3%',
 	'inlineUncertainty' : True,
 	'columns' : {
 		'20-year time horizon' : {
@@ -153,6 +162,7 @@ outputTables['tableSix'] = {
 }
 
 outputTables['tableEight'] = {
+	'description' : 'ICERs from health system and gov perspective, for years [2024, 2044), in 2023 AU$ discounted at 3%',
 	'columns' : {
 		'ICER + Gov 20 years' : {
 			'file' : 'out_icer_gov_thousands_per_haly_year_year_0-114_discount_-0.03_raw',
@@ -187,6 +197,7 @@ outputTables['tableEight'] = {
 }
 
 outputTables['tableNine'] = {
+	'description' : 'Percentage reduction in ACMR gap from SES1 to SES5 in 2044',
 	'inlineUncertainty' : True,
 	'columns' : {
 		'reduction in SES ACMR Gap ' : {
@@ -199,6 +210,7 @@ outputTables['tableNine'] = {
 }
 
 outputTables['supTableOne'] = copy.deepcopy(outputTables['tableThree'])
+outputTables['tableFour']['description'] = 'HALYs gained in [2024, 2044) discounted at 0%'
 for k, v in outputTables['supTableOne']['columns'].items():
 	if 'file' in v:
 		v['file'] = v['file'].replace('-0.03', '0')
@@ -207,6 +219,7 @@ for k, v in outputTables['supTableOne']['columns'].items():
 		v['denominator']['file'] = v['denominator']['file'].replace('-0.03', '0')
 
 outputTables['supTableTwo'] = copy.deepcopy(outputTables['tableFour'])
+outputTables['tableFour']['description'] = 'HALYs gained over lifetime discounted at 0%'
 for k, v in outputTables['supTableTwo']['columns'].items():
 	if 'file' in v:
 		v['file'] = v['file'].replace('-0.03', '0')
@@ -215,6 +228,7 @@ for k, v in outputTables['supTableTwo']['columns'].items():
 		v['denominator']['file'] = v['denominator']['file'].replace('-0.03', '0')
 
 outputTables['supTableThree'] = copy.deepcopy(outputTables['tableFive'])
+outputTables['tableFour']['description'] = 'Expenditure in 2023 AU$ discounted at 0%'
 for k, v in outputTables['supTableThree']['columns'].items():
 	v['file'] = v['file'].replace('-0.03', '0')
 
@@ -247,14 +261,22 @@ def AddRowEntry(
 		rows[uncertRow].append(entry)
 
 
+def ReadFromScenarioFiles(fileName, index_col=list(range(1)), header=list(range(1))):
+	df = pd.read_csv('{}/{}.csv'.format(DEFAULT_SOURCE, fileName), index_col=index_col, header=header)
+	for scenario, directory in scenarioSource.items():
+		dfAlt = pd.read_csv('{}/{}.csv'.format(directory, fileName), index_col=index_col, header=header)
+		df[scenario] = dfAlt[scenario]
+	return df
+
+
 def GetDataEntry(rawName, dataSpec):
 	if util.OptExists(dataSpec, 'numerator'):
 		dfNum = GetDataEntry(rawName, dataSpec['numerator'])
 		dfDenom = GetDataEntry(rawName, dataSpec['denominator'])
 		return dfNum / dfDenom
 		
-	df = pd.read_csv(
-		'{}/{}.csv'.format(SOURCE, dataSpec['file']),
+	df = ReadFromScenarioFiles(
+		dataSpec['file'],
 		index_col=list(range(util.Opt(dataSpec, 'index', DEF_INDEX))),
 		header=list(range(util.Opt(dataSpec, 'header', DEF_HEADER)))
 	)
@@ -289,10 +311,14 @@ def MakeTableRows(rawName, outName, tableData):
 				sigFigs=util.Opt(colData, 'sigFigs', 3),
 			)
 	return rows
-	
+
+
+def MakeTableHeader(tableData):
+	return [[tableData['description']], [''] + list(tableData['columns'].keys()), ['=== Copyable table below ===']]
 
 def MakeFormattedTable(tableName, tableData):
 	rows = []
+	rows = rows + MakeTableHeader(tableData)
 	for headingName, headingMetrics in HEADINGS.items():
 		rows.append([headingName])
 		for rawName in headingMetrics: 
