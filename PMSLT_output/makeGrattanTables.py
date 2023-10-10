@@ -4,7 +4,7 @@ import numpy as np
 
 import source.include.utilities as util
 
-SOURCE = 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_09_30_nohsr2000'
+SOURCE = 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_09_27_nohsr2000'
 
 
 SCENE_MAP = {
@@ -59,7 +59,7 @@ def MakeDiscountTable(name, outName, raw=False):
 			df = pd.read_csv(path, index_col=list(range(3)))
 			df = util.FilterOutMultiIndex(df, {'Sex' : 'All', 'strata' : 'All'})
 		
-		df = df[SCENE_MAP.keys()]
+		df = df[util.ListIntersection(list(df.columns), SCENE_MAP.keys())]
 		df = df.rename(columns=SCENE_MAP)
 		df.columns.name = 'Scenario'
 		df = df.transpose()
@@ -69,16 +69,21 @@ def MakeDiscountTable(name, outName, raw=False):
 	return df
 
 
-def MakeStandardTable(name, outName):
+def MakeStandardTable(name, outName, suffix=False, hasPercentile=True):
 	toAppend = []
-	for raw in [False, True]:
+	for raw in ([False, True] if hasPercentile else [False]):
 		df = MakeDiscountTable(name, outName, raw=raw)
 		df = util.AddIndexLevel(df, 'Raw Median', raw, toTopLevel=True)
 		toAppend.append(df)
 	df = pd.concat(toAppend)
-	util.OutputToFile(df, 'output/{}'.format(outName))
+	df = df.sort_index(axis=1).sort_index(axis=0)
+	util.OutputToFile(df, 'output{}/{}{}'.format(
+		('_' + suffix) if suffix else '',
+		outName,
+		('_' + suffix) if suffix else ''
+	))
 	
 
 for inName, outName in tablesToMake.items():
-	MakeStandardTable(inName, outName)
+	MakeStandardTable(inName, outName, suffix=False, hasPercentile=True)
 				  
