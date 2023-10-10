@@ -4,8 +4,13 @@ import numpy as np
 
 import source.include.utilities as util
 
-SOURCE = 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_09_27_nohsr2000'
+DEFAULT_SOURCE = 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_09_27_nohsr2000'
 
+scenarioSource = {
+	'reform_kcl_all' : 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_10_11_kcl2000',
+	'reform_kcl_10' : 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_10_11_kcl2000',
+	'reform_kcl_nacl' : 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_10_11_kcl2000',
+}
 
 SCENE_MAP = {
 	'bau' : 'BAU',
@@ -45,18 +50,26 @@ tablesToMake = {
 	
 }
 
+def ReadFromScenarioFiles(fileName, index_col=list(range(1)), header=list(range(1))):
+	df = pd.read_csv('{}/{}.csv'.format(DEFAULT_SOURCE, fileName), index_col=index_col, header=header)
+	for scenario, directory in scenarioSource.items():
+		dfAlt = pd.read_csv('{}/{}.csv'.format(directory, fileName), index_col=index_col, header=header)
+		df[scenario] = dfAlt[scenario]
+	return df
+		
+
 def MakeDiscountTable(name, outName, raw=False):
 	toAppend = []
 	for discount in [0, -0.03]:
 		if raw:
-			path = '{}/out_{}_year_year_0-114_discount_{}_raw.csv'.format(SOURCE, name, discount)
-			df = pd.read_csv(path, index_col=list(range(3)), header=list(range(2)))
+			fileName = 'out_{}_year_year_0-114_discount_{}_raw'.format(name, discount)
+			df = ReadFromScenarioFiles(fileName, index_col=list(range(3)), header=list(range(2)))
 			df.columns.names = ['Scenario', 'Percentile']
 			df = util.FilterOutMultiIndex(df, {'Sex' : 'All', 'strata' : 'All'})
 			df = util.FilterOutMultiIndex(df.transpose(), {'Percentile' : '50%'}).transpose()
 		else:
-			path = '{}/out_{}_year_year_0-114_discount_{}.csv'.format(SOURCE, name, discount)
-			df = pd.read_csv(path, index_col=list(range(3)))
+			fileName = 'out_{}_year_year_0-114_discount_{}'.format(name, discount)
+			df = ReadFromScenarioFiles(fileName, index_col=list(range(3)))
 			df = util.FilterOutMultiIndex(df, {'Sex' : 'All', 'strata' : 'All'})
 		
 		df = df[util.ListIntersection(list(df.columns), SCENE_MAP.keys())]
