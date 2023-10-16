@@ -39,19 +39,19 @@ SCENE_MAP = {
 }
 
 tablesToMake = {
-	'HALY'                                             : {'name' : 'halys', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
-	'deaths'                                           : {'name' : 'deaths', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
-	'total_spent_gov_ind_inc_conservative_millions'    : {'name' : 'healthExpendGovIndConservativeMinusIncomeMillions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
-	'total_spent_gov_ind_inc_millions'                 : {'name' : 'healthExpendGovIndMinusIncomeMillions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
-	'total_spent_gov_millions'                         : {'name' : 'healthExpendGovMillions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
-	'total_spent_pp_only_millions'                     : {'name' : 'healthExpendMillions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
-	'icer_gov_ind_inc_conservative_thousands_per_haly' : {'name' : 'ICERhealthExpendGovIndConservativeMinusIncomeThousandsPerHaly'},
-	'icer_gov_ind_inc_thousands_per_haly'              : {'name' : 'ICERhealthExpendGovIndMinusIncomeThousandsPerHaly'},
-	'icer_gov_thousands_per_haly'                      : {'name' : 'ICERhealthExpendGovThousandsPerHaly'},
-	'total_income_millions'                            : {'name' : 'personIncomeMillions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
-	'person_years'                                     : {'name' : 'personYears', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
-	'total_income_millions'                            : {'name' : 'strata_income_millions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS, 'fullIndex' : True},
-	'HALY'                                             : {'name' : 'strata_halys', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS, 'fullIndex' : True},
+	'halys'                                                         : {'file' : 'HALY', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
+	'deaths'                                                        : {'file' : 'deaths', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
+	'healthExpendGovIndConservativeMinusIncomeMillions'             : {'file' : 'total_spent_gov_ind_inc_conservative_millions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
+	'healthExpendGovIndMinusIncomeMillions'                         : {'file' : 'total_spent_gov_ind_inc_millions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
+	'healthExpendGovMillions'                                       : {'file' : 'total_spent_gov_millions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
+	'healthExpendMillions'                                          : {'file' : 'total_spent_pp_only_millions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
+	'ICERhealthExpendGovIndConservativeMinusIncomeThousandsPerHaly' : {'file' : 'icer_gov_ind_inc_conservative_thousands_per_haly'},
+	'ICERhealthExpendGovIndMinusIncomeThousandsPerHaly'             : {'file' : 'icer_gov_ind_inc_thousands_per_haly'},
+	'ICERhealthExpendGovThousandsPerHaly'                           : {'file' : 'icer_gov_thousands_per_haly'},
+	'personIncomeMillions'                                          : {'file' : 'total_income_millions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
+	'personYears'                                                   : {'file' : 'person_years', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
+	'strata_income_millions'                                        : {'file' : 'total_income_millions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS, 'fullIndex' : True},
+	'strata_halys'                                                  : {'file' : 'HALY', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS, 'fullIndex' : True},
 }
 	
 def MakeUncertaintyFormatColumn(df, multiplier=1):
@@ -65,7 +65,7 @@ def MakeUncertaintyFormatColumn(df, multiplier=1):
 def MakeDiscountTable(name, outName, raw=False, filterOut=False, extraDiscountYears=0):
 	toAppend = []
 	for discount in [0, -0.03]:
-		discountMult = ((1 - discount)**(extraDiscountYears))
+		discountMult = ((1 + discount)**(-extraDiscountYears))
 		if raw:
 			fileName = 'out_{}_year_year_0-114_discount_{}_raw'.format(name, discount)
 			df = shared.ReadFromScenarioFiles(
@@ -123,11 +123,11 @@ def MakeStandardTable(
 	))
 	
 
-for inName, outData in tablesToMake.items():
+for outName, outData in tablesToMake.items():
 	filterOut = False if util.Opt(outData, 'fullIndex') else ['Sex', 'strata']
 	extraDiscountYears = util.Opt(outData, 'extraDiscountYears', 0)
-	print(outData['name'])
+	print(outName)
 	MakeStandardTable(
-		inName, outData['name'], suffix=False, hasPercentile=True,
+		outData['file'], outName, suffix=False, hasPercentile=True,
 		filterOut=filterOut, extraDiscountYears=extraDiscountYears)
 				  
