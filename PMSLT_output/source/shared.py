@@ -20,3 +20,12 @@ def ReadFromScenarioFiles(source, scenarioSource, fileName, index_col=list(range
 		dfAlt = pd.read_csv('{}/{}.csv'.format(directory, fileName), index_col=index_col, header=header)
 		df[scenario] = dfAlt[scenario]
 	return df
+
+
+def GetFileDiscount(file):
+	fileData = file.split('_')
+	index = fileData.index('discount')
+	if (not index) or len(fileData) < index + 1:
+		return False
+	discount = float(fileData[index + 1])
+	return discount

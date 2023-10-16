@@ -8,6 +8,8 @@ import source.shared as shared
 
 DEFAULT_SOURCE = 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_09_27_nohsr2000'
 
+EXTRA_DISCOUNT_YEARS = 4 # Takes us to 2023
+
 scenarioSource = {
 	'reform_kcl_all' : 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_10_11_kcl2000',
 	'reform_kcl_10' : 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_10_11_kcl2000',
@@ -62,26 +64,32 @@ outputTables['tableThree'] = {
 		'Combined' : {
 			'file' : 'out_HALY_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'All'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'SES 1' : {
 			'file' : 'out_HALY_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'SES1'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'SES 2' : {
 			'file' : 'out_HALY_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'SES2'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'SES 3' : {
 			'file' : 'out_HALY_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'SES3'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'SES 4' : {
 			'file' : 'out_HALY_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'SES4'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'SES 5' : {
 			'file' : 'out_HALY_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'SES5'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'RR SES 1 c.f. 5' : {
 			'file' : 'standard/standard_age_haly_strata_discount_-0.03_year_ranges_deltaRatio_raw',
@@ -115,34 +123,42 @@ outputTables['tableFive'] = {
 		'Health - 20 Years' : {
 			'file' : 'out_total_spent_pp_only_millions_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'All'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'Health - Lifetime' : {
 			'file' : 'out_total_spent_pp_only_millions_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : 'All', 'Sex' : 'All', 'strata' : 'All'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'Health + Govt - 20 Years' : {
 			'file' : 'out_total_spent_gov_millions_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'All'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'Health + Govt - Lifetime' : {
 			'file' : 'out_total_spent_gov_millions_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : 'All', 'Sex' : 'All', 'strata' : 'All'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'Health + Govt + Industry - 20 Years' : {
 			'file' : 'out_total_spent_gov_ind_millions_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'All'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'Health + Govt + Industry - Lifetime' : {
 			'file' : 'out_total_spent_gov_ind_millions_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : 'All', 'Sex' : 'All', 'strata' : 'All'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'Health + Govt + Industry (conservative) - 20 Years' : {
 			'file' : 'out_total_spent_gov_ind_conservative_millions_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'All'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'Health + Govt + Industry (conservative) - Lifetime' : {
 			'file' : 'out_total_spent_gov_ind_conservative_millions_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : 'All', 'Sex' : 'All', 'strata' : 'All'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 	},
 }
@@ -154,10 +170,12 @@ outputTables['tableSix'] = {
 		'20-year time horizon' : {
 			'file' : 'out_total_income_millions_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'All'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'Lifetime horizon' : {
 			'file' : 'out_total_income_millions_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : 'All', 'Sex' : 'All', 'strata' : 'All'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 	},
 }
@@ -168,31 +186,37 @@ outputTables['tableEight'] = {
 		'ICER + Gov 20 years' : {
 			'file' : 'out_icer_gov_thousands_per_haly_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'All'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 			'costSaving' : True,
 			'multiplier' : 1e3,
 		},
 		'HALY 20 years' : {
 			'file' : 'out_HALY_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'All'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'Health + Govt - 20 Years' : {
 			'file' : 'out_total_spent_gov_millions_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'All'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'spacer1' : {'spacer' : True},
 		'ICER + Gov All years' : {
 			'file' : 'out_icer_gov_thousands_per_haly_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : 'All', 'Sex' : 'All', 'strata' : 'All'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 			'costSaving' : True,
 			'multiplier' : 1e3,
 		},
 		'HALY All years' : {
 			'file' : 'out_HALY_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : 'All', 'Sex' : 'All', 'strata' : 'All'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'Health + Govt - All Years' : {
 			'file' : 'out_total_spent_gov_millions_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : 'All', 'Sex' : 'All', 'strata' : 'All'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 	},
 }
@@ -278,6 +302,11 @@ def MakeTableRows(rawName, outName, tableData):
 		rows[1].append(' ')
 	
 	for colName, colData in tableData['columns'].items():
+		discountMult = 1
+		if util.OptExists(colData, 'extraDiscountYears'):
+			discount = shared.GetFileDiscount(colData['file'])
+			discountMult = ((1 + discount)**(-util.Opt(colData, 'extraDiscountYears')))
+		
 		if util.Opt(colData, 'spacer'):
 			rows[0].append(' ')
 			if not util.Opt(tableData, 'inlineUncertainty'):
@@ -286,7 +315,7 @@ def MakeTableRows(rawName, outName, tableData):
 			df = GetDataEntry(rawName, colData)
 			AddRowEntry(
 				rows, df,
-				multiplier=util.Opt(colData, 'multiplier'),
+				multiplier=util.Opt(colData, 'multiplier', 1) * discountMult,
 				formatType=util.Opt(colData, 'formatType'),
 				skipUncertainty=util.Opt(colData, 'skipUncertainty'),
 				inlineUncertainty=util.Opt(tableData, 'inlineUncertainty'),
