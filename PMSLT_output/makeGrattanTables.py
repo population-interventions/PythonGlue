@@ -3,8 +3,11 @@ import pandas as pd
 import numpy as np
 
 import source.include.utilities as util
+import source.shared as shared
 
 DEFAULT_SOURCE = 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_09_27_nohsr2000'
+
+EXTRA_DISCOUNT_YEARS = 4 # Takes us to 2023
 
 scenarioSource = {
 	'reform_kcl_all' : 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_10_11_kcl2000',
@@ -36,41 +39,56 @@ SCENE_MAP = {
 }
 
 tablesToMake = {
-	'HALY' : 'halys',
-	'deaths' : 'deaths',
-	'total_spent_gov_ind_inc_conservative_millions' : 'healthExpendGovIndConservativeMinusIncomeMillions',
-	'total_spent_gov_ind_inc_millions' : 'healthExpendGovIndMinusIncomeMillions',
-	'total_spent_gov_millions' : 'healthExpendGovMillions',
-	'total_spent_pp_only_millions' : 'healthExpendMillions',
-	'icer_gov_ind_inc_conservative_thousands_per_haly' : 'ICERhealthExpendGovIndConservativeMinusIncomeThousandsPerHaly',
-	'icer_gov_ind_inc_thousands_per_haly' : 'ICERhealthExpendGovIndMinusIncomeThousandsPerHaly',
-	'icer_gov_thousands_per_haly' : 'ICERhealthExpendGovThousandsPerHaly',
-	'total_income_millions' : 'personIncomeMillions',
-	'person_years' : 'personYears',
-	
+	'HALY'                                             : {'name' : 'halys', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
+	'deaths'                                           : {'name' : 'deaths', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
+	'total_spent_gov_ind_inc_conservative_millions'    : {'name' : 'healthExpendGovIndConservativeMinusIncomeMillions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
+	'total_spent_gov_ind_inc_millions'                 : {'name' : 'healthExpendGovIndMinusIncomeMillions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
+	'total_spent_gov_millions'                         : {'name' : 'healthExpendGovMillions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
+	'total_spent_pp_only_millions'                     : {'name' : 'healthExpendMillions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
+	'icer_gov_ind_inc_conservative_thousands_per_haly' : {'name' : 'ICERhealthExpendGovIndConservativeMinusIncomeThousandsPerHaly'},
+	'icer_gov_ind_inc_thousands_per_haly'              : {'name' : 'ICERhealthExpendGovIndMinusIncomeThousandsPerHaly'},
+	'icer_gov_thousands_per_haly'                      : {'name' : 'ICERhealthExpendGovThousandsPerHaly'},
+	'total_income_millions'                            : {'name' : 'personIncomeMillions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
+	'person_years'                                     : {'name' : 'personYears', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
+	'total_income_millions'                            : {'name' : 'strata_income_millions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS, 'fullIndex' : True},
+	'HALY'                                             : {'name' : 'strata_halys', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS, 'fullIndex' : True},
 }
-
-def ReadFromScenarioFiles(fileName, index_col=list(range(1)), header=list(range(1))):
-	df = pd.read_csv('{}/{}.csv'.format(DEFAULT_SOURCE, fileName), index_col=index_col, header=header)
-	for scenario, directory in scenarioSource.items():
-		dfAlt = pd.read_csv('{}/{}.csv'.format(directory, fileName), index_col=index_col, header=header)
-		df[scenario] = dfAlt[scenario]
+	
+def MakeUncertaintyFormatColumn(df, multiplier=1):
+	df = df.apply(lambda x: '{} ({} to {})'.format(
+		shared.FormatNumber(x['50%'], multiplier, False, False, 3),
+		shared.FormatNumber(x['2.5%'], multiplier, False, False, 3),
+		shared.FormatNumber(x['97.5%'], multiplier, False, False, 3)), axis=1)
 	return df
-		
+	
 
-def MakeDiscountTable(name, outName, raw=False):
+def MakeDiscountTable(name, outName, raw=False, filterOut=False, extraDiscountYears=0):
 	toAppend = []
 	for discount in [0, -0.03]:
+		discountMult = ((1 - discount)**(extraDiscountYears))
 		if raw:
 			fileName = 'out_{}_year_year_0-114_discount_{}_raw'.format(name, discount)
-			df = ReadFromScenarioFiles(fileName, index_col=list(range(3)), header=list(range(2)))
+			df = shared.ReadFromScenarioFiles(
+				DEFAULT_SOURCE, scenarioSource, fileName,
+				index_col=list(range(3)), header=list(range(2)))
 			df.columns.names = ['Scenario', 'Percentile']
-			df = util.FilterOutMultiIndex(df, {'Sex' : 'All', 'strata' : 'All'})
+			if filterOut:
+				df = util.FilterOutMultiIndex(df, {name : 'All' for name in filterOut})
 			df = util.FilterOutMultiIndex(df.transpose(), {'Percentile' : '50%'}).transpose()
+			df = df * discountMult
 		else:
-			fileName = 'out_{}_year_year_0-114_discount_{}'.format(name, discount)
-			df = ReadFromScenarioFiles(fileName, index_col=list(range(3)))
-			df = util.FilterOutMultiIndex(df, {'Sex' : 'All', 'strata' : 'All'})
+			fileName = 'out_{}_year_year_0-114_discount_{}_raw'.format(name, discount)
+			df = shared.ReadFromScenarioFiles(
+				DEFAULT_SOURCE, scenarioSource, fileName,
+				index_col=list(range(3)), header=list(range(2)))
+			df.columns.names = ['Scenario', 'Percentile']
+			
+			if filterOut:
+				df = util.FilterOutMultiIndex(df, {name : 'All' for name in filterOut})
+			
+			df = pd.DataFrame({name : MakeUncertaintyFormatColumn(df[name], multiplier=discountMult) 
+				 for name in df.columns.get_level_values('Scenario')
+			})
 		
 		df = df[util.ListIntersection(list(df.columns), SCENE_MAP.keys())]
 		df = df.rename(columns=SCENE_MAP)
@@ -78,14 +96,22 @@ def MakeDiscountTable(name, outName, raw=False):
 		df = df.transpose()
 		df = util.AddIndexLevel(df, 'Discount', '{:.0f}%'.format(-100*discount), toTopLevel=True)
 		toAppend.append(df)
+	
 	df = pd.concat(toAppend)
+	if isinstance(df.columns, pd.MultiIndex):
+		toUnstack = util.ListRemove(df.columns.names, 'Year')
+		df = df.stack(toUnstack)
 	return df
 
 
-def MakeStandardTable(name, outName, suffix=False, hasPercentile=True):
+def MakeStandardTable(
+		name, outName, suffix=False, hasPercentile=True,
+		filterOut=False, extraDiscountYears=0):
 	toAppend = []
 	for raw in ([False, True] if hasPercentile else [False]):
-		df = MakeDiscountTable(name, outName, raw=raw)
+		df = MakeDiscountTable(
+			name, outName, raw=raw, filterOut=filterOut,
+			extraDiscountYears=extraDiscountYears)
 		df = util.AddIndexLevel(df, 'Raw Median', raw, toTopLevel=True)
 		toAppend.append(df)
 	df = pd.concat(toAppend)
@@ -97,6 +123,11 @@ def MakeStandardTable(name, outName, suffix=False, hasPercentile=True):
 	))
 	
 
-for inName, outName in tablesToMake.items():
-	MakeStandardTable(inName, outName, suffix=False, hasPercentile=True)
+for inName, outData in tablesToMake.items():
+	filterOut = False if util.Opt(outData, 'fullIndex') else ['Sex', 'strata']
+	extraDiscountYears = util.Opt(outData, 'extraDiscountYears', 0)
+	print(outData['name'])
+	MakeStandardTable(
+		inName, outData['name'], suffix=False, hasPercentile=True,
+		filterOut=filterOut, extraDiscountYears=extraDiscountYears)
 				  

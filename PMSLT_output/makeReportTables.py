@@ -4,6 +4,7 @@ import numpy as np
 import copy
 
 import source.include.utilities as util
+import source.shared as shared
 
 DEFAULT_SOURCE = 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_09_27_nohsr2000'
 
@@ -233,40 +234,22 @@ for k, v in outputTables['supTableThree']['columns'].items():
 	v['file'] = v['file'].replace('-0.03', '0')
 
 
-def FormatNumber(number, multiplier, formatType, costSaving, sigFigs):
-	if multiplier is not False:
-		number = number*multiplier
-	if costSaving and number < 0:
-		return 'Cost Saving'
-	if formatType == 'percentage':
-		return util.RoundNumber(number*100, sigFigs) + '%'
-	return util.RoundNumber(number, sigFigs)
-
-
 def AddRowEntry(
 		rows, data,
 		formatType=False, multiplier=False, skipUncertainty=False,
 		inlineUncertainty=False, costSaving=False, sigFigs=3):
 
-	rows[0].append(FormatNumber(data['50%'], multiplier, formatType, costSaving, sigFigs))
+	rows[0].append(shared.FormatNumber(data['50%'], multiplier, formatType, costSaving, sigFigs))
 	uncertRow = 0 if inlineUncertainty else 1
 	if skipUncertainty:
 		rows[uncertRow].append(' ')
 	else:
 		entry = '({} to {})'.format(
-			FormatNumber(data['2.5%'], multiplier, formatType, costSaving, sigFigs),
-			FormatNumber(data['97.5%'], multiplier, formatType, costSaving, sigFigs))
+			shared.FormatNumber(data['2.5%'], multiplier, formatType, costSaving, sigFigs),
+			shared.FormatNumber(data['97.5%'], multiplier, formatType, costSaving, sigFigs))
 		if entry == '(Cost Saving to Cost Saving)':
 			entry = ' '
 		rows[uncertRow].append(entry)
-
-
-def ReadFromScenarioFiles(fileName, index_col=list(range(1)), header=list(range(1))):
-	df = pd.read_csv('{}/{}.csv'.format(DEFAULT_SOURCE, fileName), index_col=index_col, header=header)
-	for scenario, directory in scenarioSource.items():
-		dfAlt = pd.read_csv('{}/{}.csv'.format(directory, fileName), index_col=index_col, header=header)
-		df[scenario] = dfAlt[scenario]
-	return df
 
 
 def GetDataEntry(rawName, dataSpec):
@@ -275,8 +258,8 @@ def GetDataEntry(rawName, dataSpec):
 		dfDenom = GetDataEntry(rawName, dataSpec['denominator'])
 		return dfNum / dfDenom
 		
-	df = ReadFromScenarioFiles(
-		dataSpec['file'],
+	df = shared.ReadFromScenarioFiles(
+		DEFAULT_SOURCE, scenarioSource, dataSpec['file'],
 		index_col=list(range(util.Opt(dataSpec, 'index', DEF_INDEX))),
 		header=list(range(util.Opt(dataSpec, 'header', DEF_HEADER)))
 	)
@@ -315,6 +298,7 @@ def MakeTableRows(rawName, outName, tableData):
 
 def MakeTableHeader(tableData):
 	return [[tableData['description']], [''] + list(tableData['columns'].keys()), ['=== Copyable table below ===']]
+
 
 def MakeFormattedTable(tableName, tableData):
 	rows = []

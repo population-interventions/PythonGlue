@@ -1,0 +1,1441 @@
+Raw Median,Discount,Scenario,Sex,strata,2024 to 2034,2024 to 2044,2034 to 2044,All
+False,0%,Aus then UK 50%,All,All,62.9 (45.5 to 86.5),343 (244 to 483),279 (197 to 398),"1,750 (1,220 to 2,490)"
+False,0%,Aus then UK 50%,All,SES1,17.7 (12.9 to 24.4),96.5 (69.3 to 135),78.9 (55.9 to 111),529 (369 to 753)
+False,0%,Aus then UK 50%,All,SES2,13.7 (9.93 to 18.8),74.2 (52.8 to 104),60.4 (42.6 to 85.9),388 (270 to 551)
+False,0%,Aus then UK 50%,All,SES3,12.4 (8.94 to 17.1),68.3 (48.4 to 95.7),55.7 (39.3 to 78.9),340 (238 to 484)
+False,0%,Aus then UK 50%,All,SES4,10.6 (7.61 to 14.6),58.7 (41.5 to 82.1),48.1 (33.7 to 68.2),283 (198 to 403)
+False,0%,Aus then UK 50%,All,SES5,8.58 (6.11 to 11.9),45.4 (31.8 to 63.9),36.7 (25.6 to 52.2),208 (145 to 296)
+False,0%,Aus then UK 50%,Female,All,19.0 (13.7 to 26.5),96.9 (68.8 to 137),78.0 (54.9 to 111),465 (320 to 669)
+False,0%,Aus then UK 50%,Female,SES1,5.76 (4.18 to 8.07),29.6 (21.0 to 41.6),23.9 (16.8 to 33.7),152 (104 to 216)
+False,0%,Aus then UK 50%,Female,SES2,4.18 (3.03 to 5.79),21.1 (15.0 to 29.8),16.9 (11.9 to 24.0),104 (71.2 to 148)
+False,0%,Aus then UK 50%,Female,SES3,3.73 (2.69 to 5.22),19.3 (13.7 to 27.4),15.5 (10.9 to 22.3),91.1 (62.1 to 132)
+False,0%,Aus then UK 50%,Female,SES4,3.04 (2.18 to 4.22),15.7 (11.1 to 22.3),12.7 (8.87 to 18.1),71.9 (49.3 to 103)
+False,0%,Aus then UK 50%,Female,SES5,2.30 (1.64 to 3.17),11.3 (7.92 to 15.9),8.98 (6.25 to 12.7),47.2 (32.4 to 67.6)
+False,0%,Aus then UK 50%,Male,All,43.7 (31.1 to 60.8),246 (172 to 347),202 (140 to 287),"1,290 (887 to 1,840)"
+False,0%,Aus then UK 50%,Male,SES1,11.9 (8.51 to 16.5),66.9 (47.1 to 94.4),55.0 (38.5 to 78.1),379 (259 to 543)
+False,0%,Aus then UK 50%,Male,SES2,9.48 (6.77 to 13.2),53.0 (37.1 to 75.0),43.6 (30.2 to 62.0),285 (196 to 408)
+False,0%,Aus then UK 50%,Male,SES3,8.64 (6.13 to 12.0),49.0 (34.1 to 68.7),40.3 (27.9 to 57.3),250 (172 to 359)
+False,0%,Aus then UK 50%,Male,SES4,7.50 (5.31 to 10.4),42.9 (29.9 to 60.8),35.3 (24.5 to 50.5),212 (145 to 305)
+False,0%,Aus then UK 50%,Male,SES5,6.27 (4.38 to 8.78),34.0 (23.4 to 48.4),27.7 (19.0 to 39.7),161 (110 to 234)
+False,0%,Aus then UK 70%,All,All,88.1 (63.2 to 122),479 (340 to 679),391 (275 to 557),"2,450 (1,710 to 3,490)"
+False,0%,Aus then UK 70%,All,SES1,24.7 (17.9 to 34.3),135 (96.5 to 190),110 (77.8 to 156),"742 (516 to 1,050)"
+False,0%,Aus then UK 70%,All,SES2,19.2 (13.8 to 26.6),104 (73.7 to 146),84.5 (59.5 to 120),542 (378 to 775)
+False,0%,Aus then UK 70%,All,SES3,17.4 (12.5 to 24.0),95.1 (67.4 to 135),77.9 (54.6 to 111),476 (333 to 682)
+False,0%,Aus then UK 70%,All,SES4,14.8 (10.6 to 20.5),81.9 (57.4 to 116),67.2 (46.8 to 95.2),398 (276 to 566)
+False,0%,Aus then UK 70%,All,SES5,12.0 (8.50 to 16.7),63.5 (44.4 to 89.8),51.4 (35.5 to 72.9),292 (202 to 417)
+False,0%,Aus then UK 70%,Female,All,26.7 (19.2 to 37.1),135 (96.4 to 193),109 (76.9 to 156),650 (452 to 936)
+False,0%,Aus then UK 70%,Female,SES1,8.07 (5.84 to 11.3),41.3 (29.5 to 58.8),33.3 (23.5 to 47.6),211 (147 to 305)
+False,0%,Aus then UK 70%,Female,SES2,5.86 (4.23 to 8.13),29.5 (21.0 to 41.9),23.6 (16.7 to 33.7),145 (101 to 207)
+False,0%,Aus then UK 70%,Female,SES3,5.25 (3.77 to 7.33),26.9 (19.2 to 38.5),21.7 (15.3 to 31.2),127 (87.9 to 185)
+False,0%,Aus then UK 70%,Female,SES4,4.27 (3.06 to 5.94),21.9 (15.6 to 31.4),17.7 (12.5 to 25.4),100 (69.6 to 145)
+False,0%,Aus then UK 70%,Female,SES5,3.22 (2.31 to 4.48),15.7 (11.2 to 22.2),12.5 (8.75 to 17.9),65.9 (45.6 to 94.6)
+False,0%,Aus then UK 70%,Male,All,61.4 (43.4 to 85.7),344 (238 to 486),283 (194 to 401),"1,800 (1,230 to 2,610)"
+False,0%,Aus then UK 70%,Male,SES1,16.7 (11.9 to 23.2),93.7 (65.3 to 132),76.9 (53.1 to 110),530 (363 to 767)
+False,0%,Aus then UK 70%,Male,SES2,13.3 (9.39 to 18.6),74.4 (51.4 to 104),61.0 (41.9 to 86.6),399 (272 to 575)
+False,0%,Aus then UK 70%,Male,SES3,12.1 (8.53 to 16.9),68.4 (47.4 to 96.7),56.3 (38.8 to 80.1),350 (239 to 507)
+False,0%,Aus then UK 70%,Male,SES4,10.5 (7.36 to 14.7),60.0 (41.1 to 84.9),49.4 (33.9 to 70.2),297 (203 to 428)
+False,0%,Aus then UK 70%,Male,SES5,8.77 (6.07 to 12.4),47.6 (32.5 to 67.7),38.8 (26.3 to 55.2),226 (153 to 326)
+False,0%,Aus then UK 90%,All,All,113 (81.6 to 156),616 (435 to 870),502 (354 to 717),"3,140 (2,200 to 4,540)"
+False,0%,Aus then UK 90%,All,SES1,31.7 (22.9 to 43.5),173 (123 to 243),142 (100 to 200),"950 (664 to 1,370)"
+False,0%,Aus then UK 90%,All,SES2,24.6 (17.8 to 33.8),133 (94.2 to 188),108 (76.3 to 154),"695 (488 to 1,000)"
+False,0%,Aus then UK 90%,All,SES3,22.3 (16.0 to 30.7),123 (86.5 to 173),100 (70.2 to 143),610 (426 to 885)
+False,0%,Aus then UK 90%,All,SES4,19.0 (13.6 to 26.3),105 (74.1 to 148),86.2 (60.0 to 123),508 (354 to 732)
+False,0%,Aus then UK 90%,All,SES5,15.4 (11.0 to 21.4),81.5 (56.6 to 115),65.9 (45.6 to 93.8),375 (259 to 538)
+False,0%,Aus then UK 90%,Female,All,34.3 (24.7 to 47.0),175 (124 to 244),140 (99.4 to 198),"834 (579 to 1,200)"
+False,0%,Aus then UK 90%,Female,SES1,10.4 (7.46 to 14.2),53.2 (37.8 to 74.6),42.8 (30.4 to 60.5),271 (189 to 390)
+False,0%,Aus then UK 90%,Female,SES2,7.54 (5.44 to 10.3),38.1 (27.1 to 53.2),30.5 (21.5 to 42.8),185 (129 to 266)
+False,0%,Aus then UK 90%,Female,SES3,6.74 (4.86 to 9.27),34.7 (24.6 to 48.8),28.0 (19.7 to 39.7),163 (113 to 236)
+False,0%,Aus then UK 90%,Female,SES4,5.49 (3.96 to 7.53),28.4 (20.1 to 39.8),22.9 (16.1 to 32.3),129 (89.0 to 186)
+False,0%,Aus then UK 90%,Female,SES5,4.14 (2.99 to 5.66),20.3 (14.3 to 28.3),16.1 (11.3 to 22.7),84.8 (58.3 to 122)
+False,0%,Aus then UK 90%,Male,All,78.7 (55.5 to 110),441 (303 to 628),362 (248 to 520),"2,310 (1,590 to 3,330)"
+False,0%,Aus then UK 90%,Male,SES1,21.3 (15.1 to 29.6),120 (83.4 to 171),98.6 (68.0 to 141),679 (470 to 975)
+False,0%,Aus then UK 90%,Male,SES2,17.0 (12.0 to 23.7),95.2 (65.6 to 135),78.1 (53.7 to 112),510 (352 to 736)
+False,0%,Aus then UK 90%,Male,SES3,15.5 (10.9 to 21.6),87.8 (60.6 to 125),72.2 (49.6 to 103),448 (310 to 650)
+False,0%,Aus then UK 90%,Male,SES4,13.5 (9.48 to 18.9),77.0 (52.8 to 110),63.4 (43.3 to 91.3),380 (261 to 550)
+False,0%,Aus then UK 90%,Male,SES5,11.3 (7.84 to 15.8),61.0 (41.7 to 86.9),49.8 (33.7 to 71.5),290 (198 to 418)
+False,0%,Aus then UK mandatory,All,All,125 (90.5 to 173),683 (482 to 963),558 (390 to 787),"3,480 (2,410 to 4,990)"
+False,0%,Aus then UK mandatory,All,SES1,35.1 (25.6 to 48.4),192 (137 to 270),157 (111 to 221),"1,050 (735 to 1,510)"
+False,0%,Aus then UK mandatory,All,SES2,27.2 (19.8 to 37.6),148 (105 to 208),121 (84.4 to 170),"772 (537 to 1,100)"
+False,0%,Aus then UK mandatory,All,SES3,24.6 (17.8 to 34.1),136 (95.6 to 192),111 (77.7 to 158),678 (470 to 970)
+False,0%,Aus then UK mandatory,All,SES4,21.0 (15.0 to 29.0),117 (81.4 to 165),95.8 (66.6 to 136),565 (390 to 805)
+False,0%,Aus then UK mandatory,All,SES5,17.1 (12.1 to 23.8),90.4 (62.6 to 127),73.3 (50.7 to 104),416 (286 to 593)
+False,0%,Aus then UK mandatory,Female,All,38.0 (27.7 to 52.5),193 (139 to 272),156 (110 to 222),"924 (642 to 1,330)"
+False,0%,Aus then UK mandatory,Female,SES1,11.5 (8.41 to 15.9),58.9 (42.4 to 82.9),47.5 (33.7 to 67.5),301 (208 to 434)
+False,0%,Aus then UK mandatory,Female,SES2,8.35 (6.11 to 11.5),42.1 (30.2 to 59.2),33.8 (23.9 to 48.0),206 (142 to 296)
+False,0%,Aus then UK mandatory,Female,SES3,7.48 (5.44 to 10.3),38.5 (27.4 to 54.6),31.0 (21.9 to 44.5),181 (125 to 264)
+False,0%,Aus then UK mandatory,Female,SES4,6.08 (4.40 to 8.37),31.4 (22.3 to 44.5),25.4 (17.8 to 36.2),143 (98.2 to 207)
+False,0%,Aus then UK mandatory,Female,SES5,4.60 (3.32 to 6.30),22.4 (15.8 to 31.9),17.9 (12.5 to 25.5),93.9 (64.4 to 136)
+False,0%,Aus then UK mandatory,Male,All,86.9 (61.4 to 122),489 (339 to 693),402 (277 to 573),"2,570 (1,750 to 3,680)"
+False,0%,Aus then UK mandatory,Male,SES1,23.6 (16.9 to 32.9),133 (92.9 to 189),109 (75.6 to 155),"756 (515 to 1,080)"
+False,0%,Aus then UK mandatory,Male,SES2,18.8 (13.4 to 26.5),106 (73.4 to 150),86.6 (59.4 to 123),569 (385 to 815)
+False,0%,Aus then UK mandatory,Male,SES3,17.2 (12.1 to 24.0),97.4 (67.1 to 138),80.2 (55.0 to 114),498 (339 to 717)
+False,0%,Aus then UK mandatory,Male,SES4,14.9 (10.5 to 20.9),85.4 (58.5 to 121),70.4 (48.1 to 100),422 (286 to 609)
+False,0%,Aus then UK mandatory,Male,SES5,12.5 (8.61 to 17.4),67.8 (46.3 to 96.0),55.3 (37.6 to 79.4),322 (217 to 463)
+False,0%,Australia 50%,All,All,42.3 (30.0 to 60.2),179 (125 to 255),137 (95.0 to 195),"833 (576 to 1,190)"
+False,0%,Australia 50%,All,SES1,12.0 (8.51 to 17.0),50.6 (35.3 to 71.7),38.7 (26.9 to 55.0),253 (175 to 361)
+False,0%,Australia 50%,All,SES2,9.25 (6.57 to 13.1),38.8 (27.3 to 55.1),29.6 (20.7 to 42.1),185 (128 to 264)
+False,0%,Australia 50%,All,SES3,8.34 (5.88 to 11.9),35.5 (24.7 to 50.6),27.1 (18.8 to 38.8),162 (112 to 232)
+False,0%,Australia 50%,All,SES4,7.07 (4.97 to 10.1),30.3 (21.1 to 43.3),23.3 (16.1 to 33.5),134 (92.8 to 193)
+False,0%,Australia 50%,All,SES5,5.71 (3.99 to 8.20),23.5 (16.2 to 33.7),17.8 (12.3 to 25.7),99.0 (68.3 to 142)
+False,0%,Australia 50%,Female,All,13.0 (9.15 to 18.3),52.5 (36.4 to 74.5),39.5 (27.4 to 56.6),230 (158 to 330)
+False,0%,Australia 50%,Female,SES1,3.96 (2.80 to 5.60),16.1 (11.2 to 22.8),12.1 (8.44 to 17.3),74.8 (51.6 to 107)
+False,0%,Australia 50%,Female,SES2,2.86 (2.02 to 4.01),11.5 (7.96 to 16.3),8.61 (5.97 to 12.3),51.1 (35.1 to 73.1)
+False,0%,Australia 50%,Female,SES3,2.54 (1.79 to 3.61),10.4 (7.19 to 14.8),7.87 (5.43 to 11.3),44.9 (30.7 to 64.6)
+False,0%,Australia 50%,Female,SES4,2.06 (1.45 to 2.89),8.47 (5.92 to 12.1),6.42 (4.43 to 9.17),35.4 (24.2 to 50.8)
+False,0%,Australia 50%,Female,SES5,1.55 (1.10 to 2.17),6.08 (4.26 to 8.68),4.54 (3.15 to 6.43),23.4 (16.1 to 33.6)
+False,0%,Australia 50%,Male,All,29.3 (20.4 to 42.7),126 (87.5 to 182),96.8 (66.9 to 140),602 (413 to 873)
+False,0%,Australia 50%,Male,SES1,8.03 (5.62 to 11.6),34.6 (24.0 to 49.8),26.5 (18.4 to 38.5),177 (122 to 257)
+False,0%,Australia 50%,Male,SES2,6.39 (4.45 to 9.29),27.4 (19.0 to 39.4),20.9 (14.5 to 30.3),133 (91.9 to 194)
+False,0%,Australia 50%,Male,SES3,5.78 (4.02 to 8.40),25.1 (17.3 to 36.1),19.3 (13.3 to 27.7),117 (80.2 to 169)
+False,0%,Australia 50%,Male,SES4,4.99 (3.46 to 7.29),21.9 (15.0 to 31.6),16.9 (11.5 to 24.4),98.9 (67.8 to 144)
+False,0%,Australia 50%,Male,SES5,4.15 (2.86 to 6.13),17.4 (12.0 to 25.4),13.2 (9.04 to 19.3),75.3 (51.4 to 110)
+False,0%,Australia 70%,All,All,59.2 (41.2 to 84.6),250 (172 to 357),191 (131 to 271),"1,170 (798 to 1,650)"
+False,0%,Australia 70%,All,SES1,16.8 (11.7 to 23.9),70.8 (48.9 to 101),54.1 (37.3 to 76.8),353 (242 to 503)
+False,0%,Australia 70%,All,SES2,13.0 (9.03 to 18.5),54.2 (37.3 to 77.0),41.3 (28.4 to 58.4),258 (177 to 367)
+False,0%,Australia 70%,All,SES3,11.7 (8.10 to 16.7),49.6 (34.2 to 70.9),37.9 (26.0 to 54.0),227 (155 to 323)
+False,0%,Australia 70%,All,SES4,9.88 (6.84 to 14.1),42.5 (29.3 to 60.5),32.5 (22.3 to 46.3),188 (129 to 268)
+False,0%,Australia 70%,All,SES5,8.01 (5.53 to 11.4),32.8 (22.6 to 46.9),24.8 (17.1 to 35.5),138 (94.4 to 198)
+False,0%,Australia 70%,Female,All,18.2 (12.6 to 25.7),73.4 (50.4 to 104),55.2 (37.8 to 78.9),319 (219 to 458)
+False,0%,Australia 70%,Female,SES1,5.55 (3.88 to 7.83),22.5 (15.6 to 32.0),16.9 (11.7 to 24.1),104 (71.6 to 151)
+False,0%,Australia 70%,Female,SES2,4.01 (2.78 to 5.66),16.0 (11.0 to 22.7),12.0 (8.22 to 17.1),71.1 (48.7 to 102)
+False,0%,Australia 70%,Female,SES3,3.56 (2.46 to 5.07),14.6 (9.97 to 20.7),11.0 (7.50 to 15.8),62.5 (42.7 to 90.2)
+False,0%,Australia 70%,Female,SES4,2.88 (1.99 to 4.09),11.8 (8.12 to 16.8),8.95 (6.11 to 12.8),49.3 (33.5 to 71.1)
+False,0%,Australia 70%,Female,SES5,2.17 (1.50 to 3.09),8.49 (5.82 to 12.0),6.33 (4.31 to 8.98),32.6 (22.0 to 46.7)
+False,0%,Australia 70%,Male,All,41.2 (28.2 to 59.4),176 (122 to 253),135 (93.2 to 195),"841 (574 to 1,210)"
+False,0%,Australia 70%,Male,SES1,11.3 (7.72 to 16.2),48.4 (33.4 to 69.6),37.1 (25.6 to 53.4),248 (169 to 358)
+False,0%,Australia 70%,Male,SES2,8.97 (6.18 to 12.9),38.2 (26.3 to 54.8),29.2 (20.2 to 42.1),186 (128 to 267)
+False,0%,Australia 70%,Male,SES3,8.10 (5.56 to 11.7),35.0 (24.1 to 50.3),26.8 (18.4 to 38.8),163 (111 to 234)
+False,0%,Australia 70%,Male,SES4,6.99 (4.78 to 10.1),30.5 (21.0 to 44.1),23.5 (16.1 to 34.1),138 (94.1 to 199)
+False,0%,Australia 70%,Male,SES5,5.81 (3.95 to 8.44),24.2 (16.6 to 35.2),18.4 (12.5 to 26.8),105 (71.6 to 153)
+False,0%,Australia 90%,All,All,76.4 (53.2 to 109),321 (222 to 460),245 (169 to 349),"1,490 (1,030 to 2,140)"
+False,0%,Australia 90%,All,SES1,21.6 (15.1 to 30.7),90.9 (63.3 to 130),69.2 (48.2 to 99.4),453 (312 to 652)
+False,0%,Australia 90%,All,SES2,16.7 (11.6 to 23.6),69.7 (48.4 to 99.4),52.9 (36.8 to 75.5),331 (230 to 474)
+False,0%,Australia 90%,All,SES3,15.0 (10.5 to 21.4),63.7 (44.0 to 91.5),48.7 (33.4 to 69.6),291 (199 to 417)
+False,0%,Australia 90%,All,SES4,12.7 (8.83 to 18.2),54.6 (37.7 to 78.5),41.7 (28.7 to 60.2),241 (166 to 346)
+False,0%,Australia 90%,All,SES5,10.3 (7.12 to 14.7),42.2 (29.1 to 60.7),31.8 (22.1 to 46.1),177 (122 to 257)
+False,0%,Australia 90%,Female,All,23.3 (16.3 to 33.2),94.6 (65.8 to 134),71.2 (49.4 to 102),412 (283 to 591)
+False,0%,Australia 90%,Female,SES1,7.13 (4.97 to 10.1),28.9 (20.1 to 41.2),21.8 (15.2 to 31.3),134 (92.8 to 193)
+False,0%,Australia 90%,Female,SES2,5.14 (3.59 to 7.30),20.6 (14.3 to 29.2),15.5 (10.7 to 22.1),91.7 (63.3 to 131)
+False,0%,Australia 90%,Female,SES3,4.57 (3.18 to 6.53),18.7 (13.0 to 26.7),14.2 (9.75 to 20.3),80.6 (55.0 to 116)
+False,0%,Australia 90%,Female,SES4,3.70 (2.58 to 5.25),15.3 (10.5 to 21.7),11.5 (7.95 to 16.5),63.7 (43.2 to 91.6)
+False,0%,Australia 90%,Female,SES5,2.79 (1.93 to 3.94),10.9 (7.58 to 15.5),8.13 (5.60 to 11.6),42.0 (28.4 to 60.0)
+False,0%,Australia 90%,Male,All,52.9 (36.5 to 76.6),227 (156 to 328),174 (120 to 251),"1,080 (743 to 1,570)"
+False,0%,Australia 90%,Male,SES1,14.5 (10.0 to 20.9),62.0 (43.1 to 89.2),47.5 (33.0 to 68.6),318 (220 to 464)
+False,0%,Australia 90%,Male,SES2,11.5 (7.93 to 16.7),49.0 (33.8 to 70.9),37.4 (25.9 to 54.3),239 (165 to 347)
+False,0%,Australia 90%,Male,SES3,10.4 (7.21 to 15.1),45.0 (30.9 to 65.2),34.5 (23.8 to 50.1),210 (144 to 305)
+False,0%,Australia 90%,Male,SES4,9.01 (6.20 to 13.1),39.3 (27.0 to 57.2),30.2 (20.9 to 44.0),177 (121 to 258)
+False,0%,Australia 90%,Male,SES5,7.49 (5.12 to 11.0),31.3 (21.5 to 45.8),23.7 (16.3 to 34.8),135 (92.5 to 198)
+False,0%,Australia mandatory,All,All,85.0 (59.7 to 121),358 (250 to 509),272 (188 to 389),"1,660 (1,140 to 2,370)"
+False,0%,Australia mandatory,All,SES1,24.1 (17.0 to 34.4),101 (71.2 to 144),77.4 (54.0 to 110),503 (347 to 718)
+False,0%,Australia mandatory,All,SES2,18.6 (13.1 to 26.5),77.6 (54.4 to 110),58.9 (40.9 to 83.9),367 (254 to 525)
+False,0%,Australia mandatory,All,SES3,16.7 (11.7 to 23.9),70.9 (49.3 to 101),54.1 (37.5 to 77.5),322 (222 to 461)
+False,0%,Australia mandatory,All,SES4,14.2 (9.96 to 20.2),60.7 (42.2 to 86.5),46.5 (32.3 to 66.4),268 (185 to 383)
+False,0%,Australia mandatory,All,SES5,11.5 (8.02 to 16.3),46.9 (32.5 to 66.7),35.5 (24.4 to 50.7),197 (135 to 284)
+False,0%,Australia mandatory,Female,All,25.9 (18.2 to 36.9),105 (73.2 to 150),79.0 (54.9 to 113),457 (316 to 657)
+False,0%,Australia mandatory,Female,SES1,7.94 (5.57 to 11.3),32.2 (22.7 to 45.8),24.2 (16.9 to 34.5),149 (104 to 214)
+False,0%,Australia mandatory,Female,SES2,5.72 (4.02 to 8.12),22.9 (16.1 to 32.6),17.2 (12.0 to 24.4),102 (70.5 to 146)
+False,0%,Australia mandatory,Female,SES3,5.08 (3.55 to 7.27),20.8 (14.5 to 30.0),15.7 (10.9 to 22.6),89.4 (61.6 to 129)
+False,0%,Australia mandatory,Female,SES4,4.12 (2.88 to 5.86),16.9 (11.8 to 24.2),12.8 (8.86 to 18.3),70.6 (48.6 to 102)
+False,0%,Australia mandatory,Female,SES5,3.11 (2.18 to 4.38),12.1 (8.43 to 17.2),9.03 (6.22 to 12.8),46.6 (31.9 to 66.9)
+False,0%,Australia mandatory,Male,All,58.8 (40.9 to 85.3),252 (175 to 362),193 (134 to 279),"1,200 (827 to 1,730)"
+False,0%,Australia mandatory,Male,SES1,16.1 (11.2 to 23.2),69.0 (48.1 to 98.9),52.8 (36.8 to 76.1),353 (244 to 511)
+False,0%,Australia mandatory,Male,SES2,12.8 (8.98 to 18.5),54.6 (38.0 to 78.6),41.6 (29.0 to 60.3),265 (184 to 384)
+False,0%,Australia mandatory,Male,SES3,11.6 (8.07 to 16.8),49.9 (34.6 to 72.1),38.3 (26.5 to 55.3),233 (160 to 337)
+False,0%,Australia mandatory,Male,SES4,10.0 (6.95 to 14.5),43.6 (30.2 to 63.0),33.6 (23.1 to 48.6),197 (134 to 285)
+False,0%,Australia mandatory,Male,SES5,8.33 (5.76 to 12.1),34.7 (23.8 to 50.3),26.4 (18.0 to 38.3),150 (102 to 218)
+False,0%,BAU,All,All,"5,870,000 (5,860,000 to 5,870,000)","11,600,000 (11,600,000 to 11,600,000)","5,760,000 (5,750,000 to 5,770,000)","27,100,000 (27,000,000 to 27,100,000)"
+False,0%,BAU,All,SES1,"1,090,000 (1,090,000 to 1,100,000)","2,190,000 (2,190,000 to 2,200,000)","1,100,000 (1,100,000 to 1,100,000)","5,260,000 (5,240,000 to 5,270,000)"
+False,0%,BAU,All,SES2,"1,120,000 (1,110,000 to 1,120,000)","2,220,000 (2,210,000 to 2,220,000)","1,100,000 (1,100,000 to 1,100,000)","5,230,000 (5,210,000 to 5,240,000)"
+False,0%,BAU,All,SES3,"1,180,000 (1,180,000 to 1,180,000)","2,340,000 (2,340,000 to 2,350,000)","1,160,000 (1,160,000 to 1,160,000)","5,490,000 (5,480,000 to 5,500,000)"
+False,0%,BAU,All,SES4,"1,250,000 (1,250,000 to 1,250,000)","2,470,000 (2,470,000 to 2,470,000)","1,220,000 (1,220,000 to 1,220,000)","5,700,000 (5,690,000 to 5,710,000)"
+False,0%,BAU,All,SES5,"1,220,000 (1,220,000 to 1,220,000)","2,400,000 (2,400,000 to 2,400,000)","1,180,000 (1,180,000 to 1,180,000)","5,420,000 (5,410,000 to 5,430,000)"
+False,0%,BAU,Female,All,"2,350,000 (2,340,000 to 2,350,000)","4,630,000 (4,630,000 to 4,640,000)","2,280,000 (2,280,000 to 2,290,000)","10,600,000 (10,600,000 to 10,600,000)"
+False,0%,BAU,Female,SES1,"444,000 (444,000 to 445,000)","886,000 (884,000 to 887,000)","442,000 (441,000 to 442,000)","2,100,000 (2,090,000 to 2,100,000)"
+False,0%,BAU,Female,SES2,"449,000 (448,000 to 449,000)","887,000 (886,000 to 888,000)","438,000 (438,000 to 439,000)","2,070,000 (2,070,000 to 2,070,000)"
+False,0%,BAU,Female,SES3,"473,000 (473,000 to 474,000)","935,000 (933,000 to 936,000)","461,000 (461,000 to 462,000)","2,170,000 (2,160,000 to 2,170,000)"
+False,0%,BAU,Female,SES4,"498,000 (498,000 to 499,000)","980,000 (979,000 to 981,000)","482,000 (481,000 to 482,000)","2,240,000 (2,240,000 to 2,240,000)"
+False,0%,BAU,Female,SES5,"482,000 (482,000 to 482,000)","944,000 (943,000 to 945,000)","462,000 (461,000 to 462,000)","2,020,000 (2,020,000 to 2,020,000)"
+False,0%,BAU,Male,All,"3,520,000 (3,510,000 to 3,520,000)","7,000,000 (6,980,000 to 7,010,000)","3,480,000 (3,470,000 to 3,490,000)","16,500,000 (16,500,000 to 16,500,000)"
+False,0%,BAU,Male,SES1,"649,000 (648,000 to 651,000)","1,310,000 (1,300,000 to 1,310,000)","658,000 (656,000 to 660,000)","3,160,000 (3,150,000 to 3,170,000)"
+False,0%,BAU,Male,SES2,"668,000 (667,000 to 669,000)","1,330,000 (1,330,000 to 1,330,000)","662,000 (660,000 to 664,000)","3,160,000 (3,150,000 to 3,170,000)"
+False,0%,BAU,Male,SES3,"710,000 (708,000 to 711,000)","1,410,000 (1,410,000 to 1,410,000)","700,000 (699,000 to 702,000)","3,320,000 (3,310,000 to 3,330,000)"
+False,0%,BAU,Male,SES4,"753,000 (752,000 to 754,000)","1,490,000 (1,490,000 to 1,490,000)","739,000 (738,000 to 740,000)","3,460,000 (3,450,000 to 3,470,000)"
+False,0%,BAU,Male,SES5,"739,000 (738,000 to 740,000)","1,460,000 (1,460,000 to 1,460,000)","719,000 (718,000 to 720,000)","3,400,000 (3,390,000 to 3,400,000)"
+False,0%,KCl subsitute (10%) all foods,All,All,57.7 (40.3 to 82.3),621 (430 to 880),563 (389 to 799),"4,460 (3,020 to 6,390)"
+False,0%,KCl subsitute (10%) all foods,All,SES1,16.2 (11.3 to 23.1),175 (122 to 248),159 (110 to 225),"1,360 (930 to 1,960)"
+False,0%,KCl subsitute (10%) all foods,All,SES2,12.5 (8.72 to 17.8),134 (92.8 to 190),122 (84.1 to 172),"991 (674 to 1,420)"
+False,0%,KCl subsitute (10%) all foods,All,SES3,11.4 (7.94 to 16.3),124 (85.8 to 176),113 (77.8 to 160),"866 (587 to 1,240)"
+False,0%,KCl subsitute (10%) all foods,All,SES4,9.74 (6.74 to 13.9),106 (73.9 to 152),96.8 (67.1 to 138),"716 (484 to 1,030)"
+False,0%,KCl subsitute (10%) all foods,All,SES5,7.87 (5.43 to 11.3),81.2 (55.9 to 115),73.4 (50.4 to 104),521 (353 to 753)
+False,0%,KCl subsitute (10%) all foods,Female,All,19.9 (13.8 to 28.6),200 (138 to 286),181 (124 to 258),"1,310 (891 to 1,890)"
+False,0%,KCl subsitute (10%) all foods,Female,SES1,6.00 (4.17 to 8.67),61.1 (42.1 to 87.1),55.1 (37.9 to 78.4),431 (293 to 618)
+False,0%,KCl subsitute (10%) all foods,Female,SES2,4.36 (3.01 to 6.23),43.5 (30.0 to 61.9),39.2 (27.0 to 55.8),293 (199 to 421)
+False,0%,KCl subsitute (10%) all foods,Female,SES3,3.92 (2.71 to 5.66),39.9 (27.5 to 57.1),36.0 (24.8 to 51.5),257 (173 to 369)
+False,0%,KCl subsitute (10%) all foods,Female,SES4,3.20 (2.21 to 4.60),32.7 (22.6 to 46.5),29.5 (20.4 to 42.0),202 (137 to 291)
+False,0%,KCl subsitute (10%) all foods,Female,SES5,2.41 (1.67 to 3.46),23.1 (16.0 to 32.7),20.7 (14.3 to 29.3),132 (89.1 to 188)
+False,0%,KCl subsitute (10%) all foods,Male,All,37.8 (25.9 to 54.6),419 (288 to 601),382 (263 to 546),"3,140 (2,130 to 4,570)"
+False,0%,KCl subsitute (10%) all foods,Male,SES1,10.2 (7.04 to 14.7),114 (78.7 to 163),104 (71.5 to 148),"932 (636 to 1,350)"
+False,0%,KCl subsitute (10%) all foods,Male,SES2,8.17 (5.64 to 11.7),90.5 (62.0 to 129),82.2 (56.3 to 118),"697 (474 to 1,010)"
+False,0%,KCl subsitute (10%) all foods,Male,SES3,7.48 (5.10 to 10.8),83.4 (57.7 to 120),76.0 (52.3 to 109),608 (412 to 885)
+False,0%,KCl subsitute (10%) all foods,Male,SES4,6.55 (4.43 to 9.48),73.5 (50.4 to 106),67.1 (45.9 to 96.7),513 (346 to 747)
+False,0%,KCl subsitute (10%) all foods,Male,SES5,5.46 (3.66 to 7.97),57.8 (39.3 to 83.9),52.3 (35.6 to 76.0),388 (261 to 566)
+False,0%,KCl subsitute (30%) envelope,All,All,"1,090 (770 to 1,530)","3,630 (2,540 to 5,130)","2,540 (1,770 to 3,610)","15,000 (10,400 to 21,400)"
+False,0%,KCl subsitute (30%) envelope,All,SES1,318 (223 to 451),"1,050 (735 to 1,490)","733 (509 to 1,050)","4,610 (3,190 to 6,620)"
+False,0%,KCl subsitute (30%) envelope,All,SES2,243 (171 to 342),"797 (559 to 1,130)",556 (386 to 792),"3,360 (2,320 to 4,820)"
+False,0%,KCl subsitute (30%) envelope,All,SES3,214 (151 to 303),"719 (503 to 1,020)",506 (352 to 716),"2,920 (2,020 to 4,160)"
+False,0%,KCl subsitute (30%) envelope,All,SES4,176 (124 to 248),602 (420 to 851),426 (296 to 603),"2,400 (1,650 to 3,380)"
+False,0%,KCl subsitute (30%) envelope,All,SES5,139 (96.5 to 194),455 (314 to 642),317 (217 to 448),"1,730 (1,180 to 2,460)"
+False,0%,KCl subsitute (30%) envelope,Female,All,358 (253 to 495),"1,130 (795 to 1,570)","773 (542 to 1,090)","4,380 (3,030 to 6,170)"
+False,0%,KCl subsitute (30%) envelope,Female,SES1,116 (82.2 to 162),362 (254 to 506),247 (171 to 347),"1,480 (1,020 to 2,080)"
+False,0%,KCl subsitute (30%) envelope,Female,SES2,82.3 (58.3 to 114),256 (179 to 357),174 (122 to 244),"1,000 (695 to 1,410)"
+False,0%,KCl subsitute (30%) envelope,Female,SES3,70.3 (49.9 to 98.0),225 (157 to 316),155 (108 to 218),"862 (594 to 1,220)"
+False,0%,KCl subsitute (30%) envelope,Female,SES4,53.3 (36.8 to 74.9),173 (117 to 244),120 (80.9 to 170),645 (434 to 921)
+False,0%,KCl subsitute (30%) envelope,Female,SES5,35.8 (23.3 to 53.1),112 (72.9 to 166),76.3 (49.2 to 114),387 (249 to 579)
+False,0%,KCl subsitute (30%) envelope,Male,All,"731 (502 to 1,060)","2,490 (1,710 to 3,600)","1,760 (1,200 to 2,550)","10,600 (7,260 to 15,400)"
+False,0%,KCl subsitute (30%) envelope,Male,SES1,202 (140 to 292),687 (474 to 995),485 (334 to 701),"3,130 (2,150 to 4,540)"
+False,0%,KCl subsitute (30%) envelope,Male,SES2,161 (111 to 231),542 (374 to 787),381 (261 to 551),"2,350 (1,610 to 3,400)"
+False,0%,KCl subsitute (30%) envelope,Male,SES3,143 (98.7 to 208),493 (337 to 712),350 (238 to 505),"2,060 (1,400 to 2,980)"
+False,0%,KCl subsitute (30%) envelope,Male,SES4,123 (84.2 to 178),428 (291 to 617),305 (207 to 440),"1,740 (1,180 to 2,530)"
+False,0%,KCl subsitute (30%) envelope,Male,SES5,102 (69.9 to 149),341 (232 to 495),239 (162 to 346),"1,330 (908 to 1,940)"
+False,0%,KCl subsitute (4.5%) discretionary,All,All,95.0 (65.7 to 133),473 (330 to 659),378 (263 to 529),"2,350 (1,600 to 3,300)"
+False,0%,KCl subsitute (4.5%) discretionary,All,SES1,26.8 (18.7 to 37.4),135 (94.3 to 188),108 (75.1 to 150),"718 (490 to 1,010)"
+False,0%,KCl subsitute (4.5%) discretionary,All,SES2,20.7 (14.4 to 28.9),103 (71.9 to 143),82.2 (57.1 to 115),522 (357 to 731)
+False,0%,KCl subsitute (4.5%) discretionary,All,SES3,18.7 (12.9 to 26.2),93.7 (64.9 to 131),75.0 (51.7 to 106),457 (310 to 643)
+False,0%,KCl subsitute (4.5%) discretionary,All,SES4,15.9 (10.9 to 22.2),80.0 (55.3 to 112),64.3 (44.0 to 90.5),378 (255 to 534)
+False,0%,KCl subsitute (4.5%) discretionary,All,SES5,12.8 (8.75 to 17.9),61.6 (42.1 to 86.8),48.9 (33.3 to 68.8),276 (186 to 391)
+False,0%,KCl subsitute (4.5%) discretionary,Female,All,32.4 (22.3 to 45.6),151 (104 to 215),119 (81.3 to 170),694 (470 to 996)
+False,0%,KCl subsitute (4.5%) discretionary,Female,SES1,9.88 (6.81 to 13.9),46.5 (31.8 to 66.3),36.6 (25.0 to 52.4),227 (154 to 327)
+False,0%,KCl subsitute (4.5%) discretionary,Female,SES2,7.12 (4.90 to 10.0),33.0 (22.6 to 46.8),25.9 (17.7 to 36.8),154 (105 to 221)
+False,0%,KCl subsitute (4.5%) discretionary,Female,SES3,6.36 (4.38 to 8.98),30.0 (20.5 to 42.8),23.7 (16.0 to 33.8),135 (91.5 to 196)
+False,0%,KCl subsitute (4.5%) discretionary,Female,SES4,5.16 (3.55 to 7.28),24.4 (16.7 to 34.6),19.3 (13.1 to 27.4),107 (72.0 to 153)
+False,0%,KCl subsitute (4.5%) discretionary,Female,SES5,3.88 (2.67 to 5.43),17.4 (11.9 to 24.6),13.6 (9.24 to 19.2),70.1 (47.4 to 100)
+False,0%,KCl subsitute (4.5%) discretionary,Male,All,62.5 (42.9 to 88.2),321 (220 to 453),259 (177 to 365),"1,660 (1,120 to 2,350)"
+False,0%,KCl subsitute (4.5%) discretionary,Male,SES1,17.0 (11.6 to 24.0),88.5 (60.8 to 124),71.4 (49.1 to 100),491 (333 to 695)
+False,0%,KCl subsitute (4.5%) discretionary,Male,SES2,13.6 (9.33 to 19.1),69.7 (47.8 to 98.2),56.2 (38.6 to 79.0),369 (249 to 519)
+False,0%,KCl subsitute (4.5%) discretionary,Male,SES3,12.3 (8.46 to 17.4),63.7 (43.6 to 90.2),51.4 (35.2 to 72.8),321 (215 to 455)
+False,0%,KCl subsitute (4.5%) discretionary,Male,SES4,10.7 (7.28 to 15.2),55.6 (37.9 to 79.4),45.0 (30.5 to 63.8),270 (182 to 385)
+False,0%,KCl subsitute (4.5%) discretionary,Male,SES5,8.89 (6.02 to 12.7),44.1 (29.8 to 62.9),35.1 (23.7 to 50.5),205 (138 to 295)
+False,0%,No change,All,All,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,0%,No change,All,SES1,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,0%,No change,All,SES2,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,0%,No change,All,SES3,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,0%,No change,All,SES4,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,0%,No change,All,SES5,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,0%,No change,Female,All,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,0%,No change,Female,SES1,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,0%,No change,Female,SES2,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,0%,No change,Female,SES3,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,0%,No change,Female,SES4,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,0%,No change,Female,SES5,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,0%,No change,Male,All,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,0%,No change,Male,SES1,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,0%,No change,Male,SES2,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,0%,No change,Male,SES3,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,0%,No change,Male,SES4,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,0%,No change,Male,SES5,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,0%,UK 50%,All,All,93.3 (65.3 to 134),395 (274 to 564),301 (208 to 430),"1,810 (1,250 to 2,610)"
+False,0%,UK 50%,All,SES1,26.4 (18.4 to 37.7),112 (78.0 to 160),85.2 (59.5 to 122),548 (381 to 787)
+False,0%,UK 50%,All,SES2,20.4 (14.3 to 29.2),85.6 (59.7 to 123),65.2 (45.3 to 93.1),401 (279 to 577)
+False,0%,UK 50%,All,SES3,18.4 (12.8 to 26.4),78.4 (54.3 to 112),60.0 (41.1 to 85.9),353 (243 to 511)
+False,0%,UK 50%,All,SES4,15.6 (10.8 to 22.4),67.2 (46.4 to 96.5),51.5 (35.6 to 73.7),293 (202 to 422)
+False,0%,UK 50%,All,SES5,12.6 (8.69 to 18.1),52.1 (35.9 to 74.6),39.4 (27.1 to 56.8),216 (147 to 311)
+False,0%,UK 50%,Female,All,27.6 (19.3 to 39.4),111 (77.2 to 160),83.5 (57.8 to 120),481 (330 to 697)
+False,0%,UK 50%,Female,SES1,8.41 (5.88 to 12.0),34.0 (23.7 to 48.7),25.6 (17.8 to 36.7),156 (108 to 227)
+False,0%,UK 50%,Female,SES2,6.07 (4.24 to 8.67),24.3 (16.8 to 34.9),18.2 (12.6 to 26.2),107 (73.4 to 155)
+False,0%,UK 50%,Female,SES3,5.41 (3.77 to 7.75),22.0 (15.3 to 31.8),16.6 (11.5 to 24.1),94.1 (64.2 to 137)
+False,0%,UK 50%,Female,SES4,4.38 (3.04 to 6.28),17.9 (12.4 to 26.0),13.6 (9.38 to 19.6),74.2 (50.8 to 108)
+False,0%,UK 50%,Female,SES5,3.30 (2.30 to 4.72),12.9 (8.91 to 18.6),9.58 (6.62 to 13.8),49.0 (33.6 to 71.0)
+False,0%,UK 50%,Male,All,65.9 (44.9 to 95.6),284 (194 to 411),217 (149 to 315),"1,330 (915 to 1,930)"
+False,0%,UK 50%,Male,SES1,18.0 (12.4 to 26.0),77.4 (53.3 to 112),59.5 (40.9 to 85.9),391 (268 to 569)
+False,0%,UK 50%,Male,SES2,14.4 (9.80 to 20.8),61.4 (42.0 to 88.6),47.0 (32.1 to 67.7),295 (202 to 427)
+False,0%,UK 50%,Male,SES3,13.0 (8.81 to 18.8),56.2 (38.4 to 81.9),43.2 (29.5 to 62.9),258 (177 to 376)
+False,0%,UK 50%,Male,SES4,11.2 (7.59 to 16.2),49.1 (33.4 to 71.2),37.8 (25.7 to 55.1),219 (150 to 319)
+False,0%,UK 50%,Male,SES5,9.33 (6.27 to 13.5),39.0 (26.5 to 56.8),29.8 (20.2 to 43.2),167 (113 to 244)
+False,0%,UK 70%,All,All,131 (90.5 to 183),550 (383 to 784),420 (292 to 600),"2,530 (1,750 to 3,610)"
+False,0%,UK 70%,All,SES1,37.0 (25.9 to 51.8),155 (109 to 222),119 (83.3 to 169),"765 (531 to 1,090)"
+False,0%,UK 70%,All,SES2,28.5 (19.8 to 40.1),119 (83.0 to 171),90.8 (63.3 to 130),560 (388 to 801)
+False,0%,UK 70%,All,SES3,25.7 (17.8 to 36.2),109 (75.9 to 155),83.5 (58.1 to 119),493 (340 to 701)
+False,0%,UK 70%,All,SES4,21.8 (15.0 to 30.7),93.5 (64.9 to 132),71.8 (49.9 to 102),410 (283 to 584)
+False,0%,UK 70%,All,SES5,17.7 (12.1 to 25.0),72.6 (49.9 to 104),55.0 (37.8 to 78.1),302 (208 to 430)
+False,0%,UK 70%,Female,All,38.5 (26.9 to 54.4),156 (108 to 221),117 (80.8 to 167),671 (462 to 964)
+False,0%,UK 70%,Female,SES1,11.7 (8.22 to 16.7),47.6 (33.1 to 67.3),35.7 (24.9 to 51.1),218 (151 to 313)
+False,0%,UK 70%,Female,SES2,8.48 (5.93 to 11.9),33.9 (23.5 to 48.2),25.4 (17.6 to 36.3),149 (103 to 214)
+False,0%,UK 70%,Female,SES3,7.55 (5.25 to 10.7),30.8 (21.3 to 44.1),23.2 (16.0 to 33.4),131 (90.5 to 190)
+False,0%,UK 70%,Female,SES4,6.12 (4.25 to 8.66),25.1 (17.4 to 35.7),19.0 (13.2 to 27.2),104 (71.4 to 149)
+False,0%,UK 70%,Female,SES5,4.62 (3.21 to 6.51),18.0 (12.4 to 25.6),13.4 (9.23 to 19.1),68.6 (47.1 to 98.4)
+False,0%,UK 70%,Male,All,92.1 (62.4 to 131),396 (270 to 564),303 (207 to 437),"1,860 (1,270 to 2,680)"
+False,0%,UK 70%,Male,SES1,25.2 (17.2 to 35.7),108 (74.4 to 155),82.9 (56.8 to 119),547 (374 to 788)
+False,0%,UK 70%,Male,SES2,20.1 (13.6 to 28.6),85.6 (58.6 to 123),65.5 (44.8 to 94.5),411 (280 to 593)
+False,0%,UK 70%,Male,SES3,18.1 (12.3 to 25.9),78.5 (53.5 to 112),60.3 (40.9 to 86.5),361 (247 to 520)
+False,0%,UK 70%,Male,SES4,15.7 (10.6 to 22.4),68.6 (46.4 to 98.1),52.8 (35.8 to 75.9),306 (208 to 441)
+False,0%,UK 70%,Male,SES5,13.0 (8.80 to 18.7),54.5 (36.8 to 78.8),41.5 (28.0 to 60.0),234 (157 to 338)
+False,0%,UK 90%,All,All,167 (116 to 237),"706 (492 to 1,010)",539 (375 to 768),"3,240 (2,250 to 4,660)"
+False,0%,UK 90%,All,SES1,47.2 (33.0 to 67.1),199 (140 to 283),152 (107 to 217),"978 (681 to 1,400)"
+False,0%,UK 90%,All,SES2,36.5 (25.4 to 51.7),153 (107 to 217),116 (81.2 to 166),"717 (498 to 1,030)"
+False,0%,UK 90%,All,SES3,32.9 (22.8 to 46.7),140 (97.6 to 199),107 (74.7 to 153),630 (438 to 900)
+False,0%,UK 90%,All,SES4,27.9 (19.3 to 39.4),120 (83.3 to 171),92.0 (64.0 to 132),525 (364 to 748)
+False,0%,UK 90%,All,SES5,22.6 (15.5 to 32.1),93.1 (64.3 to 132),70.5 (48.7 to 101),388 (267 to 554)
+False,0%,UK 90%,Female,All,49.3 (34.7 to 69.5),199 (138 to 284),149 (103 to 214),"861 (589 to 1,240)"
+False,0%,UK 90%,Female,SES1,15.0 (10.6 to 21.1),60.8 (42.4 to 86.8),45.8 (31.8 to 65.6),280 (194 to 399)
+False,0%,UK 90%,Female,SES2,10.8 (7.64 to 15.3),43.4 (30.0 to 61.9),32.5 (22.5 to 46.5),191 (132 to 274)
+False,0%,UK 90%,Female,SES3,9.67 (6.80 to 13.7),39.4 (27.2 to 56.4),29.8 (20.4 to 42.9),168 (114 to 245)
+False,0%,UK 90%,Female,SES4,7.84 (5.49 to 11.1),32.2 (22.2 to 46.0),24.3 (16.7 to 34.8),133 (90.7 to 192)
+False,0%,UK 90%,Female,SES5,5.93 (4.15 to 8.33),23.1 (15.9 to 32.9),17.2 (11.8 to 24.5),87.8 (59.7 to 126)
+False,0%,UK 90%,Male,All,117 (80.2 to 168),506 (346 to 731),389 (266 to 562),"2,390 (1,640 to 3,450)"
+False,0%,UK 90%,Male,SES1,32.1 (22.0 to 46.2),139 (95.4 to 199),106 (73.1 to 153),"700 (480 to 1,000)"
+False,0%,UK 90%,Male,SES2,25.6 (17.5 to 36.5),110 (75.0 to 158),84.0 (57.5 to 121),528 (360 to 762)
+False,0%,UK 90%,Male,SES3,23.2 (15.8 to 33.2),101 (68.7 to 145),77.3 (53.0 to 112),463 (318 to 670)
+False,0%,UK 90%,Male,SES4,20.0 (13.6 to 28.5),87.8 (59.8 to 127),67.8 (46.2 to 98.1),392 (268 to 567)
+False,0%,UK 90%,Male,SES5,16.7 (11.2 to 23.8),70.0 (47.3 to 101),53.3 (36.2 to 76.8),299 (203 to 434)
+False,0%,UK mandatory,All,All,186 (129 to 266),"782 (548 to 1,130)",597 (417 to 862),"3,600 (2,500 to 5,200)"
+False,0%,UK mandatory,All,SES1,52.6 (36.7 to 75.0),221 (156 to 318),169 (118 to 243),"1,090 (754 to 1,570)"
+False,0%,UK mandatory,All,SES2,40.6 (28.3 to 58.0),170 (119 to 243),129 (90.3 to 186),"798 (552 to 1,150)"
+False,0%,UK mandatory,All,SES3,36.6 (25.4 to 52.4),155 (108 to 224),119 (82.3 to 171),"701 (484 to 1,010)"
+False,0%,UK mandatory,All,SES4,31.0 (21.5 to 44.6),133 (92.4 to 192),102 (70.6 to 147),583 (402 to 841)
+False,0%,UK mandatory,All,SES5,25.1 (17.5 to 36.2),104 (71.5 to 149),78.3 (53.8 to 113),430 (296 to 618)
+False,0%,UK mandatory,Female,All,54.9 (38.1 to 78.7),221 (153 to 319),166 (116 to 240),"956 (656 to 1,380)"
+False,0%,UK mandatory,Female,SES1,16.7 (11.7 to 24.0),67.6 (47.2 to 96.9),51.0 (35.5 to 73.0),311 (214 to 448)
+False,0%,UK mandatory,Female,SES2,12.1 (8.40 to 17.3),48.2 (33.5 to 69.5),36.2 (25.1 to 52.1),213 (146 to 306)
+False,0%,UK mandatory,Female,SES3,10.7 (7.47 to 15.5),43.8 (30.4 to 63.6),33.1 (22.9 to 48.0),187 (128 to 272)
+False,0%,UK mandatory,Female,SES4,8.71 (6.05 to 12.5),35.7 (24.8 to 51.7),27.0 (18.7 to 39.0),148 (102 to 214)
+False,0%,UK mandatory,Female,SES5,6.57 (4.60 to 9.42),25.6 (17.8 to 36.9),19.1 (13.1 to 27.5),97.7 (66.8 to 140)
+False,0%,UK mandatory,Male,All,131 (89.1 to 190),562 (386 to 812),431 (295 to 624),"2,640 (1,800 to 3,830)"
+False,0%,UK mandatory,Male,SES1,35.8 (24.4 to 51.7),154 (106 to 222),118 (81.3 to 171),"776 (531 to 1,120)"
+False,0%,UK mandatory,Male,SES2,28.5 (19.5 to 41.1),122 (83.7 to 176),93.1 (63.9 to 135),584 (399 to 846)
+False,0%,UK mandatory,Male,SES3,25.8 (17.5 to 37.4),112 (76.4 to 161),85.8 (58.6 to 124),513 (353 to 746)
+False,0%,UK mandatory,Male,SES4,22.2 (15.1 to 32.3),97.5 (66.5 to 141),75.3 (51.2 to 108),435 (297 to 632)
+False,0%,UK mandatory,Male,SES5,18.5 (12.6 to 26.9),77.5 (52.9 to 113),59.1 (40.0 to 86.3),332 (224 to 486)
+False,0%,UK mass media campaign,All,All,12.4 (6.26 to 23.0),35.6 (17.6 to 65.0),23.0 (11.3 to 42.1),45.7 (22.3 to 84.0)
+False,0%,UK mass media campaign,All,SES1,3.55 (1.80 to 6.64),10.3 (5.11 to 18.8),6.71 (3.32 to 12.2),13.4 (6.59 to 24.6)
+False,0%,UK mass media campaign,All,SES2,2.73 (1.38 to 5.05),7.80 (3.86 to 14.2),5.05 (2.47 to 9.18),10.1 (4.93 to 18.5)
+False,0%,UK mass media campaign,All,SES3,2.44 (1.23 to 4.53),6.99 (3.46 to 12.8),4.52 (2.22 to 8.31),8.94 (4.34 to 16.5)
+False,0%,UK mass media campaign,All,SES4,2.06 (1.03 to 3.82),5.91 (2.92 to 10.8),3.82 (1.87 to 7.06),7.50 (3.65 to 13.8)
+False,0%,UK mass media campaign,All,SES5,1.66 (0.829 to 3.10),4.60 (2.25 to 8.41),2.91 (1.43 to 5.37),5.73 (2.77 to 10.5)
+False,0%,UK mass media campaign,Female,All,4.23 (2.17 to 7.83),11.2 (5.59 to 20.6),6.98 (3.41 to 12.8),13.9 (6.78 to 25.6)
+False,0%,UK mass media campaign,Female,SES1,1.30 (0.664 to 2.40),3.48 (1.72 to 6.33),2.17 (1.08 to 4.00),4.33 (2.11 to 8.02)
+False,0%,UK mass media campaign,Female,SES2,0.933 (0.477 to 1.72),2.46 (1.22 to 4.48),1.52 (0.742 to 2.81),3.06 (1.50 to 5.63)
+False,0%,UK mass media campaign,Female,SES3,0.829 (0.426 to 1.54),2.21 (1.10 to 4.05),1.38 (0.675 to 2.53),2.72 (1.32 to 5.01)
+False,0%,UK mass media campaign,Female,SES4,0.671 (0.343 to 1.23),1.78 (0.886 to 3.25),1.11 (0.540 to 2.03),2.19 (1.06 to 4.03)
+False,0%,UK mass media campaign,Female,SES5,0.505 (0.257 to 0.922),1.29 (0.639 to 2.36),0.784 (0.380 to 1.45),1.58 (0.768 to 2.89)
+False,0%,UK mass media campaign,Male,All,8.23 (4.10 to 15.4),24.4 (12.0 to 45.1),16.1 (7.88 to 29.7),32.0 (15.4 to 58.8)
+False,0%,UK mass media campaign,Male,SES1,2.26 (1.13 to 4.23),6.84 (3.38 to 12.7),4.54 (2.24 to 8.37),9.12 (4.39 to 16.8)
+False,0%,UK mass media campaign,Male,SES2,1.80 (0.898 to 3.36),5.35 (2.65 to 9.85),3.54 (1.73 to 6.50),7.05 (3.41 to 12.9)
+False,0%,UK mass media campaign,Male,SES3,1.62 (0.805 to 3.03),4.78 (2.35 to 8.87),3.17 (1.55 to 5.88),6.23 (3.00 to 11.6)
+False,0%,UK mass media campaign,Male,SES4,1.40 (0.691 to 2.61),4.13 (2.02 to 7.63),2.72 (1.32 to 5.06),5.32 (2.58 to 9.87)
+False,0%,UK mass media campaign,Male,SES5,1.16 (0.576 to 2.18),3.31 (1.61 to 6.06),2.14 (1.03 to 3.92),4.14 (1.99 to 7.68)
+False,0%,UK salt reduction program,All,All,56.0 (39.2 to 78.4),234 (163 to 330),178 (124 to 252),"1,110 (763 to 1,570)"
+False,0%,UK salt reduction program,All,SES1,16.1 (11.3 to 22.5),67.2 (46.6 to 94.1),50.9 (35.3 to 71.6),341 (232 to 481)
+False,0%,UK salt reduction program,All,SES2,12.3 (8.65 to 17.2),51.0 (35.4 to 71.7),38.7 (26.8 to 54.5),248 (170 to 350)
+False,0%,UK salt reduction program,All,SES3,10.9 (7.62 to 15.4),46.4 (32.3 to 65.3),35.4 (24.6 to 50.0),216 (148 to 306)
+False,0%,UK salt reduction program,All,SES4,9.17 (6.36 to 12.9),39.5 (27.4 to 55.8),30.3 (21.0 to 42.8),179 (122 to 254)
+False,0%,UK salt reduction program,All,SES5,7.37 (5.12 to 10.4),30.4 (21.0 to 42.8),22.9 (15.8 to 32.5),131 (89.2 to 187)
+False,0%,UK salt reduction program,Female,All,18.8 (13.2 to 25.9),74.8 (52.3 to 104),55.9 (38.9 to 78.3),330 (226 to 465)
+False,0%,UK salt reduction program,Female,SES1,5.80 (4.08 to 8.09),23.0 (16.1 to 32.3),17.2 (12.0 to 24.1),108 (74.5 to 152)
+False,0%,UK salt reduction program,Female,SES2,4.15 (2.91 to 5.73),16.3 (11.4 to 22.7),12.2 (8.45 to 17.0),73.4 (50.4 to 103)
+False,0%,UK salt reduction program,Female,SES3,3.66 (2.55 to 5.09),14.8 (10.3 to 20.7),11.1 (7.74 to 15.6),64.3 (44.1 to 91.1)
+False,0%,UK salt reduction program,Female,SES4,2.94 (2.06 to 4.09),12.0 (8.34 to 16.7),9.06 (6.28 to 12.7),50.7 (34.8 to 71.4)
+False,0%,UK salt reduction program,Female,SES5,2.21 (1.54 to 3.06),8.60 (5.95 to 12.0),6.39 (4.40 to 8.91),33.5 (22.9 to 47.1)
+False,0%,UK salt reduction program,Male,All,37.2 (25.3 to 53.1),160 (108 to 229),123 (83.2 to 175),"785 (532 to 1,130)"
+False,0%,UK salt reduction program,Male,SES1,10.3 (7.05 to 14.8),44.1 (30.1 to 62.9),33.8 (23.0 to 48.3),233 (159 to 335)
+False,0%,UK salt reduction program,Male,SES2,8.18 (5.59 to 11.6),34.8 (23.6 to 49.9),26.6 (18.1 to 38.1),174 (118 to 250)
+False,0%,UK salt reduction program,Male,SES3,7.29 (4.97 to 10.4),31.6 (21.4 to 45.1),24.3 (16.4 to 34.7),152 (103 to 218)
+False,0%,UK salt reduction program,Male,SES4,6.23 (4.24 to 8.92),27.5 (18.6 to 39.3),21.2 (14.3 to 30.3),128 (86.8 to 185)
+False,0%,UK salt reduction program,Male,SES5,5.17 (3.51 to 7.44),21.7 (14.6 to 31.3),16.6 (11.1 to 23.7),97.3 (65.6 to 141)
+False,0%,Who mandatory,All,All,316 (219 to 440),"1,350 (929 to 1,880)","1,030 (710 to 1,440)","6,280 (4,250 to 8,810)"
+False,0%,Who mandatory,All,SES1,89.5 (62.3 to 125),381 (264 to 537),292 (202 to 409),"1,910 (1,300 to 2,670)"
+False,0%,Who mandatory,All,SES2,69.1 (48.0 to 96.4),292 (202 to 408),223 (154 to 313),"1,390 (947 to 1,950)"
+False,0%,Who mandatory,All,SES3,62.3 (43.1 to 86.8),267 (184 to 372),205 (141 to 287),"1,220 (826 to 1,720)"
+False,0%,Who mandatory,All,SES4,52.8 (36.5 to 73.5),228 (157 to 320),176 (120 to 247),"1,010 (685 to 1,430)"
+False,0%,Who mandatory,All,SES5,42.6 (29.3 to 60.1),176 (121 to 248),134 (91.2 to 189),"744 (504 to 1,050)"
+False,0%,Who mandatory,Female,All,101 (71.2 to 143),410 (286 to 571),308 (214 to 429),"1,780 (1,220 to 2,510)"
+False,0%,Who mandatory,Female,SES1,30.9 (21.8 to 43.5),125 (87.2 to 175),94.0 (65.3 to 131),577 (397 to 812)
+False,0%,Who mandatory,Female,SES2,22.4 (15.7 to 31.4),89.4 (62.5 to 124),66.9 (46.4 to 93.7),396 (272 to 558)
+False,0%,Who mandatory,Female,SES3,20.0 (13.9 to 28.2),81.2 (56.5 to 114),61.3 (42.2 to 86.3),348 (239 to 494)
+False,0%,Who mandatory,Female,SES4,16.2 (11.3 to 22.8),66.3 (46.1 to 92.6),50.2 (34.8 to 70.1),275 (188 to 388)
+False,0%,Who mandatory,Female,SES5,12.2 (8.49 to 17.1),47.8 (33.0 to 66.8),35.5 (24.5 to 49.8),182 (124 to 257)
+False,0%,Who mandatory,Male,All,214 (146 to 306),"936 (637 to 1,330)","721 (489 to 1,030)","4,490 (3,020 to 6,380)"
+False,0%,Who mandatory,Male,SES1,58.5 (39.9 to 83.0),257 (175 to 366),198 (134 to 283),"1,320 (894 to 1,880)"
+False,0%,Who mandatory,Male,SES2,46.6 (31.9 to 66.6),203 (138 to 289),156 (106 to 223),"994 (672 to 1,410)"
+False,0%,Who mandatory,Male,SES3,42.1 (28.8 to 60.2),186 (127 to 264),143 (97.7 to 204),"873 (585 to 1,240)"
+False,0%,Who mandatory,Male,SES4,36.4 (24.8 to 52.3),162 (110 to 232),126 (85.0 to 179),"738 (496 to 1,050)"
+False,0%,Who mandatory,Male,SES5,30.3 (20.5 to 43.7),128 (87.6 to 185),98.2 (66.8 to 141),561 (378 to 806)
+False,3%,Aus then UK 50%,All,All,49.0 (35.4 to 67.4),221 (158 to 310),172 (121 to 244),664 (466 to 941)
+False,3%,Aus then UK 50%,All,SES1,13.7 (10.0 to 19.0),62.2 (44.7 to 86.7),48.5 (34.4 to 68.2),197 (138 to 280)
+False,3%,Aus then UK 50%,All,SES2,10.7 (7.72 to 14.7),47.9 (34.2 to 67.1),37.1 (26.2 to 52.7),147 (103 to 208)
+False,3%,Aus then UK 50%,All,SES3,9.65 (6.95 to 13.3),44.0 (31.2 to 61.6),34.3 (24.1 to 48.5),130 (91.2 to 185)
+False,3%,Aus then UK 50%,All,SES4,8.21 (5.90 to 11.4),37.8 (26.7 to 52.7),29.5 (20.7 to 41.9),109 (76.4 to 155)
+False,3%,Aus then UK 50%,All,SES5,6.66 (4.75 to 9.24),29.4 (20.6 to 41.1),22.6 (15.8 to 32.2),81.1 (56.6 to 115)
+False,3%,Aus then UK 50%,Female,All,14.8 (10.7 to 20.6),62.8 (44.6 to 88.6),48.1 (33.8 to 68.1),180 (125 to 258)
+False,3%,Aus then UK 50%,Female,SES1,4.49 (3.26 to 6.29),19.1 (13.7 to 26.8),14.7 (10.3 to 20.7),57.6 (39.9 to 81.8)
+False,3%,Aus then UK 50%,Female,SES2,3.26 (2.36 to 4.52),13.7 (9.73 to 19.2),10.4 (7.34 to 14.8),39.9 (27.6 to 57.1)
+False,3%,Aus then UK 50%,Female,SES3,2.91 (2.10 to 4.06),12.5 (8.84 to 17.7),9.56 (6.70 to 13.7),35.4 (24.4 to 51.0)
+False,3%,Aus then UK 50%,Female,SES4,2.37 (1.70 to 3.29),10.2 (7.21 to 14.4),7.82 (5.47 to 11.1),28.2 (19.4 to 40.4)
+False,3%,Aus then UK 50%,Female,SES5,1.79 (1.28 to 2.47),7.34 (5.15 to 10.3),5.54 (3.86 to 7.86),19.3 (13.2 to 27.4)
+False,3%,Aus then UK 50%,Male,All,34.0 (24.2 to 47.3),158 (111 to 223),124 (86.0 to 176),484 (335 to 695)
+False,3%,Aus then UK 50%,Male,SES1,9.23 (6.62 to 12.9),43.0 (30.3 to 60.8),33.8 (23.6 to 47.9),140 (96.6 to 200)
+False,3%,Aus then UK 50%,Male,SES2,7.38 (5.28 to 10.3),34.1 (23.9 to 48.3),26.8 (18.6 to 38.1),107 (73.9 to 153)
+False,3%,Aus then UK 50%,Male,SES3,6.72 (4.76 to 9.35),31.5 (22.0 to 44.1),24.7 (17.2 to 35.1),94.6 (65.5 to 135)
+False,3%,Aus then UK 50%,Male,SES4,5.83 (4.12 to 8.12),27.6 (19.2 to 39.0),21.7 (15.0 to 31.0),81.0 (56.0 to 116)
+False,3%,Aus then UK 50%,Male,SES5,4.87 (3.41 to 6.82),22.0 (15.1 to 31.2),17.1 (11.7 to 24.5),61.8 (42.2 to 89.3)
+False,3%,Aus then UK 70%,All,All,68.5 (49.1 to 95.0),309 (220 to 435),240 (169 to 342),"929 (651 to 1,320)"
+False,3%,Aus then UK 70%,All,SES1,19.2 (13.9 to 26.7),86.9 (62.4 to 123),67.6 (47.9 to 95.9),276 (194 to 392)
+False,3%,Aus then UK 70%,All,SES2,14.9 (10.7 to 20.7),66.8 (47.7 to 94.1),51.9 (36.6 to 73.6),205 (144 to 292)
+False,3%,Aus then UK 70%,All,SES3,13.5 (9.70 to 18.7),61.3 (43.7 to 87.0),47.9 (33.6 to 68.3),181 (127 to 258)
+False,3%,Aus then UK 70%,All,SES4,11.5 (8.22 to 15.9),52.8 (37.2 to 74.6),41.3 (28.8 to 58.5),153 (107 to 216)
+False,3%,Aus then UK 70%,All,SES5,9.33 (6.60 to 13.0),41.0 (28.8 to 57.9),31.7 (21.8 to 44.9),114 (78.7 to 162)
+False,3%,Aus then UK 70%,Female,All,20.8 (15.0 to 28.8),87.6 (62.9 to 125),66.9 (47.3 to 95.9),252 (176 to 363)
+False,3%,Aus then UK 70%,Female,SES1,6.29 (4.55 to 8.78),26.7 (19.1 to 38.0),20.5 (14.5 to 29.2),80.4 (56.1 to 116)
+False,3%,Aus then UK 70%,Female,SES2,4.57 (3.29 to 6.33),19.1 (13.7 to 27.1),14.5 (10.3 to 20.8),55.7 (39.0 to 80.0)
+False,3%,Aus then UK 70%,Female,SES3,4.09 (2.94 to 5.70),17.4 (12.4 to 24.9),13.4 (9.38 to 19.2),49.4 (34.3 to 71.8)
+False,3%,Aus then UK 70%,Female,SES4,3.33 (2.38 to 4.62),14.2 (10.1 to 20.2),10.9 (7.68 to 15.6),39.4 (27.5 to 56.8)
+False,3%,Aus then UK 70%,Female,SES5,2.51 (1.80 to 3.49),10.2 (7.27 to 14.4),7.72 (5.40 to 11.0),26.8 (18.6 to 38.3)
+False,3%,Aus then UK 70%,Male,All,47.7 (33.7 to 66.8),221 (154 to 312),174 (120 to 247),677 (464 to 976)
+False,3%,Aus then UK 70%,Male,SES1,13.0 (9.23 to 18.1),60.2 (42.1 to 84.5),47.3 (32.6 to 67.4),195 (134 to 283)
+False,3%,Aus then UK 70%,Male,SES2,10.4 (7.31 to 14.5),47.8 (33.2 to 67.2),37.5 (25.8 to 53.2),149 (102 to 215)
+False,3%,Aus then UK 70%,Male,SES3,9.42 (6.65 to 13.2),44.0 (30.5 to 62.1),34.6 (23.8 to 49.2),132 (90.8 to 191)
+False,3%,Aus then UK 70%,Male,SES4,8.17 (5.72 to 11.5),38.6 (26.4 to 54.3),30.4 (20.8 to 43.1),113 (77.5 to 163)
+False,3%,Aus then UK 70%,Male,SES5,6.82 (4.72 to 9.62),30.7 (21.0 to 43.6),23.9 (16.2 to 34.1),86.8 (58.7 to 125)
+False,3%,Aus then UK 90%,All,All,87.9 (63.5 to 121),397 (281 to 559),308 (218 to 440),"1,190 (835 to 1,700)"
+False,3%,Aus then UK 90%,All,SES1,24.7 (17.9 to 33.8),112 (79.7 to 156),87.0 (61.5 to 123),354 (248 to 504)
+False,3%,Aus then UK 90%,All,SES2,19.1 (13.9 to 26.4),85.8 (60.9 to 121),66.7 (46.9 to 94.9),263 (185 to 374)
+False,3%,Aus then UK 90%,All,SES3,17.3 (12.5 to 23.9),79.1 (56.0 to 111),61.5 (43.2 to 88.0),232 (163 to 336)
+False,3%,Aus then UK 90%,All,SES4,14.8 (10.6 to 20.4),67.9 (47.9 to 95.5),53.0 (36.9 to 75.2),196 (137 to 280)
+False,3%,Aus then UK 90%,All,SES5,12.0 (8.52 to 16.6),52.7 (36.7 to 74.4),40.6 (28.2 to 57.8),146 (101 to 208)
+False,3%,Aus then UK 90%,Female,All,26.8 (19.3 to 36.6),113 (80.7 to 158),86.4 (61.2 to 122),324 (226 to 462)
+False,3%,Aus then UK 90%,Female,SES1,8.09 (5.82 to 11.1),34.5 (24.6 to 48.2),26.3 (18.7 to 37.2),103 (72.2 to 148)
+False,3%,Aus then UK 90%,Female,SES2,5.88 (4.25 to 8.03),24.7 (17.6 to 34.5),18.8 (13.3 to 26.3),71.6 (50.1 to 102)
+False,3%,Aus then UK 90%,Female,SES3,5.25 (3.79 to 7.22),22.5 (16.0 to 31.6),17.2 (12.2 to 24.4),63.5 (44.2 to 91.4)
+False,3%,Aus then UK 90%,Female,SES4,4.27 (3.09 to 5.85),18.4 (13.0 to 25.6),14.1 (9.91 to 19.9),50.7 (35.3 to 72.5)
+False,3%,Aus then UK 90%,Female,SES5,3.23 (2.33 to 4.40),13.2 (9.32 to 18.4),9.95 (6.95 to 14.0),34.5 (23.9 to 49.2)
+False,3%,Aus then UK 90%,Male,All,61.2 (43.2 to 85.2),284 (195 to 402),223 (152 to 320),"868 (598 to 1,250)"
+False,3%,Aus then UK 90%,Male,SES1,16.6 (11.8 to 23.1),77.1 (53.7 to 109),60.5 (41.8 to 86.6),250 (173 to 358)
+False,3%,Aus then UK 90%,Male,SES2,13.3 (9.37 to 18.4),61.2 (42.3 to 86.6),48.0 (33.0 to 68.6),191 (132 to 275)
+False,3%,Aus then UK 90%,Male,SES3,12.1 (8.51 to 16.9),56.5 (39.1 to 80.2),44.4 (30.5 to 63.4),170 (117 to 244)
+False,3%,Aus then UK 90%,Male,SES4,10.5 (7.37 to 14.7),49.5 (34.0 to 70.4),39.0 (26.6 to 56.1),145 (99.9 to 209)
+False,3%,Aus then UK 90%,Male,SES5,8.77 (6.08 to 12.3),39.5 (27.0 to 55.9),30.7 (20.7 to 44.0),111 (75.8 to 160)
+False,3%,Aus then UK mandatory,All,All,97.2 (70.5 to 134),440 (310 to 621),343 (240 to 483),"1,320 (923 to 1,890)"
+False,3%,Aus then UK mandatory,All,SES1,27.3 (19.9 to 37.7),124 (88.7 to 174),96.3 (68.1 to 136),393 (276 to 560)
+False,3%,Aus then UK mandatory,All,SES2,21.2 (15.4 to 29.2),95.3 (67.5 to 134),74.1 (51.9 to 104),292 (204 to 416)
+False,3%,Aus then UK mandatory,All,SES3,19.2 (13.9 to 26.5),87.5 (61.6 to 123),68.2 (47.8 to 96.7),258 (181 to 368)
+False,3%,Aus then UK mandatory,All,SES4,16.3 (11.7 to 22.6),75.2 (52.6 to 106),58.9 (41.0 to 83.2),218 (151 to 311)
+False,3%,Aus then UK mandatory,All,SES5,13.3 (9.43 to 18.5),58.4 (40.5 to 82.0),45.2 (31.2 to 64.0),162 (112 to 230)
+False,3%,Aus then UK mandatory,Female,All,29.6 (21.6 to 40.8),125 (89.8 to 176),95.7 (67.7 to 136),359 (250 to 514)
+False,3%,Aus then UK mandatory,Female,SES1,8.97 (6.56 to 12.4),38.2 (27.5 to 53.5),29.2 (20.7 to 41.5),115 (80.2 to 164)
+False,3%,Aus then UK mandatory,Female,SES2,6.51 (4.77 to 8.98),27.3 (19.6 to 38.3),20.8 (14.7 to 29.6),79.4 (55.4 to 114)
+False,3%,Aus then UK mandatory,Female,SES3,5.83 (4.25 to 8.05),24.9 (17.8 to 35.2),19.1 (13.5 to 27.3),70.5 (49.0 to 102)
+False,3%,Aus then UK mandatory,Female,SES4,4.74 (3.43 to 6.51),20.3 (14.4 to 28.8),15.6 (11.0 to 22.2),56.2 (39.0 to 81.0)
+False,3%,Aus then UK mandatory,Female,SES5,3.58 (2.58 to 4.90),14.6 (10.3 to 20.7),11.0 (7.74 to 15.7),38.3 (26.4 to 54.9)
+False,3%,Aus then UK mandatory,Male,All,67.6 (47.8 to 95.0),315 (219 to 446),247 (170 to 352),"968 (658 to 1,380)"
+False,3%,Aus then UK mandatory,Male,SES1,18.3 (13.1 to 25.7),85.6 (59.9 to 121),67.2 (46.5 to 95.3),279 (190 to 397)
+False,3%,Aus then UK mandatory,Male,SES2,14.7 (10.4 to 20.6),67.9 (47.4 to 96.5),53.2 (36.5 to 75.8),213 (145 to 303)
+False,3%,Aus then UK mandatory,Male,SES3,13.4 (9.42 to 18.7),62.6 (43.4 to 88.6),49.3 (33.7 to 69.9),188 (128 to 271)
+False,3%,Aus then UK mandatory,Male,SES4,11.6 (8.12 to 16.2),54.9 (37.7 to 77.8),43.3 (29.5 to 61.5),162 (110 to 232)
+False,3%,Aus then UK mandatory,Male,SES5,9.68 (6.69 to 13.5),43.8 (30.0 to 61.8),34.1 (23.2 to 48.9),123 (83.5 to 177)
+False,3%,Australia 50%,All,All,33.3 (23.6 to 47.3),118 (82.1 to 167),84.2 (58.6 to 120),324 (224 to 463)
+False,3%,Australia 50%,All,SES1,9.43 (6.69 to 13.4),33.2 (23.2 to 47.1),23.8 (16.6 to 33.8),96.4 (67.0 to 137)
+False,3%,Australia 50%,All,SES2,7.27 (5.17 to 10.3),25.5 (17.9 to 36.2),18.2 (12.8 to 25.9),71.6 (49.6 to 102)
+False,3%,Australia 50%,All,SES3,6.55 (4.62 to 9.35),23.3 (16.2 to 33.1),16.7 (11.6 to 23.9),63.1 (43.7 to 90.4)
+False,3%,Australia 50%,All,SES4,5.55 (3.90 to 7.91),19.9 (13.9 to 28.4),14.4 (9.96 to 20.6),53.0 (36.6 to 76.4)
+False,3%,Australia 50%,All,SES5,4.49 (3.13 to 6.43),15.5 (10.7 to 22.2),11.0 (7.59 to 15.8),39.5 (27.3 to 56.9)
+False,3%,Australia 50%,Female,All,10.2 (7.20 to 14.4),34.6 (24.0 to 49.1),24.4 (16.9 to 34.9),91.4 (62.7 to 131)
+False,3%,Australia 50%,Female,SES1,3.12 (2.20 to 4.41),10.6 (7.42 to 15.0),7.48 (5.21 to 10.7),29.2 (20.1 to 41.8)
+False,3%,Australia 50%,Female,SES2,2.25 (1.59 to 3.16),7.56 (5.26 to 10.7),5.31 (3.68 to 7.58),20.2 (13.9 to 28.9)
+False,3%,Australia 50%,Female,SES3,2.00 (1.41 to 2.85),6.85 (4.75 to 9.75),4.85 (3.35 to 6.99),17.9 (12.2 to 25.7)
+False,3%,Australia 50%,Female,SES4,1.62 (1.14 to 2.28),5.57 (3.90 to 7.92),3.96 (2.74 to 5.66),14.3 (9.77 to 20.4)
+False,3%,Australia 50%,Female,SES5,1.22 (0.864 to 1.71),4.03 (2.82 to 5.72),2.81 (1.95 to 3.98),9.77 (6.76 to 14.0)
+False,3%,Australia 50%,Male,All,23.0 (16.0 to 33.5),82.9 (57.6 to 119),59.7 (41.3 to 86.1),232 (160 to 336)
+False,3%,Australia 50%,Male,SES1,6.30 (4.41 to 9.09),22.7 (15.8 to 32.6),16.4 (11.3 to 23.7),67.1 (46.5 to 97.6)
+False,3%,Australia 50%,Male,SES2,5.02 (3.50 to 7.30),17.9 (12.5 to 25.9),12.9 (8.94 to 18.6),51.2 (35.4 to 74.5)
+False,3%,Australia 50%,Male,SES3,4.54 (3.16 to 6.60),16.4 (11.4 to 23.7),11.9 (8.18 to 17.1),45.3 (31.1 to 65.6)
+False,3%,Australia 50%,Male,SES4,3.91 (2.71 to 5.72),14.3 (9.85 to 20.7),10.4 (7.11 to 15.1),38.7 (26.5 to 56.2)
+False,3%,Australia 50%,Male,SES5,3.26 (2.25 to 4.81),11.4 (7.89 to 16.7),8.17 (5.59 to 11.9),29.6 (20.3 to 43.2)
+False,3%,Australia 70%,All,All,46.6 (32.3 to 66.5),164 (113 to 234),118 (80.9 to 167),453 (309 to 642)
+False,3%,Australia 70%,All,SES1,13.2 (9.21 to 18.8),46.5 (32.1 to 66.3),33.3 (23.0 to 47.4),135 (92.3 to 191)
+False,3%,Australia 70%,All,SES2,10.2 (7.09 to 14.5),35.7 (24.6 to 50.6),25.5 (17.5 to 36.0),100 (68.4 to 142)
+False,3%,Australia 70%,All,SES3,9.17 (6.37 to 13.1),32.5 (22.4 to 46.4),23.4 (16.0 to 33.3),88.5 (60.4 to 126)
+False,3%,Australia 70%,All,SES4,7.76 (5.37 to 11.1),27.8 (19.3 to 39.7),20.0 (13.8 to 28.5),74.3 (50.7 to 106)
+False,3%,Australia 70%,All,SES5,6.29 (4.34 to 8.97),21.6 (14.9 to 30.9),15.3 (10.5 to 21.9),55.1 (37.8 to 78.9)
+False,3%,Australia 70%,Female,All,14.3 (9.91 to 20.2),48.4 (33.3 to 68.7),34.1 (23.4 to 48.6),127 (87.4 to 182)
+False,3%,Australia 70%,Female,SES1,4.37 (3.05 to 6.16),14.8 (10.3 to 21.1),10.4 (7.24 to 14.9),40.7 (28.1 to 58.5)
+False,3%,Australia 70%,Female,SES2,3.16 (2.18 to 4.46),10.6 (7.30 to 15.0),7.41 (5.08 to 10.6),28.1 (19.3 to 40.3)
+False,3%,Australia 70%,Female,SES3,2.80 (1.94 to 3.99),9.60 (6.58 to 13.6),6.78 (4.63 to 9.73),24.8 (17.0 to 35.8)
+False,3%,Australia 70%,Female,SES4,2.27 (1.56 to 3.22),7.79 (5.38 to 11.1),5.52 (3.77 to 7.87),19.9 (13.5 to 28.5)
+False,3%,Australia 70%,Female,SES5,1.71 (1.18 to 2.44),5.62 (3.86 to 7.96),3.91 (2.67 to 5.55),13.6 (9.21 to 19.4)
+False,3%,Australia 70%,Male,All,32.3 (22.2 to 46.6),116 (79.7 to 166),83.2 (57.5 to 120),324 (222 to 465)
+False,3%,Australia 70%,Male,SES1,8.84 (6.06 to 12.7),31.7 (21.9 to 45.5),22.8 (15.8 to 32.9),93.8 (64.3 to 135)
+False,3%,Australia 70%,Male,SES2,7.04 (4.85 to 10.1),25.0 (17.3 to 36.0),18.0 (12.5 to 26.0),71.5 (49.2 to 103)
+False,3%,Australia 70%,Male,SES3,6.36 (4.37 to 9.17),22.9 (15.8 to 33.0),16.5 (11.4 to 23.9),63.2 (43.3 to 90.7)
+False,3%,Australia 70%,Male,SES4,5.48 (3.75 to 7.94),20.0 (13.7 to 28.8),14.5 (9.91 to 21.0),54.1 (36.9 to 77.8)
+False,3%,Australia 70%,Male,SES5,4.56 (3.11 to 6.62),15.9 (10.9 to 23.1),11.4 (7.74 to 16.6),41.3 (28.3 to 60.1)
+False,3%,Australia 90%,All,All,60.0 (41.9 to 85.4),211 (146 to 302),151 (104 to 215),580 (400 to 832)
+False,3%,Australia 90%,All,SES1,17.0 (11.8 to 24.1),59.7 (41.5 to 85.1),42.7 (29.7 to 61.2),173 (120 to 248)
+False,3%,Australia 90%,All,SES2,13.1 (9.14 to 18.6),45.8 (31.8 to 65.3),32.6 (22.7 to 46.6),128 (88.8 to 183)
+False,3%,Australia 90%,All,SES3,11.8 (8.21 to 16.8),41.8 (28.9 to 60.1),30.0 (20.6 to 42.9),113 (77.8 to 162)
+False,3%,Australia 90%,All,SES4,10.0 (6.93 to 14.3),35.8 (24.7 to 51.3),25.7 (17.7 to 37.1),95.1 (65.5 to 136)
+False,3%,Australia 90%,All,SES5,8.10 (5.58 to 11.6),27.8 (19.2 to 40.0),19.7 (13.7 to 28.5),70.8 (48.5 to 102)
+False,3%,Australia 90%,Female,All,18.4 (12.8 to 26.1),62.3 (43.4 to 88.6),44.0 (30.5 to 62.7),164 (113 to 235)
+False,3%,Australia 90%,Female,SES1,5.61 (3.91 to 7.99),19.1 (13.3 to 27.1),13.5 (9.38 to 19.3),52.4 (36.4 to 75.6)
+False,3%,Australia 90%,Female,SES2,4.05 (2.82 to 5.75),13.6 (9.47 to 19.3),9.55 (6.62 to 13.6),36.3 (25.1 to 51.9)
+False,3%,Australia 90%,Female,SES3,3.60 (2.50 to 5.14),12.3 (8.59 to 17.5),8.74 (6.03 to 12.5),32.1 (22.1 to 46.4)
+False,3%,Australia 90%,Female,SES4,2.91 (2.03 to 4.13),10.0 (6.93 to 14.3),7.12 (4.91 to 10.2),25.6 (17.4 to 36.8)
+False,3%,Australia 90%,Female,SES5,2.20 (1.52 to 3.11),7.23 (5.01 to 10.3),5.03 (3.47 to 7.18),17.5 (11.9 to 25.1)
+False,3%,Australia 90%,Male,All,41.6 (28.7 to 60.2),149 (102 to 215),107 (74.0 to 155),415 (286 to 605)
+False,3%,Australia 90%,Male,SES1,11.4 (7.86 to 16.4),40.7 (28.3 to 58.5),29.2 (20.3 to 42.2),120 (83.3 to 174)
+False,3%,Australia 90%,Male,SES2,9.04 (6.24 to 13.1),32.2 (22.3 to 46.5),23.1 (16.0 to 33.5),91.8 (63.3 to 133)
+False,3%,Australia 90%,Male,SES3,8.20 (5.66 to 11.8),29.5 (20.3 to 42.6),21.2 (14.7 to 30.9),81.1 (55.7 to 118)
+False,3%,Australia 90%,Male,SES4,7.07 (4.87 to 10.3),25.8 (17.7 to 37.4),18.6 (12.9 to 27.1),69.5 (47.6 to 101)
+False,3%,Australia 90%,Male,SES5,5.88 (4.02 to 8.63),20.6 (14.1 to 30.2),14.7 (10.1 to 21.5),53.2 (36.4 to 77.9)
+False,3%,Australia mandatory,All,All,66.8 (47.0 to 95.5),235 (164 to 334),168 (116 to 239),644 (446 to 922)
+False,3%,Australia mandatory,All,SES1,18.9 (13.3 to 27.1),66.6 (46.9 to 94.4),47.7 (33.3 to 67.6),192 (133 to 274)
+False,3%,Australia mandatory,All,SES2,14.6 (10.3 to 20.8),51.0 (35.8 to 72.4),36.3 (25.2 to 51.7),142 (99.0 to 204)
+False,3%,Australia mandatory,All,SES3,13.1 (9.20 to 18.7),46.6 (32.4 to 66.5),33.3 (23.2 to 47.8),126 (87.0 to 180)
+False,3%,Australia mandatory,All,SES4,11.1 (7.82 to 15.8),39.8 (27.7 to 56.7),28.7 (19.9 to 41.0),106 (73.2 to 151)
+False,3%,Australia mandatory,All,SES5,9.00 (6.30 to 12.8),30.9 (21.4 to 44.0),21.9 (15.1 to 31.3),78.6 (54.2 to 113)
+False,3%,Australia mandatory,Female,All,20.4 (14.3 to 29.0),69.2 (48.4 to 98.9),48.8 (33.9 to 69.6),182 (126 to 262)
+False,3%,Australia mandatory,Female,SES1,6.25 (4.38 to 8.90),21.2 (15.0 to 30.2),14.9 (10.4 to 21.3),58.1 (40.6 to 83.8)
+False,3%,Australia mandatory,Female,SES2,4.50 (3.16 to 6.39),15.1 (10.6 to 21.5),10.6 (7.40 to 15.1),40.3 (28.0 to 57.8)
+False,3%,Australia mandatory,Female,SES3,4.00 (2.79 to 5.72),13.7 (9.56 to 19.8),9.69 (6.72 to 14.0),35.6 (24.6 to 51.4)
+False,3%,Australia mandatory,Female,SES4,3.24 (2.26 to 4.61),11.1 (7.77 to 15.9),7.90 (5.47 to 11.3),28.4 (19.7 to 40.9)
+False,3%,Australia mandatory,Female,SES5,2.44 (1.71 to 3.45),8.03 (5.57 to 11.4),5.58 (3.86 to 7.94),19.5 (13.4 to 27.9)
+False,3%,Australia mandatory,Male,All,46.2 (32.2 to 66.9),165 (115 to 238),119 (82.5 to 172),462 (320 to 669)
+False,3%,Australia mandatory,Male,SES1,12.7 (8.82 to 18.2),45.2 (31.6 to 64.8),32.5 (22.7 to 46.9),134 (92.6 to 193)
+False,3%,Australia mandatory,Male,SES2,10.1 (7.05 to 14.5),35.8 (24.9 to 51.5),25.6 (17.9 to 37.1),102 (70.7 to 147)
+False,3%,Australia mandatory,Male,SES3,9.11 (6.34 to 13.2),32.7 (22.8 to 47.3),23.6 (16.4 to 34.1),90.1 (61.9 to 131)
+False,3%,Australia mandatory,Male,SES4,7.85 (5.46 to 11.4),28.5 (19.8 to 41.2),20.7 (14.3 to 29.9),77.1 (53.0 to 112)
+False,3%,Australia mandatory,Male,SES5,6.54 (4.52 to 9.53),22.8 (15.7 to 33.1),16.3 (11.1 to 23.7),59.1 (40.3 to 85.6)
+False,3%,BAU,All,All,"4,960,000 (4,960,000 to 4,970,000)","8,560,000 (8,550,000 to 8,570,000)","3,600,000 (3,590,000 to 3,600,000)","16,300,000 (16,200,000 to 16,300,000)"
+False,3%,BAU,All,SES1,"925,000 (923,000 to 927,000)","1,610,000 (1,610,000 to 1,610,000)","686,000 (684,000 to 687,000)","3,110,000 (3,100,000 to 3,120,000)"
+False,3%,BAU,All,SES2,"945,000 (943,000 to 947,000)","1,630,000 (1,630,000 to 1,630,000)","687,000 (685,000 to 688,000)","3,120,000 (3,110,000 to 3,130,000)"
+False,3%,BAU,All,SES3,"1,000,000 (1,000,000 to 1,000,000)","1,730,000 (1,720,000 to 1,730,000)","725,000 (724,000 to 726,000)","3,280,000 (3,280,000 to 3,290,000)"
+False,3%,BAU,All,SES4,"1,060,000 (1,060,000 to 1,060,000)","1,820,000 (1,820,000 to 1,820,000)","762,000 (761,000 to 763,000)","3,430,000 (3,430,000 to 3,440,000)"
+False,3%,BAU,All,SES5,"1,030,000 (1,030,000 to 1,030,000)","1,770,000 (1,770,000 to 1,770,000)","738,000 (737,000 to 739,000)","3,310,000 (3,300,000 to 3,310,000)"
+False,3%,BAU,Female,All,"1,990,000 (1,980,000 to 1,990,000)","3,410,000 (3,410,000 to 3,420,000)","1,430,000 (1,420,000 to 1,430,000)","6,420,000 (6,410,000 to 6,430,000)"
+False,3%,BAU,Female,SES1,"376,000 (376,000 to 377,000)","652,000 (650,000 to 653,000)","275,000 (275,000 to 276,000)","1,250,000 (1,250,000 to 1,250,000)"
+False,3%,BAU,Female,SES2,"380,000 (379,000 to 380,000)","653,000 (652,000 to 654,000)","274,000 (273,000 to 274,000)","1,240,000 (1,240,000 to 1,250,000)"
+False,3%,BAU,Female,SES3,"401,000 (400,000 to 401,000)","689,000 (688,000 to 689,000)","288,000 (288,000 to 288,000)","1,300,000 (1,300,000 to 1,300,000)"
+False,3%,BAU,Female,SES4,"422,000 (421,000 to 422,000)","723,000 (722,000 to 723,000)","301,000 (300,000 to 301,000)","1,360,000 (1,350,000 to 1,360,000)"
+False,3%,BAU,Female,SES5,"408,000 (408,000 to 408,000)","697,000 (696,000 to 697,000)","289,000 (288,000 to 289,000)","1,270,000 (1,270,000 to 1,270,000)"
+False,3%,BAU,Male,All,"2,980,000 (2,970,000 to 2,980,000)","5,150,000 (5,140,000 to 5,160,000)","2,170,000 (2,170,000 to 2,180,000)","9,830,000 (9,810,000 to 9,850,000)"
+False,3%,BAU,Male,SES1,"549,000 (548,000 to 551,000)","959,000 (957,000 to 962,000)","410,000 (409,000 to 411,000)","1,860,000 (1,850,000 to 1,860,000)"
+False,3%,BAU,Male,SES2,"565,000 (564,000 to 566,000)","978,000 (976,000 to 981,000)","413,000 (412,000 to 414,000)","1,880,000 (1,870,000 to 1,880,000)"
+False,3%,BAU,Male,SES3,"600,000 (599,000 to 601,000)","1,040,000 (1,040,000 to 1,040,000)","437,000 (436,000 to 438,000)","1,980,000 (1,980,000 to 1,980,000)"
+False,3%,BAU,Male,SES4,"637,000 (636,000 to 638,000)","1,100,000 (1,100,000 to 1,100,000)","461,000 (460,000 to 462,000)","2,080,000 (2,070,000 to 2,080,000)"
+False,3%,BAU,Male,SES5,"625,000 (625,000 to 626,000)","1,070,000 (1,070,000 to 1,080,000)","449,000 (449,000 to 450,000)","2,040,000 (2,040,000 to 2,040,000)"
+False,3%,KCl subsitute (10%) all foods,All,All,44.2 (30.8 to 63.1),386 (267 to 546),341 (236 to 484),"1,580 (1,080 to 2,260)"
+False,3%,KCl subsitute (10%) all foods,All,SES1,12.4 (8.69 to 17.7),109 (75.5 to 154),96.3 (66.6 to 136),477 (326 to 683)
+False,3%,KCl subsitute (10%) all foods,All,SES2,9.60 (6.68 to 13.6),83.2 (57.6 to 118),73.7 (50.9 to 104),351 (239 to 504)
+False,3%,KCl subsitute (10%) all foods,All,SES3,8.74 (6.08 to 12.5),76.8 (53.2 to 109),68.1 (47.2 to 96.7),309 (210 to 441)
+False,3%,KCl subsitute (10%) all foods,All,SES4,7.46 (5.16 to 10.7),66.0 (45.9 to 93.9),58.6 (40.7 to 83.4),258 (175 to 371)
+False,3%,KCl subsitute (10%) all foods,All,SES5,6.03 (4.15 to 8.66),50.6 (34.9 to 71.8),44.6 (30.6 to 63.2),189 (129 to 274)
+False,3%,KCl subsitute (10%) all foods,Female,All,15.3 (10.6 to 21.9),125 (86.2 to 178),110 (75.5 to 156),478 (324 to 684)
+False,3%,KCl subsitute (10%) all foods,Female,SES1,4.60 (3.20 to 6.65),38.0 (26.2 to 54.1),33.4 (23.0 to 47.6),154 (105 to 221)
+False,3%,KCl subsitute (10%) all foods,Female,SES2,3.34 (2.31 to 4.78),27.1 (18.7 to 38.5),23.8 (16.4 to 33.8),106 (71.9 to 152)
+False,3%,KCl subsitute (10%) all foods,Female,SES3,3.01 (2.08 to 4.34),24.9 (17.1 to 35.6),21.9 (15.0 to 31.2),93.5 (63.3 to 134)
+False,3%,KCl subsitute (10%) all foods,Female,SES4,2.46 (1.70 to 3.52),20.4 (14.1 to 29.0),17.9 (12.4 to 25.5),74.3 (50.4 to 106)
+False,3%,KCl subsitute (10%) all foods,Female,SES5,1.85 (1.28 to 2.65),14.4 (10.0 to 20.4),12.6 (8.71 to 17.8),50.0 (34.1 to 71.5)
+False,3%,KCl subsitute (10%) all foods,Male,All,29.0 (19.8 to 41.8),260 (178 to 373),231 (159 to 331),"1,100 (750 to 1,600)"
+False,3%,KCl subsitute (10%) all foods,Male,SES1,7.79 (5.39 to 11.2),70.6 (48.8 to 101),62.7 (43.3 to 89.7),322 (219 to 468)
+False,3%,KCl subsitute (10%) all foods,Male,SES2,6.26 (4.32 to 8.99),56.0 (38.5 to 80.2),49.7 (34.1 to 71.2),244 (166 to 355)
+False,3%,KCl subsitute (10%) all foods,Male,SES3,5.73 (3.90 to 8.27),51.7 (35.7 to 74.4),46.0 (31.7 to 66.1),215 (146 to 313)
+False,3%,KCl subsitute (10%) all foods,Male,SES4,5.01 (3.39 to 7.26),45.6 (31.2 to 65.8),40.6 (27.8 to 58.6),183 (124 to 267)
+False,3%,KCl subsitute (10%) all foods,Male,SES5,4.18 (2.81 to 6.10),36.0 (24.4 to 52.3),31.8 (21.6 to 46.0),139 (93.6 to 202)
+False,3%,KCl subsitute (30%) envelope,All,All,"875 (619 to 1,230)","2,440 (1,710 to 3,450)","1,570 (1,090 to 2,230)","6,050 (4,180 to 8,600)"
+False,3%,KCl subsitute (30%) envelope,All,SES1,256 (179 to 364),"708 (496 to 1,000)",453 (315 to 647),"1,820 (1,270 to 2,620)"
+False,3%,KCl subsitute (30%) envelope,All,SES2,195 (137 to 275),537 (377 to 763),344 (238 to 489),"1,350 (933 to 1,930)"
+False,3%,KCl subsitute (30%) envelope,All,SES3,172 (121 to 243),484 (339 to 686),312 (217 to 442),"1,180 (819 to 1,680)"
+False,3%,KCl subsitute (30%) envelope,All,SES4,142 (99.2 to 199),405 (283 to 571),263 (183 to 372),"977 (676 to 1,380)"
+False,3%,KCl subsitute (30%) envelope,All,SES5,111 (77.5 to 156),308 (212 to 433),196 (134 to 277),"714 (492 to 1,010)"
+False,3%,KCl subsitute (30%) envelope,Female,All,288 (204 to 399),"767 (539 to 1,070)",478 (335 to 671),"1,810 (1,260 to 2,540)"
+False,3%,KCl subsitute (30%) envelope,Female,SES1,93.4 (66.2 to 131),246 (173 to 344),153 (106 to 214),600 (412 to 846)
+False,3%,KCl subsitute (30%) envelope,Female,SES2,66.4 (47.0 to 91.6),174 (122 to 242),107 (75.3 to 151),412 (287 to 580)
+False,3%,KCl subsitute (30%) envelope,Female,SES3,56.7 (40.2 to 78.9),153 (107 to 214),96.0 (66.8 to 135),356 (247 to 504)
+False,3%,KCl subsitute (30%) envelope,Female,SES4,42.9 (29.6 to 60.2),117 (79.5 to 165),74.0 (50.1 to 105),269 (181 to 384)
+False,3%,KCl subsitute (30%) envelope,Female,SES5,28.8 (18.8 to 42.8),76.1 (49.5 to 113),47.3 (30.5 to 70.5),168 (108 to 250)
+False,3%,KCl subsitute (30%) envelope,Male,All,587 (404 to 849),"1,680 (1,150 to 2,420)","1,090 (744 to 1,570)","4,240 (2,900 to 6,140)"
+False,3%,KCl subsitute (30%) envelope,Male,SES1,163 (113 to 235),461 (318 to 669),300 (206 to 433),"1,220 (839 to 1,760)"
+False,3%,KCl subsitute (30%) envelope,Male,SES2,129 (88.8 to 186),365 (251 to 527),235 (162 to 341),"935 (639 to 1,350)"
+False,3%,KCl subsitute (30%) envelope,Male,SES3,115 (79.1 to 167),331 (227 to 478),216 (147 to 312),"827 (562 to 1,190)"
+False,3%,KCl subsitute (30%) envelope,Male,SES4,98.4 (67.6 to 143),287 (195 to 414),188 (128 to 272),"706 (479 to 1,020)"
+False,3%,KCl subsitute (30%) envelope,Male,SES5,81.8 (56.1 to 119),230 (156 to 333),148 (100 to 214),543 (369 to 788)
+False,3%,KCl subsitute (4.5%) discretionary,All,All,73.8 (51.1 to 103),306 (213 to 428),233 (162 to 326),"900 (614 to 1,260)"
+False,3%,KCl subsitute (4.5%) discretionary,All,SES1,20.9 (14.5 to 29.1),87.4 (61.2 to 121),66.5 (46.2 to 92.4),270 (185 to 377)
+False,3%,KCl subsitute (4.5%) discretionary,All,SES2,16.1 (11.2 to 22.4),66.7 (46.5 to 92.7),50.5 (35.2 to 70.5),199 (136 to 278)
+False,3%,KCl subsitute (4.5%) discretionary,All,SES3,14.5 (10.0 to 20.4),60.7 (42.0 to 84.8),46.2 (31.9 to 65.0),175 (119 to 246)
+False,3%,KCl subsitute (4.5%) discretionary,All,SES4,12.3 (8.50 to 17.2),51.9 (35.8 to 72.7),39.6 (27.1 to 55.6),147 (98.9 to 207)
+False,3%,KCl subsitute (4.5%) discretionary,All,SES5,9.95 (6.79 to 13.9),40.1 (27.3 to 56.5),30.1 (20.5 to 42.5),108 (73.1 to 153)
+False,3%,KCl subsitute (4.5%) discretionary,Female,All,25.2 (17.4 to 35.4),98.5 (67.4 to 140),73.4 (50.1 to 105),272 (185 to 390)
+False,3%,KCl subsitute (4.5%) discretionary,Female,SES1,7.68 (5.29 to 10.8),30.3 (20.7 to 43.1),22.6 (15.4 to 32.3),87.3 (59.3 to 126)
+False,3%,KCl subsitute (4.5%) discretionary,Female,SES2,5.54 (3.82 to 7.79),21.5 (14.7 to 30.4),16.0 (10.9 to 22.7),60.3 (41.0 to 85.9)
+False,3%,KCl subsitute (4.5%) discretionary,Female,SES3,4.95 (3.41 to 6.97),19.5 (13.3 to 27.9),14.6 (9.89 to 20.8),53.3 (36.1 to 76.7)
+False,3%,KCl subsitute (4.5%) discretionary,Female,SES4,4.01 (2.76 to 5.65),15.9 (10.8 to 22.5),11.9 (8.08 to 16.9),42.4 (28.7 to 60.8)
+False,3%,KCl subsitute (4.5%) discretionary,Female,SES5,3.02 (2.08 to 4.23),11.4 (7.80 to 16.1),8.40 (5.72 to 11.8),28.9 (19.6 to 41.1)
+False,3%,KCl subsitute (4.5%) discretionary,Male,All,48.5 (33.3 to 68.5),208 (142 to 292),159 (108 to 224),627 (425 to 892)
+False,3%,KCl subsitute (4.5%) discretionary,Male,SES1,13.2 (9.01 to 18.7),57.1 (39.2 to 80.0),43.9 (30.2 to 61.5),182 (125 to 257)
+False,3%,KCl subsitute (4.5%) discretionary,Male,SES2,10.5 (7.24 to 14.9),45.0 (31.0 to 63.3),34.5 (23.7 to 48.6),139 (94.1 to 196)
+False,3%,KCl subsitute (4.5%) discretionary,Male,SES3,9.57 (6.57 to 13.5),41.2 (28.2 to 58.4),31.6 (21.6 to 44.7),122 (82.1 to 174)
+False,3%,KCl subsitute (4.5%) discretionary,Male,SES4,8.29 (5.65 to 11.8),35.9 (24.5 to 51.2),27.7 (18.8 to 39.3),104 (70.6 to 149)
+False,3%,KCl subsitute (4.5%) discretionary,Male,SES5,6.90 (4.67 to 9.91),28.6 (19.4 to 40.8),21.7 (14.6 to 31.0),79.1 (53.3 to 114)
+False,3%,No change,All,All,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,3%,No change,All,SES1,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,3%,No change,All,SES2,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,3%,No change,All,SES3,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,3%,No change,All,SES4,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,3%,No change,All,SES5,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,3%,No change,Female,All,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,3%,No change,Female,SES1,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,3%,No change,Female,SES2,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,3%,No change,Female,SES3,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,3%,No change,Female,SES4,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,3%,No change,Female,SES5,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,3%,No change,Male,All,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,3%,No change,Male,SES1,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,3%,No change,Male,SES2,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,3%,No change,Male,SES3,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,3%,No change,Male,SES4,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,3%,No change,Male,SES5,0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00),0.00 (0.00 to 0.00)
+False,3%,UK 50%,All,All,73.3 (51.3 to 105),259 (180 to 370),186 (129 to 266),"706 (487 to 1,020)"
+False,3%,UK 50%,All,SES1,20.7 (14.5 to 29.6),73.3 (51.2 to 105),52.5 (36.7 to 75.2),210 (146 to 301)
+False,3%,UK 50%,All,SES2,16.0 (11.3 to 23.0),56.3 (39.2 to 80.6),40.2 (27.9 to 57.4),156 (107 to 224)
+False,3%,UK 50%,All,SES3,14.4 (10.0 to 20.7),51.5 (35.7 to 73.6),37.0 (25.4 to 53.0),138 (94.9 to 199)
+False,3%,UK 50%,All,SES4,12.2 (8.46 to 17.6),44.0 (30.4 to 63.3),31.8 (22.0 to 45.5),116 (79.8 to 167)
+False,3%,UK 50%,All,SES5,9.93 (6.82 to 14.2),34.3 (23.7 to 49.3),24.4 (16.8 to 35.0),86.7 (59.0 to 124)
+False,3%,UK 50%,Female,All,21.7 (15.2 to 31.0),73.3 (51.0 to 106),51.6 (35.7 to 74.3),192 (132 to 277)
+False,3%,UK 50%,Female,SES1,6.62 (4.62 to 9.43),22.4 (15.6 to 32.2),15.8 (11.0 to 22.6),61.3 (42.2 to 88.3)
+False,3%,UK 50%,Female,SES2,4.78 (3.34 to 6.82),16.0 (11.1 to 23.0),11.2 (7.75 to 16.2),42.4 (29.1 to 61.4)
+False,3%,UK 50%,Female,SES3,4.26 (2.97 to 6.10),14.5 (10.1 to 21.0),10.3 (7.10 to 14.8),37.5 (25.7 to 54.6)
+False,3%,UK 50%,Female,SES4,3.44 (2.39 to 4.94),11.8 (8.21 to 17.1),8.37 (5.80 to 12.1),29.9 (20.5 to 43.4)
+False,3%,UK 50%,Female,SES5,2.60 (1.81 to 3.72),8.53 (5.90 to 12.3),5.93 (4.10 to 8.55),20.5 (14.1 to 29.6)
+False,3%,UK 50%,Male,All,51.7 (35.2 to 75.0),186 (127 to 270),134 (91.7 to 194),515 (352 to 750)
+False,3%,UK 50%,Male,SES1,14.1 (9.72 to 20.4),50.8 (34.9 to 73.7),36.7 (25.2 to 52.9),148 (102 to 215)
+False,3%,UK 50%,Male,SES2,11.3 (7.70 to 16.3),40.3 (27.6 to 58.2),29.0 (19.8 to 41.7),114 (77.6 to 165)
+False,3%,UK 50%,Male,SES3,10.2 (6.93 to 14.7),36.9 (25.1 to 53.7),26.6 (18.2 to 38.8),100 (68.7 to 146)
+False,3%,UK 50%,Male,SES4,8.79 (5.96 to 12.7),32.2 (21.9 to 46.7),23.3 (15.9 to 34.0),86.0 (58.6 to 126)
+False,3%,UK 50%,Male,SES5,7.32 (4.92 to 10.6),25.7 (17.4 to 37.3),18.4 (12.4 to 26.7),65.9 (44.6 to 96.6)
+False,3%,UK 70%,All,All,103 (71.0 to 144),361 (251 to 514),259 (180 to 370),"985 (680 to 1,410)"
+False,3%,UK 70%,All,SES1,29.0 (20.3 to 40.7),102 (71.4 to 146),73.2 (51.4 to 104),293 (204 to 417)
+False,3%,UK 70%,All,SES2,22.4 (15.5 to 31.5),78.3 (54.7 to 112),56.0 (39.0 to 80.3),218 (151 to 310)
+False,3%,UK 70%,All,SES3,20.2 (14.0 to 28.4),71.7 (50.0 to 102),51.5 (35.9 to 73.4),193 (134 to 274)
+False,3%,UK 70%,All,SES4,17.1 (11.8 to 24.1),61.3 (42.6 to 86.9),44.3 (30.8 to 62.9),162 (112 to 231)
+False,3%,UK 70%,All,SES5,13.9 (9.47 to 19.6),47.8 (32.9 to 68.2),34.0 (23.4 to 48.3),121 (83.1 to 172)
+False,3%,UK 70%,Female,All,30.3 (21.1 to 42.8),103 (71.2 to 146),72.1 (49.9 to 103),267 (184 to 383)
+False,3%,UK 70%,Female,SES1,9.23 (6.47 to 13.1),31.4 (21.9 to 44.4),22.1 (15.4 to 31.5),85.5 (59.1 to 122)
+False,3%,UK 70%,Female,SES2,6.67 (4.67 to 9.40),22.4 (15.6 to 31.8),15.7 (10.9 to 22.4),59.2 (40.9 to 84.6)
+False,3%,UK 70%,Female,SES3,5.94 (4.13 to 8.46),20.3 (14.1 to 29.0),14.3 (9.90 to 20.6),52.5 (36.0 to 75.8)
+False,3%,UK 70%,Female,SES4,4.82 (3.34 to 6.82),16.5 (11.4 to 23.5),11.7 (8.13 to 16.8),41.8 (28.9 to 59.9)
+False,3%,UK 70%,Female,SES5,3.63 (2.53 to 5.12),11.9 (8.26 to 16.9),8.30 (5.71 to 11.8),28.7 (19.7 to 41.0)
+False,3%,UK 70%,Male,All,72.3 (49.0 to 103),260 (176 to 369),187 (128 to 269),"718 (487 to 1,040)"
+False,3%,UK 70%,Male,SES1,19.8 (13.5 to 28.1),70.8 (48.7 to 102),51.1 (35.1 to 73.5),208 (141 to 299)
+False,3%,UK 70%,Male,SES2,15.8 (10.7 to 22.5),56.2 (38.4 to 80.5),40.4 (27.6 to 58.2),158 (108 to 229)
+False,3%,UK 70%,Male,SES3,14.2 (9.63 to 20.3),51.5 (35.0 to 73.6),37.2 (25.3 to 53.3),140 (95.4 to 202)
+False,3%,UK 70%,Male,SES4,12.3 (8.29 to 17.6),44.8 (30.3 to 64.4),32.6 (22.1 to 46.8),120 (81.4 to 173)
+False,3%,UK 70%,Male,SES5,10.2 (6.90 to 14.7),35.9 (24.2 to 51.8),25.7 (17.3 to 37.1),92.1 (61.8 to 133)
+False,3%,UK 90%,All,All,131 (91.1 to 186),464 (322 to 661),332 (231 to 473),"1,260 (876 to 1,810)"
+False,3%,UK 90%,All,SES1,37.1 (25.9 to 52.7),131 (92.0 to 186),93.7 (65.7 to 134),374 (262 to 534)
+False,3%,UK 90%,All,SES2,28.7 (19.9 to 40.6),101 (70.2 to 143),71.8 (50.1 to 102),279 (194 to 398)
+False,3%,UK 90%,All,SES3,25.8 (18.0 to 36.7),91.8 (64.0 to 130),66.0 (46.1 to 94.4),247 (171 to 354)
+False,3%,UK 90%,All,SES4,21.9 (15.1 to 31.0),78.6 (54.6 to 112),56.8 (39.5 to 81.2),207 (144 to 297)
+False,3%,UK 90%,All,SES5,17.8 (12.2 to 25.2),61.3 (42.4 to 87.0),43.6 (30.1 to 62.3),155 (107 to 222)
+False,3%,UK 90%,Female,All,38.8 (27.3 to 54.8),131 (91.2 to 187),92.3 (63.7 to 132),343 (236 to 491)
+False,3%,UK 90%,Female,SES1,11.8 (8.34 to 16.6),40.1 (28.0 to 57.3),28.3 (19.6 to 40.5),110 (75.8 to 157)
+False,3%,UK 90%,Female,SES2,8.54 (6.02 to 12.0),28.6 (19.9 to 40.8),20.1 (13.9 to 28.7),75.8 (52.3 to 108)
+False,3%,UK 90%,Female,SES3,7.61 (5.35 to 10.8),26.0 (18.0 to 37.2),18.4 (12.6 to 26.4),67.3 (45.9 to 97.3)
+False,3%,UK 90%,Female,SES4,6.17 (4.32 to 8.72),21.2 (14.7 to 30.3),15.0 (10.3 to 21.5),53.8 (36.6 to 77.0)
+False,3%,UK 90%,Female,SES5,4.67 (3.27 to 6.56),15.3 (10.5 to 21.8),10.6 (7.29 to 15.1),36.8 (25.0 to 52.8)
+False,3%,UK 90%,Male,All,92.2 (62.9 to 132),332 (227 to 479),240 (164 to 347),"921 (631 to 1,330)"
+False,3%,UK 90%,Male,SES1,25.2 (17.3 to 36.2),90.9 (62.5 to 131),65.6 (45.1 to 94.2),266 (182 to 380)
+False,3%,UK 90%,Male,SES2,20.1 (13.7 to 28.6),71.9 (49.2 to 104),51.8 (35.4 to 74.7),203 (139 to 292)
+False,3%,UK 90%,Male,SES3,18.2 (12.4 to 26.0),65.9 (45.0 to 94.9),47.7 (32.7 to 68.9),180 (123 to 260)
+False,3%,UK 90%,Male,SES4,15.7 (10.7 to 22.4),57.5 (39.1 to 82.9),41.8 (28.5 to 60.4),154 (106 to 222)
+False,3%,UK 90%,Male,SES5,13.1 (8.81 to 18.7),46.1 (31.2 to 66.5),32.9 (22.3 to 47.5),118 (80.2 to 171)
+False,3%,UK mandatory,All,All,146 (102 to 209),514 (360 to 737),368 (257 to 532),"1,400 (970 to 2,020)"
+False,3%,UK mandatory,All,SES1,41.3 (28.8 to 59.0),145 (102 to 209),104 (73.0 to 150),416 (290 to 599)
+False,3%,UK mandatory,All,SES2,31.9 (22.3 to 45.6),112 (77.9 to 159),79.8 (55.7 to 115),310 (214 to 445)
+False,3%,UK mandatory,All,SES3,28.7 (20.0 to 41.2),102 (71.1 to 147),73.3 (50.7 to 106),274 (189 to 392)
+False,3%,UK mandatory,All,SES4,24.3 (16.9 to 34.9),87.3 (60.8 to 126),63.1 (43.6 to 90.8),230 (159 to 331)
+False,3%,UK mandatory,All,SES5,19.7 (13.7 to 28.5),68.2 (47.2 to 98.1),48.4 (33.3 to 70.0),172 (119 to 247)
+False,3%,UK mandatory,Female,All,43.2 (30.0 to 61.8),146 (101 to 210),103 (71.4 to 148),381 (263 to 552)
+False,3%,UK mandatory,Female,SES1,13.2 (9.22 to 18.9),44.6 (31.1 to 63.7),31.5 (21.9 to 45.0),122 (84.3 to 176)
+False,3%,UK mandatory,Female,SES2,9.52 (6.61 to 13.6),31.8 (22.1 to 45.8),22.3 (15.5 to 32.2),84.5 (58.2 to 122)
+False,3%,UK mandatory,Female,SES3,8.46 (5.88 to 12.2),28.9 (20.1 to 41.9),20.4 (14.1 to 29.6),74.6 (51.4 to 108)
+False,3%,UK mandatory,Female,SES4,6.85 (4.76 to 9.86),23.5 (16.3 to 34.0),16.7 (11.6 to 24.1),59.5 (41.1 to 85.9)
+False,3%,UK mandatory,Female,SES5,5.17 (3.62 to 7.42),17.0 (11.8 to 24.4),11.8 (8.13 to 17.0),40.8 (28.1 to 58.5)
+False,3%,UK mandatory,Male,All,103 (69.9 to 149),369 (253 to 532),266 (182 to 385),"1,020 (695 to 1,480)"
+False,3%,UK mandatory,Male,SES1,28.1 (19.1 to 40.6),101 (69.6 to 145),72.7 (50.1 to 105),294 (202 to 426)
+False,3%,UK mandatory,Male,SES2,22.4 (15.3 to 32.3),79.9 (54.9 to 115),57.4 (39.4 to 83.2),225 (153 to 326)
+False,3%,UK mandatory,Male,SES3,20.2 (13.8 to 29.4),73.1 (50.0 to 106),52.9 (36.1 to 76.3),199 (136 to 289)
+False,3%,UK mandatory,Male,SES4,17.4 (11.8 to 25.3),63.8 (43.6 to 92.7),46.4 (31.6 to 66.8),171 (116 to 247)
+False,3%,UK mandatory,Male,SES5,14.5 (9.89 to 21.1),51.0 (34.8 to 74.6),36.6 (24.8 to 53.4),131 (88.5 to 191)
+False,3%,UK mass media campaign,All,All,9.80 (4.93 to 18.2),24.5 (12.2 to 44.7),14.7 (7.20 to 26.8),29.1 (14.3 to 53.4)
+False,3%,UK mass media campaign,All,SES1,2.80 (1.42 to 5.23),7.07 (3.54 to 13.0),4.27 (2.11 to 7.74),8.49 (4.19 to 15.5)
+False,3%,UK mass media campaign,All,SES2,2.15 (1.08 to 3.98),5.37 (2.67 to 9.79),3.21 (1.58 to 5.83),6.40 (3.15 to 11.7)
+False,3%,UK mass media campaign,All,SES3,1.93 (0.968 to 3.57),4.83 (2.40 to 8.81),2.88 (1.42 to 5.30),5.71 (2.77 to 10.4)
+False,3%,UK mass media campaign,All,SES4,1.62 (0.815 to 3.01),4.08 (2.02 to 7.50),2.43 (1.20 to 4.50),4.80 (2.34 to 8.77)
+False,3%,UK mass media campaign,All,SES5,1.31 (0.653 to 2.44),3.18 (1.57 to 5.83),1.86 (0.913 to 3.42),3.69 (1.81 to 6.78)
+False,3%,UK mass media campaign,Female,All,3.34 (1.71 to 6.18),7.80 (3.88 to 14.3),4.46 (2.19 to 8.20),9.04 (4.49 to 16.5)
+False,3%,UK mass media campaign,Female,SES1,1.02 (0.525 to 1.89),2.42 (1.20 to 4.42),1.39 (0.690 to 2.55),2.81 (1.39 to 5.19)
+False,3%,UK mass media campaign,Female,SES2,0.737 (0.377 to 1.36),1.71 (0.848 to 3.13),0.974 (0.475 to 1.80),1.98 (0.981 to 3.63)
+False,3%,UK mass media campaign,Female,SES3,0.654 (0.336 to 1.21),1.54 (0.766 to 2.81),0.879 (0.432 to 1.62),1.77 (0.874 to 3.25)
+False,3%,UK mass media campaign,Female,SES4,0.529 (0.270 to 0.971),1.24 (0.614 to 2.27),0.712 (0.346 to 1.30),1.43 (0.708 to 2.61)
+False,3%,UK mass media campaign,Female,SES5,0.398 (0.202 to 0.727),0.902 (0.448 to 1.65),0.503 (0.245 to 0.926),1.03 (0.517 to 1.89)
+False,3%,UK mass media campaign,Male,All,6.47 (3.23 to 12.2),16.8 (8.25 to 30.9),10.2 (5.01 to 18.8),20.1 (9.85 to 36.9)
+False,3%,UK mass media campaign,Male,SES1,1.78 (0.889 to 3.33),4.69 (2.31 to 8.66),2.88 (1.42 to 5.32),5.70 (2.79 to 10.5)
+False,3%,UK mass media campaign,Male,SES2,1.42 (0.708 to 2.65),3.67 (1.82 to 6.77),2.25 (1.10 to 4.11),4.44 (2.18 to 8.09)
+False,3%,UK mass media campaign,Male,SES3,1.27 (0.634 to 2.39),3.29 (1.61 to 6.11),2.01 (0.984 to 3.73),3.95 (1.92 to 7.26)
+False,3%,UK mass media campaign,Male,SES4,1.10 (0.544 to 2.06),2.84 (1.40 to 5.26),1.73 (0.843 to 3.21),3.39 (1.65 to 6.23)
+False,3%,UK mass media campaign,Male,SES5,0.914 (0.454 to 1.72),2.28 (1.12 to 4.19),1.36 (0.660 to 2.50),2.65 (1.29 to 4.88)
+False,3%,UK salt reduction program,All,All,44.7 (31.3 to 62.7),154 (107 to 218),110 (76.2 to 155),435 (299 to 613)
+False,3%,UK salt reduction program,All,SES1,12.9 (9.07 to 18.0),44.3 (30.8 to 62.0),31.3 (21.7 to 44.1),131 (89.5 to 185)
+False,3%,UK salt reduction program,All,SES2,9.86 (6.92 to 13.8),33.7 (23.4 to 47.3),23.8 (16.5 to 33.5),96.3 (66.2 to 135)
+False,3%,UK salt reduction program,All,SES3,8.74 (6.08 to 12.3),30.5 (21.3 to 43.0),21.8 (15.1 to 30.8),84.8 (58.0 to 120)
+False,3%,UK salt reduction program,All,SES4,7.32 (5.07 to 10.3),26.0 (18.1 to 36.6),18.6 (12.9 to 26.4),70.6 (48.3 to 100)
+False,3%,UK salt reduction program,All,SES5,5.88 (4.09 to 8.31),20.1 (13.8 to 28.4),14.1 (9.74 to 20.1),52.3 (35.9 to 74.3)
+False,3%,UK salt reduction program,Female,All,15.0 (10.5 to 20.8),49.6 (34.6 to 68.9),34.5 (24.0 to 48.3),132 (91.0 to 185)
+False,3%,UK salt reduction program,Female,SES1,4.64 (3.27 to 6.47),15.3 (10.7 to 21.4),10.6 (7.38 to 14.9),42.4 (29.2 to 59.6)
+False,3%,UK salt reduction program,Female,SES2,3.33 (2.33 to 4.59),10.8 (7.57 to 15.0),7.50 (5.22 to 10.5),29.3 (20.2 to 40.9)
+False,3%,UK salt reduction program,Female,SES3,2.93 (2.04 to 4.07),9.80 (6.80 to 13.7),6.86 (4.78 to 9.62),25.8 (17.8 to 36.3)
+False,3%,UK salt reduction program,Female,SES4,2.35 (1.64 to 3.26),7.94 (5.52 to 11.1),5.58 (3.87 to 7.82),20.5 (14.1 to 28.7)
+False,3%,UK salt reduction program,Female,SES5,1.76 (1.23 to 2.44),5.71 (3.96 to 7.97),3.95 (2.72 to 5.50),14.0 (9.65 to 19.7)
+False,3%,UK salt reduction program,Male,All,29.7 (20.2 to 42.4),105 (71.2 to 151),75.4 (51.2 to 108),303 (205 to 433)
+False,3%,UK salt reduction program,Male,SES1,8.25 (5.64 to 11.8),29.0 (19.8 to 41.4),20.8 (14.2 to 29.7),88.2 (60.0 to 127)
+False,3%,UK salt reduction program,Male,SES2,6.55 (4.47 to 9.31),22.9 (15.6 to 32.8),16.3 (11.1 to 23.4),67.1 (45.5 to 96.0)
+False,3%,UK salt reduction program,Male,SES3,5.82 (3.97 to 8.31),20.8 (14.1 to 29.6),14.9 (10.1 to 21.3),58.9 (40.0 to 84.2)
+False,3%,UK salt reduction program,Male,SES4,4.97 (3.37 to 7.11),18.0 (12.2 to 25.8),13.0 (8.82 to 18.6),50.2 (33.8 to 72.3)
+False,3%,UK salt reduction program,Male,SES5,4.12 (2.80 to 5.94),14.3 (9.65 to 20.6),10.2 (6.85 to 14.6),38.3 (25.8 to 55.4)
+False,3%,Who mandatory,All,All,249 (172 to 346),"883 (611 to 1,230)",635 (438 to 890),"2,440 (1,660 to 3,430)"
+False,3%,Who mandatory,All,SES1,70.3 (49.0 to 98.1),250 (174 to 352),180 (124 to 252),"726 (496 to 1,020)"
+False,3%,Who mandatory,All,SES2,54.3 (37.8 to 75.8),192 (133 to 268),138 (94.7 to 193),539 (367 to 757)
+False,3%,Who mandatory,All,SES3,48.9 (33.9 to 68.4),175 (121 to 244),126 (87.1 to 177),477 (324 to 670)
+False,3%,Who mandatory,All,SES4,41.4 (28.7 to 57.8),150 (103 to 210),108 (74.3 to 152),400 (272 to 563)
+False,3%,Who mandatory,All,SES5,33.5 (23.1 to 47.2),116 (79.9 to 163),82.7 (56.4 to 117),297 (202 to 419)
+False,3%,Who mandatory,Female,All,79.9 (56.0 to 113),270 (189 to 377),190 (132 to 265),709 (487 to 995)
+False,3%,Who mandatory,Female,SES1,24.3 (17.2 to 34.3),82.4 (57.6 to 116),58.0 (40.3 to 81.1),226 (156 to 317)
+False,3%,Who mandatory,Female,SES2,17.6 (12.3 to 24.8),59.0 (41.3 to 82.2),41.3 (28.7 to 57.8),157 (108 to 220)
+False,3%,Who mandatory,Female,SES3,15.7 (11.0 to 22.2),53.5 (37.2 to 75.3),37.8 (26.1 to 53.3),139 (95.7 to 196)
+False,3%,Who mandatory,Female,SES4,12.7 (8.87 to 17.9),43.7 (30.4 to 61.0),31.0 (21.5 to 43.2),111 (76.3 to 156)
+False,3%,Who mandatory,Female,SES5,9.61 (6.69 to 13.4),31.6 (21.8 to 44.2),22.0 (15.2 to 30.8),76.1 (52.4 to 107)
+False,3%,Who mandatory,Male,All,168 (115 to 240),612 (418 to 875),444 (302 to 634),"1,730 (1,170 to 2,460)"
+False,3%,Who mandatory,Male,SES1,45.9 (31.3 to 65.1),168 (115 to 240),122 (82.7 to 174),499 (338 to 711)
+False,3%,Who mandatory,Male,SES2,36.6 (25.0 to 52.3),133 (90.7 to 190),96.1 (65.2 to 137),381 (258 to 543)
+False,3%,Who mandatory,Male,SES3,33.1 (22.6 to 47.3),121 (82.7 to 173),88.3 (60.2 to 126),337 (226 to 479)
+False,3%,Who mandatory,Male,SES4,28.6 (19.5 to 41.0),106 (71.9 to 151),77.4 (52.3 to 110),289 (193 to 411)
+False,3%,Who mandatory,Male,SES5,23.8 (16.1 to 34.4),84.4 (57.5 to 122),60.6 (41.3 to 87.4),220 (148 to 316)
+True,0%,Aus then UK 50%,All,All,62.944557274536606,343.27254996862825,279.4493210987814,1748.2357137530548
+True,0%,Aus then UK 50%,All,SES1,17.664562074779273,96.46056781514912,78.89674300977153,529.2464805760185
+True,0%,Aus then UK 50%,All,SES2,13.697903195028186,74.2190580850265,60.419709696840286,388.1205093620039
+True,0%,Aus then UK 50%,All,SES3,12.405108987685086,68.33611492100144,55.73323079077333,339.9859403057506
+True,0%,Aus then UK 50%,All,SES4,10.560303391841051,58.709391311689735,48.06568776360989,283.1842184962036
+True,0%,Aus then UK 50%,All,SES5,8.576011675197243,45.360817762704194,36.72920495716798,208.4460905498777
+True,0%,Aus then UK 50%,Female,All,19.018941040673973,96.91542985741378,78.02238318833822,465.4760037924124
+True,0%,Aus then UK 50%,Female,SES1,5.763672326600552,29.59922587146056,23.88641347854656,151.52053720759605
+True,0%,Aus then UK 50%,Female,SES2,4.17655965427953,21.100158030070126,16.945063446858466,103.54893451872748
+True,0%,Aus then UK 50%,Female,SES3,3.734961637270272,19.27635285488641,15.54813951264763,91.05155101454945
+True,0%,Aus then UK 50%,Female,SES4,3.0418585995272998,15.719006539500477,12.704344063945294,71.87163903983534
+True,0%,Aus then UK 50%,Female,SES5,2.299299472613871,11.2783729383744,8.9794222112239,47.23761878409297
+True,0%,Aus then UK 50%,Male,All,43.71624568671465,245.8995496737316,202.11281855467732,1287.8488146266486
+True,0%,Aus then UK 50%,Male,SES1,11.866618315953254,66.88242149773937,54.9993750175817,379.3264694735351
+True,0%,Aus then UK 50%,Male,SES2,9.480989957399128,53.03909233235467,43.56440645458257,284.9854770801338
+True,0%,Aus then UK 50%,Male,SES3,8.637697006062865,48.98781891561091,40.25677782402551,249.8779399695661
+True,0%,Aus then UK 50%,Male,SES4,7.503116740470648,42.92683079494357,35.324595087284564,211.74068303030944
+True,0%,Aus then UK 50%,Male,SES5,6.266562977088332,33.97480202993131,27.73031396570194,161.34954177545166
+True,0%,Aus then UK 70%,All,All,88.05143644167727,478.6860480242329,390.8473869039663,2448.4913013267287
+True,0%,Aus then UK 70%,All,SES1,24.722481681530653,134.86042027334065,110.1212718292792,741.87963258852
+True,0%,Aus then UK 70%,All,SES2,19.17462884563833,103.51917714526331,84.53168162691773,542.4581394247004
+True,0%,Aus then UK 70%,All,SES3,17.363691885285554,95.067600706186,77.90805028496956,476.3808533133679
+True,0%,Aus then UK 70%,All,SES4,14.795213806525648,81.88647800222259,67.21044838986569,397.50702209348367
+True,0%,Aus then UK 70%,All,SES5,11.978845679145635,63.455932121332346,51.4370660936454,292.2318111727592
+True,0%,Aus then UK 70%,Female,All,26.70936587651515,135.24621015964664,108.78006800540686,649.6746808193179
+True,0%,Aus then UK 70%,Female,SES1,8.072595814722956,41.26307094692421,33.27543978890819,211.47480069412347
+True,0%,Aus then UK 70%,Female,SES2,5.861412872703672,29.4746118643266,23.631308003314672,144.53441835731903
+True,0%,Aus then UK 70%,Female,SES3,5.249911955517888,26.898467845847605,21.71757176132953,127.02816003214318
+True,0%,Aus then UK 70%,Female,SES4,4.270011078592181,21.94706485362959,17.71731561898923,100.26300372702866
+True,0%,Aus then UK 70%,Female,SES5,3.221397925775051,15.725203599015057,12.513367462395845,65.88213396681137
+True,0%,Aus then UK 70%,Male,All,61.41307347056091,344.2681789702208,282.9200359832786,1799.773777458042
+True,0%,Aus then UK 70%,Male,SES1,16.65570561171055,93.7243809558301,76.94587588247359,530.0204383997369
+True,0%,Aus then UK 70%,Male,SES2,13.31627382320416,74.3726491011393,61.03922627291144,398.5689510875627
+True,0%,Aus then UK 70%,Male,SES3,12.119666021633387,68.42711461107767,56.34510540899837,349.7712779007703
+True,0%,Aus then UK 70%,Male,SES4,10.517921212475418,59.98040039023423,49.41235594514835,296.5846684445779
+True,0%,Aus then UK 70%,Male,SES5,8.77172134340179,47.57013706836427,38.79527353804755,226.26334066549444
+True,0%,Aus then UK 90%,All,All,112.89850781296914,615.5022832499835,501.5735448821749,3136.9629892955654
+True,0%,Aus then UK 90%,All,SES1,31.69235776019567,173.14272676815142,141.6925252762885,949.6009128795208
+True,0%,Aus then UK 90%,All,SES2,24.59065966993755,132.9590688888082,108.49588584058696,695.3083300371998
+True,0%,Aus then UK 90%,All,SES3,22.279635653341053,122.55769321777862,100.11872462911197,610.4130153083497
+True,0%,Aus then UK 90%,All,SES4,18.9791648801229,105.25271844250848,86.21667501020187,507.7039200705504
+True,0%,Aus then UK 90%,All,SES5,15.39966615514058,81.4634230496409,65.94721569755238,374.8576671001794
+True,0%,Aus then UK 90%,Female,All,34.327311843450666,174.86316019822328,140.3964334160677,833.7540242263995
+True,0%,Aus then UK 90%,Female,SES1,10.38087639348489,53.24150689945788,42.82728283213711,271.3335153451425
+True,0%,Aus then UK 90%,Female,SES2,7.542296969263255,38.05786745366687,30.51109189244866,185.24193902288997
+True,0%,Aus then UK 90%,Female,SES3,6.7406050710794325,34.74669206994385,28.016240071900725,163.15620442110884
+True,0%,Aus then UK 90%,Female,SES4,5.488727755747199,28.397859550837936,22.8943604917292,128.94135502081335
+True,0%,Aus then UK 90%,Female,SES5,4.144040685886264,20.34335675839138,16.11978890746361,84.75935210715093
+True,0%,Aus then UK 90%,Male,All,78.70310185445737,441.42226770600416,362.28732400311895,2306.3103973226307
+True,0%,Aus then UK 90%,Male,SES1,21.312233257939457,119.9095025386961,98.62901459315567,678.6554153144762
+True,0%,Aus then UK 90%,Male,SES2,17.043053914738774,95.19074814909852,78.14099501848483,510.393353163714
+True,0%,Aus then UK 90%,Male,SES3,15.538066338869214,87.81398982389533,72.24156472988284,448.2171972754343
+True,0%,Aus then UK 90%,Male,SES4,13.50779941220355,77.02332030854308,63.4349429659226,380.32760084274304
+True,0%,Aus then UK 90%,Male,SES5,11.282553742303968,61.03576388329506,49.80183582133746,290.0019113081069
+True,0%,Aus then UK mandatory,All,All,124.93487368741243,682.5206219617521,557.6745297810866,3481.770837869989
+True,0%,Aus then UK mandatory,All,SES1,35.12294919009096,192.04470868381816,156.8654361724966,1053.3915717032432
+True,0%,Aus then UK mandatory,All,SES2,27.20686103180665,147.7534660688686,120.59756593705872,771.8113274814066
+True,0%,Aus then UK mandatory,All,SES3,24.63286611748624,135.9342005522996,111.08419711496992,677.5595547134205
+True,0%,Aus then UK mandatory,All,SES4,20.97735777269596,116.97727950403292,95.83456435584122,564.6513329685757
+True,0%,Aus then UK mandatory,All,SES5,17.058576862202642,90.36192805831736,73.30276398714453,416.4209865592098
+True,0%,Aus then UK mandatory,Female,All,37.98387766739583,193.33701511430445,155.60923754566812,924.2446264059772
+True,0%,Aus then UK mandatory,Female,SES1,11.509963040906968,58.88503980692423,47.47968582569558,301.4703100899443
+True,0%,Aus then UK mandatory,Female,SES2,8.345388987914742,42.1179429117632,33.81707179214186,205.75238381830889
+True,0%,Aus then UK mandatory,Female,SES3,7.476235836056828,38.46048760997337,31.01916777959728,181.07831005518997
+True,0%,Aus then UK mandatory,Female,SES4,6.083005850855351,31.407712996034384,25.36404880543506,142.99915981998242
+True,0%,Aus then UK mandatory,Female,SES5,4.602878958511173,22.409802699511168,17.85899355968553,93.94184547828736
+True,0%,Aus then UK mandatory,Male,All,86.92367919057071,488.6278724785567,402.39977905327737,2571.7295724072383
+True,0%,Aus then UK mandatory,Male,SES1,23.577337550296303,133.0638487992055,109.474936699063,755.7965099244525
+True,0%,Aus then UK mandatory,Male,SES2,18.840740034553885,105.62797103798952,86.63566381901049,568.5705373226898
+True,0%,Aus then UK mandatory,Male,SES3,17.176230531112076,97.37607106645764,80.16598194004345,498.3295330402568
+True,0%,Aus then UK mandatory,Male,SES4,14.915041783661248,85.35546200077533,70.42735679791224,422.3235829286101
+True,0%,Aus then UK mandatory,Male,SES5,12.450177753867624,67.80140409720052,55.25258220119309,321.96782010702805
+True,0%,Australia 50%,All,All,42.330522838255405,178.93618960513408,136.57450046739692,832.6683527392952
+True,0%,Australia 50%,All,SES1,11.998864175866425,50.63425038042289,38.68024751122671,252.90717483721755
+True,0%,Australia 50%,All,SES2,9.248247196228744,38.821060520373045,29.5750133297084,184.586073152529
+True,0%,Australia 50%,All,SES3,8.336835244363725,35.49178816688019,27.11744628677028,161.8082277223454
+True,0%,Australia 50%,All,SES4,7.074111893415154,30.337337518154683,23.291886091314677,134.46602772025432
+True,0%,Australia 50%,All,SES5,5.71297099465859,23.48620160380596,17.7612774600628,99.02421570168804
+True,0%,Australia 50%,Female,All,12.97084983481884,52.5131378893565,39.526956534595314,229.73107987120545
+True,0%,Australia 50%,Female,SES1,3.9641119726309775,16.093337903086542,12.122440463136076,74.8425900293482
+True,0%,Australia 50%,Female,SES2,2.8573169207502005,11.461720230048655,8.605281668360174,51.13447472393716
+True,0%,Australia 50%,Female,SES3,2.543509483623445,10.40761789256668,7.866251030737042,44.88622962193221
+True,0%,Australia 50%,Female,SES4,2.059710608233869,8.465116021452248,6.41659902952969,35.405946408139705
+True,0%,Australia 50%,Female,SES5,1.5529196969572308,6.081465729116022,4.538308072109878,23.4301357286156
+True,0%,Australia 50%,Male,All,29.311144112428785,126.45238379911076,96.77106978905064,602.0680958159318
+True,0%,Australia 50%,Male,SES1,8.030519535658717,34.62032041356403,26.53568872480833,177.2279594348849
+True,0%,Australia 50%,Male,SES2,6.394089224900245,27.369427692074066,20.91244091953564,133.2080378663455
+True,0%,Australia 50%,Male,SES3,5.777950482657314,25.10849933293724,19.257641495681643,116.67534320308732
+True,0%,Australia 50%,Male,SES4,4.98634044463253,21.904854782729984,16.87548540545952,98.85000402705444
+True,0%,Australia 50%,Male,SES5,4.153485269477725,17.387292404066564,13.217774460086227,75.34767631689799
+True,0%,Australia 70%,All,All,59.235578874009306,250.23407565801745,190.7315375867599,1166.2117366207497
+True,0%,Australia 70%,All,SES1,16.79317166056341,70.76980057330323,54.11276214141161,353.13659951074885
+True,0%,Australia 70%,All,SES2,12.959370630139112,54.21412253001553,41.32115536050266,258.29168070054743
+True,0%,Australia 70%,All,SES3,11.668944238330482,49.58985670461357,37.875583117445046,226.75946036419344
+True,0%,Australia 70%,All,SES4,9.87812254644376,42.4626979747473,32.50800641049558,188.3478087565612
+True,0%,Australia 70%,All,SES5,8.008637633277893,32.81649787430507,24.7815590301463,138.29787995156423
+True,0%,Australia 70%,Female,All,18.182905637498852,73.43301662894982,55.21593737256151,319.4104137213056
+True,0%,Australia 70%,Female,SES1,5.552835608409584,22.489279206470428,16.94087138138878,104.426511432656
+True,0%,Australia 70%,Female,SES2,4.006656832821847,16.01567550678027,12.00472814385152,71.13908192158586
+True,0%,Australia 70%,Female,SES3,3.5623880080983046,14.562201501447618,10.990532158039152,62.45267406024426
+True,0%,Australia 70%,Female,SES4,2.883388978390932,11.827711070649263,8.948432624272705,49.29163729457974
+True,0%,Australia 70%,Female,SES5,2.1700318189721703,8.493707567137598,6.3250707777044175,32.598208623749755
+True,0%,Australia 70%,Male,All,41.15456999290967,176.06371672830224,135.0359652988692,840.5053342448882
+True,0%,Australia 70%,Male,SES1,11.254951427136898,48.36611932505632,37.06467726463795,248.16038127612117
+True,0%,Australia 70%,Male,SES2,8.96582329207933,38.18657760653281,29.2106941122638,186.22709139229727
+True,0%,Australia 70%,Male,SES3,8.09740564454913,34.969181038317444,26.7991806804744,163.2361542308841
+True,0%,Australia 70%,Male,SES4,6.9869196595840455,30.51489305957973,23.51387241930533,138.26590783746684
+True,0%,Australia 70%,Male,SES5,5.80882421605742,24.23599925519514,18.416522451928977,105.15034234470582
+True,0%,Australia 90%,All,All,76.41640715287178,320.9929868153531,244.72706146785248,1492.5441500623929
+True,0%,Australia 90%,All,SES1,21.56231111758387,90.9083175434875,69.23879014202709,453.1697801380859
+True,0%,Australia 90%,All,SES2,16.670203616728365,69.66548150494552,52.923634593216896,331.2320285519714
+True,0%,Australia 90%,All,SES3,15.041800937387048,63.67406364524144,48.65005889700401,290.5649529365968
+True,0%,Australia 90%,All,SES4,12.74794557535684,54.55582005115152,41.74947304850632,240.9732268416312
+True,0%,Australia 90%,All,SES5,10.308512517236649,42.1549369576841,31.821265975542783,177.42725516252543
+True,0%,Australia 90%,Female,All,23.33422754117757,94.5509853756692,71.23436247907966,411.8729257224105
+True,0%,Australia 90%,Female,SES1,7.131187053554177,28.946945076037345,21.829617039772277,134.14064964998633
+True,0%,Australia 90%,Female,SES2,5.138713717301011,20.625779974256456,15.476297302266062,91.73765907741272
+True,0%,Australia 90%,Female,SES3,4.571052702165782,18.739405856957674,14.17426443166256,80.60607743552865
+True,0%,Australia 90%,Female,SES4,3.704018581107497,15.258011920140625,11.532578534068229,63.68470251934123
+True,0%,Australia 90%,Female,SES5,2.7912932786890865,10.91985926614058,8.134117967084169,42.04708748396571
+True,0%,Australia 90%,Male,All,52.90874372334183,226.6340241139756,173.52117796483415,1077.561642332981
+True,0%,Australia 90%,Male,SES1,14.46899535380888,61.95208085976303,47.48899767009151,317.5509594683341
+True,0%,Australia 90%,Male,SES2,11.51172964095521,49.0157644261936,37.44175307078028,238.98015890571327
+True,0%,Australia 90%,Male,SES3,10.438662388061404,44.96493637721228,34.48644542486393,209.5287890586909
+True,0%,Australia 90%,Male,SES4,9.010244102702618,39.324165068889855,30.227684280546665,177.47196521324207
+True,0%,Australia 90%,Male,SES5,7.49367120407617,31.258569064763904,23.70613966445351,135.27080430301987
+True,0%,Australia mandatory,All,All,84.9643257370354,357.60734334632565,271.885362893004,1657.1897027120388
+True,0%,Australia mandatory,All,SES1,24.054019730017963,101.40971377628809,77.39158022796727,502.5059232113148
+True,0%,Australia mandatory,All,SES2,18.57205169199556,77.61282512994552,58.86520071609729,367.21838281360186
+True,0%,Australia mandatory,All,SES3,16.72305485539448,70.89521904697621,54.07746715354407,322.218488102296
+True,0%,Australia mandatory,All,SES4,14.188855912926018,60.69439135899192,46.48389511956054,268.07653668856653
+True,0%,Australia mandatory,All,SES5,11.46020271673733,46.91161482175827,35.49297523772711,197.4354318786251
+True,0%,Australia mandatory,Female,All,25.93795785224015,105.06646798086877,78.96371307947689,457.2293751493454
+True,0%,Australia mandatory,Female,SES1,7.940722756338715,32.16256390695513,24.177130522360564,148.7122404077937
+True,0%,Australia mandatory,Female,SES2,5.715550592124821,22.919229145960927,17.18641329577279,101.77698261284657
+True,0%,Australia mandatory,Female,SES3,5.080952243117631,20.794737016504108,15.71118815411371,89.42894128569532
+True,0%,Australia mandatory,Female,SES4,4.116880227176547,16.944310270260452,12.797351269965947,70.62663092206871
+True,0%,Australia mandatory,Female,SES5,3.107874778188765,12.130632063341736,9.027634589443744,46.569814463935245
+True,0%,Australia mandatory,Male,All,58.78753955567086,251.82174249420552,192.8000271015564,1197.8283404121316
+True,0%,Australia mandatory,Male,SES1,16.122971538242936,68.99422334836423,52.80196261031044,352.7141448292062
+True,0%,Australia mandatory,Male,SES2,12.815942733719467,54.62092837070298,41.62802741326237,265.13151823031234
+True,0%,Australia mandatory,Male,SES3,11.59844275028479,49.92316652227306,38.34447264580524,232.7156344794512
+True,0%,Australia mandatory,Male,SES4,10.00454388776052,43.56483559262979,33.58625587244379,197.2305978554022
+True,0%,Australia mandatory,Male,SES5,8.326189967320563,34.71268848558641,26.360299097182395,150.1870563822942
+True,0%,BAU,All,All,5865407.39786529,11628906.208497413,5763498.810632125,27092410.50668804
+True,0%,BAU,All,SES1,1093677.8823971013,2193200.0983121367,1099522.2159150357,5257353.902502268
+True,0%,BAU,All,SES2,1116588.5818578154,2217187.4535414786,1100598.8716836628,5226706.226569871
+True,0%,BAU,All,SES3,1182909.598689587,2344550.9422977357,1161641.3436081482,5488581.056401315
+True,0%,BAU,All,SES4,1251254.6732715792,2471782.2936629914,1220527.6203914124,5700395.813015644
+True,0%,BAU,All,SES5,1220976.661649207,2402185.420683072,1181208.7590338655,5419373.508198944
+True,0%,BAU,Female,All,2346555.759370124,4631264.798938183,2284709.03956806,10596360.496817583
+True,0%,BAU,Female,SES1,444355.5964948816,885989.9569917386,441634.3604968571,2099269.7274179924
+True,0%,BAU,Female,SES2,448656.642795756,886927.522572616,438270.8797768601,2070615.7627718572
+True,0%,BAU,Female,SES3,473348.6588093959,934587.6306797888,461238.971870393,2165811.339971018
+True,0%,BAU,Female,SES4,498296.453249481,979939.4462529524,481642.9930034714,2239831.749332021
+True,0%,BAU,Female,SES5,481898.4080206095,943820.2424410876,461921.8344204781,2020831.917324691
+True,0%,BAU,Male,All,3518851.6384951654,6997641.409559231,3478789.771064065,16496050.009870462
+True,0%,BAU,Male,SES1,649322.2859022196,1307210.141320398,657887.8554181784,3158084.175084276
+True,0%,BAU,Male,SES2,667931.9390620594,1330259.9309688625,662327.991906803,3156090.463798014
+True,0%,BAU,Male,SES3,709560.9398801916,1409963.3116179467,700402.3717377551,3322769.716430296
+True,0%,BAU,Male,SES4,752958.2200220982,1491842.847410039,738884.6273879409,3460564.0636836225
+True,0%,BAU,Male,SES5,739078.2536285969,1458365.1782419845,719286.9246133874,3398541.590874253
+True,0%,KCl subsitute (10%) all foods,All,All,57.68671784998851,620.8282531467817,562.7623409623588,4457.988691748888
+True,0%,KCl subsitute (10%) all foods,All,SES1,16.23522212998229,175.36750074844957,158.88937790686617,1364.9020848117664
+True,0%,KCl subsitute (10%) all foods,All,SES2,12.52832851344943,134.1505512269231,121.59200498375642,990.5115436840777
+True,0%,KCl subsitute (10%) all foods,All,SES3,11.411882806601284,123.87780434930694,112.54497594328868,866.4065439017529
+True,0%,KCl subsitute (10%) all foods,All,SES4,9.743061826070846,106.46726188526132,96.78822665346902,715.9559750248113
+True,0%,KCl subsitute (10%) all foods,All,SES5,7.8718592967574,81.18719095451445,73.36810181288111,520.7609157020626
+True,0%,KCl subsitute (10%) all foods,Female,All,19.920918345551968,200.3330656043341,180.95128656873567,1313.907131434548
+True,0%,KCl subsitute (10%) all foods,Female,SES1,5.998051584317684,61.108047889394825,55.0859732056644,430.894717324994
+True,0%,KCl subsitute (10%) all foods,Female,SES2,4.356584614132941,43.54959220508826,39.232680151288335,293.18657897219225
+True,0%,KCl subsitute (10%) all foods,Female,SES3,3.9235612892071607,39.94550200023681,36.03508031952596,256.7581866631531
+True,0%,KCl subsitute (10%) all foods,Female,SES4,3.2040566061523563,32.69945589708382,29.468938680087685,202.11052657123733
+True,0%,KCl subsitute (10%) all foods,Female,SES5,2.4135534549441933,23.113209285579146,20.701382446287987,131.51179465222415
+True,0%,KCl subsitute (10%) all foods,Male,All,37.82321185729205,419.3511856154109,381.8449233911063,3140.848919419209
+True,0%,KCl subsitute (10%) all foods,Male,SES1,10.163606421624422,113.87967739205833,103.653243638977,931.8393474255472
+True,0%,KCl subsitute (10%) all foods,Male,SES2,8.167152744094729,90.51077884746611,82.18476402691329,696.6320198288583
+True,0%,KCl subsitute (10%) all foods,Male,SES3,7.479955439820647,83.43945642274582,76.01771345082486,608.4916542324788
+True,0%,KCl subsitute (10%) all foods,Male,SES4,6.546952301381349,73.53907407947254,67.05539036763871,512.5821091440898
+True,0%,KCl subsitute (10%) all foods,Male,SES5,5.458838160607099,57.83596106403387,52.32477921024824,388.4061789954005
+True,0%,KCl subsitute (30%) envelope,All,All,1089.7800853799945,3627.605926456888,2539.0094989638856,14996.322958413914
+True,0%,KCl subsitute (30%) envelope,All,SES1,317.8449989517991,1048.987992339788,733.3328949621468,4611.876147263655
+True,0%,KCl subsitute (30%) envelope,All,SES2,242.6131649372832,796.5492394533603,556.1520012777519,3356.001382815666
+True,0%,KCl subsitute (30%) envelope,All,SES3,214.13362559179365,719.4271907530932,505.59763734002615,2923.231753479845
+True,0%,KCl subsitute (30%) envelope,All,SES4,176.25517275325586,602.3017445117005,425.8113789989928,2399.5035045124014
+True,0%,KCl subsitute (30%) envelope,All,SES5,138.61106475675166,455.24207576928194,317.2383673123529,1732.637842386528
+True,0%,KCl subsitute (30%) envelope,Female,All,357.60836228013375,1130.5040564717929,772.9585690788393,4381.088043849705
+True,0%,KCl subsitute (30%) envelope,Female,SES1,115.95291099406028,362.360845220468,247.20692382188912,1476.4056518863115
+True,0%,KCl subsitute (30%) envelope,Female,SES2,82.28852731951392,256.05043081808583,173.61288402281642,1000.450353723342
+True,0%,KCl subsitute (30%) envelope,Female,SES3,70.3278414421656,225.46753436623447,155.26841743603546,861.5598963949126
+True,0%,KCl subsitute (30%) envelope,Female,SES4,53.25080476356387,173.02852731435453,119.61191783264208,644.5357949970846
+True,0%,KCl subsitute (30%) envelope,Female,SES5,35.78160694120473,112.17108846462908,76.32716836832375,387.31583784916734
+True,0%,KCl subsitute (30%) envelope,Male,All,730.7720340018352,2493.5427891233658,1759.1370745243937,10627.194284139814
+True,0%,KCl subsitute (30%) envelope,Male,SES1,202.2889037716211,686.6635176494696,485.3048211551401,3128.129583175144
+True,0%,KCl subsitute (30%) envelope,Male,SES2,160.56826332955242,542.0886256504575,381.3072387256496,2351.576239598554
+True,0%,KCl subsitute (30%) envelope,Male,SES3,143.37536614991166,493.05614877832966,349.96356807635283,2063.881231093977
+True,0%,KCl subsitute (30%) envelope,Male,SES4,122.76344139995216,427.7982621454137,305.16849831255547,1744.3604980508835
+True,0%,KCl subsitute (30%) envelope,Male,SES5,102.01218556677354,340.8750585508719,238.99987008368132,1332.33028243046
+True,0%,KCl subsitute (4.5%) discretionary,All,All,94.9639234672308,472.8393110413391,378.2422508962021,2353.515107024321
+True,0%,KCl subsitute (4.5%) discretionary,All,SES1,26.848957124967697,135.03136615195598,108.12028356552534,718.2082903107679
+True,0%,KCl subsitute (4.5%) discretionary,All,SES2,20.6896028276512,102.93652116694206,82.1621119105863,522.1400733205548
+True,0%,KCl subsitute (4.5%) discretionary,All,SES3,18.707464443186044,93.690608374389,75.02299742784668,456.7916164903787
+True,0%,KCl subsitute (4.5%) discretionary,All,SES4,15.86409863099265,80.0370580715921,64.330852887644,377.8323181971136
+True,0%,KCl subsitute (4.5%) discretionary,All,SES5,12.801081507010878,61.63110772346526,48.85620927471316,276.1223529838582
+True,0%,KCl subsitute (4.5%) discretionary,Female,All,32.37767721684777,151.34772916529363,119.11812063734106,693.8217337953702
+True,0%,KCl subsitute (4.5%) discretionary,Female,SES1,9.876542589780748,46.52902503605276,36.64136704784185,227.0013747288946
+True,0%,KCl subsitute (4.5%) discretionary,Female,SES2,7.117422049460471,32.98052528335762,25.921916721299173,154.3107400611051
+True,0%,KCl subsitute (4.5%) discretionary,Female,SES3,6.358082846484601,29.993388269408467,23.662707306423307,135.43410534636064
+True,0%,KCl subsitute (4.5%) discretionary,Female,SES4,5.160155629598558,24.437798807246985,19.274956207250533,106.774266146169
+True,0%,KCl subsitute (4.5%) discretionary,Female,SES5,3.8802547318646905,17.436241894689143,13.595327773168504,70.1089123916504
+True,0%,KCl subsitute (4.5%) discretionary,Male,All,62.46155894982028,321.38771595556204,259.0689067432277,1658.7404735006712
+True,0%,KCl subsitute (4.5%) discretionary,Male,SES1,16.966993102257966,88.45278806919396,71.44618092705244,491.2140828932578
+True,0%,KCl subsitute (4.5%) discretionary,Male,SES2,13.55490423925018,69.69261034345007,56.24802967221129,368.547211998334
+True,0%,KCl subsitute (4.5%) discretionary,Male,SES3,12.316493809796214,63.652470339304806,51.41997039731372,320.9302415702688
+True,0%,KCl subsitute (4.5%) discretionary,Male,SES4,10.667300663217423,55.61496490756297,44.9724342355274,270.1523257354817
+True,0%,KCl subsitute (4.5%) discretionary,Male,SES5,8.885944469063162,44.09378937137318,35.13593509255791,205.17358017548383
+True,0%,No change,All,All,0.0,0.0,0.0,0.0
+True,0%,No change,All,SES1,0.0,0.0,0.0,0.0
+True,0%,No change,All,SES2,0.0,0.0,0.0,0.0
+True,0%,No change,All,SES3,0.0,0.0,0.0,0.0
+True,0%,No change,All,SES4,0.0,0.0,0.0,0.0
+True,0%,No change,All,SES5,0.0,0.0,0.0,0.0
+True,0%,No change,Female,All,0.0,0.0,0.0,0.0
+True,0%,No change,Female,SES1,0.0,0.0,0.0,0.0
+True,0%,No change,Female,SES2,0.0,0.0,0.0,0.0
+True,0%,No change,Female,SES3,0.0,0.0,0.0,0.0
+True,0%,No change,Female,SES4,0.0,0.0,0.0,0.0
+True,0%,No change,Female,SES5,0.0,0.0,0.0,0.0
+True,0%,No change,Male,All,0.0,0.0,0.0,0.0
+True,0%,No change,Male,SES1,0.0,0.0,0.0,0.0
+True,0%,No change,Male,SES2,0.0,0.0,0.0,0.0
+True,0%,No change,Male,SES3,0.0,0.0,0.0,0.0
+True,0%,No change,Male,SES4,0.0,0.0,0.0,0.0
+True,0%,No change,Male,SES5,0.0,0.0,0.0,0.0
+True,0%,UK 50%,All,All,93.29262012773306,395.0170203167228,300.95788434792166,1811.287154570285
+True,0%,UK 50%,All,SES1,26.37144874675596,111.66078999728192,85.22385372143954,547.5328425059453
+True,0%,UK 50%,All,SES2,20.384365151670693,85.57393534813166,65.17361960430908,401.4029611733856
+True,0%,UK 50%,All,SES3,18.36568232087612,78.44035916494876,59.951327740216726,352.9435214168284
+True,0%,UK 50%,All,SES4,15.577333329977098,67.16506749508869,51.49830449559718,293.43488846990283
+True,0%,UK 50%,All,SES5,12.642887703207732,52.119618735998685,39.40043705482745,216.4434829088089
+True,0%,UK 50%,Female,All,27.577980752293648,111.2500807575866,83.53984690730184,480.5196376345117
+True,0%,UK 50%,Female,SES1,8.407742128697635,34.00345863781011,25.56140780780214,156.4017910335515
+True,0%,UK 50%,Female,SES2,6.070197709866882,24.27444141692513,18.18755883704269,106.72439695658946
+True,0%,UK 50%,Female,SES3,5.41058233257097,22.037131046547948,16.641778880529763,94.13124544197396
+True,0%,UK 50%,Female,SES4,4.379534529613435,17.94473274773854,13.55936380876845,74.22778540870273
+True,0%,UK 50%,Female,SES5,3.299008920019627,12.876156528149007,9.584465870903909,48.99048894473286
+True,0%,UK 50%,Male,All,65.91060222605682,283.578447719538,217.2489291667657,1331.9475974160268
+True,0%,UK 50%,Male,SES1,17.9764372099458,77.4140824005422,59.47677261755818,390.7841550882672
+True,0%,UK 50%,Male,SES2,14.353462296949864,61.37038796470833,47.02156126257658,295.1236425994257
+True,0%,UK 50%,Male,SES3,12.982457425909638,56.1650089299053,43.17261466708505,258.3014677346206
+True,0%,UK 50%,Male,SES4,11.205924737236142,49.07737978083182,37.81660455679822,218.99971114857576
+True,0%,UK 50%,Male,SES5,9.33343851534903,39.02625548794771,29.76619389712584,167.0466079301802
+True,0%,UK 70%,All,All,130.5423680156492,550.2489987379427,419.7742416935337,2529.4001148607163
+True,0%,UK 70%,All,SES1,36.95952134249336,155.40516917018402,118.76622533260124,765.3614313764185
+True,0%,UK 70%,All,SES2,28.543635579571188,119.23837461625963,90.82177871259468,560.3299554986863
+True,0%,UK 70%,All,SES3,25.684040977146744,109.203992096173,83.45969780152095,492.6285226689988
+True,0%,UK 70%,All,SES4,21.754105053765716,93.54369723329546,71.81721249174697,410.0651781684917
+True,0%,UK 70%,All,SES5,17.65020570057756,72.59461130031252,54.97083217193067,302.31216452036085
+True,0%,UK 70%,Female,All,38.524262450793145,155.63094443238194,116.7379900512641,671.1414177371005
+True,0%,UK 70%,Female,SES1,11.728345217198074,47.600724030536654,35.726131888409554,218.4230854459016
+True,0%,UK 70%,Female,SES2,8.477045327830613,33.925285520193455,25.39636803575808,149.2218792668102
+True,0%,UK 70%,Female,SES3,7.554436934772491,30.82693722293824,23.239774637264965,131.42561888863892
+True,0%,UK 70%,Female,SES4,6.120211040451824,25.14350784824592,18.964351791069745,103.76901815384052
+True,0%,UK 70%,Female,SES5,4.6195586981176735,18.019729201376915,13.412164609784128,68.62412599951449
+True,0%,UK 70%,Male,All,92.08559944774808,395.9517252474745,303.1328808783758,1856.5907824708945
+True,0%,UK 70%,Male,SES1,25.19999073471248,108.0552936431058,82.92329000065732,547.0407135997219
+True,0%,UK 70%,Male,SES2,20.07975335944736,85.58952354458356,65.48603034918844,411.3855264604766
+True,0%,UK 70%,Male,SES3,18.13238055818522,78.50346489972281,60.347323659089085,360.8893383185742
+True,0%,UK 70%,Male,SES4,15.659936020657302,68.55135231965089,52.790080908743626,306.40738931351353
+True,0%,UK 70%,Male,SES5,13.019235806768894,54.4909632595836,41.54028321987367,233.5795111380584
+True,0%,UK 90%,All,All,167.0310562499459,705.9189798804853,538.5452771215785,3235.4923852264046
+True,0%,UK 90%,All,SES1,47.20335356604093,199.4397609320488,151.99950441997265,978.311739153172
+True,0%,UK 90%,All,SES2,36.51030273028851,153.06645979664705,116.49669933612128,717.1211693035441
+True,0%,UK 90%,All,SES3,32.865369732178266,139.97281247931988,107.07983337073236,630.0263498543386
+True,0%,UK 90%,All,SES4,27.87389060128206,119.87115830029666,92.03879822267294,524.6749003421452
+True,0%,UK 90%,All,SES5,22.62372717256892,93.0525799884286,70.46534833994932,387.5593404812488
+True,0%,UK 90%,Female,All,49.26783787099469,198.8399245311358,149.4826827313896,860.5794832106151
+True,0%,UK 90%,Female,SES1,15.02255326093596,60.79736605825615,45.80167684919972,280.04211772429403
+True,0%,UK 90%,Female,SES2,10.84255767874658,43.35402937417423,32.483983407673,191.12497916670867
+True,0%,UK 90%,Female,SES3,9.674964989149869,39.44972038287258,29.79997577839065,168.48637477932925
+True,0%,UK 90%,Female,SES4,7.844374516828239,32.18944829864412,24.347601568209708,133.22028236931033
+True,0%,UK 90%,Female,SES5,5.929880547907829,23.091260296232345,17.18813411702311,87.83947660276057
+True,0%,UK 90%,Male,All,117.49108345046926,506.0215830634159,388.7680807330503,2387.7751461465027
+True,0%,UK 90%,Male,SES1,32.10601214817977,138.754442400607,106.4584112353307,699.9038589629424
+True,0%,UK 90%,Male,SES2,25.59734925245738,109.65697600103236,84.02553811654758,527.5860905201334
+True,0%,UK 90%,Male,SES3,23.17026066161251,100.55652349139082,77.29017377933789,462.8088760025229
+True,0%,UK 90%,Male,SES4,20.019609652568462,87.80378785572398,67.75158510353494,392.4108861401661
+True,0%,UK 90%,Male,SES5,16.711159132703422,69.98283388787209,53.28075171961618,299.4424664987607
+True,0%,UK mandatory,All,All,185.9115597860143,782.2895114168072,597.2404287894481,3602.055228571161
+True,0%,UK mandatory,All,SES1,52.5929826210801,221.4992111632728,169.04180346163338,1086.4035572364246
+True,0%,UK mandatory,All,SES2,40.647862172039325,169.9565749387865,129.4732041002158,797.6401248397738
+True,0%,UK mandatory,All,SES3,36.559131167095245,155.33598141015142,118.9088580117002,700.5861244434368
+True,0%,UK mandatory,All,SES4,31.006345309863867,133.17963840204493,102.35341057628148,583.1321239860583
+True,0%,UK mandatory,All,SES5,25.10879108157736,103.56056970085864,78.33317530352659,429.6760192690007
+True,0%,UK mandatory,Female,All,54.85518384889877,221.08480614698684,166.29611405392797,956.462754796206
+True,0%,UK mandatory,Female,SES1,16.73638088884902,67.60917299972027,50.974395024772406,311.37733215725706
+True,0%,UK mandatory,Female,SES2,12.081768592133283,48.219910720686016,36.18060598252487,213.05123789229447
+True,0%,UK mandatory,Female,SES3,10.743959462370336,43.82540092628628,33.09016479540432,187.2913423503637
+True,0%,UK mandatory,Female,SES4,8.712247167670846,35.743668860325336,27.00784276422554,147.80111725943152
+True,0%,UK mandatory,Female,SES5,6.565184411368609,25.6389597325936,19.05608425975913,97.66884624581208
+True,0%,UK mandatory,Male,All,130.74693374813046,561.6539809592502,430.6509764716261,2642.043585558765
+True,0%,UK mandatory,Male,SES1,35.776458359484074,153.58495049371123,117.86066716995025,776.1334029497942
+True,0%,UK mandatory,Male,SES2,28.497874586828587,121.82720716837156,93.06670398848952,584.0915555471042
+True,0%,UK mandatory,Male,SES3,25.750666394804835,111.5497839283725,85.75138544874264,512.9060902320147
+True,0%,UK mandatory,Male,SES4,22.24391598888659,97.50058178770068,75.31890128024233,434.8142765528496
+True,0%,UK mandatory,Male,SES5,18.53059390123248,77.54210648374128,59.12878530331194,332.1005878898952
+True,0%,UK mass media campaign,All,All,12.4497720141356,35.56256112845594,23.03486943868524,45.66208250994015
+True,0%,UK mass media campaign,All,SES1,3.55174150213331,10.277402262567282,6.714635498195469,13.384893959527552
+True,0%,UK mass media campaign,All,SES2,2.730521146008253,7.802363862801672,5.05121246955359,10.085018423189162
+True,0%,UK mass media campaign,All,SES3,2.444399230459928,6.994393935542047,4.51939806110239,8.936211757327795
+True,0%,UK mass media campaign,All,SES4,2.0602375719969874,5.910458589740336,3.8221299840986136,7.50298836319387
+True,0%,UK mass media campaign,All,SES5,1.6588071219754816,4.601767795332014,2.909733488265276,5.732626159536362
+True,0%,UK mass media campaign,Female,All,4.234153744521558,11.209176904831589,6.978790288250565,13.882152960718807
+True,0%,UK mass media campaign,Female,SES1,1.2984389282511473,3.4782584352794887,2.1736913188517093,4.327304717590511
+True,0%,UK mass media campaign,Female,SES2,0.933322091895461,2.45681737404418,1.523965141534388,3.056807811818004
+True,0%,UK mass media campaign,Female,SES3,0.8293300826234817,2.208254329025447,1.3754862868959905,2.7208414818141464
+True,0%,UK mass media campaign,Female,SES4,0.6708528415538668,1.7814274584807157,1.1102667371611,2.187535737766683
+True,0%,UK mass media campaign,Female,SES5,0.5048141979807019,1.2899879118449689,0.7842132769256234,1.5838495383763909
+True,0%,UK mass media campaign,Male,All,8.228502832905413,24.350235600846236,16.103799858679118,31.95026241768491
+True,0%,UK mass media campaign,Male,SES1,2.261333389149785,6.836201489125371,4.538946684164941,9.117966335780144
+True,0%,UK mass media campaign,Male,SES2,1.7982670839874744,5.354036410878182,3.542078667429567,7.054499796239257
+True,0%,UK mass media campaign,Male,SES3,1.617974055261016,4.783909268036961,3.1672592285875085,6.2346081645675895
+True,0%,UK mass media campaign,Male,SES4,1.397721632826209,4.125063308665752,2.72268968206203,5.324420687642693
+True,0%,UK mass media campaign,Male,SES5,1.1617105959326028,3.3079616231092217,2.1369574024475817,4.1366158157087565
+True,0%,UK salt reduction program,All,All,55.98163204828202,234.2627529444832,178.45639188583922,1114.8624006506502
+True,0%,UK salt reduction program,All,SES1,16.12113059148806,67.15799577205175,50.90199557232583,341.3307029017416
+True,0%,UK salt reduction program,All,SES2,12.322677471179665,51.03791479676282,38.697743544018266,247.96589178404545
+True,0%,UK salt reduction program,All,SES3,10.940511591818929,46.39511387329978,35.43540674494433,216.4740206775404
+True,0%,UK salt reduction program,All,SES4,9.170808747311948,39.48347859030467,30.29836344750339,178.7022614157597
+True,0%,UK salt reduction program,All,SES5,7.370341816075146,30.365475281757117,22.92648528848052,130.593126289741
+True,0%,UK salt reduction program,Female,All,18.79464684136885,74.80425705942582,55.93561376970118,329.7357149506827
+True,0%,UK salt reduction program,Female,SES1,5.80032617496711,23.039949559596717,17.222474252218365,107.89347785913408
+True,0%,UK salt reduction program,Female,SES2,4.154552840318143,16.339403033815266,12.16672170845598,73.37326818506025
+True,0%,UK salt reduction program,Female,SES3,3.660929601788342,14.795970897571088,11.128780052131,64.30583526448513
+True,0%,UK salt reduction program,Female,SES4,2.938614587616265,12.003082034377575,9.05964164773333,50.67972990478772
+True,0%,UK salt reduction program,Female,SES5,2.2076811783279187,8.598853021252335,6.393319529087067,33.47506870978581
+True,0%,UK salt reduction program,Male,All,37.24122157787001,159.78784180419348,122.68905059181137,785.1564159707973
+True,0%,UK salt reduction program,Male,SES1,10.308274915374636,44.0738815679164,33.76120328526145,232.8226007168952
+True,0%,UK salt reduction program,Male,SES2,8.184210518930435,34.75522965870762,26.567159879077195,174.37194658684516
+True,0%,UK salt reduction program,Male,SES3,7.286394688032747,31.596419458771585,24.291390336429718,151.8275044897958
+True,0%,UK salt reduction program,Male,SES4,6.234700112065792,27.484001332880617,21.227209311638354,128.18258672277278
+True,0%,UK salt reduction program,Male,SES5,5.166899479814052,21.745966252542612,16.5740236165396,97.32734465202952
+True,0%,Who mandatory,All,All,316.3300243225527,1345.2249605830775,1030.0343637554006,6281.482910388321
+True,0%,Who mandatory,All,SES1,89.45878570579546,381.2296924126261,292.4773093807138,1905.274698382761
+True,0%,Who mandatory,All,SES2,69.13661493178432,292.28227441919694,223.3325408744037,1391.4082203555413
+True,0%,Who mandatory,All,SES3,62.290147399983766,267.07403990302544,205.15812849091247,1220.9101049750388
+True,0%,Who mandatory,All,SES4,52.7519901350032,228.2486741360872,175.6969501839406,1014.3836429371202
+True,0%,Who mandatory,All,SES5,42.58970984743976,176.30176901516955,133.80555413438785,743.879736713712
+True,0%,Who mandatory,Female,All,101.4782354919638,409.6190225627079,307.7791711279824,1780.984103651473
+True,0%,Who mandatory,Female,SES1,30.85762077360559,124.93930704172314,93.97965229171098,577.1147470203272
+True,0%,Who mandatory,Female,SES2,22.35660922764975,89.38305583771867,66.91053519911773,396.0267392661008
+True,0%,Who mandatory,Female,SES3,19.95714688820219,81.2436518946535,61.30944814415598,347.97929716244715
+True,0%,Who mandatory,Female,SES4,16.19655402544832,66.3486931760304,50.17029553485894,275.333484712314
+True,0%,Who mandatory,Female,SES5,12.213659580359757,47.77399757847781,35.507346379550214,182.2468792978104
+True,0%,Who mandatory,Male,All,213.85327348335235,935.5926213865666,720.9287892426858,4489.409891036778
+True,0%,Who mandatory,Male,SES1,58.45438513427592,257.02627003238774,197.72985348868764,1322.4455776462771
+True,0%,Who mandatory,Male,SES2,46.56225756916618,202.85794351150756,155.9331199824828,993.565979791126
+True,0%,Who mandatory,Male,SES3,42.12342906562782,185.55054465060843,143.4204563289511,872.9929286057882
+True,0%,Who mandatory,Male,SES4,36.40521499833059,161.92928839099562,125.62891470586706,738.4760354222342
+True,0%,Who mandatory,Male,SES5,30.299432597081303,128.4730286892551,98.15468835117662,560.8529679555563
+True,3%,Aus then UK 50%,All,All,48.97654325912431,221.4403749463886,171.8918106230638,663.7001748785049
+True,3%,Aus then UK 50%,All,SES1,13.7486291860565,62.214603431333444,48.47080070353465,197.2425188861008
+True,3%,Aus then UK 50%,All,SES2,10.660849748416926,47.866677522748304,37.13769278479119,146.60808886152645
+True,3%,Aus then UK 50%,All,SES3,9.653003914666611,43.98159690095398,34.258720280138654,129.6855981771013
+True,3%,Aus then UK 50%,All,SES4,8.21047459196666,37.79534373683535,29.545390856552608,109.07521817726662
+True,3%,Aus then UK 50%,All,SES5,6.664848466043732,29.35889207537396,22.642222797031376,81.1087939171605
+True,3%,Aus then UK 50%,Female,All,14.808834600540322,62.834543771186375,48.05060949361981,180.49913612874712
+True,3%,Aus then UK 50%,Female,SES1,4.492176794945571,19.141498112864365,14.67766682184507,57.645001222856614
+True,3%,Aus then UK 50%,Female,SES2,3.2562300456319275,13.673119501781276,10.428476586683198,39.92541230439047
+True,3%,Aus then UK 50%,Female,SES3,2.909926168917784,12.465510485444394,9.5619663805394,35.358529822016045
+True,3%,Aus then UK 50%,Female,SES4,2.3681772666349477,10.175585524966737,7.81615034237802,28.23334086821902
+True,3%,Aus then UK 50%,Female,SES5,1.7901899254988733,7.338853732646131,5.540900631437286,19.250254680331302
+True,3%,Aus then UK 50%,Male,All,33.99502961333677,158.3128433844916,124.16779577440839,484.2552283648941
+True,3%,Aus then UK 50%,Male,SES1,9.230708353420395,43.03041735253459,33.78161282286288,139.80562967216412
+True,3%,Aus then UK 50%,Male,SES2,7.3759703350182475,34.14088336516332,26.75457090859285,106.78547709707078
+True,3%,Aus then UK 50%,Male,SES3,6.715335099054464,31.501781522533758,24.73033999667082,94.6248935029545
+True,3%,Aus then UK 50%,Male,SES4,5.829561331972513,27.612975288426547,21.701286345074006,80.98848117045745
+True,3%,Aus then UK 50%,Male,SES5,4.871037419009484,21.955080980982995,17.076958885851013,61.80596729680703
+True,3%,Aus then UK 70%,All,All,68.51275529572482,308.68155439841115,240.33850433708534,928.8678468619986
+True,3%,Aus then UK 70%,All,SES1,19.235617368771116,86.93414731276158,67.64053544202383,276.23368138570277
+True,3%,Aus then UK 70%,All,SES2,14.91512382252663,66.76124399034025,51.94944614866967,204.84640366351428
+True,3%,Aus then UK 70%,All,SES3,13.508907834204466,61.338478528973496,47.885331116243776,181.49991775325395
+True,3%,Aus then UK 70%,All,SES4,11.498099603008066,52.8249201073272,41.31457987110801,152.66898967374877
+True,3%,Aus then UK 70%,All,SES5,9.326803662093576,41.049034163751486,31.701964319842567,113.6240077187842
+True,3%,Aus then UK 70%,Female,All,20.807654634618665,87.62206037226538,66.93108484384796,251.93140262992358
+True,3%,Aus then UK 70%,Female,SES1,6.2943561845723615,26.69304266735735,20.46353761415631,80.43923449210732
+True,3%,Aus then UK 70%,Female,SES2,4.5711691064870665,19.09204239542172,14.545925624479342,55.72440158972366
+True,3%,Aus then UK 70%,Female,SES3,4.091401018438714,17.42497177236346,13.357325309478071,49.39669978342089
+True,3%,Aus then UK 70%,Female,SES4,3.3294346076191292,14.20889625718408,10.903633005322165,39.38116220376678
+True,3%,Aus then UK 70%,Female,SES5,2.5114532964769727,10.22170133623683,7.719768189368761,26.81608471278147
+True,3%,Aus then UK 70%,Male,All,47.707671301152885,221.27581571986525,173.89237485179805,676.9242097470449
+True,3%,Aus then UK 70%,Male,SES1,12.952765422860159,60.227149581873434,47.2735728060309,195.39485467912806
+True,3%,Aus then UK 70%,Male,SES2,10.35733760112672,47.83012649357954,37.505858873917504,149.21973458419293
+True,3%,Aus then UK 70%,Male,SES3,9.4217405167349,44.01107971955,34.62586707837339,132.28800576944653
+True,3%,Aus then UK 70%,Male,SES4,8.167036606419321,38.58213340174174,30.35157884237099,113.48561402330847
+True,3%,Aus then UK 70%,Male,SES5,6.815025844957679,30.713886101761098,23.91254545670506,86.81706989064628
+True,3%,Aus then UK 90%,All,All,87.94505640598362,397.1331361751984,308.44400952402464,1190.0142330306
+True,3%,Aus then UK 90%,All,SES1,24.656720202418054,111.58422787469762,87.00221619489906,354.2633755275865
+True,3%,Aus then UK 90%,All,SES2,19.127872160248405,85.8195701510732,66.66775384011214,262.76247211929217
+True,3%,Aus then UK 90%,All,SES3,17.337523293189477,79.05205023152664,61.534692265266465,232.47773243644377
+True,3%,Aus then UK 90%,All,SES4,14.75791525294946,67.88119172625437,52.99933582939157,195.76764887526556
+True,3%,Aus then UK 90%,All,SES5,11.970279517532113,52.662872413109696,40.6277591922563,145.66329615937485
+True,3%,Aus then UK 90%,Female,All,26.751848154967842,113.14361604876864,86.43151251250069,323.8545386647386
+True,3%,Aus then UK 90%,Female,SES1,8.08971269204564,34.46886505503207,26.349071222241573,103.2378958531068
+True,3%,Aus then UK 90%,Female,SES2,5.877602581264015,24.676372763812623,18.779173343706038,71.6069328029143
+True,3%,Aus then UK 90%,Female,SES3,5.251824753488171,22.49047305758106,17.244053474414777,63.4767388458433
+True,3%,Aus then UK 90%,Female,SES4,4.272209532881608,18.37205125105869,14.098847279994203,50.673775816983984
+True,3%,Aus then UK 90%,Female,SES5,3.2271362550329092,13.219217305398402,9.94937719907949,34.482559479338974
+True,3%,Aus then UK 90%,Male,All,61.16727302949637,284.2608768916763,222.66548964563066,868.0804583139852
+True,3%,Aus then UK 90%,Male,SES1,16.570753028044493,77.06211380240161,60.54718811970073,250.44423632319123
+True,3%,Aus then UK 90%,Male,SES2,13.258610015268301,61.241209572239185,48.00204208796855,191.33253005491235
+True,3%,Aus then UK 90%,Male,SES3,12.080353676158428,56.53754138169175,44.39764872604904,169.60177322987866
+True,3%,Aus then UK 90%,Male,SES4,10.490236878682618,49.489521841615435,38.96730596401706,145.43513834421267
+True,3%,Aus then UK 90%,Male,SES5,8.77154277135992,39.46589127025328,30.678845595305283,111.04170438778887
+True,3%,Aus then UK mandatory,All,All,97.17595200316948,440.2695950089853,342.9283364908554,1322.8887751270806
+True,3%,Aus then UK mandatory,All,SES1,27.322850060313286,123.63559581364756,96.3436705535471,392.5263514385434
+True,3%,Aus then UK mandatory,All,SES2,21.161341453261407,95.2928214975642,74.12853878221969,291.85630542549774
+True,3%,Aus then UK mandatory,All,SES3,19.154970168627536,87.5269022911284,68.23732842688716,258.3207798191559
+True,3%,Aus then UK mandatory,All,SES4,16.30309307779283,75.24168436966787,58.909717132339466,217.6492468876691
+True,3%,Aus then UK mandatory,All,SES5,13.259421647212458,58.4126931018989,45.177758921925886,161.89754049809275
+True,3%,Aus then UK mandatory,Female,All,29.621405257890878,125.16264331437468,95.74028239353127,358.6539554621701
+True,3%,Aus then UK mandatory,Female,SES1,8.973995621161473,38.20096451666413,29.20467530944622,114.79486155879526
+True,3%,Aus then UK mandatory,Female,SES2,6.50650712564244,27.269801320172565,20.80407203042819,79.36320028510733
+True,3%,Aus then UK mandatory,Female,SES3,5.82512348292879,24.877477984495123,19.08351233045871,70.46651166073116
+True,3%,Aus then UK mandatory,Female,SES4,4.737326141156401,20.30289147142793,15.60433594718723,56.20721123587891
+True,3%,Aus then UK mandatory,Female,SES5,3.584265388101203,14.58160367560027,11.017748895328976,38.29409714486539
+True,3%,Aus then UK mandatory,Male,All,67.56871281356567,314.944093205719,247.2389586421758,967.7936172314968
+True,3%,Aus then UK mandatory,Male,SES1,18.3259439027103,85.58934981948978,67.24071579774356,278.9245251512562
+True,3%,Aus then UK mandatory,Male,SES2,14.65746699797029,67.90341189527166,53.21330644854965,213.20948016861246
+True,3%,Aus then UK mandatory,Male,SES3,13.352600507055419,62.6484658084214,49.280582811578256,188.43786389905674
+True,3%,Aus then UK mandatory,Male,SES4,11.591323090533791,54.8566904225898,43.255405783292325,161.54586440005613
+True,3%,Aus then UK mandatory,Male,SES5,9.683703591543246,43.80845019670473,34.05224440673886,123.41917233999615
+True,3%,Australia 50%,All,All,33.271700388929425,117.58014687314709,84.21981480948247,323.82096704976556
+True,3%,Australia 50%,All,SES1,9.430929829066345,33.245929454829714,23.834738380874672,96.44007795775562
+True,3%,Australia 50%,All,SES2,7.27338615936986,25.504828359687227,18.243660363548166,71.58853916010399
+True,3%,Australia 50%,All,SES3,6.54975291533716,23.301332218893442,16.715146652794964,63.137648730107145
+True,3%,Australia 50%,All,SES4,5.549064632298468,19.90800672176122,14.35231880642426,53.04112692408134
+True,3%,Australia 50%,All,SES5,4.49153805326464,15.489680210397832,10.982019467443166,39.495793338946314
+True,3%,Australia 50%,Female,All,10.211564324718589,34.58868730911308,24.394851969002346,91.38216867847855
+True,3%,Australia 50%,Female,SES1,3.118394182931489,10.603713889296094,7.479744746520979,29.215351055233537
+True,3%,Australia 50%,Female,SES2,2.250110834967542,7.555553188835592,5.312298452659197,20.23605581251301
+True,3%,Australia 50%,Female,SES3,2.0012583393332166,6.851078659921821,4.852753227259209,17.89354155253528
+True,3%,Australia 50%,Female,SES4,1.6207768059004923,5.569649900461385,3.959598395658319,14.26900948696059
+True,3%,Australia 50%,Female,SES5,1.2230118632129057,4.025799557128021,2.8063512429028474,9.766560494114332
+True,3%,Australia 50%,Male,All,23.018743255696982,82.9237791735676,59.65360738187517,231.8883554731797
+True,3%,Australia 50%,Male,SES1,6.304469161540024,22.6913944408753,16.359792828748013,67.09461905645956
+True,3%,Australia 50%,Male,SES2,5.024290897215749,17.946882166691633,12.89424120023866,51.1616914891973
+True,3%,Australia 50%,Male,SES3,4.537694580888411,16.43231818241741,11.870101104256163,45.27205630625454
+True,3%,Australia 50%,Male,SES4,3.9092797904832284,14.335688191011378,10.3968892868072,38.7087461263509
+True,3%,Australia 50%,Male,SES5,3.2595618801985093,11.437948235939869,8.166669614667384,29.603438538852938
+True,3%,Australia 70%,All,All,46.577250380374785,164.1930081348083,117.5608555641284,453.29149520892474
+True,3%,Australia 70%,All,SES1,13.212802960198912,46.45859148316416,33.34179978569854,134.77117917463585
+True,3%,Australia 70%,All,SES2,10.191121353670693,35.65502768535452,25.477417694831768,100.0718167432585
+True,3%,Australia 70%,All,SES3,9.169404122276502,32.529683714087874,23.3530611664849,88.5182134106892
+True,3%,Australia 70%,All,SES4,7.757248571064441,27.84088909170069,20.03766837669167,74.2645955746552
+True,3%,Australia 70%,All,SES5,6.292789605428217,21.63103119279695,15.325256228558874,55.050516030869616
+True,3%,Australia 70%,Female,All,14.307617243620914,48.428728814493006,34.077198736773674,127.20863234298803
+True,3%,Australia 70%,Female,SES1,4.368964866864385,14.814540854589895,10.44777706636657,40.73304473970914
+True,3%,Australia 70%,Female,SES2,3.1559728791271264,10.570379161061663,7.409227482275579,28.143551356437452
+True,3%,Australia 70%,Female,SES3,2.8044596456372335,9.597502403431804,6.779448453634926,24.833536696170846
+True,3%,Australia 70%,Female,SES4,2.2653885497168393,7.794635455060235,5.52192751332281,19.856721779410705
+True,3%,Australia 70%,Female,SES5,1.7078401233829084,5.619357575917764,3.9149116703090936,13.620645000886793
+True,3%,Australia 70%,Male,All,32.3208880361205,115.65734220200794,83.24160756103598,323.92249939756454
+True,3%,Australia 70%,Male,SES1,8.842575117313396,31.662821822688116,22.835072593677303,93.84961898624708
+True,3%,Australia 70%,Male,SES2,7.04383652967045,25.033737509252482,18.00384694628265,71.51115112727148
+True,3%,Australia 70%,Male,SES3,6.3575373914630475,22.926310697535445,16.52007240154017,63.16419763481754
+True,3%,Australia 70%,Male,SES4,5.483868860153431,20.002466300313472,14.489702856789453,54.098538517532816
+True,3%,Australia 70%,Male,SES5,4.558992012473171,15.948135194330066,11.38285632203743,41.277101904434886
+True,3%,Australia 90%,All,All,60.03548422922464,210.84551503902216,150.94156765023303,580.475265766671
+True,3%,Australia 90%,All,SES1,16.96522309389385,59.69876505240202,42.69817743957234,172.83726167460583
+True,3%,Australia 90%,All,SES2,13.10791126487878,45.75642142142888,32.641170332311326,128.20765586709996
+True,3%,Australia 90%,All,SES3,11.820642809657652,41.81935716435525,30.004380787831554,113.37387799017826
+True,3%,Australia 90%,All,SES4,10.01318067506164,35.81095028588341,25.74194346210389,95.05874002494379
+True,3%,Australia 90%,All,SES5,8.099351128367763,27.837666448999826,19.675300297003727,70.78081126679679
+True,3%,Australia 90%,Female,All,18.354187697420894,62.320190334297365,43.95915462108096,163.99775932325036
+True,3%,Australia 90%,Female,SES1,5.60952773691892,19.07361934401131,13.461315971600175,52.41117028061489
+True,3%,Australia 90%,Female,SES2,4.046746617949257,13.593272661831834,9.54823900927769,36.34602610743107
+True,3%,Australia 90%,Female,SES3,3.599269466771685,12.336389027418628,8.744588544332021,32.08725251512072
+True,3%,Australia 90%,Female,SES4,2.9130042373419958,10.039840267442143,7.115519264435504,25.638552383370694
+True,3%,Australia 90%,Female,SES5,2.1965139058167082,7.226589251548144,5.0326834036023484,17.54976613798369
+True,3%,Australia 90%,Male,All,41.579154560032414,148.77921007425982,106.97217852582538,414.9220274070495
+True,3%,Australia 90%,Male,SES1,11.365167458566203,40.67998543768117,29.249978152667317,120.10806320040238
+True,3%,Australia 90%,Male,SES2,9.041349455325653,32.18967023697831,23.09165337995105,91.80200615759523
+True,3%,Australia 90%,Male,SES3,8.195278536865736,29.499025226385953,21.242173545062464,81.14350669271646
+True,3%,Australia 90%,Male,SES4,7.07207666770008,25.795383920503717,18.626768380924243,69.5077835352365
+True,3%,Australia 90%,Male,SES5,5.881892272718942,20.576810500518974,14.650775928276653,53.15767920429454
+True,3%,Australia mandatory,All,All,66.76752774182762,235.00613842266537,167.67118507258098,644.4245728242958
+True,3%,Australia mandatory,All,SES1,18.90414436191773,66.62843098667084,47.71882432538387,192.1231354555959
+True,3%,Australia mandatory,All,SES2,14.607452052733958,51.02395898687116,36.293328499912555,142.4655608532356
+True,3%,Australia mandatory,All,SES3,13.14176414065241,46.60102993471294,33.33538634436831,125.97594304722948
+True,3%,Australia mandatory,All,SES4,11.14598412492494,39.82591924050523,28.669167189541643,105.6989011915016
+True,3%,Australia mandatory,All,SES5,9.000611576522736,30.91758123362615,21.932180292529168,78.60156012362934
+True,3%,Australia mandatory,Female,All,20.397336077773815,69.2179407074738,48.75031562326402,181.93827492591157
+True,3%,Australia mandatory,Female,SES1,6.24578496406372,21.20004649062627,14.916939330140956,58.125055736052985
+True,3%,Australia mandatory,Female,SES2,4.497413672926993,15.109322355716108,10.605138552516987,40.2851571671527
+True,3%,Australia mandatory,Female,SES3,3.9991543258155304,13.699245368601577,9.689484010474157,35.60711819798528
+True,3%,Australia mandatory,Female,SES4,3.2358172589761742,11.149938806004993,7.899918053281824,28.399369173102297
+True,3%,Australia mandatory,Female,SES5,2.44475343260252,8.025611773855042,5.584971810480257,19.481454750596768
+True,3%,Australia mandatory,Male,All,46.17264734900612,165.18981434740095,118.89184030570296,461.85060597278226
+True,3%,Australia mandatory,Male,SES1,12.669698531422092,45.23060404428129,32.542735581335386,133.50648935587424
+True,3%,Australia mandatory,Male,SES2,10.066655502510603,35.818599864795274,25.64795785872622,101.84599696914587
+True,3%,Australia mandatory,Male,SES3,9.107197938726518,32.72669384080576,23.633744840391667,90.0995610459196
+True,3%,Australia mandatory,Male,SES4,7.847932453241453,28.545912553004428,20.70200689394607,77.07133345453109
+True,3%,Australia mandatory,Male,SES5,6.539024619482802,22.848413805001094,16.28901740689642,59.092881729585
+True,3%,BAU,All,All,4963723.943366704,8560934.69537674,3597210.7520100377,16251441.166905914
+True,3%,BAU,All,SES1,925374.8160295913,1611013.4257612806,685638.6097316896,3107774.6917464496
+True,3%,BAU,All,SES2,945069.0246958164,1631812.8142493092,686743.7895534929,3120814.5185386827
+True,3%,BAU,All,SES3,1001096.7597007235,1726105.963137633,725009.2034369101,3284033.424838698
+True,3%,BAU,All,SES4,1058793.3380075444,1820876.4511139768,762083.1131064327,3431075.725478039
+True,3%,BAU,All,SES5,1033390.0049330282,1771126.0411145408,737736.0361815124,3307742.806304047
+True,3%,BAU,Female,All,1986274.9430719335,3412644.9951934544,1426370.0521215207,6421658.990543111
+True,3%,BAU,Female,SES1,376078.0267406035,651566.7848365146,275488.75809591106,1249479.1045755227
+True,3%,BAU,Female,SES2,379829.02163434896,653370.8950122284,273541.8733778794,1243758.4367420485
+True,3%,BAU,Female,SES3,400656.1167951803,688612.2441548972,287956.1273597168,1303295.8169167503
+True,3%,BAU,Female,SES4,421747.5350458052,722565.1897242673,300817.6546784621,1355808.2420042756
+True,3%,BAU,Female,SES5,407964.2428559955,696529.881465547,288565.6386095515,1269317.3903045133
+True,3%,BAU,Male,All,2977449.00029477,5148289.700183287,2170840.6998885167,9829782.176362805
+True,3%,BAU,Male,SES1,549296.7892889878,959446.6409247662,410149.85163577844,1858295.587170927
+True,3%,BAU,Male,SES2,565240.0030614674,978441.9192370811,413201.9161756136,1877056.0817966335
+True,3%,BAU,Male,SES3,600440.6429055431,1037493.7189827363,437053.07607719325,1980737.607921947
+True,3%,BAU,Male,SES4,637045.8029617389,1098311.2613897093,461265.45842797053,2075267.4834737638
+True,3%,BAU,Male,SES5,625425.7620770329,1074596.159648994,449170.397571961,2038425.415999534
+True,3%,KCl subsitute (10%) all foods,All,All,44.222148149373574,385.58240440063037,341.1147160537515,1583.2404681098942
+True,3%,KCl subsitute (10%) all foods,All,SES1,12.441467465408353,108.84280192136171,96.25820218586904,477.08330764656705
+True,3%,KCl subsitute (10%) all foods,All,SES2,9.603318273551729,83.23298131783184,73.6652027939658,350.7075116021571
+True,3%,KCl subsitute (10%) all foods,All,SES3,8.740414976972877,76.78603817349139,68.1357851885823,308.81786343578943
+True,3%,KCl subsitute (10%) all foods,All,SES4,7.4606438476820855,66.02016047605402,58.627990729871236,258.44568739052755
+True,3%,KCl subsitute (10%) all foods,All,SES5,6.029253580821421,50.57031881405513,44.56528137977093,189.18960309546208
+True,3%,KCl subsitute (10%) all foods,Female,All,15.26828289227763,124.70577798780208,109.796606147853,477.52158300811783
+True,3%,KCl subsitute (10%) all foods,Female,SES1,4.599752348772453,38.03393969307461,33.41682605459846,153.94142271901498
+True,3%,KCl subsitute (10%) all foods,Female,SES2,3.340263731408753,27.118227440219766,23.81880024538655,105.97427135288069
+True,3%,KCl subsitute (10%) all foods,Female,SES3,3.0087887113679304,24.879830360547242,21.859392081746023,93.51885981357078
+True,3%,KCl subsitute (10%) all foods,Female,SES4,2.4551625190248396,20.359943293307992,17.88471129438509,74.29181850672208
+True,3%,KCl subsitute (10%) all foods,Female,SES5,1.849523186257247,14.443910073451416,12.600509050922781,49.98036948817786
+True,3%,KCl subsitute (10%) all foods,Male,All,28.977480724606703,259.8394379074553,231.2127310498594,1102.9916653528335
+True,3%,KCl subsitute (10%) all foods,Male,SES1,7.786667916335721,70.56505663464934,62.69688678635269,321.828590931133
+True,3%,KCl subsitute (10%) all foods,Male,SES2,6.260885697666912,56.02709994436278,49.74275078153277,243.90031156053806
+True,3%,KCl subsitute (10%) all foods,Male,SES3,5.726930168499431,51.71794200844742,45.99735945881887,214.66741810888
+True,3%,KCl subsitute (10%) all foods,Male,SES4,5.012410929226402,45.56373864025563,40.59124059534492,182.7342744119635
+True,3%,KCl subsitute (10%) all foods,Male,SES5,4.179168742343764,35.97666750945137,31.765009440768285,138.63947862151704
+True,3%,KCl subsitute (30%) envelope,All,All,875.4900554971282,2443.3446762040003,1568.8270839838083,6045.28600750329
+True,3%,KCl subsitute (30%) envelope,All,SES1,255.51326931526233,707.8993113415956,452.6518559082764,1823.8281441529837
+True,3%,KCl subsitute (30%) envelope,All,SES2,195.42194599752554,537.4198095567442,343.6610790016024,1348.669998917741
+True,3%,KCl subsitute (30%) envelope,All,SES3,172.15542896365167,484.4023956656348,312.44487331372716,1182.9998887505576
+True,3%,KCl subsitute (30%) envelope,All,SES4,141.58867421158243,404.8075750754258,263.16421936764385,976.5163738877028
+True,3%,KCl subsitute (30%) envelope,All,SES5,111.3582166911865,307.70413458356,196.355412386221,713.960002850822
+True,3%,KCl subsitute (30%) envelope,Female,All,288.10707507154075,766.6638694960898,477.9917497998471,1808.184223041698
+True,3%,KCl subsitute (30%) envelope,Female,SES1,93.35001028358731,245.87562114304498,152.90849406815593,599.6071406068513
+True,3%,KCl subsitute (30%) envelope,Female,SES2,66.37351493656087,173.83264213628055,107.49603016337883,411.9967093782462
+True,3%,KCl subsitute (30%) envelope,Female,SES3,56.671126841769635,152.674055019356,96.04266243312645,355.95164900079686
+True,3%,KCl subsitute (30%) envelope,Female,SES4,42.853233136939416,116.75661226498408,74.01040958984244,269.2319912104863
+True,3%,KCl subsitute (30%) envelope,Female,SES5,28.827247316411263,76.14056494172613,47.27793534057069,167.8119275651599
+True,3%,KCl subsitute (30%) envelope,Male,All,586.7400305343809,1676.244679303717,1086.0259774129745,4238.564712494504
+True,3%,KCl subsitute (30%) envelope,Male,SES1,162.58195056681197,461.2306045398214,299.5728482597999,1223.8694950681152
+True,3%,KCl subsitute (30%) envelope,Male,SES2,129.0082655924136,364.8834766212214,235.35708797601598,934.6318889224706
+True,3%,KCl subsitute (30%) envelope,Male,SES3,115.17092198355155,331.03272769592314,216.06843518283253,826.5855571880602
+True,3%,KCl subsitute (30%) envelope,Male,SES4,98.43655848516516,286.8126586486897,188.34260271642572,706.0752900849221
+True,3%,KCl subsitute (30%) envelope,Male,SES5,81.77954964077483,229.6504771146706,147.98498811600078,542.6039803002903
+True,3%,KCl subsitute (4.5%) discretionary,All,All,73.80506640222463,306.36411528090946,232.7787356103968,899.5996034879302
+True,3%,KCl subsitute (4.5%) discretionary,All,SES1,20.86954517084137,87.38548911111286,66.5131383987442,269.82559688246397
+True,3%,KCl subsitute (4.5%) discretionary,All,SES2,16.085888984162292,66.65739464998207,50.53002653085307,198.97364310322425
+True,3%,KCl subsitute (4.5%) discretionary,All,SES3,14.53211656606528,60.73224041590568,46.16316793819902,175.15228333620163
+True,3%,KCl subsitute (4.5%) discretionary,All,SES4,12.315315159933338,51.879681084920676,39.57288344143269,146.50930691123156
+True,3%,KCl subsitute (4.5%) discretionary,All,SES5,9.946614957586801,40.06307917982084,30.13049296677422,108.2682177048248
+True,3%,KCl subsitute (4.5%) discretionary,Female,All,25.193318081239823,98.45223003263142,73.44482341488438,271.93641091242034
+True,3%,KCl subsitute (4.5%) discretionary,Female,SES1,7.684306035796792,30.25873187649868,22.577216568383697,87.32820504617422
+True,3%,KCl subsitute (4.5%) discretionary,Female,SES2,5.538121557609362,21.472978056126585,15.973144274001413,60.253054698792425
+True,3%,KCl subsitute (4.5%) discretionary,Female,SES3,4.946190923918639,19.510238247326885,14.57820539021598,53.26411735482454
+True,3%,KCl subsitute (4.5%) discretionary,Female,SES4,4.0119522816159465,15.883078199323286,11.878167273615885,42.44120086181253
+True,3%,KCl subsitute (4.5%) discretionary,Female,SES5,3.017911407986987,11.38488412243203,8.401917513834883,28.86211615972918
+True,3%,KCl subsitute (4.5%) discretionary,Male,All,48.51312271354722,207.63422392612733,159.36029247381347,626.6568656013826
+True,3%,KCl subsitute (4.5%) discretionary,Male,SES1,13.181081661375643,57.05630386518728,43.85667262479177,182.4535851042525
+True,3%,KCl subsitute (4.5%) discretionary,Male,SES2,10.53425292951458,44.99505493576126,34.540812525336364,138.7546153115376
+True,3%,KCl subsitute (4.5%) discretionary,Male,SES3,9.565672088320893,41.16763097161514,31.621744307497345,121.88206952981093
+True,3%,KCl subsitute (4.5%) discretionary,Male,SES4,8.288569723616362,35.89117531981551,27.65845369817068,103.75648184466932
+True,3%,KCl subsitute (4.5%) discretionary,Male,SES5,6.899384448503782,28.571556412486146,21.65765641332712,79.10244345364238
+True,3%,No change,All,All,0.0,0.0,0.0,0.0
+True,3%,No change,All,SES1,0.0,0.0,0.0,0.0
+True,3%,No change,All,SES2,0.0,0.0,0.0,0.0
+True,3%,No change,All,SES3,0.0,0.0,0.0,0.0
+True,3%,No change,All,SES4,0.0,0.0,0.0,0.0
+True,3%,No change,All,SES5,0.0,0.0,0.0,0.0
+True,3%,No change,Female,All,0.0,0.0,0.0,0.0
+True,3%,No change,Female,SES1,0.0,0.0,0.0,0.0
+True,3%,No change,Female,SES2,0.0,0.0,0.0,0.0
+True,3%,No change,Female,SES3,0.0,0.0,0.0,0.0
+True,3%,No change,Female,SES4,0.0,0.0,0.0,0.0
+True,3%,No change,Female,SES5,0.0,0.0,0.0,0.0
+True,3%,No change,Male,All,0.0,0.0,0.0,0.0
+True,3%,No change,Male,SES1,0.0,0.0,0.0,0.0
+True,3%,No change,Male,SES2,0.0,0.0,0.0,0.0
+True,3%,No change,Male,SES3,0.0,0.0,0.0,0.0
+True,3%,No change,Male,SES4,0.0,0.0,0.0,0.0
+True,3%,No change,Male,SES5,0.0,0.0,0.0,0.0
+True,3%,UK 50%,All,All,73.305827260268,259.4972041021264,185.65355386945754,705.8107745560809
+True,3%,UK 50%,All,SES1,20.71899473070728,73.3201384036897,52.523709467275445,209.631405642795
+True,3%,UK 50%,All,SES2,16.012870481472532,56.25051732609856,40.18330346064357,155.7416033293036
+True,3%,UK 50%,All,SES3,14.42566142374843,51.46298144874314,36.983572226116486,138.04097976644442
+True,3%,UK 50%,All,SES4,12.233988090942912,44.03904693665213,31.754273842420627,116.0424501629256
+True,3%,UK 50%,All,SES5,9.930660713896993,34.32783868540354,24.35994719833306,86.66794943363806
+True,3%,UK 50%,Female,All,21.70447482807019,73.30612795813548,51.55245149022472,191.68806073690928
+True,3%,UK 50%,Female,SES1,6.622626417554209,22.39363241450161,15.776288894956714,61.278201401160764
+True,3%,UK 50%,Female,SES2,4.7811964427810185,16.017356611572456,11.225419910472942,42.42362577073826
+True,3%,UK 50%,Female,SES3,4.257193513910815,14.517397079731513,10.268353620548293,37.549302654305706
+True,3%,UK 50%,Female,SES4,3.444279012276493,11.83769762869385,8.369925050858816,29.94830597787991
+True,3%,UK 50%,Female,SES5,2.5963455758800826,8.528832622873976,5.931135360339868,20.488423584510947
+True,3%,UK 50%,Male,All,51.71828316850468,185.89496295446014,134.02317853496453,514.5631984538427
+True,3%,UK 50%,Male,SES1,14.108087979842576,50.76021561515597,36.65560356612809,148.3909798514334
+True,3%,UK 50%,Male,SES2,11.275431418390585,40.26417385454206,28.983712427335707,113.51052364912088
+True,3%,UK 50%,Male,SES3,10.186316277526863,36.85714715407716,26.628840250879648,100.17284878284359
+True,3%,UK 50%,Male,SES4,8.786472388793262,32.151097179345896,23.318811561972083,85.95765506267213
+True,3%,UK 50%,Male,SES5,7.3198979563728,25.709002282639236,18.40400547904098,65.90875068093361
+True,3%,UK 70%,All,All,102.58856467291123,361.11595298539703,258.9129877885928,984.9550160261228
+True,3%,UK 70%,All,SES1,29.030225000313287,102.04456297594238,73.1673885782288,292.7986097118629
+True,3%,UK 70%,All,SES2,22.427213630882417,78.28874745364915,55.987640630891846,217.90697754301297
+True,3%,UK 70%,All,SES3,20.1718151603784,71.69054090664721,51.47453216201951,192.8434767016387
+True,3%,UK 70%,All,SES4,17.082923087690453,61.34193120244513,44.277292970280186,162.1897829886102
+True,3%,UK 70%,All,SES5,13.858932768093336,47.80634652822635,33.97767203894549,120.79694662738075
+True,3%,UK 70%,Female,All,30.304601513089107,102.57950011572211,72.06294194490096,267.4718345470749
+True,3%,UK 70%,Female,SES1,9.232444877098866,31.383191519864177,22.05394633904779,85.45781153427573
+True,3%,UK 70%,Female,SES2,6.673705947944223,22.37542437473594,15.678757577051032,59.22331140839329
+True,3%,UK 70%,Female,SES3,5.941914910788932,20.329596615148215,14.347066199494629,52.48141455057159
+True,3%,UK 70%,Female,SES4,4.815398011351117,16.543272260503812,11.708803212168396,41.8169987952602
+True,3%,UK 70%,Female,SES5,3.6335308880035857,11.938818774902009,8.301733060333376,28.72018261453466
+True,3%,UK 70%,Male,All,72.31347005919191,259.6991993793558,187.04654800517554,717.6969572352418
+True,3%,UK 70%,Male,SES1,19.783458070310928,70.83371783488069,51.074798817587244,207.5616989268393
+True,3%,UK 70%,Male,SES2,15.76640099466851,56.15853223856019,40.38029849927051,158.40456422951758
+True,3%,UK 70%,Male,SES3,14.240492408872226,51.46727780189438,37.19372768687966,140.2108037692562
+True,3%,UK 70%,Male,SES4,12.281507597670032,44.83804100416882,32.551694642950736,120.18977874925515
+True,3%,UK 70%,Male,SES5,10.221715811391679,35.87428484538062,25.6866217254871,92.06019817772344
+True,3%,UK 90%,All,All,131.17101808574841,463.68673030134084,332.1128499973467,1261.0002711855304
+True,3%,UK 90%,All,SES1,37.0639681513332,131.0137710593461,93.73204025116851,374.48257987814577
+True,3%,UK 90%,All,SES2,28.68241865142579,100.69376228143844,71.83748857752373,278.5902335485767
+True,3%,UK 90%,All,SES3,25.80956305519067,91.81992794383478,66.02858629997367,246.70289795206878
+True,3%,UK 90%,All,SES4,21.883926802864195,78.6081362715422,56.769535473994694,207.4329344526149
+True,3%,UK 90%,All,SES5,17.756383026356502,61.2630283824908,43.56169848257965,154.84919582852496
+True,3%,UK 90%,Female,All,38.779033188995314,131.11846134829446,92.29835134397051,342.7719759766062
+True,3%,UK 90%,Female,SES1,11.835302128657503,40.05693121319625,28.25893410308873,109.55002364266646
+True,3%,UK 90%,Female,SES2,8.542737968297542,28.623935868817824,20.05544537782985,75.83898412158607
+True,3%,UK 90%,Female,SES3,7.61040369204069,25.99399629427206,18.386542210610973,67.30869067295579
+True,3%,UK 90%,Female,SES4,6.166400908200521,21.174889597059366,15.03382013801993,53.777416151239194
+True,3%,UK 90%,Female,SES5,4.667199027462667,15.275123681767294,10.640534647379852,36.78853728654763
+True,3%,UK 90%,Male,All,92.1921451817376,331.9824971599468,239.83558416579726,921.4837479982456
+True,3%,UK 90%,Male,SES1,25.2167739451159,90.89910176387808,65.6382113128289,265.55900335003713
+True,3%,UK 90%,Male,SES2,20.097082838368827,71.85617424368492,51.798499045631395,203.24861895308263
+True,3%,UK 90%,Male,SES3,18.17998921994065,65.87364320778434,47.65657040661631,179.8235489258091
+True,3%,UK 90%,Male,SES4,15.70459056512147,57.52189342490286,41.75831666687936,154.12835684784872
+True,3%,UK 90%,Male,SES5,13.1068103900536,46.07012150735006,32.937099867873485,118.16982479414804
+True,3%,UK mandatory,All,All,146.05054190742365,514.2247827292277,368.4447301767279,1404.5232945478676
+True,3%,UK mandatory,All,SES1,41.31890027842073,145.42681271223861,104.25033817421144,416.42726449524713
+True,3%,UK mandatory,All,SES2,31.91593688237502,111.75397047833664,79.82068397149695,309.611541244213
+True,3%,UK mandatory,All,SES3,28.722783173673175,101.98864508310243,73.28263549410671,274.420795420423
+True,3%,UK mandatory,All,SES4,24.33343837583243,87.34471863832589,63.13038348605299,230.49004994258058
+True,3%,UK mandatory,All,SES5,19.715096012027537,68.18147977915943,48.435532028101726,171.81306267850934
+True,3%,UK mandatory,Female,All,43.19058999592365,145.8732697312902,102.67199617303363,381.12006628433045
+True,3%,UK mandatory,Female,SES1,13.177615869591829,44.60261785011285,31.47406314572475,121.8389743623434
+True,3%,UK mandatory,Female,SES2,9.516708717354062,31.82981652331206,22.330055737506417,84.51701604351916
+True,3%,UK mandatory,Female,SES3,8.458281294347527,28.897004754189993,20.4151563037613,74.5771367347122
+True,3%,UK mandatory,Female,SES4,6.854840117377902,23.5307765388421,16.658050409345524,59.5315682333863
+True,3%,UK mandatory,Female,SES5,5.166451964502521,16.98348381541386,11.793601628811757,40.80207792862266
+True,3%,UK mandatory,Male,All,102.66093128691234,368.5884659020856,265.5853996089849,1018.9348374686856
+True,3%,UK mandatory,Male,SES1,28.07053851532791,100.69878803113339,72.66424588200904,294.2949724118217
+True,3%,UK mandatory,Male,SES2,22.379306340591647,79.8664786697738,57.36560130219845,224.73460912020127
+True,3%,UK mandatory,Male,SES3,20.200814782528187,73.06569308163269,52.89179149784954,199.27078553850325
+True,3%,UK mandatory,Male,SES4,17.446506711300778,63.75699618217281,46.41224218325408,170.6967513713991
+True,3%,UK mandatory,Male,SES5,14.539402236294057,51.01121782164256,36.55453587314647,130.99687060165863
+True,3%,UK mass media campaign,All,All,9.80106732229411,24.52694176918986,14.66079911353415,29.12887321963744
+True,3%,UK mass media campaign,All,SES1,2.7992448743740344,7.07400059877952,4.265222869649452,8.493687755021513
+True,3%,UK mass media campaign,All,SES2,2.1529289785575587,5.371274080046718,3.2122591175375583,6.39943029946094
+True,3%,UK mass media campaign,All,SES3,1.925370687509995,4.825313469910648,2.8770137617749323,5.706471006782778
+True,3%,UK mass media campaign,All,SES4,1.6238795603239218,4.079933321630982,2.4327825939395047,4.797582848386138
+True,3%,UK mass media campaign,All,SES5,1.3059982194841901,3.180805179012492,1.8576611532731784,3.6865769283121645
+True,3%,UK mass media campaign,Female,All,3.3410982591276186,7.803416508676678,4.464709672082815,9.040335220728586
+True,3%,UK mass media campaign,Female,SES1,1.0245614806366545,2.4193119095813578,1.390331262730908,2.8089747837301653
+True,3%,UK mass media campaign,Female,SES2,0.7370327950867853,1.7098380537774789,0.9740533877682817,1.983259901851451
+True,3%,UK mass media campaign,Female,SES3,0.6538487894912162,1.5360990911292713,0.8787403877646712,1.7728302873071282
+True,3%,UK mass media campaign,Female,SES4,0.5288922270206604,1.2382445669851698,0.7115604416814072,1.425790062563563
+True,3%,UK mass media campaign,Female,SES5,0.3984106032131853,0.9022918004240562,0.5034423481028635,1.0310588327132506
+True,3%,UK mass media campaign,Male,All,6.473905115499413,16.760381833419846,10.213873831969517,20.12610441848663
+True,3%,UK mass media campaign,Male,SES1,1.7809621696892943,4.687503462819901,2.8774105683010833,5.695193191318666
+True,3%,UK mass media campaign,Male,SES2,1.4165809508250002,3.672883997117311,2.2457949852091414,4.442832803267623
+True,3%,UK mass media campaign,Male,SES3,1.2745722026887536,3.292856482667404,2.009465550718287,3.9490311725326586
+True,3%,UK mass media campaign,Male,SES4,1.0988798691116517,2.837959989231899,1.7317276884708315,3.386031601465845
+True,3%,UK mass media campaign,Male,SES5,0.9143750213340064,2.2815341265559956,1.3604753141019228,2.6542866759155315
+True,3%,UK salt reduction program,All,All,44.738334942317195,154.41573010597145,109.81324850115155,434.9140252414832
+True,3%,UK salt reduction program,All,SES1,12.898496876865806,44.29418792270382,31.31322019507395,130.7582382351005
+True,3%,UK salt reduction program,All,SES2,9.85919357948522,33.700331883768285,23.815788644397962,96.32439708804345
+True,3%,UK salt reduction program,All,SES3,8.738869674558963,30.542863767166732,21.80764269007516,84.79567831205405
+True,3%,UK salt reduction program,All,SES4,7.315807780276923,25.985559252010237,18.64128110446781,70.6438433970679
+True,3%,UK salt reduction program,All,SES5,5.879232257010419,20.06959642719589,14.148286875115787,52.2571006150159
+True,3%,UK salt reduction program,Female,All,15.027366045982108,49.55425872028646,34.50147566526909,131.79464321014376
+True,3%,UK salt reduction program,Female,SES1,4.643361419441461,15.269834768865083,10.616294779771096,42.371003882949026
+True,3%,UK salt reduction program,Female,SES2,3.3254852731569096,10.83399035179175,7.501280286235168,29.252517672652573
+True,3%,UK salt reduction program,Female,SES3,2.9266298769765187,9.797507917169394,6.860048271471942,25.777579755943865
+True,3%,UK salt reduction program,Female,SES4,2.346279896848956,7.938697754159774,5.584670038774773,20.484721864308685
+True,3%,UK salt reduction program,Female,SES5,1.7635635050969243,5.71250922198248,3.953421040000514,14.012860132587562
+True,3%,UK salt reduction program,Male,All,29.746466670040988,105.10559892661584,75.41124007173318,302.90804495377085
+True,3%,UK salt reduction program,Male,SES1,8.247629040470182,29.00331498723105,20.758155593983666,88.17542624930925
+True,3%,UK salt reduction program,Male,SES2,6.54526152696064,22.878741176455055,16.335419757540855,67.11706846966291
+True,3%,UK salt reduction program,Male,SES3,5.818483101325583,20.758610755980097,14.939332785340133,58.94772321173619
+True,3%,UK salt reduction program,Male,SES4,4.973343984111559,18.023617685869702,13.048491580446758,50.168515141777696
+True,3%,UK salt reduction program,Male,SES5,4.122287691478718,14.341290322921875,10.222640985206628,38.32316014540137
+True,3%,Who mandatory,All,All,248.52129123057608,882.8286157957996,635.0375042936904,2439.4794395219933
+True,3%,Who mandatory,All,SES1,70.2943830721945,250.05856081286333,180.0553760523362,726.3779419119212
+True,3%,Who mandatory,All,SES2,54.347571451909765,191.85226095012044,137.5983215186311,538.7926905952005
+True,3%,Who mandatory,All,SES3,48.921592478910306,175.09453305702908,126.40384912278967,477.15924872284626
+True,3%,Who mandatory,All,SES4,41.413350305556015,149.53389925369817,108.258757958222,399.78684428994194
+True,3%,Who mandatory,All,SES5,33.45813495545336,115.95010692137319,82.68653823847364,296.6319383404261
+True,3%,Who mandatory,Female,All,79.90043811762246,270.24952794961473,189.9104234581271,708.7755597975473
+True,3%,Who mandatory,Female,SES1,24.296398257667907,82.39446554167715,57.977512078410214,225.76576560411712
+True,3%,Who mandatory,Female,SES2,17.598799540606475,59.00906109241071,41.29082089646887,156.89416526649282
+True,3%,Who mandatory,Female,SES3,15.698431761472781,53.50477851185577,37.821758632130525,138.7810931545357
+True,3%,Who mandatory,Female,SES4,12.73245365945211,43.700422526375604,30.978495131082916,111.06606829293744
+True,3%,Who mandatory,Female,SES5,9.614067877137355,31.58837877593295,21.966585577136613,76.11735068859207
+True,3%,Who mandatory,Male,All,167.85814778148233,612.1057433491492,444.3140388810555,1728.0658850423797
+True,3%,Who mandatory,Male,SES1,45.92775281359887,168.00779986330787,121.75518486768685,499.1601243969112
+True,3%,Who mandatory,Male,SES2,36.564459276532084,132.89478659704838,96.0791646597198,380.7186476292964
+True,3%,Who mandatory,Male,SES3,33.06021416427342,121.45936215267263,88.34104553163213,337.18958194906304
+True,3%,Who mandatory,Male,SES4,28.551542738530472,105.94862320480837,77.41198431383734,288.5559055072914
+True,3%,Who mandatory,Male,SES5,23.768840106819987,84.41536373291713,60.64858069757262,220.0374944815685
