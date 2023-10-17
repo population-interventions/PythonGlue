@@ -992,16 +992,18 @@ def ExpandIntegerStrata(df, strata, minValue, maxValue):
 	return df
 
 
-def ExpandAgeCategory(df, max_age, addZero=False, addZeroVals=False, splitAggregate=False):
+def ExpandAgeCategory(
+		df, max_age, addZero=False, addZeroVals=False, ignoreMissingZero=False,
+		ignoreLengthCheck=False, splitAggregate=False, targetColumn='agecategory'):
 	indexNames = [x for x in df.index.names if x != None]
 	noIndex = (len(indexNames) == 0)
 	# Index already has age.
 	if 'age' in indexNames:
 		return df
 	
-	targetColumn = 'agecategory'
+	
 	if targetColumn in indexNames:
-		if 0 not in df.index.get_level_values(targetColumn):
+		if (not ignoreMissingZero) and (0 not in df.index.get_level_values(targetColumn)):
 			if addZero:
 				otherIndex = df.reset_index().set_index(ListRemove(indexNames, targetColumn)).index.to_frame().drop_duplicates()
 				columns = [targetColumn] + list(df.columns)
@@ -1058,7 +1060,7 @@ def ExpandAgeCategory(df, max_age, addZero=False, addZeroVals=False, splitAggreg
 		df = df.div(df['agesCovered'], axis=0)
 		df = df.drop(columns=['agesCovered'])
 
-	if len(df) % max_age != 0:
+	if len(df) % max_age != 0 and not ignoreLengthCheck:
 		fullDf = FillMissingIndexCombinations(df).sort_index()
 		diff = set(list(fullDf.index)).difference(set(list(df.index)))
 		print(diff)

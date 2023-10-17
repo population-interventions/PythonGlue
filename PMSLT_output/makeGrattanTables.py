@@ -9,12 +9,6 @@ DEFAULT_SOURCE = 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Ou
 
 EXTRA_DISCOUNT_YEARS = 4 # Takes us to 2023
 
-scenarioSource = {
-	'reform_kcl_all' : 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_10_11_kcl2000',
-	'reform_kcl_10' : 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_10_11_kcl2000',
-	'reform_kcl_nacl' : 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_10_11_kcl2000',
-}
-
 SCENE_MAP = {
 	'bau' : 'BAU',
 	'reform_aus' : 'Australia mandatory',
@@ -43,6 +37,7 @@ tablesToMake = {
 	'deaths'                                                        : {'file' : 'deaths', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
 	'healthExpendGovIndConservativeMinusIncomeMillions'             : {'file' : 'total_spent_gov_ind_inc_conservative_millions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
 	'healthExpendGovIndMinusIncomeMillions'                         : {'file' : 'total_spent_gov_ind_inc_millions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
+	'healthExpendGovIndMillions'                                    : {'file' : 'total_spent_gov_ind_millions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
 	'healthExpendGovMillions'                                       : {'file' : 'total_spent_gov_millions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
 	'healthExpendMillions'                                          : {'file' : 'total_spent_pp_only_millions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
 	'ICERhealthExpendGovIndConservativeMinusIncomeThousandsPerHaly' : {'file' : 'icer_gov_ind_inc_conservative_thousands_per_haly'},
@@ -69,7 +64,7 @@ def MakeDiscountTable(name, outName, raw=False, filterOut=False, extraDiscountYe
 		if raw:
 			fileName = 'out_{}_year_year_0-114_discount_{}_raw'.format(name, discount)
 			df = shared.ReadFromScenarioFiles(
-				DEFAULT_SOURCE, scenarioSource, fileName,
+				DEFAULT_SOURCE, fileName,
 				index_col=list(range(3)), header=list(range(2)))
 			df.columns.names = ['Scenario', 'Percentile']
 			if filterOut:
@@ -79,7 +74,7 @@ def MakeDiscountTable(name, outName, raw=False, filterOut=False, extraDiscountYe
 		else:
 			fileName = 'out_{}_year_year_0-114_discount_{}_raw'.format(name, discount)
 			df = shared.ReadFromScenarioFiles(
-				DEFAULT_SOURCE, scenarioSource, fileName,
+				DEFAULT_SOURCE, fileName,
 				index_col=list(range(3)), header=list(range(2)))
 			df.columns.names = ['Scenario', 'Percentile']
 			

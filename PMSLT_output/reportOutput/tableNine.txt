@@ -1,25 +1,43 @@
-Percentage reduction in ACMR gap from SES1 to SES5 in 2044
-	reduction in SES ACMR Gap 
+Incremental cost effectiveness ratio (each intervention c.f. BAU; Aus$ per HALY gained) from the Health + Govt Expenditure perspective, 3% discount rate: 20 year and lifetime horizons
+	ICER + Gov 20 years	ICER + Gov All years
 === Copyable table below ===
 Reformulation
-Mandatory - Australia (100% Compliance)	0.158%	(0.105% to 0.241%)
-Australia 90% compliance	0.143%	(0.0943% to 0.217%)
-Australia 70% compliance	0.111%	(0.0738% to 0.168%)
-Australia 50% compliance	0.0796%	(0.0529% to 0.122%)
-Mandatory UK (100% compliance)	0.350%	(0.228% to 0.523%)
-UK 90% compliance	0.315%	(0.206% to 0.474%)
-UK 70% compliance	0.245%	(0.160% to 0.367%)
-UK 50% compliance	0.176%	(0.115% to 0.262%)
-Mandatory WHO	0.590%	(0.393% to 0.867%)
+Mandatory - Australia (100% Compliance)	Cost Saving	5,190
+	 	(Cost Saving to 13,200)
+Australia 90% compliance	Cost Saving	5,440
+	 	(Cost Saving to 13,200)
+Australia 70% compliance	Cost Saving	6,010
+	 	(Cost Saving to 13,800)
+Australia 50% compliance	Cost Saving	6,940
+	 	(Cost Saving to 14,900)
+Mandatory UK (100% compliance)	Cost Saving	5,170
+	 	(Cost Saving to 13,200)
+UK 90% compliance	Cost Saving	5,310
+	 	(Cost Saving to 13,300)
+UK 70% compliance	Cost Saving	5,560
+	 	(Cost Saving to 13,500)
+UK 50% compliance	Cost Saving	6,040
+	 	(Cost Saving to 13,900)
+Mandatory WHO	Cost Saving	3,730
+	 	(Cost Saving to 11,500)
+Mandatory Aus followed by UK (100% compliance)	Cost Saving	5,510
+	 	(Cost Saving to 13,600)
 Substitution of NaCl with KCl
-30% immediate substitution of all foods	1.42%	(0.956% to 2.06%)
-10% substitution all foods, over 10 years	0.381%	(0.254% to 0.566%)
-30% substitution discretionary over 3 years	0.211%	(0.140% to 0.308%)
+30% immediate substitution of all foods	Cost Saving	2,350
+	 	(Cost Saving to 9,990)
+10% substitution all foods, over 10 years	Cost Saving	4,730
+	 	(Cost Saving to 12,700)
+30% substitution discretionary over 3 years	Cost Saving	4,520
+	 	(Cost Saving to 12,400)
 Programs
-UK mass media campaign	0.00629%	(0.00301% to 0.0122%)
-UK salt reduction program	0.0990%	(0.0663% to 0.147%)
+UK mass media campaign	4,280	10,800
+	(Cost Saving to 33,100)	(1,560 to 26,600)
+UK salt reduction program	Cost Saving	6,640
+	(Cost Saving to 1,650)	(Cost Saving to 14,400)
 Extras
-Mandatory Aus followed by UK (100% compliance)	0.337%	(0.221% to 0.508%)
-Aus followed by UK, both 90% compliance	0.302%	(0.200% to 0.453%)
-Aus followed by UK, both 70% compliance	0.236%	(0.155% to 0.352%)
-Aus followed by UK, both 50% compliance	0.169%	(0.112% to 0.252%)
+Aus followed by UK, both 90% compliance	Cost Saving	5,580
+	 	(Cost Saving to 13,600)
+Aus followed by UK, both 70% compliance	Cost Saving	5,830
+	 	(Cost Saving to 13,800)
+Aus followed by UK, both 50% compliance	Cost Saving	6,280
+	 	(Cost Saving to 14,300)

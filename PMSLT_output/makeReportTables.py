@@ -10,12 +10,6 @@ DEFAULT_SOURCE = 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Ou
 
 EXTRA_DISCOUNT_YEARS = 4 # Takes us to 2023
 
-scenarioSource = {
-	'reform_kcl_all' : 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_10_11_kcl2000',
-	'reform_kcl_10' : 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_10_11_kcl2000',
-	'reform_kcl_nacl' : 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_10_11_kcl2000',
-}
-
 SCENE_MAP = {
 	'reform_aus' : 'Mandatory - Australia (100% Compliance)',
 	'reform_aus_90' : 'Australia 90% compliance',
@@ -41,7 +35,7 @@ HEADINGS = {
 	'Reformulation' : [
 		'reform_aus', 'reform_aus_90', 'reform_aus_70', 'reform_aus_50',
 		'reform_uk', 'reform_uk_90', 'reform_uk_70', 'reform_uk_50',
-		'reform_who',
+		'reform_who', 'reform_ausuk',
 	],
 	'Substitution of NaCl with KCl' : [
 		'reform_kcl_all', 'reform_kcl_10', 'reform_kcl_nacl',
@@ -50,7 +44,7 @@ HEADINGS = {
 		'mass_media_uk', 'package_uk',
 	],
 	'Extras' : [
-		'reform_ausuk', 'reform_ausuk_90', 'reform_ausuk_70', 'reform_ausuk_50',
+		'reform_ausuk_90', 'reform_ausuk_70', 'reform_ausuk_50',
 	],
 }
 
@@ -117,7 +111,7 @@ for k, v in outputTables['tableFour']['columns'].items():
 			'skipUncertainty' : True
 		}
 
-outputTables['tableFive'] = {
+outputTables['tableSeven'] = {
 	'description' : 'Expenditure in 2023 AU$ discounted at 3%',
 	'columns' : {
 		'Health - 20 Years' : {
@@ -163,7 +157,7 @@ outputTables['tableFive'] = {
 	},
 }
 
-outputTables['tableSix'] = {
+outputTables['tableEight'] = {
 	'description' : 'Income gain in 2023 AU$ discounted at 3%',
 	'inlineUncertainty' : True,
 	'columns' : {
@@ -180,51 +174,44 @@ outputTables['tableSix'] = {
 	},
 }
 
-outputTables['tableEight'] = {
-	'description' : 'ICERs from health system and gov perspective, for years [2024, 2044), in 2023 AU$ discounted at 3%',
+outputTables['tableNine'] = {
+	'description' : 'Incremental cost effectiveness ratio (each intervention c.f. BAU; Aus$ per HALY gained) from the Health + Govt Expenditure perspective, 3% discount rate: 20 year and lifetime horizons',
 	'columns' : {
 		'ICER + Gov 20 years' : {
 			'file' : 'out_icer_gov_thousands_per_haly_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'All'},
-			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 			'costSaving' : True,
 			'multiplier' : 1e3,
 		},
-		'HALY 20 years' : {
-			'file' : 'out_HALY_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'All'},
-			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
-		},
-		'Health + Govt - 20 Years' : {
-			'file' : 'out_total_spent_gov_millions_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'All'},
-			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
-		},
-		'spacer1' : {'spacer' : True},
 		'ICER + Gov All years' : {
 			'file' : 'out_icer_gov_thousands_per_haly_year_year_0-114_discount_-0.03_raw',
 			'strata' : {'Year' : 'All', 'Sex' : 'All', 'strata' : 'All'},
-			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 			'costSaving' : True,
 			'multiplier' : 1e3,
-		},
-		'HALY All years' : {
-			'file' : 'out_HALY_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : 'All', 'Sex' : 'All', 'strata' : 'All'},
-			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
-		},
-		'Health + Govt - All Years' : {
-			'file' : 'out_total_spent_gov_millions_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : 'All', 'Sex' : 'All', 'strata' : 'All'},
-			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 	},
 }
 
-outputTables['tableNine'] = {
+outputTables['tableFive'] = {
 	'description' : 'Percentage reduction in ACMR gap from SES1 to SES5 in 2044',
 	'inlineUncertainty' : True,
 	'columns' : {
+		'SES1' : {
+			'file' : 'standard/standard_age_acmr_strata_discount_-0.03_year_ranges_directRatio_raw',
+			'strata' : {'year_range' : '2044 to 2045', 'strata' : 'SES1'},
+			'index' : 2, 'header' : 2,
+			'formatType' : 'percentage',
+			'oneMinus' : True,
+			'skipUncertainty' : True,
+		},
+		'SES5' : {
+			'file' : 'standard/standard_age_acmr_strata_discount_-0.03_year_ranges_directRatio_raw',
+			'strata' : {'year_range' : '2044 to 2045', 'strata' : 'SES5'},
+			'index' : 2, 'header' : 2,
+			'formatType' : 'percentage',
+			'oneMinus' : True,
+			'skipUncertainty' : True,
+		},
 		'reduction in SES ACMR Gap ' : {
 			'file' : 'standard/standard_age_acmr_strata_discount_-0.03_year_ranges_gainRatio_raw',
 			'strata' : {'year_range' : '2044 to 2045'},
@@ -235,7 +222,7 @@ outputTables['tableNine'] = {
 }
 
 outputTables['supTableOne'] = copy.deepcopy(outputTables['tableThree'])
-outputTables['tableFour']['description'] = 'HALYs gained in [2024, 2044) discounted at 0%'
+outputTables['supTableOne']['description'] = 'HALYs gained in [2024, 2044) discounted at 0%'
 for k, v in outputTables['supTableOne']['columns'].items():
 	if 'file' in v:
 		v['file'] = v['file'].replace('-0.03', '0')
@@ -244,7 +231,7 @@ for k, v in outputTables['supTableOne']['columns'].items():
 		v['denominator']['file'] = v['denominator']['file'].replace('-0.03', '0')
 
 outputTables['supTableTwo'] = copy.deepcopy(outputTables['tableFour'])
-outputTables['tableFour']['description'] = 'HALYs gained over lifetime discounted at 0%'
+outputTables['supTableTwo']['description'] = 'HALYs gained over lifetime discounted at 0%'
 for k, v in outputTables['supTableTwo']['columns'].items():
 	if 'file' in v:
 		v['file'] = v['file'].replace('-0.03', '0')
@@ -252,12 +239,17 @@ for k, v in outputTables['supTableTwo']['columns'].items():
 		v['numerator']['file'] = v['numerator']['file'].replace('-0.03', '0')
 		v['denominator']['file'] = v['denominator']['file'].replace('-0.03', '0')
 
-outputTables['supTableThree'] = copy.deepcopy(outputTables['tableFive'])
-outputTables['tableFour']['description'] = 'Expenditure in 2023 AU$ discounted at 0%'
+outputTables['supTableThree'] = copy.deepcopy(outputTables['tableSeven'])
+outputTables['supTableThree']['description'] = 'Expenditure in 2023 AU$ discounted at 0%'
 for k, v in outputTables['supTableThree']['columns'].items():
 	v['file'] = v['file'].replace('-0.03', '0')
 
+outputTables['supTableFour'] = copy.deepcopy(outputTables['tableEight'])
+outputTables['supTableFour']['description'] = 'Income gain in 2023 AU$ discounted at 0%'
+for k, v in outputTables['supTableFour']['columns'].items():
+	v['file'] = v['file'].replace('-0.03', '0')
 
+	
 def AddRowEntry(
 		rows, data,
 		formatType=False, multiplier=False, skipUncertainty=False,
@@ -266,7 +258,8 @@ def AddRowEntry(
 	rows[0].append(shared.FormatNumber(data['50%'], multiplier, formatType, costSaving, sigFigs))
 	uncertRow = 0 if inlineUncertainty else 1
 	if skipUncertainty:
-		rows[uncertRow].append(' ')
+		if not inlineUncertainty:
+			rows[uncertRow].append(' ')
 	else:
 		entry = '({} to {})'.format(
 			shared.FormatNumber(data['2.5%'], multiplier, formatType, costSaving, sigFigs),
@@ -283,12 +276,18 @@ def GetDataEntry(rawName, dataSpec):
 		return dfNum / dfDenom
 		
 	df = shared.ReadFromScenarioFiles(
-		DEFAULT_SOURCE, scenarioSource, dataSpec['file'],
+		DEFAULT_SOURCE, dataSpec['file'],
 		index_col=list(range(util.Opt(dataSpec, 'index', DEF_INDEX))),
 		header=list(range(util.Opt(dataSpec, 'header', DEF_HEADER)))
 	)
 	df = df[rawName]
 	df = util.FilterOutMultiIndex(df, dataSpec['strata'])
+	return df
+
+
+def PostProcessDataEntry(df, oneMinus=False):
+	if oneMinus:
+		df = 1 - df
 	return df
 	
 
@@ -299,7 +298,7 @@ def MakeTableRows(rawName, outName, tableData):
 	else:
 		rows = [[], []]
 		rows[0].append(outName)
-		rows[1].append(' ')
+		rows[1].append('')
 	
 	for colName, colData in tableData['columns'].items():
 		discountMult = 1
@@ -308,11 +307,12 @@ def MakeTableRows(rawName, outName, tableData):
 			discountMult = ((1 + discount)**(-util.Opt(colData, 'extraDiscountYears')))
 		
 		if util.Opt(colData, 'spacer'):
-			rows[0].append(' ')
+			rows[0].append('')
 			if not util.Opt(tableData, 'inlineUncertainty'):
-				rows[1].append(' ')
+				rows[1].append('')
 		else:
 			df = GetDataEntry(rawName, colData)
+			df = PostProcessDataEntry(df, oneMinus=util.Opt(colData, 'oneMinus'))
 			AddRowEntry(
 				rows, df,
 				multiplier=util.Opt(colData, 'multiplier', 1) * discountMult,
@@ -340,6 +340,7 @@ def MakeFormattedTable(tableName, tableData):
 	util.OutputRawRowsToFile(rows, 'reportOutput/{}'.format(tableName))
 
 
+outputTables = {'tableNine' : outputTables['tableNine']}
 for tableName, tableData in outputTables.items():
 	print('Making', tableName)
 	MakeFormattedTable(tableName, tableData)

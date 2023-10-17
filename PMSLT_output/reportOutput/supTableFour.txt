@@ -1,0 +1,25 @@
+Income gain in 2023 AU$ discounted at 0%
+	20-year time horizon	Lifetime horizon
+=== Copyable table below ===
+Reformulation
+Mandatory - Australia (100% Compliance)	358	(250 to 509)	1,660	(1,140 to 2,370)
+Australia 90% compliance	321	(222 to 460)	1,490	(1,030 to 2,140)
+Australia 70% compliance	250	(172 to 357)	1,170	(798 to 1,650)
+Australia 50% compliance	179	(125 to 255)	833	(576 to 1,190)
+Mandatory UK (100% compliance)	782	(548 to 1,130)	3,600	(2,500 to 5,200)
+UK 90% compliance	706	(492 to 1,010)	3,240	(2,250 to 4,660)
+UK 70% compliance	550	(383 to 784)	2,530	(1,750 to 3,610)
+UK 50% compliance	395	(274 to 564)	1,810	(1,250 to 2,610)
+Mandatory WHO	1,350	(929 to 1,880)	6,280	(4,250 to 8,810)
+Mandatory Aus followed by UK (100% compliance)	683	(482 to 963)	3,480	(2,410 to 4,990)
+Substitution of NaCl with KCl
+30% immediate substitution of all foods	3,630	(2,540 to 5,130)	15,000	(10,400 to 21,400)
+10% substitution all foods, over 10 years	621	(430 to 880)	4,460	(3,020 to 6,390)
+30% substitution discretionary over 3 years	473	(330 to 659)	2,350	(1,600 to 3,300)
+Programs
+UK mass media campaign	35.6	(17.6 to 65.0)	45.7	(22.3 to 84.0)
+UK salt reduction program	234	(163 to 330)	1,110	(763 to 1,570)
+Extras
+Aus followed by UK, both 90% compliance	616	(435 to 870)	3,140	(2,200 to 4,540)
+Aus followed by UK, both 70% compliance	479	(340 to 679)	2,450	(1,710 to 3,490)
+Aus followed by UK, both 50% compliance	343	(244 to 483)	1,750	(1,220 to 2,490)

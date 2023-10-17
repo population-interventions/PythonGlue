@@ -1,43 +1,25 @@
-ICERs from health system and gov perspective, for years [2024, 2044), in 2023 AU$ discounted at 3%
-	ICER + Gov 20 years	HALY 20 years	Health + Govt - 20 Years	spacer1	ICER + Gov All years	HALY All years	Health + Govt - All Years
+Income gain in 2023 AU$ discounted at 3%
+	20-year time horizon	Lifetime horizon
 === Copyable table below ===
 Reformulation
-Mandatory - Australia (100% Compliance)	Cost Saving	11,900	-147	 	5,860	70,100	361
- 	 	(8,280 to 17,600)	(-294 to -10.3)	 	(Cost Saving to 14,900)	(47,500 to 105,000)	(-170 to 1,160)
-Australia 90% compliance	Cost Saving	10,700	-119	 	6,150	63,100	340
- 	(Cost Saving to 228)	(7,400 to 15,900)	(-250 to 2.06)	 	(Cost Saving to 15,000)	(42,900 to 95,500)	(-150 to 1,060)
-Australia 70% compliance	Cost Saving	8,310	-66.3	 	6,790	49,100	288
- 	(Cost Saving to 4,740)	(5,730 to 12,300)	(-174 to 33.3)	 	(Cost Saving to 15,600)	(33,200 to 74,000)	(-92.7 to 846)
-Australia 50% compliance	Cost Saving	5,950	-14.0	 	7,840	35,200	242
- 	(Cost Saving to 13,400)	(4,130 to 8,840)	(-99.3 to 64.9)	 	(Cost Saving to 16,800)	(23,900 to 53,300)	(-26.6 to 644)
-Mandatory UK (100% compliance)	Cost Saving	27,100	-435	 	5,840	159,000	819
- 	 	(18,200 to 40,600)	(-753 to -148)	 	(Cost Saving to 14,900)	(105,000 to 239,000)	(-425 to 2,760)
-UK 90% compliance	Cost Saving	24,400	-382	 	6,000	143,000	755
- 	 	(16,500 to 36,100)	(-665 to -126)	 	(Cost Saving to 15,000)	(95,200 to 215,000)	(-378 to 2,530)
-UK 70% compliance	Cost Saving	18,900	-271	 	6,270	112,000	612
- 	 	(12,800 to 28,400)	(-493 to -72.2)	 	(Cost Saving to 15,300)	(74,300 to 168,000)	(-261 to 2,010)
-UK 50% compliance	Cost Saving	13,700	-161	 	6,820	80,200	474
- 	 	(9,220 to 20,300)	(-325 to -6.50)	 	(Cost Saving to 15,700)	(53,200 to 121,000)	(-159 to 1,470)
-Mandatory WHO	Cost Saving	43,200	-854	 	4,210	255,000	929
- 	 	(29,400 to 61,900)	(-1,350 to -417)	 	(Cost Saving to 13,000)	(171,000 to 370,000)	(-977 to 3,650)
+Mandatory - Australia (100% Compliance)	236	(165 to 336)	647	(448 to 925)
+Australia 90% compliance	212	(147 to 303)	583	(402 to 835)
+Australia 70% compliance	165	(114 to 235)	455	(310 to 644)
+Australia 50% compliance	118	(82.4 to 167)	325	(224 to 465)
+Mandatory UK (100% compliance)	516	(361 to 740)	1,410	(974 to 2,030)
+UK 90% compliance	465	(324 to 664)	1,270	(879 to 1,820)
+UK 70% compliance	362	(252 to 516)	989	(683 to 1,410)
+UK 50% compliance	260	(181 to 372)	708	(489 to 1,020)
+Mandatory WHO	886	(613 to 1,240)	2,450	(1,660 to 3,440)
+Mandatory Aus followed by UK (100% compliance)	442	(311 to 623)	1,330	(927 to 1,890)
 Substitution of NaCl with KCl
-30% immediate substitution of all foods	Cost Saving	112,000	-2,410	 	2,660	554,000	1,290
- 	 	(76,700 to 154,000)	(-3,630 to -1,400)	 	(Cost Saving to 11,300)	(375,000 to 780,000)	(-2,860 to 6,750)
-10% substitution all foods, over 10 years	Cost Saving	16,900	-375	 	5,340	166,000	780
- 	 	(11,500 to 24,100)	(-626 to -153)	 	(Cost Saving to 14,300)	(112,000 to 242,000)	(-520 to 2,640)
-30% substitution discretionary over 3 years	Cost Saving	14,300	-240	 	5,100	89,900	407
- 	 	(9,620 to 20,200)	(-415 to -65.9)	 	(Cost Saving to 14,000)	(59,400 to 128,000)	(-304 to 1,350)
+30% immediate substitution of all foods	2,450	(1,720 to 3,460)	6,070	(4,200 to 8,630)
+10% substitution all foods, over 10 years	387	(268 to 548)	1,590	(1,080 to 2,270)
+30% substitution discretionary over 3 years	307	(214 to 429)	903	(617 to 1,260)
 Programs
-UK mass media campaign	4,840	1,220	5.31	 	12,200	2,190	23.4
- 	(Cost Saving to 37,400)	(595 to 2,260)	(-17.6 to 24.0)	 	(1,760 to 30,100)	(1,090 to 4,040)	(4.07 to 43.8)
-UK salt reduction program	Cost Saving	7,390	-9.52	 	7,490	42,900	282
- 	(Cost Saving to 13,500)	(5,090 to 10,800)	(-106 to 80.9)	 	(Cost Saving to 16,300)	(29,100 to 63,600)	(-51.7 to 759)
+UK mass media campaign	24.6	(12.3 to 44.9)	29.2	(14.3 to 53.6)
+UK salt reduction program	155	(108 to 218)	436	(300 to 615)
 Extras
-Mandatory Aus followed by UK (100% compliance)	Cost Saving	22,500	-383	 	6,220	152,000	820
- 	 	(15,400 to 33,100)	(-646 to -139)	 	(Cost Saving to 15,300)	(101,000 to 229,000)	(-401 to 2,700)
-Aus followed by UK, both 90% compliance	Cost Saving	20,300	-334	 	6,300	137,000	755
- 	 	(13,900 to 29,700)	(-570 to -113)	 	(Cost Saving to 15,400)	(91,200 to 206,000)	(-324 to 2,460)
-Aus followed by UK, both 70% compliance	Cost Saving	15,800	-234	 	6,590	107,000	618
- 	 	(10,800 to 23,300)	(-416 to -64.5)	 	(Cost Saving to 15,600)	(71,100 to 162,000)	(-229 to 1,960)
-Aus followed by UK, both 50% compliance	Cost Saving	11,300	-134	 	7,100	76,400	477
- 	 	(7,760 to 16,600)	(-263 to -8.41)	 	(Cost Saving to 16,100)	(51,000 to 115,000)	(-124 to 1,470)
+Aus followed by UK, both 90% compliance	399	(282 to 561)	1,190	(838 to 1,710)
+Aus followed by UK, both 70% compliance	310	(221 to 437)	932	(653 to 1,320)
+Aus followed by UK, both 50% compliance	222	(158 to 311)	666	(468 to 944)
