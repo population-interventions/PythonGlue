@@ -340,7 +340,6 @@ def MakeFormattedTable(tableName, tableData):
 	util.OutputRawRowsToFile(rows, 'reportOutput/{}'.format(tableName))
 
 
-outputTables = {'tableNine' : outputTables['tableNine']}
 for tableName, tableData in outputTables.items():
 	print('Making', tableName)
 	MakeFormattedTable(tableName, tableData)

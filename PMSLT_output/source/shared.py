@@ -7,7 +7,8 @@ import source.include.utilities as util
 costPath = 'C:/Dev/Repos/QPMSLT/pmsltInput/salt/data/salt/costs'
 inputCache = []
 
-DISCOUNT_START = 2023
+DISCOUNT_START = 2019
+MIN_YEAR = 2019
 MAX_YEAR = 2132
 
 costFixConf = {
@@ -85,7 +86,9 @@ def AggregateCosts(df, dfCost, yearRange, discount):
 		dfCost = dfCost.copy()
 		discountTime = dfCost.index.values - DISCOUNT_START
 		dfCost = dfCost * (1 + discount) ** discountTime
-	totalCost = util.FilterOnIndex(dfCost, 'year', yearRange[1], MAX_YEAR).sum()
+	totalCost = (
+		util.FilterOnIndex(dfCost, 'year', yearRange[1], MAX_YEAR).sum()
+		+ util.FilterOnIndex(dfCost, 'year', MIN_YEAR, yearRange[0]).sum())
 	return totalCost
 
 
@@ -143,7 +146,7 @@ def FixFile(df, fileName):
 
 def FixIcerFile(df, dfRawCost, fileName, costFile):
 	dfFixedCost = FixFile(dfRawCost.copy(), costFile)
-	ratio = dfFixedCost / dfRawCost
+	ratio = (dfFixedCost / dfRawCost).fillna(0)
 	df = df * ratio
 	return df
 

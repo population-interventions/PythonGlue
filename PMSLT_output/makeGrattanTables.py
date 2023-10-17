@@ -10,26 +10,26 @@ DEFAULT_SOURCE = 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Ou
 EXTRA_DISCOUNT_YEARS = 4 # Takes us to 2023
 
 SCENE_MAP = {
-	'bau' : 'BAU',
-	'reform_aus' : 'Australia mandatory',
-	'reform_aus_90' : 'Australia 90%',
-	'reform_aus_70' : 'Australia 70%',
-	'reform_aus_50' : 'Australia 50%',
-	'reform_ausuk' : 'Aus then UK mandatory',
+	'bau'             : 'BAU',
+	'reform_aus'      : 'Australia mandatory',
+	'reform_aus_90'   : 'Australia 90%',
+	'reform_aus_70'   : 'Australia 70%',
+	'reform_aus_50'   : 'Australia 50%',
+	'reform_ausuk'    : 'Aus then UK mandatory',
 	'reform_ausuk_90' : 'Aus then UK 90%',
 	'reform_ausuk_70' : 'Aus then UK 70%',
 	'reform_ausuk_50' : 'Aus then UK 50%',
-	'reform_kcl_all' : 'KCl subsitute (30%) envelope',
-	'reform_kcl_10' : 'KCl subsitute (10%) all foods',
+	'reform_kcl_all'  : 'KCl subsitute (30%) envelope',
+	'reform_kcl_10'   : 'KCl subsitute (10%) all foods',
 	'reform_kcl_nacl' : 'KCl subsitute (4.5%) discretionary',
-	'reform_uk' : 'UK mandatory',
-	'reform_uk_90' : 'UK 90%',
-	'reform_uk_70' : 'UK 70%',
-	'reform_uk_50' : 'UK 50%',
-	'mass_media_uk' : 'UK mass media campaign',
-	'package_uk' : 'UK salt reduction program',
-	'reform_who' : 'Who mandatory',
-	'none' : 'No change'
+	'reform_uk'       : 'UK mandatory',
+	'reform_uk_90'    : 'UK 90%',
+	'reform_uk_70'    : 'UK 70%',
+	'reform_uk_50'    : 'UK 50%',
+	'mass_media_uk'   : 'UK mass media campaign',
+	'package_uk'      : 'UK salt reduction program',
+	'reform_who'      : 'Who mandatory',
+	'none'            : 'No change'
 }
 
 tablesToMake = {
@@ -43,6 +43,7 @@ tablesToMake = {
 	'ICERhealthExpendGovIndConservativeMinusIncomeThousandsPerHaly' : {'file' : 'icer_gov_ind_inc_conservative_thousands_per_haly'},
 	'ICERhealthExpendGovIndMinusIncomeThousandsPerHaly'             : {'file' : 'icer_gov_ind_inc_thousands_per_haly'},
 	'ICERhealthExpendGovThousandsPerHaly'                           : {'file' : 'icer_gov_thousands_per_haly'},
+	'ICERhealthExpendThousandsPerHaly'                              : {'file' : 'icer_pp_only_thousands_per_haly'},
 	'personIncomeMillions'                                          : {'file' : 'total_income_millions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
 	'personYears'                                                   : {'file' : 'person_years', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS},
 	'strata_income_millions'                                        : {'file' : 'total_income_millions', 'extraDiscountYears' : EXTRA_DISCOUNT_YEARS, 'fullIndex' : True},
