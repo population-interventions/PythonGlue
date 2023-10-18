@@ -9,7 +9,7 @@ Australia 90% compliance	Cost Saving	5,440
 Australia 70% compliance	Cost Saving	6,010
 	 	(Cost Saving to 13,800)
 Australia 50% compliance	Cost Saving	6,940
-	(Cost Saving to 580)	(Cost Saving to 14,900)
+	 	(Cost Saving to 14,900)
 Mandatory UK (100% compliance)	Cost Saving	5,170
 	 	(Cost Saving to 13,200)
 UK 90% compliance	Cost Saving	5,310
@@ -33,7 +33,7 @@ Programs
 UK mass media campaign	4,280	10,800
 	(Cost Saving to 33,100)	(1,560 to 26,600)
 UK salt reduction program	Cost Saving	6,640
-	(Cost Saving to 2,830)	(Cost Saving to 14,400)
+	(Cost Saving to 767)	(Cost Saving to 14,400)
 Extras
 Aus followed by UK, both 90% compliance	Cost Saving	5,580
 	 	(Cost Saving to 13,600)

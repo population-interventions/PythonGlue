@@ -48,7 +48,7 @@ HEADINGS = {
 	],
 }
 
-DEF_INDEX = 3
+DEF_INDEX = 5
 DEF_HEADER = 2
 
 outputTables = {}
@@ -56,33 +56,33 @@ outputTables['tableThree'] = {
 	'description' : 'HALYs gained in [2024, 2044) discounted at 3%',
 	'columns' : {
 		'Combined' : {
-			'file' : 'out_HALY_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'All'},
+			'file' : 'out_HALY_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2024, 'End Year' : 2044, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'All'},
 			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'SES 1' : {
-			'file' : 'out_HALY_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'SES1'},
+			'file' : 'out_HALY_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2024, 'End Year' : 2044, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'SES1'},
 			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'SES 2' : {
-			'file' : 'out_HALY_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'SES2'},
+			'file' : 'out_HALY_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2024, 'End Year' : 2044, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'SES2'},
 			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'SES 3' : {
-			'file' : 'out_HALY_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'SES3'},
+			'file' : 'out_HALY_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2024, 'End Year' : 2044, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'SES3'},
 			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'SES 4' : {
-			'file' : 'out_HALY_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'SES4'},
+			'file' : 'out_HALY_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2024, 'End Year' : 2044, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'SES4'},
 			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'SES 5' : {
-			'file' : 'out_HALY_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'SES5'},
+			'file' : 'out_HALY_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2024, 'End Year' : 2044, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'SES5'},
 			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'RR SES 1 c.f. 5' : {
@@ -96,17 +96,18 @@ outputTables['tableThree'] = {
 outputTables['tableFour'] = copy.deepcopy(outputTables['tableThree'])
 outputTables['tableFour']['description'] = 'HALYs gained over lifetime discounted at 3%'
 for k, v in outputTables['tableFour']['columns'].items():
-	if 'Year' in v['strata']:
-		v['strata']['Year'] = 'All'
+	if 'Start Year' in v['strata']:
+		v['strata']['Start Year'] = 2019
+		v['strata']['End Year'] = 2133
 	else:
 		outputTables['tableFour']['columns'][k] = {
 			'numerator' : {
-				'file' : 'out_HALY_year_year_0-114_discount_-0.03_raw',
-				'strata' : {'Year' : 'All', 'Sex' : 'All', 'strata' : 'SES1'},
+				'file' : 'out_HALY_age_stacked_discount_-0.03_raw',
+				'strata' : {'Start Year' : 2019, 'End Year' : 2133, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'SES1'},
 			},
 			'denominator' : {
-				'file' : 'out_HALY_year_year_0-114_discount_-0.03_raw',
-				'strata' : {'Year' : 'All', 'Sex' : 'All', 'strata' : 'SES5'},
+				'file' : 'out_HALY_age_stacked_discount_-0.03_raw',
+				'strata' : {'Start Year' : 2019, 'End Year' : 2133, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'SES5'},
 			},
 			'skipUncertainty' : True
 		}
@@ -115,43 +116,43 @@ outputTables['tableSeven'] = {
 	'description' : 'Expenditure in 2023 AU$ discounted at 3%',
 	'columns' : {
 		'Health - 20 Years' : {
-			'file' : 'out_total_spent_pp_only_millions_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'All'},
+			'file' : 'out_total_spent_pp_only_millions_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2024, 'End Year' : 2044, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'All'},
 			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'Health - Lifetime' : {
-			'file' : 'out_total_spent_pp_only_millions_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : 'All', 'Sex' : 'All', 'strata' : 'All'},
+			'file' : 'out_total_spent_pp_only_millions_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2019, 'End Year' : 2133, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'All'},
 			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'Health + Govt - 20 Years' : {
-			'file' : 'out_total_spent_gov_millions_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'All'},
+			'file' : 'out_total_spent_gov_millions_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2024, 'End Year' : 2044, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'All'},
 			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'Health + Govt - Lifetime' : {
-			'file' : 'out_total_spent_gov_millions_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : 'All', 'Sex' : 'All', 'strata' : 'All'},
+			'file' : 'out_total_spent_gov_millions_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2019, 'End Year' : 2133, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'All'},
 			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'Health + Govt + Industry - 20 Years' : {
-			'file' : 'out_total_spent_gov_ind_millions_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'All'},
+			'file' : 'out_total_spent_gov_ind_millions_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2024, 'End Year' : 2044, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'All'},
 			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'Health + Govt + Industry - Lifetime' : {
-			'file' : 'out_total_spent_gov_ind_millions_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : 'All', 'Sex' : 'All', 'strata' : 'All'},
+			'file' : 'out_total_spent_gov_ind_millions_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2019, 'End Year' : 2133, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'All'},
 			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'Health + Govt + Industry (conservative) - 20 Years' : {
-			'file' : 'out_total_spent_gov_ind_conservative_millions_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'All'},
+			'file' : 'out_total_spent_gov_ind_conservative_millions_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2024, 'End Year' : 2044, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'All'},
 			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'Health + Govt + Industry (conservative) - Lifetime' : {
-			'file' : 'out_total_spent_gov_ind_conservative_millions_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : 'All', 'Sex' : 'All', 'strata' : 'All'},
+			'file' : 'out_total_spent_gov_ind_conservative_millions_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2019, 'End Year' : 2133, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'All'},
 			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 	},
@@ -162,13 +163,13 @@ outputTables['tableEight'] = {
 	'inlineUncertainty' : True,
 	'columns' : {
 		'20-year time horizon' : {
-			'file' : 'out_total_income_millions_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'All'},
+			'file' : 'out_total_income_millions_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2024, 'End Year' : 2044, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'All'},
 			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 		'Lifetime horizon' : {
-			'file' : 'out_total_income_millions_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : 'All', 'Sex' : 'All', 'strata' : 'All'},
+			'file' : 'out_total_income_millions_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2019, 'End Year' : 2133, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'All'},
 			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
 		},
 	},
@@ -178,14 +179,14 @@ outputTables['tableNine'] = {
 	'description' : 'Incremental cost effectiveness ratio (each intervention c.f. BAU; Aus$ per HALY gained) from the Health + Govt Expenditure perspective, 3% discount rate: 20 year and lifetime horizons',
 	'columns' : {
 		'ICER + Gov 20 years' : {
-			'file' : 'out_icer_gov_thousands_per_haly_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : '2024 to 2044', 'Sex' : 'All', 'strata' : 'All'},
+			'file' : 'out_icer_gov_thousands_per_haly_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2024, 'End Year' : 2044, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'All'},
 			'costSaving' : True,
 			'multiplier' : 1e3,
 		},
 		'ICER + Gov All years' : {
-			'file' : 'out_icer_gov_thousands_per_haly_year_year_0-114_discount_-0.03_raw',
-			'strata' : {'Year' : 'All', 'Sex' : 'All', 'strata' : 'All'},
+			'file' : 'out_icer_gov_thousands_per_haly_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2019, 'End Year' : 2133, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'All'},
 			'costSaving' : True,
 			'multiplier' : 1e3,
 		},
