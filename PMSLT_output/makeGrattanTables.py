@@ -56,27 +56,27 @@ def MakeUncertaintyFormatColumn(df, multiplier=1):
 		shared.FormatNumber(x['2.5%'], multiplier, False, False, 3),
 		shared.FormatNumber(x['97.5%'], multiplier, False, False, 3)), axis=1)
 	return df
-	
+
 
 def MakeDiscountTable(name, outName, raw=False, filterOut=False, extraDiscountYears=0):
 	toAppend = []
 	for discount in [0, -0.03]:
 		discountMult = ((1 + discount)**(-extraDiscountYears))
 		if raw:
-			fileName = 'out_{}_year_year_0-114_discount_{}_raw'.format(name, discount)
+			fileName = 'out_{}_age_stacked_discount_{}_raw'.format(name, discount)
 			df = shared.ReadFromScenarioFiles(
 				DEFAULT_SOURCE, fileName,
-				index_col=list(range(3)), header=list(range(2)))
+				index_col=list(range(5)), header=list(range(2)))
 			df.columns.names = ['Scenario', 'Percentile']
 			if filterOut:
 				df = util.FilterOutMultiIndex(df, {name : 'All' for name in filterOut})
 			df = util.FilterOutMultiIndex(df.transpose(), {'Percentile' : '50%'}).transpose()
 			df = df * discountMult
 		else:
-			fileName = 'out_{}_year_year_0-114_discount_{}_raw'.format(name, discount)
+			fileName = 'out_{}_age_stacked_discount_{}_raw'.format(name, discount)
 			df = shared.ReadFromScenarioFiles(
 				DEFAULT_SOURCE, fileName,
-				index_col=list(range(3)), header=list(range(2)))
+				index_col=list(range(5)), header=list(range(2)))
 			df.columns.names = ['Scenario', 'Percentile']
 			
 			if filterOut:
@@ -111,6 +111,7 @@ def MakeStandardTable(
 		df = util.AddIndexLevel(df, 'Raw Median', raw, toTopLevel=True)
 		toAppend.append(df)
 	df = pd.concat(toAppend)
+	df = shared.UnstackStartEndYear(df)
 	df = df.sort_index(axis=1).sort_index(axis=0)
 	util.OutputToFile(df, 'output{}/{}{}'.format(
 		('_' + suffix) if suffix else '',
@@ -120,7 +121,7 @@ def MakeStandardTable(
 	
 
 for outName, outData in tablesToMake.items():
-	filterOut = False if util.Opt(outData, 'fullIndex') else ['Sex', 'strata']
+	filterOut = False if util.Opt(outData, 'fullIndex') else ['Age', 'Sex', 'strata']
 	extraDiscountYears = util.Opt(outData, 'extraDiscountYears', 0)
 	print(outName)
 	MakeStandardTable(

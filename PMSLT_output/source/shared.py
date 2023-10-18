@@ -47,6 +47,21 @@ yearRangeMap = {
 	'2034 to 2044' : [2034, 2044],
 }
 
+def UnstackStartEndYear(df):
+	# Reset the index to make it easier to work with the MultiIndex
+	df = df.reset_index()
+
+	# Pivot the DataFrame
+	pivoted_df = df.pivot_table(index=['Raw Median', 'Discount', 'Scenario'],
+								columns=['Start Year', 'End Year'],
+								aggfunc='first')
+
+	# Flatten the MultiIndex columns and rename columns
+	pivoted_df.columns = pivoted_df.columns.droplevel(0)
+	pivoted_df.columns = [f'{start} to {end}' for start, end in pivoted_df.columns]
+	pivoted_df = pivoted_df.rename(columns={'2019 to 2133' : 'All'})
+	return pivoted_df
+
 
 def FormatNumber(number, multiplier, formatType, costSaving, sigFigs):
 	if multiplier is not False:
@@ -153,6 +168,8 @@ def FixIcerFile(df, dfRawCost, fileName, costFile):
 
 def ReadFromScenarioFiles(source, fileName, index_col=list(range(1)), header=list(range(1))):
 	df = LoadFile(source, fileName, index_col, header)
+	if 'year_year' not in fileName:
+		return df
 	
 	if 'out_total_spent_gov' in fileName:
 		df = FixFile(df, fileName)
