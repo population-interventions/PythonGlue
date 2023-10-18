@@ -52,6 +52,28 @@ DEF_INDEX = 5
 DEF_HEADER = 2
 
 outputTables = {}
+
+outputTables['healthExpenseFigure'] = {
+	'description' : 'Health expenditure discounted at 3% for a table',
+	'inlineUncertainty' : True,
+	'ignoreHeadings' : True,
+	'spaceBetweenScenarios' : 1,
+	'columns' : {
+		'Health + Govt - 20 Years' : {
+			'file' : 'out_total_spent_gov_millions_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2024, 'End Year' : 2044, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'All'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
+			'rawValues' : True,
+		},
+		'Health + Govt - Lifetime' : {
+			'file' : 'out_total_spent_gov_millions_age_stacked_discount_-0.03_raw',
+			'strata' : {'Start Year' : 2019, 'End Year' : 2133, 'Age' : 'All', 'Sex' : 'All', 'strata' : 'All'},
+			'extraDiscountYears' : EXTRA_DISCOUNT_YEARS,
+			'rawValues' : True,
+		},
+	},
+}
+
 outputTables['tableThree'] = {
 	'description' : 'HALYs gained in [2024, 2044) discounted at 3%',
 	'columns' : {
@@ -250,21 +272,28 @@ outputTables['supTableFour']['description'] = 'Income gain in 2023 AU$ discounte
 for k, v in outputTables['supTableFour']['columns'].items():
 	v['file'] = v['file'].replace('-0.03', '0')
 
+
+def MaybeFormatNumber(number, multiplier, formatType, costSaving, sigFigs, wantRaw):
+	if wantRaw:
+		return str(number*multiplier)
+	return shared.FormatNumber(number, multiplier, formatType, costSaving, sigFigs)
+
 	
 def AddRowEntry(
 		rows, data,
 		formatType=False, multiplier=False, skipUncertainty=False,
-		inlineUncertainty=False, costSaving=False, sigFigs=3):
+		inlineUncertainty=False, costSaving=False, sigFigs=3, wantRaw=False):
 
-	rows[0].append(shared.FormatNumber(data['50%'], multiplier, formatType, costSaving, sigFigs))
+	rows[0].append(MaybeFormatNumber(data['50%'], multiplier, formatType, costSaving, sigFigs, wantRaw))
 	uncertRow = 0 if inlineUncertainty else 1
 	if skipUncertainty:
 		if not inlineUncertainty:
 			rows[uncertRow].append(' ')
 	else:
-		entry = '({} to {})'.format(
-			shared.FormatNumber(data['2.5%'], multiplier, formatType, costSaving, sigFigs),
-			shared.FormatNumber(data['97.5%'], multiplier, formatType, costSaving, sigFigs))
+		baseString = '{}\t{}' if wantRaw else '({} to {})'
+		entry = baseString.format(
+			MaybeFormatNumber(data['2.5%'], multiplier, formatType, costSaving, sigFigs, wantRaw),
+			MaybeFormatNumber(data['97.5%'], multiplier, formatType, costSaving, sigFigs, wantRaw))
 		if entry == '(Cost Saving to Cost Saving)':
 			entry = ' '
 		rows[uncertRow].append(entry)
@@ -322,6 +351,7 @@ def MakeTableRows(rawName, outName, tableData):
 				inlineUncertainty=util.Opt(tableData, 'inlineUncertainty'),
 				costSaving=util.Opt(colData, 'costSaving'),
 				sigFigs=util.Opt(colData, 'sigFigs', 3),
+				wantRaw=util.Opt(colData, 'rawValues'),
 			)
 	return rows
 
@@ -334,13 +364,16 @@ def MakeFormattedTable(tableName, tableData):
 	rows = []
 	rows = rows + MakeTableHeader(tableData)
 	for headingName, headingMetrics in HEADINGS.items():
-		rows.append([headingName])
+		if not util.Opt(tableData, 'ignoreHeadings'):
+			rows.append([headingName])
 		for rawName in headingMetrics: 
 			outName = SCENE_MAP[rawName]
 			rows = rows + MakeTableRows(rawName, outName, tableData)
+			for i in range(util.Opt(tableData, 'spaceBetweenScenarios', 0)):
+				rows.append([' '])
 	util.OutputRawRowsToFile(rows, 'reportOutput/{}'.format(tableName))
 
-
+outputTables = {'healthExpenseFigure' : outputTables['healthExpenseFigure']}
 for tableName, tableData in outputTables.items():
 	print('Making', tableName)
 	MakeFormattedTable(tableName, tableData)
