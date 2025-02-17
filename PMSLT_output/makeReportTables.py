@@ -7,6 +7,7 @@ import source.include.utilities as util
 import source.shared as shared
 
 DEFAULT_SOURCE = 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_09_27_nohsr2000'
+DEFAULT_INPUT_SOURCE = 'C:/dr/PI_SHINE Protocols_Reports/B01_Salt Modelling Grattan/Output/2023_09_27_nohsr2000'
 
 EXTRA_DISCOUNT_YEARS = 4 # Takes us to 2023
 
@@ -73,7 +74,7 @@ outputTables['healthExpenseFigure'] = {
 		},
 	},
 }
-
+		
 outputTables['tableThree'] = {
 	'description' : 'HALYs gained in [2024, 2044) discounted at 3%',
 	'columns' : {
@@ -244,6 +245,16 @@ outputTables['tableFive'] = {
 	},
 }
 
+outputTables['globalCostsTable'] = {
+	'description' : 'Government and industry costs of implementing the interventions , 20-year time horizon and 3% discount rate',
+	'inlineUncertainty' : True,
+	'columns' : {
+		'government costs' : {
+			
+		},
+	}
+}
+
 outputTables['supTableOne'] = copy.deepcopy(outputTables['tableThree'])
 outputTables['supTableOne']['description'] = 'HALYs gained in [2024, 2044) discounted at 0%'
 for k, v in outputTables['supTableOne']['columns'].items():
@@ -373,7 +384,7 @@ def MakeFormattedTable(tableName, tableData):
 				rows.append([' '])
 	util.OutputRawRowsToFile(rows, 'reportOutput/{}'.format(tableName))
 
-outputTables = {'healthExpenseFigure' : outputTables['healthExpenseFigure']}
+outputTables = {'globalCostsTable' : outputTables['globalCostsTable']}
 for tableName, tableData in outputTables.items():
 	print('Making', tableName)
 	MakeFormattedTable(tableName, tableData)
